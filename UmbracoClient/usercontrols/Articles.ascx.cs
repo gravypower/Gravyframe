@@ -10,7 +10,7 @@ using UmbracoClient.Repositories;
 
 namespace UmbracoClient.usercontrols
 {
-    public partial class Articles : Ninject.Web.Sitecore.UserControlBase
+    public partial class Articles : Ninject.Web.UserControlBase
     {
         public Articles()
         {
