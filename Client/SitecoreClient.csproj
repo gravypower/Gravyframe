@@ -1,0 +1,432 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7F73DBFD-1120-48DB-80AB-E47D1D00D70A}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SitecoreClient</RootNamespace>
+    <AssemblyName>SitecoreClient</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SlowCheetahTargets Condition=" '$(SlowCheetahTargets)'=='' ">$(LOCALAPPDATA)\Microsoft\MSBuild\SlowCheetah\v1\SlowCheetah.Transforms.targets</SlowCheetahTargets>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=2.1.267.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\AutoMapper.2.1.267\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.0.1.10\lib\net40\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common">
+      <HintPath>..\packages\Ninject.Web.Common.3.0.0.7\lib\net40-full\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Kernel, Version=6.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Sitecore.Kernel.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="WebActivator">
+      <HintPath>..\packages\WebActivator.1.5.1\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="layouts\Default.aspx" />
+    <Content Include="layouts\sublayouts\Article.ascx" />
+    <Content Include="layouts\sublayouts\Articles.ascx" />
+    <Content Include="layouts\sublayouts\Framework\Notification.ascx" />
+    <Content Include="MSBuild\SlowCheetah.Tasks.dll" />
+    <Content Include="MSBuild\Yahoo.Yui.Compressor.dll" />
+    <Content Include="MSBuild\Yahoo.Yui.Compressor.MsBuildTask.dll" />
+    <Content Include="Styles\Site.css" />
+    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4.1.js" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\NinjectWeb.cs" />
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="layouts\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="layouts\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="layouts\Framework\LayoutBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="layouts\sublayouts\Article.ascx.cs">
+      <DependentUpon>Article.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="layouts\sublayouts\Article.ascx.designer.cs">
+      <DependentUpon>Article.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="layouts\sublayouts\Articles.ascx.cs">
+      <DependentUpon>Articles.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="layouts\sublayouts\Articles.ascx.designer.cs">
+      <DependentUpon>Articles.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="layouts\sublayouts\Framework\Notification.ascx.cs">
+      <DependentUpon>Notification.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="layouts\sublayouts\Framework\Notification.ascx.designer.cs">
+      <DependentUpon>Notification.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ArticleRepository.cs" />
+    <Compile Include="Repositories\IArticleRepository.cs" />
+    <Compile Include="Repositories\RepositoryBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\Commands.config">
+      <TransformOnBuild>true</TransformOnBuild>
+    </Content>
+    <Content Include="App_Config\ConnectionStrings.config">
+      <TransformOnBuild>true</TransformOnBuild>
+    </Content>
+    <Content Include="App_Config\FieldTypes.config">
+      <TransformOnBuild>true</TransformOnBuild>
+    </Content>
+    <Content Include="App_Config\Icons.config">
+      <TransformOnBuild>true</TransformOnBuild>
+    </Content>
+    <Content Include="App_Config\LanguageDefinitions.config">
+      <TransformOnBuild>true</TransformOnBuild>
+    </Content>
+    <Content Include="App_Config\MimeTypes.config">
+      <TransformOnBuild>true</TransformOnBuild>
+    </Content>
+    <Content Include="App_Config\Portraits.config">
+      <TransformOnBuild>true</TransformOnBuild>
+    </Content>
+    <Content Include="App_Config\Prefetch\Common.config">
+      <TransformOnBuild>true</TransformOnBuild>
+    </Content>
+    <Content Include="App_Config\Prefetch\Core.config">
+      <TransformOnBuild>true</TransformOnBuild>
+    </Content>
+    <Content Include="App_Config\Prefetch\Master.config">
+      <TransformOnBuild>true</TransformOnBuild>
+    </Content>
+    <Content Include="App_Config\Prefetch\Web.config">
+      <TransformOnBuild>true</TransformOnBuild>
+    </Content>
+    <Content Include="App_Config\Prototypes.config">
+      <TransformOnBuild>true</TransformOnBuild>
+    </Content>
+    <Content Include="App_Config\Security\Domains.config">
+      <TransformOnBuild>true</TransformOnBuild>
+    </Content>
+    <Content Include="App_Config\Security\GlobalRoles.config">
+      <TransformOnBuild>true</TransformOnBuild>
+    </Content>
+    <Content Include="App_Config\XamlSharp.config">
+      <TransformOnBuild>true</TransformOnBuild>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Dependency\Glass.Sitecore.Mapper\Source\Glass.Sitecore.Mapper\Glass.Sitecore.Mapper.csproj">
+      <Project>{564CDD78-0939-436B-9C90-7AF9D95B9024}</Project>
+      <Name>Glass.Sitecore.Mapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dependency\Ninject.Web.Sitecore\src\Ninject.Web.Sitecore\Ninject.Web.Sitecore.csproj">
+      <Project>{6BA63AF5-7DF0-468B-925F-DD564AF59F7C}</Project>
+      <Name>Ninject.Web.Sitecore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Service\Service.csproj">
+      <Project>{5F04C3FE-B862-4374-B43B-8E20652408B1}</Project>
+      <Name>Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebsiteKernel\WebsiteKernel.Logging\WebsiteKernel.Logging.csproj">
+      <Project>{77CF676F-A242-46A0-8EBA-4296578DAE7A}</Project>
+      <Name>WebsiteKernel.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebsiteKernel\WebsiteKernel.Notifications\WebsiteKernel.Notifications.csproj">
+      <Project>{743CBA44-A708-4D05-8342-51E31207BCBD}</Project>
+      <Name>WebsiteKernel.Notifications</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\Commands.Debug.config">
+      <DependentUpon>Commands.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\Commands.Release.config">
+      <DependentUpon>Commands.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\ConnectionStrings.Debug.config">
+      <DependentUpon>ConnectionStrings.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\ConnectionStrings.Release.config">
+      <DependentUpon>ConnectionStrings.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\FieldTypes.Debug.config">
+      <DependentUpon>FieldTypes.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\FieldTypes.Release.config">
+      <DependentUpon>FieldTypes.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\Icons.Debug.config">
+      <DependentUpon>Icons.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\Icons.Release.config">
+      <DependentUpon>Icons.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\LanguageDefinitions.Debug.config">
+      <DependentUpon>LanguageDefinitions.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\LanguageDefinitions.Release.config">
+      <DependentUpon>LanguageDefinitions.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\MimeTypes.Debug.config">
+      <DependentUpon>MimeTypes.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\MimeTypes.Release.config">
+      <DependentUpon>MimeTypes.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\Portraits.Debug.config">
+      <DependentUpon>Portraits.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\Portraits.Release.config">
+      <DependentUpon>Portraits.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\Prototypes.Debug.config">
+      <DependentUpon>Prototypes.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\Prototypes.Release.config">
+      <DependentUpon>Prototypes.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\XamlSharp.Debug.config">
+      <DependentUpon>XamlSharp.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\XamlSharp.Release.config">
+      <DependentUpon>XamlSharp.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\Security\Domains.Debug.config">
+      <DependentUpon>Domains.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\Security\Domains.Release.config">
+      <DependentUpon>Domains.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\Security\GlobalRoles.Debug.config">
+      <DependentUpon>GlobalRoles.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\Security\GlobalRoles.Release.config">
+      <DependentUpon>GlobalRoles.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\Prefetch\Common.Debug.config">
+      <DependentUpon>Common.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\Prefetch\Common.Release.config">
+      <DependentUpon>Common.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\Prefetch\Core.Debug.config">
+      <DependentUpon>Core.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\Prefetch\Core.Release.config">
+      <DependentUpon>Core.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\Prefetch\Master.Debug.config">
+      <DependentUpon>Master.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\Prefetch\Master.Release.config">
+      <DependentUpon>Master.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\Prefetch\Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\Prefetch\Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\Include\Glass.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="MSBuild\Init.msbuild">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="MSBuild\SlowCheetah.Transforms.targets" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>54600</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://sc.local</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SlowCheetahTargets)" Condition="Exists('$(SlowCheetahTargets)')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

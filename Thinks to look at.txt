@@ -1,0 +1,68 @@
+Ideas
+****************************************************************************************************************************************************************
+
+Try and abstract away sitecore from code that we write and only have it as a reference in the Presentation and the data layers
+
+we can do this by thinking of sitecore as two systems 
+1. A Data store
+2. A Presentation library
+
+they are linked and will always need to have a link to the sitecore data base in the presentation but we can forget about it in the middle
+
+****************************************************************************************************************************************************************
+Using nuget to manage all out dependencies
+
+what have a sitecore package that contains bin files needed for new projects so we can do away with the installers directory
+
+http://www.hanselman.com/blog/NuGetForTheEnterpriseNuGetInAContinuousIntegrationAutomatedBuildSystem.aspx
+
+****************************************************************************************************************************************************************
+Split kernel into may different projects and have them managed by nuget
+see WebsiteKernel example in this play solution
+
+****************************************************************************************************************************************************************
+Use Glass for all sitecore object mapping and auto mapper for everything else
+http://www.glass.lu/
+http://automapper.org/
+
+****************************************************************************************************************************************************************
+Set up solution so we can take advantage of IoC
+
+use ninject for this 
+
+http://www.ninject.org/
+
+****************************************************************************************************************************************************************
+make code more testable 
+nunit
+
+http://www.nunit.org/
+
+****************************************************************************************************************************************************************
+
+Ideas for the WebsiteKernel
+
+WebsiteKernel.Logging 
+	- standard way for logging in code we write
+	- ability to pull back to central system 
+	- error code the end user can pass onto us for look up
+
+WebsiteKernel.Notifications
+	- standard way to give end user feed back about stuff happening on the server
+
+WebsiteKernel.SitecoreDictionary
+	- standard way to give content editors control over text that does not exist in an item
+
+
+
+****************************************************************************************************************************************************************
+****************************************************************************************************************************************************************
+****************************************************************************************************************************************************************
+other stuff that would be nice to include but the line has been drawn and is only here so I don't forget about it
+
+What is Bootstrapper?
+
+Every application needs to do some sort of initialization, like configuring an IOC container, create maps, load things into cache, create pools, etc. 
+Bootstrapper is a library that helps to simplify the "wiring" of all these tasks and artefacts.
+
+http://bootstrapper.codeplex.com/
