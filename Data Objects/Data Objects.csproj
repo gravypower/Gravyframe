@@ -72,6 +72,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArticleDao.cs" />
     <Compile Include="EntityFramework\Implementation\EntityCommentDao.cs" />
     <Compile Include="EntityFramework\ModelMapper\CommentDaoMapper.cs" />
     <Compile Include="EntityFramework\ModelMapper\Mapper.cs" />

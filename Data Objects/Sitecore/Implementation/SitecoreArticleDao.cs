@@ -8,7 +8,7 @@ using DataObjects.Sitecore.ModelMapper;
 
 namespace DataObjects.Sitecore.Implementation
 {
-    public class SitecoreArticleDao : IArticleDao
+    public class SitecoreArticleDao : ArticleDao
     {
         private readonly IArticleDaoMapper<Item> articleDaoMapper;
 
@@ -28,7 +28,7 @@ namespace DataObjects.Sitecore.Implementation
         /// Gets the articles.
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<Article> GetArticles()
+        protected override IEnumerable<Article> InternalGetArticles()
         {
             var articleBucket = Utilities.Sites.SiteContext.Database.GetItem(Items.ArticleBucket);
             var articlePath = "*";
