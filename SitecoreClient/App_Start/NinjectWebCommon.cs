@@ -1,11 +1,13 @@
 using System;
 using System.Web;
-using SitecoreClient.Repositories;
 using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 using Ninject;
 using Ninject.Web.Common;
 using Service.ServiceContracts;
 using Service.ServiceImplementations;
+using SitecoreClient.Repositories;
+using WebsiteKernel.Logging;
+using WebsiteKernel.Logging.Sitrecore;
 
 //	Assembly and module attributes must precede all other elements defined in a file except using clauses and extern alias declarations
 [assembly: WebActivator.PreApplicationStartMethod(typeof(SitecoreClient.App_Start.NinjectWebCommon), "Start")]
@@ -59,6 +61,8 @@ namespace SitecoreClient.App_Start
             //only bind up things here that are needed for this presentation implementation
             kernel.Bind<IArticleService>().To<ArticleService>();
             kernel.Bind<IArticleRepository>().To<ArticleRepository>();
+
+            kernel.Bind<Logger>().To<SitrecoreLogging>();
 
             //call the RegisterServices in the service layer 
             Service.Injection.Implementations.Sitecore.RegisterServices(kernel);

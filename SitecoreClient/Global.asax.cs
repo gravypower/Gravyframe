@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web;
 using Glass.Sitecore.Mapper;
+using Ninject;
 using Sitecore.Web;
 using WebsiteKernel.Logging;
 
@@ -8,6 +9,9 @@ namespace SitecoreClient
 {
     public class Global : HttpApplication
     {
+        [Inject]
+        public Logger Logger { get; set; }
+
         private const string WEBSITE = "everyonewins";
 
         protected void Application_Start(object sender, EventArgs e)
@@ -46,7 +50,7 @@ namespace SitecoreClient
             //if we have an HttpException then we can continue
             if (exception != null)
             {
-                var loggerInfo = LoggerFactory.Create().Error("Unhandled Exception", exception);
+                var loggerInfo = Logger.Error("Unhandled Exception", exception);
                 //get the error code the error that was thrown
                 var errorCode = exception.GetHttpCode();
 

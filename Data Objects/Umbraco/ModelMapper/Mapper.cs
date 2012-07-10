@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using umbraco.NodeFactory;
 
 namespace DataObjects.Umbraco.ModelMapper
@@ -17,7 +15,6 @@ namespace DataObjects.Umbraco.ModelMapper
             returnArticle.ArticleBody = item.Properties["articleBody"].Value;
             returnArticle.Title = item.Properties["title"].Value;
             returnArticle.Summary = item.Properties["summary"].Value;
-
 
             return returnArticle;
         }

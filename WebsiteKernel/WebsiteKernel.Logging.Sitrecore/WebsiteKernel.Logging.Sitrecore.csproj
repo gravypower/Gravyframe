@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{77CF676F-A242-46A0-8EBA-4296578DAE7A}</ProjectGuid>
+    <ProjectGuid>{8478EC7A-FB03-4ECF-B855-685C0E68B007}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebsiteKernel.Logging</RootNamespace>
-    <AssemblyName>WebsiteKernel.Logging</AssemblyName>
+    <RootNamespace>WebsiteKernel.Logging.Sitrecore</RootNamespace>
+    <AssemblyName>WebsiteKernel.Logging.Sitrecore</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -32,14 +32,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Sitecore.Kernel">
-      <HintPath>..\Client\bin\Sitecore.Kernel.dll</HintPath>
+      <HintPath>..\..\packages\Sitecore\Sitecore.Kernel.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.Logging">
-      <HintPath>..\Client\bin\Sitecore.Logging.dll</HintPath>
+      <HintPath>..\..\packages\Sitecore\Sitecore.Logging.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,9 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Logger.cs" />
-    <Compile Include="LoggerInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SitrecoreLogging.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebsiteKernel.Logging\WebsiteKernel.Logging.csproj">
+      <Project>{77CF676F-A242-46A0-8EBA-4296578DAE7A}</Project>
+      <Name>WebsiteKernel.Logging</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

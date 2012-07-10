@@ -3,11 +3,15 @@ using System.Web;
 using Ninject.Web.Sitecore;
 using WebsiteKernel.Logging;
 using Sitecore.Configuration;
+using Ninject;
 
 namespace SitecoreClient.Layouts.Framework
 {
     public class LayoutBase : PageBase
     {
+        [Inject]
+        public Logger Logger { get; set; }
+
         public bool IsAuthenticated
         {
             get
@@ -36,7 +40,7 @@ namespace SitecoreClient.Layouts.Framework
             }
             else
             {
-                LoggerFactory.Create().Warning(String.Format("Could not find plhNotification in layout: {0}.  This is needed if you want to display Notifications", ID));
+                Logger.Warning(String.Format("Could not find plhNotification in layout: {0}.  This is needed if you want to display Notifications", ID));
             }
 
             SetPageTitle();

@@ -206,6 +206,10 @@
       <Project>{5F04C3FE-B862-4374-B43B-8E20652408B1}</Project>
       <Name>Service</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WebsiteKernel\WebsiteKernel.Logging.Sitrecore\WebsiteKernel.Logging.Sitrecore.csproj">
+      <Project>{8478EC7A-FB03-4ECF-B855-685C0E68B007}</Project>
+      <Name>WebsiteKernel.Logging.Sitrecore</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WebsiteKernel\WebsiteKernel.Logging\WebsiteKernel.Logging.csproj">
       <Project>{77CF676F-A242-46A0-8EBA-4296578DAE7A}</Project>
       <Name>WebsiteKernel.Logging</Name>
