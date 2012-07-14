@@ -37,10 +37,6 @@
     <Reference Include="FluentValidation">
       <HintPath>..\packages\FluentValidation.3.3.1.0\lib\Net40\FluentValidation.dll</HintPath>
     </Reference>
-    <Reference Include="Glass.Sitecore.Mapper, Version=2.0.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Glass.Sitecore.Mapper.2.0.5.0\lib\net40\Glass.Sitecore.Mapper.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -60,6 +56,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Glass.Sitecore.Mapper\Source\Glass.Sitecore.Mapper\Glass.Sitecore.Mapper.csproj">
+      <Project>{564CDD78-0939-436B-9C90-7AF9D95B9024}</Project>
+      <Name>Glass.Sitecore.Mapper</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -37,10 +37,6 @@
     <Reference Include="FluentValidation">
       <HintPath>..\packages\FluentValidation.3.3.1.0\lib\Net40\FluentValidation.dll</HintPath>
     </Reference>
-    <Reference Include="Glass.Sitecore.Mapper, Version=2.0.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Glass.Sitecore.Mapper.2.0.5.0\lib\net40\Glass.Sitecore.Mapper.dll</HintPath>
-    </Reference>
     <Reference Include="Iesi.Collections">
       <HintPath>..\packages\Iesi.Collections.3.2.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
     </Reference>
@@ -113,6 +109,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Glass.Sitecore.Mapper\Source\Glass.Sitecore.Mapper\Glass.Sitecore.Mapper.csproj">
+      <Project>{564CDD78-0939-436B-9C90-7AF9D95B9024}</Project>
+      <Name>Glass.Sitecore.Mapper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Business Objects\Business Objects.csproj">
       <Project>{FD72F282-6DDC-4215-B28D-E568A9BC4AB2}</Project>
       <Name>Business Objects</Name>

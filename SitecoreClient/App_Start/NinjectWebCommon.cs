@@ -57,7 +57,6 @@ namespace SitecoreClient.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-
             //only bind up things here that are needed for this presentation implementation
             kernel.Bind<IArticleService>().To<ArticleService>();
             kernel.Bind<IArticleRepository>().To<ArticleRepository>();

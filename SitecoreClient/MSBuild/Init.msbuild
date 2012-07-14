@@ -13,10 +13,7 @@
 
   <!-- Default Parameters -->
   <PropertyGroup>
-    <NUnit-ToolPath>..\..\Dependency\Installers\NUnit\bin</NUnit-ToolPath>
-    <Combine-ToolPath>..\..\Dependency\Installers\Combine\combine.bat</Combine-ToolPath>
-    <WebkitToPDF-ToolPath>..\..\Dependency\Installers\WebkitToPDF</WebkitToPDF-ToolPath>
-    <Dependency>..\..\Dependency</Dependency>
+    <Dependency>..\Dependency</Dependency>
     <BuildPath>$(Dependency)\Website</BuildPath>
     <SitecoreModules>$(Dependency)\SitecoreModules</SitecoreModules>
     <IsDebugBuild>Nope</IsDebugBuild>
@@ -53,28 +50,8 @@
   </PropertyGroup>
 
   <!--================================================================================
-        Runs the unit tests as part of the build if the build is a debug build.
-        Any failed tests will come up in the Error List window
-    -->
-  <Target Name="UnitTests" Condition="'$(IsDebugBuild)' == 'Yep'">
-    <!--<NUnit Assemblies="..."
-           IncludeCategory="..."
-           ExcludeCategory="..."
-           ToolPath="$(NUnitDllsPath)"
-           ProjectConfiguration="$(Configuration)"
-           OutputXmlFile="$(NUnitOutputPath)\UnitTests.xml"
-           ContinueOnError="true">-->
-    <!--<NUnit
-        ToolPath="$(NUnit-ToolPath)"
-        DisableShadowCopy="true"
-        Assemblies="..\Igloo.VicHealth.EW.UnitTests\bin\Debug\Igloo.VicHealth.EW.UnitTests.dll"
-        OutputXmlFile="test-results.xml" />-->
-  </Target>
-
-
-  <!--================================================================================
         Concatenates all the js files in the plugins directory into a single plugins.js file
-    -->
+  -->
   <Target Name="ConcatenateJS">
     <Exec ContinueOnError="false" Command="$(Combine-ToolPath) $(JavaScriptPath)\plugins\*.js $(JavaScriptPath)\plugins.js"/>
     <Exec ContinueOnError="false" Command="$(Combine-ToolPath) $(JavaScriptPath)\ew\*.js $(JavaScriptPath)\script.js"/>
@@ -86,18 +63,6 @@
         * Copies all changed files to the website directory
     -->
   <Target Name="AfterBuild" DependsOnTargets="UnitTests;ConcatenateJS" Condition="$(Configuration.Contains('FED')) != 'True'">
-
-    <!--<Message Text="Copying Sitecore Module files" />
-    <ItemGroup>
-      <SitecoreModuleFiles
-          Include="$(SitecoreModules)\files\**\*"
-          Exclude="$(SitecoreModules)\**\.svn\**\*.*">
-      </SitecoreModuleFiles>
-    </ItemGroup>
-    <Copy SourceFiles="@(SitecoreModuleFiles)"
-        DestinationFiles="@(SitecoreModuleFiles->'$(BuildPath)\%(RecursiveDir)\%(Filename)%(Extension)')"
-        ContinueOnError="true"/>-->
-
 
     <Message Text="BEGIN: Transformations" />
     <!-- Make sure the App_Config\Include directory exists. Required on the build server where there is no website -->

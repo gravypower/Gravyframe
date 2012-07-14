@@ -12,11 +12,6 @@ namespace SitecoreClient.Layouts.sublayouts
 {
     public partial class Articles : Ninject.Web.Sitecore.UserControlBase
     {
-        public Articles(IArticleRepository articleRepository)
-        {
-            ArticleRepository = articleRepository;
-        }
-
         [Inject]
         public IArticleRepository ArticleRepository { get; set; }
 
