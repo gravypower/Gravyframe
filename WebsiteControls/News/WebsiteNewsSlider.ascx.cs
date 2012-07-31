@@ -10,31 +10,87 @@ using WebsiteKernel.Extensions;
 namespace WebsiteControls.News
 {
     public partial class WhiteLabelNewsSlider : WebsiteNewsBase
-    {
-        //set the default values of these variables
-        protected int numberofItems = 10;
-        protected int featuredquoteMaxLength = 200;
-        protected int quoteMaxLength = 100;
+    { 
+        private List<object> articles = null;
+        public List<object> Articles
+        {
+            get
+            {
+                if (articles == null)
+                {
+                    articles = new List<object>();
+                }
+                return articles;
+            }
+            set
+            {
+                articles = value;
+            }
+        }
 
-        [Inject]
-        public INewsSliderConfiguration NewsSliderConfiguration { get; set; }
+        private List<object> categories = null;
+        public List<object> Categories
+        {
+            get
+            {
+                if (categories == null)
+                {
+                    categories = new List<object>();
+                }
+                return categories;
+            }
+            set
+            {
+                categories = value;
+            }
+        }
+
+        private int featuredquoteMaxLength = 200;
+        public int FeaturedquoteMaxLength
+        {
+            get
+            {
+                return featuredquoteMaxLength;
+            }
+            set
+            {
+                featuredquoteMaxLength = value;
+            }
+        }
+
+        private int numberofItems = 10;
+        public int NumberofItems
+        {
+            get
+            {
+                return numberofItems;
+            }
+            set
+            {
+                numberofItems = value;
+            }
+        }
+
+        private int quoteMaxLength = 100;
+        public int QuoteMaxLength
+        {
+            get
+            {
+                return QuoteMaxLength;
+            }
+            set
+            {
+                QuoteMaxLength = value;
+            }
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            var articles = NewsSliderConfiguration.GetNewsArticles();
-            var categories = NewsSliderConfiguration.GetNewsCategories();
-
-            numberofItems = NewsSliderConfiguration.GetNumberOfItems();
-
-            quoteMaxLength = NewsSliderConfiguration.GetQuoteMaxLength();
-
-            featuredquoteMaxLength = NewsSliderConfiguration.GetFeaturedQuoteMaxLength();
-
-            var numberOfItemsFromCategories = numberofItems - articles.Count;
+            var numberOfItemsFromCategories = NumberofItems - articles.Count;
 
             var news = new List<BusinessObjects.News.WebsiteNews>();
 
-            foreach (var id in articles)
+            foreach (var id in Articles)
             {
                 news.Add(WebsiteNewsGateway.GetNews(id));
             }
@@ -43,7 +99,7 @@ namespace WebsiteControls.News
             {
                 var addCount = 0;
 
-                foreach (var cat in categories)
+                foreach (var cat in Categories)
                 {
                     foreach (var item in WebsiteNewsGateway.GetCategoryNews(cat))
                     {
@@ -95,7 +151,7 @@ namespace WebsiteControls.News
                 var introductionText = firstArticle.Summary;
                 if (quoteMaxLength > 0)
                 {
-                    introductionText = introductionText.TruncateAtWord(featuredquoteMaxLength);
+                    introductionText = introductionText.TruncateAtWord(FeaturedquoteMaxLength);
                 }
 
                 litIntroduction.Text = introductionText;
@@ -158,7 +214,7 @@ namespace WebsiteControls.News
                 var introductionText = dataItem.Summary;
                 if (quoteMaxLength > 0)
                 {
-                    introductionText = introductionText.TruncateAtWord(quoteMaxLength);
+                    introductionText = introductionText.TruncateAtWord(QuoteMaxLength);
                 }
 
                 litIntroduction.Text = introductionText;

@@ -107,7 +107,6 @@
     <Compile Include="Navigation\SidebarNavigation.ascx.designer.cs">
       <DependentUpon>SidebarNavigation.ascx</DependentUpon>
     </Compile>
-    <Compile Include="News\INewsSliderConfiguration.cs" />
     <Compile Include="News\WebsiteNews.ascx.cs">
       <DependentUpon>WebsiteNews.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

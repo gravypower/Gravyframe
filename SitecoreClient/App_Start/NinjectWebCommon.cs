@@ -63,8 +63,6 @@ namespace SitecoreClient.App_Start
 
             kernel.Bind<IItemIDService>().To<ItemIDService>();
             kernel.Bind<IClientTagService>().To<ClientTagService>();
-            kernel.Bind<INewsSliderConfiguration>().To<NewsSliderConfiguration>();
-
 
             //call the RegisterServices in the service layer 
             Service.Injection.Implementations.Sitecore.RegisterServices(kernel);
