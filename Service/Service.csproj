@@ -51,6 +51,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientTags.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>ClientTags.settings</DependentUpon>
+    </Compile>
     <Compile Include="Criteria\Criteria.cs" />
     <Compile Include="Injection\Implementations\Sitecore.cs" />
     <Compile Include="Injection\Implementations\Umbraco.cs" />
@@ -60,15 +65,35 @@
     <Compile Include="MessageBase\PersistType.cs" />
     <Compile Include="MessageBase\RequestBase.cs" />
     <Compile Include="MessageBase\ResponseBase.cs" />
+    <Compile Include="Messages\LoadOptions.cs" />
+    <Compile Include="Messages\LoadOptionsExtensions.cs" />
+    <Compile Include="Messages\WebsiteEventRequest.cs" />
+    <Compile Include="Messages\WebsiteEventResponse.cs" />
+    <Compile Include="Messages\WebsiteNavigationRequest.cs" />
+    <Compile Include="Messages\WebsiteNavigationResponse.cs" />
     <Compile Include="Messages\SiteConfigurationRequest.cs" />
     <Compile Include="Messages\SiteConfigurationResponse.cs" />
     <Compile Include="Messages\TokenRequest.cs" />
     <Compile Include="Messages\TokenResponse.cs" />
+    <Compile Include="Messages\WebsiteContentRequest.cs" />
+    <Compile Include="Messages\WebsiteContentResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceContracts\IWebsiteEventService.cs" />
+    <Compile Include="ServiceContracts\IWebsiteNavigationService.cs" />
     <Compile Include="ServiceContracts\IService.cs" />
     <Compile Include="ServiceContracts\ISiteConfigurationService.cs" />
+    <Compile Include="ServiceContracts\IWebsiteContentService.cs" />
+    <Compile Include="ServiceImplementations\Service.cs" />
+    <Compile Include="ServiceImplementations\WebsiteContentService.cs" />
+    <Compile Include="ServiceImplementations\WebsiteEventService.cs" />
+    <Compile Include="ServiceImplementations\WebsiteNavigationService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
+    <None Include="ClientTags.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>ClientTags.Designer.cs</LastGenOutput>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -84,6 +109,10 @@
       <Project>{3924CB6F-9F67-408B-842C-F19CA4076D2C}</Project>
       <Name>DataObjects</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DataObjects.Sitecore\DataObjects.Sitecore.csproj">
+      <Project>{7F233F1D-7C7F-4405-B3BE-D88F27B64DC0}</Project>
+      <Name>DataObjects.Sitecore</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WebsiteKernel\WebsiteKernel\WebsiteKernel.csproj">
       <Project>{17AF8A70-A50A-4251-801C-D9A33B689CA8}</Project>
       <Name>WebsiteKernel %28WebsiteKernel\WebsiteKernel%29</Name>
@@ -91,7 +120,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DataTransferObjects\" />
-    <Folder Include="ServiceImplementations\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

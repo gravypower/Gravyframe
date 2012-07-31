@@ -21,10 +21,6 @@ namespace Service.Injection.Implementations
             kernel.Bind<ISitecoreContext>().To<SitecoreContext>();
             kernel.Bind<IMapper>().To<AutoMapper>().InSingletonScope();
             kernel.Bind<IDataTransferObjectsMapper>().To<DataTransferObjectsMapper>().InSingletonScope();
-
-
-            //call the injection in the data layer so i don't have to reference Sitecore at all in this lib :)
-            DataObjects.Injection.Implementations.Sitecore.RegisterServices(kernel);
         }  
     }
 }
