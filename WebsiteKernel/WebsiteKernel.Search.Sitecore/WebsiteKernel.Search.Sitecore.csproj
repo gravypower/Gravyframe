@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{96FFA04B-1B44-464D-9D61-44FEB6AA8F96}</ProjectGuid>
+    <ProjectGuid>{49A85CD1-A730-4C28-9245-C5DDE018FD56}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebsiteKernel.Sitecore</RootNamespace>
-    <AssemblyName>WebsiteKernel.Sitecore</AssemblyName>
+    <RootNamespace>WebsiteKernel.Search.Sitecore</RootNamespace>
+    <AssemblyName>WebsiteKernel.Search.Sitecore</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,18 +31,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Ninject">
-      <HintPath>..\..\packages\Ninject.3.0.1.10\lib\net40\Ninject.dll</HintPath>
+    <Reference Include="Lucene.Net">
+      <HintPath>..\..\packages\scSearchContrib\Lucene.Net.dll</HintPath>
     </Reference>
-    <Reference Include="Sitecore.Client">
-      <HintPath>..\..\packages\Sitecore\Sitecore.Client.dll</HintPath>
+    <Reference Include="scSearchContrib.Crawler">
+      <HintPath>..\..\packages\scSearchContrib\scSearchContrib.Crawler.dll</HintPath>
+    </Reference>
+    <Reference Include="scSearchContrib.Searcher">
+      <HintPath>..\..\packages\scSearchContrib\scSearchContrib.Searcher.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.Kernel">
       <HintPath>..\..\packages\Sitecore\Sitecore.Kernel.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,34 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cms\Events\Event.cs" />
-    <Compile Include="Cms\Events\Implementation\FilingEvent.cs" />
-    <Compile Include="Pipelines\GetChromeData\GetChromeDataBase.cs" />
-    <Compile Include="Pipelines\GetChromeData\Implementation\Test.cs" />
-    <Compile Include="Pipelines\GetContentEditorFields\GetContentEditorFieldsBase.cs" />
-    <Compile Include="Pipelines\GetContentEditorFields\Implementation\CmsContextItem.cs" />
-    <Compile Include="Pipelines\GetPlaceholderRenderings\GetPlaceholderRenderingsBase.cs" />
-    <Compile Include="Pipelines\GetPlaceholderRenderings\Implementation\Test.cs" />
-    <Compile Include="Pipelines\GetRenderingDatasource\GetRenderingDatasourceBase.cs" />
-    <Compile Include="Pipelines\GetRenderingDatasource\Implementation\Test.cs" />
-    <Compile Include="Pipelines\HttpRequestBegin\HttpRequestBeginBase.cs" />
-    <Compile Include="Pipelines\HttpRequestEnd\HttpRequestEndBase.cs" />
-    <Compile Include="Pipelines\HttpRequestEnd\Implementation\CmsContextItemId.cs" />
-    <Compile Include="Pipelines\RenderField\Implementation\Test.cs" />
-    <Compile Include="Pipelines\RenderField\RenderFieldBase.cs" />
-    <Compile Include="Pipelines\UiLoadLayout\Implementation\Test.cs" />
-    <Compile Include="Pipelines\UiLoadLayout\UiLoadLayoutBase.cs" />
+    <Compile Include="CustomDatabaseCrawler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StandardDatabaseCrawler.cs" />
+    <Compile Include="WebsiteNewsCrawler.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Business Objects\Business Objects.csproj">
-      <Project>{FD72F282-6DDC-4215-B28D-E568A9BC4AB2}</Project>
-      <Name>Business Objects</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Data Objects\DataObjects.csproj">
-      <Project>{3924CB6F-9F67-408B-842C-F19CA4076D2C}</Project>
-      <Name>DataObjects</Name>
-    </ProjectReference>
     <ProjectReference Include="..\WebsiteKernel.Sitecore.Constants\WebsiteKernel.Sitecore.Constants.csproj">
       <Project>{7357848E-332F-4912-99A3-3456B578450F}</Project>
       <Name>WebsiteKernel.Sitecore.Constants</Name>
@@ -86,13 +66,6 @@
       <Project>{E63537CB-7A99-4651-91BA-14FC9F6B9DA6}</Project>
       <Name>WebsiteKernel.Sitecore.Extensions</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebsiteKernel\WebsiteKernel.csproj">
-      <Project>{17AF8A70-A50A-4251-801C-D9A33B689CA8}</Project>
-      <Name>WebsiteKernel %28WebsiteKernel\WebsiteKernel%29</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Pipelines\HttpRequestBegin\Implementation\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

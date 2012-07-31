@@ -22,7 +22,7 @@ namespace WebsiteKernel.Sitecore.Cms.Events.Implementation
 
             SC.Configuration.Settings.GetSetting("Website.TitleSuffix", String.Empty);
 
-            var siteItem = EventItem.Axes.SelectSingleItem(String.Format("ancestor::*[@@templateid = '{0}']", Constants.Templates.WhiteLabelSite.ToString()));
+            var siteItem = EventItem.Axes.SelectSingleItem(String.Format("ancestor::*[@@templateid = '{0}']", Constants.Templates.WebsiteSite.ToString()));
 
             InnerInternalOnItemSave(SiteConfigurationDao.GetSiteConfiguration(siteItem.ID.ToString()));
         }

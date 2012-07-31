@@ -2,7 +2,6 @@
 using System.Linq;
 using Ninject;
 using Sitecore.Data.Items;
-using DataObjects.Sitecore.Implementation;
 using DataObjects.EntityFramework;
 
 namespace DataObjects.Injection.Implementations
