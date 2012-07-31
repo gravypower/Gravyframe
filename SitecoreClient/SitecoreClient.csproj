@@ -84,8 +84,6 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="layouts\Default.aspx" />
-    <Content Include="layouts\sublayouts\Article.ascx" />
-    <Content Include="layouts\sublayouts\Articles.ascx" />
     <Content Include="layouts\sublayouts\Framework\Notification.ascx" />
     <Content Include="MSBuild\SlowCheetah.Tasks.dll" />
     <Content Include="MSBuild\Yahoo.Yui.Compressor.dll" />
@@ -120,20 +118,6 @@
     <Compile Include="layouts\Framework\LayoutBase.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="layouts\sublayouts\Article.ascx.cs">
-      <DependentUpon>Article.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="layouts\sublayouts\Article.ascx.designer.cs">
-      <DependentUpon>Article.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="layouts\sublayouts\Articles.ascx.cs">
-      <DependentUpon>Articles.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="layouts\sublayouts\Articles.ascx.designer.cs">
-      <DependentUpon>Articles.ascx</DependentUpon>
-    </Compile>
     <Compile Include="layouts\sublayouts\Framework\Notification.ascx.cs">
       <DependentUpon>Notification.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -142,9 +126,6 @@
       <DependentUpon>Notification.ascx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\ArticleRepository.cs" />
-    <Compile Include="Repositories\IArticleRepository.cs" />
-    <Compile Include="Repositories\RepositoryBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Config\Commands.config">

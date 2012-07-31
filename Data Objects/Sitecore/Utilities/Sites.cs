@@ -5,6 +5,8 @@ using System.Text;
 using Sitecore.Configuration;
 using Sitecore.Sites;
 using Sitecore.Data;
+using Sitecore.Data.Items;
+using SC = global::Sitecore;
 
 namespace DataObjects.Sitecore.Utilities
 {
@@ -26,7 +28,28 @@ namespace DataObjects.Sitecore.Utilities
                 }
                 return _siteContext;
             }
+        }
 
-        }  
+
+        public static Item GetContentStartItem()
+        {
+            //get the start item for the current site
+            var contentStartItem = SC.Context.Database.GetItem(SC.Context.Site.ContentStartPath);
+            return contentStartItem;
+        }
+        public static Item GetHomeItem()
+        {
+            return GetContentStartItem().Axes.GetChild("Home");
+        }
+
+        public static Item GetConfigItem()
+        {
+            return GetConfigItem(GetContentStartItem());
+        }
+
+        public static Item GetConfigItem(Item siteItem)
+        {
+            return siteItem.Axes.GetChild("Configuration");
+        }
     }
 }

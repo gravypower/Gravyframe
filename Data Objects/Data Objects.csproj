@@ -68,35 +68,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArticleDao.cs" />
-    <Compile Include="EntityFramework\Implementation\EntityCommentDao.cs" />
-    <Compile Include="EntityFramework\ModelMapper\CommentDaoMapper.cs" />
-    <Compile Include="EntityFramework\ModelMapper\Mapper.cs" />
     <Compile Include="EntityFramework\Sitecore_EntityFramework.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Sitecore_EntityFramework.edmx</DependentUpon>
     </Compile>
-    <Compile Include="IArticleDao.cs" />
-    <Compile Include="IArticleDaoMapper.cs" />
-    <Compile Include="ICommentDao.cs" />
-    <Compile Include="ICommentDaoMapper.cs" />
     <Compile Include="Injection\Implementations\Sitecore.cs" />
     <Compile Include="Injection\Implementations\Umbraco.cs" />
-    <Compile Include="NHibernate\Implementation\NHibernateArticleDao.cs" />
+    <Compile Include="ISiteConfigurationDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sitecore\Constants\Items.cs" />
-    <Compile Include="Sitecore\Implementation\SitecoreArticleDao.cs" />
-    <Compile Include="Sitecore\ModelMapper\ArticleDaoMapper.cs" />
-    <Compile Include="Sitecore\ModelMapper\Mapper.cs" />
+    <Compile Include="Sitecore\Implementation\SitecoreSiteConfigurationDao.cs" />
     <Compile Include="Sitecore\Utilities\Sites.cs" />
     <Compile Include="Umbraco\Constants\Content.cs" />
-    <Compile Include="Umbraco\Implementation\UmbracoArticleDao.cs" />
-    <Compile Include="Umbraco\ModelMapper\ArticleDaoMapper.cs" />
-    <Compile Include="Umbraco\ModelMapper\Mapper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="EntityFramework\Implementation\" />
+    <Folder Include="EntityFramework\ModelMapper\" />
+    <Folder Include="NHibernate\Implementation\" />
     <Folder Include="NHibernate\ModelMapper\" />
+    <Folder Include="Sitecore\ModelMapper\" />
+    <Folder Include="Umbraco\Implementation\" />
+    <Folder Include="Umbraco\ModelMapper\" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="EntityFramework\Sitecore_EntityFramework.edmx">
@@ -119,7 +112,7 @@
     </ProjectReference>
     <ProjectReference Include="..\WebsiteKernel\WebsiteKernel\WebsiteKernel.csproj">
       <Project>{17AF8A70-A50A-4251-801C-D9A33B689CA8}</Project>
-      <Name>WebsiteKernel %28Framework\WebsiteKernel\WebsiteKernel%29</Name>
+      <Name>WebsiteKernel %28WebsiteKernel\WebsiteKernel%29</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

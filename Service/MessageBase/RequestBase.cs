@@ -43,17 +43,19 @@ namespace Service.MessageBase
         [DataMember]
         public string RequestId;
 
-
-        /// <summary>
-        /// Load options indicated what types are to be returned in the request.
-        /// </summary>
-        [DataMember]
-        public string[] LoadOptions;
-
         /// <summary>
         /// Crud action: Create, Read, Update, Delete
         /// </summary>
         [DataMember]
         public string Action;
+    }
+
+    public class RequestBase<T> : RequestBase
+    {
+        /// <summary>
+        /// Load options indicated what types are to be returned in the request.
+        /// </summary>
+        [DataMember]
+        public T[] LoadOptions;
     }
 }
