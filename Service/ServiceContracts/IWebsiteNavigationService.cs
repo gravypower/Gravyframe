@@ -11,6 +11,6 @@ namespace Service.ServiceContracts
     public interface IWebsiteNavigationService
     {
         [OperationContract]
-        WebsiteNavigationResponse GetWhiteLabelContent(WebsiteNavigationRequest request);    
+        WebsiteNavigationResponse GetWebsiteNavigation(WebsiteNavigationRequest request);    
     }
 }

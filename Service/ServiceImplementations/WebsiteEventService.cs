@@ -24,7 +24,7 @@ namespace Service.ServiceImplementations
 
         }
 
-        public WebsiteEventResponse GetWebsiteEventContent(WebsiteEventRequest request)
+        public WebsiteEventResponse GetWebsiteEvent(WebsiteEventRequest request)
         {
             var response = new WebsiteEventResponse(request.RequestId);
 

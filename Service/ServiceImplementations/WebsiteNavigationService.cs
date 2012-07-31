@@ -25,7 +25,7 @@ namespace Service.ServiceImplementations
             this.siteConfigurationDao = siteConfigurationDao;
         }
 
-        public WebsiteNavigationResponse GetWhiteLabelContent(WebsiteNavigationRequest request)
+        public WebsiteNavigationResponse GetWebsiteNavigation(WebsiteNavigationRequest request)
         {
             var response = new WebsiteNavigationResponse(request.RequestId);
 

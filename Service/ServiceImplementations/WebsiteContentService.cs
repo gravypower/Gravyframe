@@ -29,7 +29,7 @@ namespace Service.ServiceImplementations
         }
 
 
-        public Messages.WebsiteContentResponse GetWhiteLabelContent(Messages.WebsiteContentRequest request)
+        public Messages.WebsiteContentResponse GetWebsiteContent(Messages.WebsiteContentRequest request)
         {
             var response = new WebsiteContentResponse(request.RequestId);
 

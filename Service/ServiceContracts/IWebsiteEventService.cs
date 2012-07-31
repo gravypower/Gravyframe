@@ -10,6 +10,6 @@ namespace Service.ServiceContracts
     public interface IWebsiteEventService : IService
     {
         [OperationContract]
-        WebsiteEventResponse GetWebsiteEventContent(WebsiteEventRequest request);
+        WebsiteEventResponse GetWebsiteEvent(WebsiteEventRequest request);
     }
 }

@@ -7,10 +7,9 @@ using Service.Messages;
 
 namespace Service.ServiceContracts
 {
-    [ServiceContract(SessionMode = SessionMode.Required)]
-    public interface IWebsiteContentService
+    public interface IWebsiteNewsService : IService
     {
         [OperationContract]
-        WebsiteContentResponse GetWebsiteContent(WebsiteContentRequest request);    
+        WebsiteNewsResponse GetWebsiteNews(WebsiteNewsRequest request);
     }
 }
