@@ -6,6 +6,9 @@ using Ninject.Web.Common;
 using Service.ServiceContracts;
 using WebsiteKernel.Logging;
 using WebsiteKernel.Logging.Sitrecore;
+using WebsiteControls;
+using SitecoreClient.WebsiteControls;
+using WebsiteControls.News;
 
 //	Assembly and module attributes must precede all other elements defined in a file except using clauses and extern alias declarations
 [assembly: WebActivator.PreApplicationStartMethod(typeof(SitecoreClient.App_Start.NinjectWebCommon), "Start")]
@@ -57,6 +60,11 @@ namespace SitecoreClient.App_Start
         {
 
             kernel.Bind<Logger>().To<SitrecoreLogging>();
+
+            kernel.Bind<IItemIDService>().To<ItemIDService>();
+            kernel.Bind<IClientTagService>().To<ClientTagService>();
+            kernel.Bind<INewsSliderConfiguration>().To<NewsSliderConfiguration>();
+
 
             //call the RegisterServices in the service layer 
             Service.Injection.Implementations.Sitecore.RegisterServices(kernel);

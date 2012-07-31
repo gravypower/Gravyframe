@@ -126,6 +126,9 @@
       <DependentUpon>Notification.ascx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebsiteControls\ClientTagService.cs" />
+    <Compile Include="WebsiteControls\ItemIDService.cs" />
+    <Compile Include="WebsiteControls\NewsSliderConfiguration.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Config\Commands.config">
@@ -186,6 +189,10 @@
     <ProjectReference Include="..\Service\Service.csproj">
       <Project>{5F04C3FE-B862-4374-B43B-8E20652408B1}</Project>
       <Name>Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebsiteControls\WebsiteControls.csproj">
+      <Project>{EC1415FF-28FE-4F17-93D3-10DC0E42C0FE}</Project>
+      <Name>WebsiteControls</Name>
     </ProjectReference>
     <ProjectReference Include="..\WebsiteKernel\WebsiteKernel.Logging.Sitrecore\WebsiteKernel.Logging.Sitrecore.csproj">
       <Project>{8478EC7A-FB03-4ECF-B855-685C0E68B007}</Project>
@@ -384,6 +391,8 @@
     <Content Include="App_Config\Include\Glass.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="App_Config\Include\Settings.config" />
+    <Content Include="App_Config\Include\Search.config" />
     <None Include="MSBuild\Init.msbuild">
       <SubType>Designer</SubType>
     </None>
