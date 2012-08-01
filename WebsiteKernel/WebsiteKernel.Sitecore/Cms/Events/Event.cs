@@ -7,6 +7,7 @@ using Sitecore.Data;
 using SC = global::Sitecore;
 using Sitecore.Events;
 using WebsiteKernel.Sitecore.Extensions;
+using Sitecore.Diagnostics;
 
 namespace WebsiteKernel.Events
 {
@@ -28,13 +29,24 @@ namespace WebsiteKernel.Events
         /// <param name="args">The <see cref="System.EventArgs" /> instance containing the event data.</param>
         public void OnItemSave(object sender, EventArgs args)
         {
-            if(!RunEvent(sender, args))
+            try
             {
-                return;
+                if (!RunEvent(sender, args))
+                {
+                    return;
+                }
+
+                InternalOnItemSave(sender, args);
             }
-            
-            InternalOnItemSave(sender, args);
-            CleanUp();
+            catch (Exception ex)
+            {
+                var type = this.GetType();
+                Log.Error(String.Format("Error Running Event {0} with error {1}", ex.Message, type), type);
+            }
+            finally
+            {
+                CleanUp();
+            }
         }
 
         /// <summary>
@@ -44,13 +56,24 @@ namespace WebsiteKernel.Events
         /// <param name="args">The <see cref="System.EventArgs" /> instance containing the event data.</param>
         public void OnItemAdded(object sender, EventArgs args)
         {
-            if (!RunEvent(sender, args))
+            try
             {
-                return;
-            }
+                if (!RunEvent(sender, args))
+                {
+                    return;
+                }
 
-            InternalOnItemAdded(sender, args);
-            CleanUp();
+                InternalOnItemAdded(sender, args);
+            }
+            catch (Exception ex)
+            {
+                var type = this.GetType();
+                Log.Error(String.Format("Error Running Event {0} with error {1}", ex.Message, type), type);
+            }
+            finally
+            {
+                CleanUp();
+            }
         }
 
         /// <summary>

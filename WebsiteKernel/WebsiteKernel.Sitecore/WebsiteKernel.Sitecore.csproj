@@ -55,6 +55,8 @@
   <ItemGroup>
     <Compile Include="Cms\Events\Event.cs" />
     <Compile Include="Cms\Events\Implementation\FilingEvent.cs" />
+    <Compile Include="Cms\Events\Implementation\WebsiteEventEvent.cs" />
+    <Compile Include="Cms\Events\Implementation\WebsiteNewsEvent.cs" />
     <Compile Include="Pipelines\GetChromeData\GetChromeDataBase.cs" />
     <Compile Include="Pipelines\GetChromeData\Implementation\Test.cs" />
     <Compile Include="Pipelines\GetContentEditorFields\GetContentEditorFieldsBase.cs" />

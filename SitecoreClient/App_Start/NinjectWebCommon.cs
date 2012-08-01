@@ -15,6 +15,7 @@ using WebsiteControls.Gateways.WebsiteEvent;
 using WebsiteControls.Gateways.WebsiteNavigation;
 using WebsiteControls.Gateways.WebsiteNews;
 using Service.ServiceImplementations;
+using WebsiteKernel;
 
 //	Assembly and module attributes must precede all other elements defined in a file except using clauses and extern alias declarations
 [assembly: WebActivator.PreApplicationStartMethod(typeof(SitecoreClient.App_Start.NinjectWebCommon), "Start")]
@@ -55,6 +56,8 @@ namespace SitecoreClient.App_Start
             kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
             
             RegisterServices(kernel);
+            //kernel container for white label stuff
+            WebsiteKernalNinjectKernelContainer.Kernel = kernel;
             return kernel;
         }
 

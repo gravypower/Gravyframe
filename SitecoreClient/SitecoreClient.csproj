@@ -225,6 +225,10 @@
       <Project>{96FFA04B-1B44-464D-9D61-44FEB6AA8F96}</Project>
       <Name>WebsiteKernel.Sitecore</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WebsiteKernel\WebsiteKernel\WebsiteKernel.csproj">
+      <Project>{17AF8A70-A50A-4251-801C-D9A33B689CA8}</Project>
+      <Name>WebsiteKernel %28WebsiteKernel\WebsiteKernel%29</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Config\Commands.Debug.config">

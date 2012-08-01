@@ -91,7 +91,7 @@ namespace DataObjects.Sitecore.Implementation
                 Database = context.Database.Name,
                 FieldName = WebsiteKernel.Search.Sitecore.WebsiteNewsCrawler.whiteLabelSiteTag,
                 FieldValue = Siteconfig.SiteName,
-                TemplateIds = WebsiteKernel.Sitecore.Constants.Templates.WebsiteNews.ToString(),
+                TemplateIds = WebsiteKernel.Sitecore.Constants.Templates.News.WebsiteNews.ToString(),
                 Partial = true
             };
 
@@ -120,7 +120,7 @@ namespace DataObjects.Sitecore.Implementation
                 var itemList = (List<WildcardInformation>)HttpContext.Current.Items["WildCardInformationList"];
                 if (itemList != null)
                 {
-                    var newsItem = itemList.FirstOrDefault(x => x.Item.IsDerived(WebsiteKernel.Sitecore.Constants.Templates.WebsiteNews));
+                    var newsItem = itemList.FirstOrDefault(x => x.Item.IsDerived(WebsiteKernel.Sitecore.Constants.Templates.News.WebsiteNews));
 
                     if (newsItem != null)
                     {
@@ -259,7 +259,7 @@ namespace DataObjects.Sitecore.Implementation
                 Database = context.Database.Name,
                 FieldName = WebsiteKernel.Search.Sitecore.WebsiteNewsCrawler.whiteLabelSiteTag,
                 FieldValue = Siteconfig.SiteName,
-                TemplateIds = WebsiteKernel.Sitecore.Constants.Templates.WebsiteNews.ToString()
+                TemplateIds = WebsiteKernel.Sitecore.Constants.Templates.News.WebsiteNews.ToString()
             };
 
             return DoSearch(tagSearchParam);
@@ -275,7 +275,7 @@ namespace DataObjects.Sitecore.Implementation
                 Database = context.Database.Name,
                 FieldName = BuiltinFields.Name,
                 FieldValue = whiteLabelNewsName,
-                TemplateIds = WebsiteKernel.Sitecore.Constants.Templates.WebsiteNews.ToString(),
+                TemplateIds = WebsiteKernel.Sitecore.Constants.Templates.News.WebsiteNews.ToString(),
                 Partial = true
             };
 
@@ -314,7 +314,7 @@ namespace DataObjects.Sitecore.Implementation
             return new DateRangeSearchParam
             {
                 Database = context.Database.Name,
-                TemplateIds = WebsiteKernel.Sitecore.Constants.Templates.WebsiteNews.ToString(),
+                TemplateIds = WebsiteKernel.Sitecore.Constants.Templates.News.WebsiteNews.ToString(),
                 Ranges = dateRanges
             };
         }
@@ -324,7 +324,7 @@ namespace DataObjects.Sitecore.Implementation
             return new MultiFieldSearchParam
             {
                 Database = context.Database.Name,
-                TemplateIds = WebsiteKernel.Sitecore.Constants.Templates.WebsiteNews.ToString(),
+                TemplateIds = WebsiteKernel.Sitecore.Constants.Templates.News.WebsiteNews.ToString(),
                 Refinements = refinements
             };
         }
