@@ -9,8 +9,8 @@ using WebsiteKernel.Extensions;
 
 namespace WebsiteControls.News
 {
-    public partial class WhiteLabelNewsSlider : WebsiteNewsBase
-    { 
+    public class WhiteLabelNewsSliderBase : WebsiteNewsBase
+    {
         private List<object> articles = null;
         public List<object> Articles
         {
@@ -76,51 +76,63 @@ namespace WebsiteControls.News
         {
             get
             {
-                return QuoteMaxLength;
+                return quoteMaxLength;
             }
             set
             {
-                QuoteMaxLength = value;
+                quoteMaxLength = value;
             }
         }
 
+    }
+    public partial class WhiteLabelNewsSlider : WhiteLabelNewsSliderBase
+    { 
         protected void Page_Load(object sender, EventArgs e)
         {
-            var numberOfItemsFromCategories = NumberofItems - articles.Count;
+            var numberOfItemsFromCategories = NumberofItems - Articles.Count;
 
             var news = new List<BusinessObjects.News.WebsiteNews>();
 
-            foreach (var id in Articles)
+            if (Articles.Count > 0)
             {
-                news.Add(WebsiteNewsGateway.GetNews(id));
+                foreach (var id in Articles)
+                {
+                    news.Add(WebsiteNewsGateway.GetNews(id));
+                }
             }
 
-            if (numberOfItemsFromCategories > 0)
+            if (Categories.Count > 0)
             {
-                var addCount = 0;
-
-                foreach (var cat in Categories)
+                if (numberOfItemsFromCategories > 0)
                 {
-                    foreach (var item in WebsiteNewsGateway.GetCategoryNews(cat))
+                    foreach (var cat in Categories)
                     {
-                        addCount++;
-                        news.Add(item);
+                        foreach (var item in WebsiteNewsGateway.GetCategoryNews(cat))
+                        {
+                            numberOfItemsFromCategories--;
+                            news.Add(item);
 
-                        //break out as we have as many articles as we need
-                        if (addCount >= numberOfItemsFromCategories)
+                            //break out as we have as many articles as we need
+                            if (numberOfItemsFromCategories == 0)
+                            {
+                                break;
+                            }
+                        }
+
+                        //Need to break out here as well 
+                        if (numberOfItemsFromCategories == 0)
                         {
                             break;
                         }
                     }
-
-                    //Need to break out here as well 
-                    if (addCount >= numberOfItemsFromCategories)
-                    {
-                        break;
-                    }
                 }
-
             }
+
+            if (numberOfItemsFromCategories > 0)
+            {
+                news.AddRange(WebsiteNewsGateway.GetAllNews(1, numberOfItemsFromCategories));
+            }
+
 
             if (news.Count > 0)
             {
@@ -149,7 +161,7 @@ namespace WebsiteControls.News
                 hylNews.NavigateUrl = firstArticle.NewsUrl;
 
                 var introductionText = firstArticle.Summary;
-                if (quoteMaxLength > 0)
+                if (QuoteMaxLength > 0)
                 {
                     introductionText = introductionText.TruncateAtWord(FeaturedquoteMaxLength);
                 }
@@ -212,7 +224,7 @@ namespace WebsiteControls.News
                 hylNews.NavigateUrl = dataItem.NewsUrl;
 
                 var introductionText = dataItem.Summary;
-                if (quoteMaxLength > 0)
+                if (QuoteMaxLength > 0)
                 {
                     introductionText = introductionText.TruncateAtWord(QuoteMaxLength);
                 }

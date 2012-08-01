@@ -87,6 +87,7 @@
     <Compile Include="ServiceContracts\ISiteConfigurationService.cs" />
     <Compile Include="ServiceContracts\IWebsiteContentService.cs" />
     <Compile Include="ServiceImplementations\Service.cs" />
+    <Compile Include="ServiceImplementations\SiteConfigurationService.cs" />
     <Compile Include="ServiceImplementations\WebsiteContentService.cs" />
     <Compile Include="ServiceImplementations\WebsiteEventService.cs" />
     <Compile Include="ServiceImplementations\WebsiteNavigationService.cs" />

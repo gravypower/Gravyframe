@@ -61,6 +61,15 @@ namespace WebsiteControls.Gateways.WebsiteNews
             return GetWhiteLabelNews(new[] { LoadOptions.Get, LoadOptions.ObjectList }).WebsiteNewsList;
         }
 
+        public IList<BusinessObjects.News.WebsiteNews> GetAllNews(int offset, int number)
+        {
+            var request = new WebsiteNewsRequest();
+            request.LoadOptions = new[] { LoadOptions.Get, LoadOptions.LimitResult, LoadOptions.ObjectList };
+            request.Offset = offset;
+            request.Number = number;
+            return GetWhiteLabelNews(null, request).WebsiteNewsList;
+        }
+
         public IList<BusinessObjects.News.WebsiteNews> GetCategoryNews(object categoryId)
         {
             var request = new WebsiteNewsRequest();

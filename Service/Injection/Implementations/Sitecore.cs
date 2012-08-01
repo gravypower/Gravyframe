@@ -5,6 +5,8 @@ using Ninject;
 using WebsiteKernel.Mapping;
 using WebsiteKernel.Mapping.Implementations;
 using Service.Mappers;
+using DataObjects;
+using DataObjects.Sitecore.Implementation;
 
 namespace Service.Injection.Implementations
 {
@@ -21,6 +23,12 @@ namespace Service.Injection.Implementations
             kernel.Bind<ISitecoreContext>().To<SitecoreContext>();
             kernel.Bind<IMapper>().To<AutoMapper>().InSingletonScope();
             kernel.Bind<IDataTransferObjectsMapper>().To<DataTransferObjectsMapper>().InSingletonScope();
+
+            kernel.Bind<ISiteConfigurationDao>().To<SitecoreSiteConfigurationDao>().InSingletonScope();
+            kernel.Bind<IWebsiteContentDao>().To<SitecoreWebsiteContentDao>().InSingletonScope();
+            kernel.Bind<IWebsiteEventDao>().To<SitecoreIWebsiteEventDao>().InSingletonScope();
+            //IWebsiteNavigationDao.cs
+            kernel.Bind<IWebsiteNewsDao>().To<SitecoreWebsiteNewsDao>().InSingletonScope();
         }  
     }
 }

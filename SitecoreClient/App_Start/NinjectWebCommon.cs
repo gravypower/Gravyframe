@@ -9,6 +9,12 @@ using WebsiteKernel.Logging.Sitrecore;
 using WebsiteControls;
 using SitecoreClient.WebsiteControls;
 using WebsiteControls.News;
+using WebsiteControls.Gateways.SiteConfiguration;
+using WebsiteControls.Gateways.WebsiteContent;
+using WebsiteControls.Gateways.WebsiteEvent;
+using WebsiteControls.Gateways.WebsiteNavigation;
+using WebsiteControls.Gateways.WebsiteNews;
+using Service.ServiceImplementations;
 
 //	Assembly and module attributes must precede all other elements defined in a file except using clauses and extern alias declarations
 [assembly: WebActivator.PreApplicationStartMethod(typeof(SitecoreClient.App_Start.NinjectWebCommon), "Start")]
@@ -63,6 +69,19 @@ namespace SitecoreClient.App_Start
 
             kernel.Bind<IItemIDService>().To<ItemIDService>();
             kernel.Bind<IClientTagService>().To<ClientTagService>();
+
+            kernel.Bind<ISiteConfigurationGateway>().To<SiteConfigurationGateway>();
+            kernel.Bind<IWebsiteContentGateway>().To<WebsiteContentGateway>();
+            kernel.Bind<IWebsiteEventGateway>().To<WebsiteEventGateway>();
+            kernel.Bind<IWebsitelNavigationGateway>().To<WebsitelNavigationGateway>();
+            kernel.Bind<IWebsiteNewsGateway>().To<WebsiteNewsGateway>();
+
+            kernel.Bind<ISiteConfigurationService>().To<SiteConfigurationService>();
+            kernel.Bind<IWebsiteContentService>().To<WebsiteContentService>();
+            kernel.Bind<IWebsiteEventService>().To<WebsiteEventService>();
+            kernel.Bind<IWebsiteNavigationService>().To<WebsiteNavigationService>();
+            kernel.Bind<IWebsiteNewsService>().To<WebsiteNewsService>();
+
 
             //call the RegisterServices in the service layer 
             Service.Injection.Implementations.Sitecore.RegisterServices(kernel);

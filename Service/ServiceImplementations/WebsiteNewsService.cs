@@ -57,7 +57,7 @@ namespace Service.ServiceImplementations
                     break;
 
                 //gets a list of news and limited
-                case LoadOptions.Get | LoadOptions.ObjectList | LoadOptions.LimitResult:
+                case (LoadOptions.Get | LoadOptions.ObjectList | LoadOptions.LimitResult):
                     response.WebsiteNewsList = websiteNewsDao.GetWebsiteArticleInBucket(siteConfiguration.NewsBucket, request.From, request.To).ToList();
                     break;
 
@@ -67,7 +67,7 @@ namespace Service.ServiceImplementations
                     break;
 
                 //gets a list of news filtered by date and limited
-                case LoadOptions.Get | LoadOptions.ObjectList | LoadOptions.DateFilter | LoadOptions.LimitResult:
+                case (LoadOptions.Get | LoadOptions.ObjectList | LoadOptions.DateFilter | LoadOptions.LimitResult):
                     response.WebsiteNewsList = websiteNewsDao.GetWebsiteArticleInBucket(siteConfiguration.NewsBucket, request.From, request.To, request.Offset, request.Number).ToList();
                     break;
                 #endregion
@@ -75,22 +75,22 @@ namespace Service.ServiceImplementations
                 #region Category News
 
                 //gets a list of news with a category filter
-                case LoadOptions.Get | LoadOptions.ObjectList | LoadOptions.Category:
+                case (LoadOptions.Get | LoadOptions.ObjectList | LoadOptions.Category):
                     response.WebsiteNewsList = websiteNewsDao.GetWebsiteArticleInCategory(request.CategoryId).ToList();
                     break;
 
                 //gets a list of news with a category filter and limited
-                case LoadOptions.Get | LoadOptions.ObjectList | LoadOptions.Category | LoadOptions.LimitResult:
+                case (LoadOptions.Get | LoadOptions.ObjectList | LoadOptions.Category | LoadOptions.LimitResult):
                     response.WebsiteNewsList = websiteNewsDao.GetWebsiteArticleInCategory(request.CategoryId, request.Offset, request.Number).ToList();
                     break;
 
                 //gets a list of news with a category filter and date filter
-                case LoadOptions.Get | LoadOptions.ObjectList | LoadOptions.Category | LoadOptions.DateFilter:
+                case (LoadOptions.Get | LoadOptions.ObjectList | LoadOptions.Category | LoadOptions.DateFilter):
                     response.WebsiteNewsList = websiteNewsDao.GetWebsiteArticleInCategory(request.CategoryId, request.From, request.To).ToList();
                     break;
 
                 //gets a list of news with a category filter and date filter and limited
-                case LoadOptions.Get | LoadOptions.ObjectList | LoadOptions.Category | LoadOptions.DateFilter | LoadOptions.LimitResult:
+                case (LoadOptions.Get | LoadOptions.ObjectList | LoadOptions.Category | LoadOptions.DateFilter | LoadOptions.LimitResult):
                     response.WebsiteNewsList = websiteNewsDao.GetWebsiteArticleInCategory(request.CategoryId, request.From, request.To, request.Offset, request.Number).ToList();
                     break;
                 #endregion
@@ -98,22 +98,22 @@ namespace Service.ServiceImplementations
                 #region List of Categories News
 
                 //gets a list of news with a list of categories filter
-                case LoadOptions.Get | LoadOptions.ObjectList | LoadOptions.CategoryList:
+                case (LoadOptions.Get | LoadOptions.ObjectList | LoadOptions.CategoryList):
                     response.WebsiteNewsList = websiteNewsDao.GetWebsiteArticleInCategories(request.CategoryIds).ToList();
                     break;
 
                 //gets a list of news with a list of categories filter and limited
-                case LoadOptions.Get | LoadOptions.ObjectList | LoadOptions.CategoryList | LoadOptions.LimitResult:
+                case (LoadOptions.Get | LoadOptions.ObjectList | LoadOptions.CategoryList | LoadOptions.LimitResult):
                     response.WebsiteNewsList = websiteNewsDao.GetWebsiteArticleInCategories(request.CategoryIds, request.Offset, request.Number).ToList();
                     break;
 
                 //gets a list of news with a list of categories filter and date filter
-                case LoadOptions.Get | LoadOptions.ObjectList | LoadOptions.CategoryList | LoadOptions.DateFilter:
+                case (LoadOptions.Get | LoadOptions.ObjectList | LoadOptions.CategoryList | LoadOptions.DateFilter):
                     response.WebsiteNewsList = websiteNewsDao.GetWebsiteArticleInCategories(request.CategoryIds, request.From, request.To).ToList();
                     break;
 
                 //gets a list of news with a list of categories filter and date filter and limited
-                case LoadOptions.Get | LoadOptions.ObjectList | LoadOptions.CategoryList | LoadOptions.DateFilter | LoadOptions.LimitResult:
+                case (LoadOptions.Get | LoadOptions.ObjectList | LoadOptions.CategoryList | LoadOptions.DateFilter | LoadOptions.LimitResult):
                     response.WebsiteNewsList = websiteNewsDao.GetWebsiteArticleInCategories(request.CategoryIds, request.From, request.To, request.Offset, request.Number).ToList();
                     break;
 
