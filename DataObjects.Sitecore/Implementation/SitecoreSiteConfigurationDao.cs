@@ -10,16 +10,13 @@ using Sitecore.Data.Items;
 
 namespace DataObjects.Sitecore.Implementation
 {
-    public class SitecoreSiteConfigurationDao : ISiteConfigurationDao
+    public class SitecoreSiteConfigurationDao : SitecoreDao, ISiteConfigurationDao
     {
-        private readonly ISitecoreContext context;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="SitecoreSiteConfigurationDao" /> class.
         /// </summary>
         public SitecoreSiteConfigurationDao()
         {
-            context = new SitecoreContext();
         }
 
         /// <summary>

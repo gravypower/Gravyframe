@@ -55,9 +55,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants\Items.cs" />
-    <Compile Include="Implementation\SitecoreIWebsiteEventDao.cs" />
+    <Compile Include="Implementation\SitecoreDao.cs" />
+    <Compile Include="Implementation\SitecoreWebsiteEventDao.cs" />
     <Compile Include="Implementation\SitecoreSiteConfigurationDao.cs" />
     <Compile Include="Implementation\SitecoreWebsiteContentDao.cs" />
+    <Compile Include="Implementation\SitecoreWebsiteNavigationDao.cs" />
     <Compile Include="Implementation\SitecoreWebsiteNewsDao.cs" />
     <Compile Include="ISitecoreWebsiteNewsDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

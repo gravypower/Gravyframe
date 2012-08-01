@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DataObjects.Sitecore.Implementation
 {
-    public class SitecoreIWebsiteEventDao : IWebsiteEventDao
+    public class SitecoreWebsiteEventDao : IWebsiteEventDao
     {
         public IEnumerable<BusinessObjects.Event.WebsiteEvent> GetWebsiteArticleInBucket(string bucketId)
         {

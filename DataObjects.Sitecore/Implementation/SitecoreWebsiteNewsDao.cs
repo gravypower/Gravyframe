@@ -20,9 +20,8 @@ using System.Globalization;
 
 namespace DataObjects.Sitecore.Implementation
 {
-    public class SitecoreWebsiteNewsDao : IWebsiteNewsDao, ISitecoreWebsiteNewsDao
+    public class SitecoreWebsiteNewsDao :SitecoreDao, IWebsiteNewsDao, ISitecoreWebsiteNewsDao
     {
-        private readonly ISitecoreContext context;
         private readonly ISiteConfigurationDao siteConfigurationDao;
 
         private SiteConfiguration siteconfig;
@@ -38,7 +37,6 @@ namespace DataObjects.Sitecore.Implementation
             }
         }
 
-
         /// <summary>
         /// Initializes a new instance of the <see cref="SitecoreSiteConfigurationDao" /> class.
         /// </summary>
@@ -47,7 +45,6 @@ namespace DataObjects.Sitecore.Implementation
             Guard.IsNotNull(() => siteConfigurationDao);
 
             this.siteConfigurationDao = siteConfigurationDao;
-            context = new SitecoreContext();
         }
 
 

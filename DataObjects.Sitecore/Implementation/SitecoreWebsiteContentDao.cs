@@ -7,15 +7,13 @@ using Sitecore.Data.Items;
 
 namespace DataObjects.Sitecore.Implementation
 {
-    public class SitecoreWebsiteContentDao : IWebsiteContentDao
+    public class SitecoreWebsiteContentDao :SitecoreDao, IWebsiteContentDao
     {
-        private readonly ISitecoreContext context;
         /// <summary>
         /// Initializes a new instance of the <see cref="SitecoreWhiteLabelContentDao" /> class.
         /// </summary>
         public SitecoreWebsiteContentDao()
         {
-            context = new SitecoreContext();
         }
 
         public BusinessObjects.Content.WebsiteContent GetWebsiteContent(string websiteContentContentId)
@@ -38,25 +36,5 @@ namespace DataObjects.Sitecore.Implementation
         {
             return context.GetItem<BusinessObjects.Content.WebsiteContent>(websiteContentId);
         }
-
-        /// <summary>
-        /// Gets the navigation items worker.
-        /// </summary>
-        /// <param name="navigationId">The navigation id.</param>
-        /// <param name="navigationStartItem">The navigation start item.</param>
-        /// <returns></returns>
-        private IEnumerable<BusinessObjects.Content.WebsiteContent> GetNavigationItemsWorker(string navigationId, Item navigationStartItem)
-        {
-            var returnWhiteLabelContentList = new List<BusinessObjects.Content.WebsiteContent>();
-
-            //iterate though the children that have the navigationId added to the Location Tree List Field
-            foreach (var item in navigationStartItem.Children.Where(item => item["Location"].Contains(navigationId)))
-            {
-                returnWhiteLabelContentList.Add(context.GetItem<BusinessObjects.Content.WebsiteContent>(item.ID.Guid));
-            }
-
-            return returnWhiteLabelContentList;
-        }
-
     }
 }

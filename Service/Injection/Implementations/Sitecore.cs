@@ -26,8 +26,8 @@ namespace Service.Injection.Implementations
 
             kernel.Bind<ISiteConfigurationDao>().To<SitecoreSiteConfigurationDao>().InSingletonScope();
             kernel.Bind<IWebsiteContentDao>().To<SitecoreWebsiteContentDao>().InSingletonScope();
-            kernel.Bind<IWebsiteEventDao>().To<SitecoreIWebsiteEventDao>().InSingletonScope();
-            //IWebsiteNavigationDao.cs
+            kernel.Bind<IWebsiteEventDao>().To<SitecoreWebsiteEventDao>().InSingletonScope();
+            kernel.Bind<IWebsiteNavigationDao>().To<SitecoreWebsiteNavigationDao>().InSingletonScope();
             kernel.Bind<IWebsiteNewsDao>().To<SitecoreWebsiteNewsDao>().InSingletonScope();
         }  
     }

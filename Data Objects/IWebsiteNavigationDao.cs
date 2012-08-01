@@ -10,6 +10,6 @@ namespace DataObjects
     {
         IEnumerable<WebsiteNavigation> GetNavigationItems(string navigationId);
         IEnumerable<WebsiteNavigation> GetNavigationItems(string navigationId, string navigationStartItemID);
-        IEnumerable<WebsiteNavigation> GetWhiteLabelArticleNavigation(string bucketId);
+        IEnumerable<WebsiteNavigation> GetWebsiteArticleNavigation(string bucketId);
     }
 }

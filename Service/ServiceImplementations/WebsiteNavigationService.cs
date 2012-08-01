@@ -36,19 +36,23 @@ namespace Service.ServiceImplementations
             if (request.LoadOptions.Contains("MainNavigation"))
             {
                 var siteConfiguration = siteConfigurationDao.GetSiteConfiguration();
-                response.WhiteLabelContentList = websiteNavigationDao.GetNavigationItems(siteConfiguration.MainNavigationItem).ToList();
+                response.WhiteLabelNavigationList = websiteNavigationDao.GetNavigationItems(siteConfiguration.MainNavigationItem).ToList();
             }
-            if (request.LoadOptions.Contains("FooterNavigation"))
+            else if (request.LoadOptions.Contains("FooterNavigation"))
             {
                 var siteConfiguration = siteConfigurationDao.GetSiteConfiguration();
-                response.WhiteLabelContentList = websiteNavigationDao.GetNavigationItems(siteConfiguration.FooterNavigationItem).ToList();
+                response.WhiteLabelNavigationList = websiteNavigationDao.GetNavigationItems(siteConfiguration.FooterNavigationItem).ToList();
             }
-            if (request.LoadOptions.Contains("SidebarNavigation"))
+            else if (request.LoadOptions.Contains("SidebarNavigation"))
             {
                 var siteConfiguration = siteConfigurationDao.GetSiteConfiguration();
-                response.WhiteLabelContentList = websiteNavigationDao.GetNavigationItems(siteConfiguration.SideNavigationItem, request.SideNavigationStartItem).ToList();
+                response.WhiteLabelNavigationList = websiteNavigationDao.GetNavigationItems(siteConfiguration.SideNavigationItem, request.SideNavigationStartItem).ToList();
             }
-           
+            else if (request.LoadOptions.Contains("NewsNavigation"))
+            {
+                var siteConfiguration = siteConfigurationDao.GetSiteConfiguration();
+                response.WhiteLabelNavigationList = websiteNavigationDao.GetWebsiteArticleNavigation(siteConfiguration.NewsBucket).ToList();
+            }
 
             return response;
         }

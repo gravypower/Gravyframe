@@ -16,9 +16,6 @@ namespace Service.Messages
         public WebsiteNavigationResponse(string correlationId) : base(correlationId) { }
 
         [DataMember]
-        public IList<WebsiteNavigation> WhiteLabelContentList;
-
-        [DataMember]
-        public WebsiteNavigation WhiteLabelContent;
+        public IList<WebsiteNavigation> WhiteLabelNavigationList;
     }
 }
