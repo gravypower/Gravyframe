@@ -9,7 +9,7 @@ using WebsiteKernel.Extensions;
 
 namespace WebsiteControls.News
 {
-    public class WhiteLabelNewsSliderBase : WebsiteNewsBase
+    public partial class WhiteLabelNewsSlider : WebsiteNewsBase
     {
         private List<object> articles = null;
         public List<object> Articles
@@ -84,9 +84,6 @@ namespace WebsiteControls.News
             }
         }
 
-    }
-    public partial class WhiteLabelNewsSlider : WhiteLabelNewsSliderBase
-    { 
         protected void Page_Load(object sender, EventArgs e)
         {
             var numberOfItemsFromCategories = NumberofItems - Articles.Count;

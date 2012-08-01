@@ -88,6 +88,7 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Layouts\Default.aspx" />
+    <Content Include="Layouts\OneColumn.aspx" />
     <Content Include="Layouts\Sublayouts\Framework\Notification.ascx" />
     <Content Include="Layouts\Sublayouts\News\WebsiteNewsSlider.ascx" />
     <Content Include="MSBuild\SlowCheetah.Tasks.dll" />
@@ -122,6 +123,13 @@
     </Compile>
     <Compile Include="Layouts\Framework\LayoutBase.cs">
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layouts\OneColumn.aspx.cs">
+      <DependentUpon>OneColumn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layouts\OneColumn.aspx.designer.cs">
+      <DependentUpon>OneColumn.aspx</DependentUpon>
     </Compile>
     <Compile Include="Layouts\Sublayouts\Framework\Notification.ascx.cs">
       <DependentUpon>Notification.ascx</DependentUpon>
@@ -196,6 +204,10 @@
     <ProjectReference Include="..\..\Glass.Sitecore.Mapper\Source\Glass.Sitecore.Mapper\Glass.Sitecore.Mapper.csproj">
       <Project>{564CDD78-0939-436B-9C90-7AF9D95B9024}</Project>
       <Name>Glass.Sitecore.Mapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Business Objects\Business Objects.csproj">
+      <Project>{FD72F282-6DDC-4215-B28D-E568A9BC4AB2}</Project>
+      <Name>Business Objects</Name>
     </ProjectReference>
     <ProjectReference Include="..\Service\Service.csproj">
       <Project>{5F04C3FE-B862-4374-B43B-8E20652408B1}</Project>
