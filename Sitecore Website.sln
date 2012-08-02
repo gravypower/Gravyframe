@@ -24,7 +24,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitecoreClient", "SitecoreClient\SitecoreClient.csproj", "{7F73DBFD-1120-48DB-80AB-E47D1D00D70A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tets", "Tets", "{7C23AA2E-3FC7-46A3-9649-8F7BDB1B6437}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{7C23AA2E-3FC7-46A3-9649-8F7BDB1B6437}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business Objects", "Business Objects\Business Objects.csproj", "{FD72F282-6DDC-4215-B28D-E568A9BC4AB2}"
 EndProject
