@@ -1,0 +1,36 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/umbraco/masterpages/default.Master" AutoEventWireup="true" CodeBehind="whirrakee.master.cs" Inherits="UmbracoClient.masterpages.whirrakee" %>
+<%@ Register Assembly="WebsiteControls" Namespace="WebsiteControls.Navigation" TagPrefix="Gravy" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderDefault" runat="server">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="wrapper">
+            <div id="header">               
+                <asp:Panel id="panMainNavigation" runat="server">
+                    <Gravy:MainNavigation ID="mainNavigation" runat="server" />
+                </asp:Panel>
+            </div>
+            <div id="page">
+                <h2>
+                     <asp:Literal ID="litPageTitle" runat="server"></asp:Literal>
+                </h2>
+                <umbraco:Macro ID="Macro1" SiteUrl="whirrakee.umbraco.local" Alias="SimpleContent" runat="server"></umbraco:Macro>
+                <div id="sidebar">
+                    <Gravy:SidebarNavigation ID="sidebarNavigation" runat="server" />
+                </div>
+            </div>
+            <div id="footer">
+                 <asp:Panel id="panFooterNavigation" runat="server">
+                    <Gravy:FooterNavigation ID="footerNavigation" runat="server" />
+                </asp:Panel>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
+
+</asp:Content>

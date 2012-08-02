@@ -118,6 +118,10 @@
       <Project>{7F233F1D-7C7F-4405-B3BE-D88F27B64DC0}</Project>
       <Name>DataObjects.Sitecore</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DataObjects.Umbraco\DataObjects.Umbraco.csproj">
+      <Project>{28C2A384-9233-4F7B-82B8-CCB19D1A4B91}</Project>
+      <Name>DataObjects.Umbraco</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WebsiteKernel\WebsiteKernel\WebsiteKernel.csproj">
       <Project>{17AF8A70-A50A-4251-801C-D9A33B689CA8}</Project>
       <Name>WebsiteKernel %28WebsiteKernel\WebsiteKernel%29</Name>
