@@ -18,10 +18,10 @@
                 <h2>
                      <asp:Literal ID="litPageTitle" runat="server"></asp:Literal>
                 </h2>
-                <umbraco:Macro ID="Macro1" SiteUrl="whirrakee.umbraco.local" Alias="SimpleContent" runat="server"></umbraco:Macro>
                 <div id="sidebar">
                     <Gravy:SidebarNavigation ID="sidebarNavigation" runat="server" />
                 </div>
+                <umbraco:Macro ID="Macro1" SiteUrl="whirrakee.umbraco.local" Alias="SimpleContent" runat="server"></umbraco:Macro>
             </div>
             <div id="footer">
                  <asp:Panel id="panFooterNavigation" runat="server">
