@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{E63537CB-7A99-4651-91BA-14FC9F6B9DA6}</ProjectGuid>
+    <ProjectGuid>{9355B525-1A32-4071-B03F-8165DE6533FD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebsiteKernel.Sitecore.Extensions</RootNamespace>
-    <AssemblyName>WebsiteKernel.Sitecore.Extensions</AssemblyName>
+    <RootNamespace>WebsiteKernel.Extensions</RootNamespace>
+    <AssemblyName>WebsiteKernel.Extensions</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,12 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Sitecore.Kernel">
-      <HintPath>..\..\packages\Sitecore\Sitecore.Kernel.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,20 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SublayoutExtensions.cs" />
-    <Compile Include="FieldExtensions.cs" />
-    <Compile Include="ItemExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Strings.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WebsiteKernel.Extensions\WebsiteKernel.Extensions.csproj">
-      <Project>{9355B525-1A32-4071-B03F-8165DE6533FD}</Project>
-      <Name>WebsiteKernel.Extensions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WebsiteKernel.Sitecore.Constants\WebsiteKernel.Sitecore.Constants.csproj">
-      <Project>{7357848E-332F-4912-99A3-3456B578450F}</Project>
-      <Name>WebsiteKernel.Sitecore.Constants</Name>
-    </ProjectReference>
     <ProjectReference Include="..\WebsiteKernel\WebsiteKernel.csproj">
       <Project>{17AF8A70-A50A-4251-801C-D9A33B689CA8}</Project>
       <Name>WebsiteKernel %28WebsiteKernel\WebsiteKernel%29</Name>

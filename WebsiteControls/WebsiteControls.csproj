@@ -163,6 +163,10 @@
       <Project>{5F04C3FE-B862-4374-B43B-8E20652408B1}</Project>
       <Name>Service</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WebsiteKernel\WebsiteKernel.Extensions\WebsiteKernel.Extensions.csproj">
+      <Project>{9355B525-1A32-4071-B03F-8165DE6533FD}</Project>
+      <Name>WebsiteKernel.Extensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WebsiteKernel\WebsiteKernel\WebsiteKernel.csproj">
       <Project>{17AF8A70-A50A-4251-801C-D9A33B689CA8}</Project>
       <Name>WebsiteKernel %28WebsiteKernel\WebsiteKernel%29</Name>
