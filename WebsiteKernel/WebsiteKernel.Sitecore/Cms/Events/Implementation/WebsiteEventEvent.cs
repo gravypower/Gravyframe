@@ -14,7 +14,7 @@ namespace WebsiteKernel.Sitecore.Cms.Events.Implementation
             new ID(siteConfiguration.EventBucket),
             Constants.Templates.Event.WebsiteEventFolder,
             EventItem.Fields["Date From"].ToDateTime(),
-            Constants.Enums.DateFiling.YearMonth);
+            WebsiteKernel.Constants.Enums.DateFiling.YearMonth);
         }
 
         protected override bool ExitEvent()

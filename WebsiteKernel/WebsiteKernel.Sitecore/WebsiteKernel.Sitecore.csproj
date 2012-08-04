@@ -86,6 +86,10 @@
       <Project>{3924CB6F-9F67-408B-842C-F19CA4076D2C}</Project>
       <Name>DataObjects</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WebsiteKernel.Constants\WebsiteKernel.Constants.csproj">
+      <Project>{CDE063AC-EF99-4B0B-A5BF-B190F1871634}</Project>
+      <Name>WebsiteKernel.Constants</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WebsiteKernel.Sitecore.Constants\WebsiteKernel.Sitecore.Constants.csproj">
       <Project>{7357848E-332F-4912-99A3-3456B578450F}</Project>
       <Name>WebsiteKernel.Sitecore.Constants</Name>

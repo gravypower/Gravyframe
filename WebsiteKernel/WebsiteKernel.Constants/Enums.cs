@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace WebsiteKernel.Sitecore.Constants
+namespace WebsiteKernel.Constants
 {
     public class Enums
     {

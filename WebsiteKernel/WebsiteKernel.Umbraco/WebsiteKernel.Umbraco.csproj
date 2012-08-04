@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{28C2A384-9233-4F7B-82B8-CCB19D1A4B91}</ProjectGuid>
+    <ProjectGuid>{E3CCE82B-DB21-48BB-8960-A8C749A2B781}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DataObjects.Umbraco</RootNamespace>
-    <AssemblyName>DataObjects.Umbraco</AssemblyName>
+    <RootNamespace>WebsiteKernel.Umbraco</RootNamespace>
+    <AssemblyName>WebsiteKernel.Umbraco</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,12 +31,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="cms">
-      <HintPath>..\packages\umbraco\cms.dll</HintPath>
+    <Reference Include="businesslogic">
+      <HintPath>..\..\packages\umbraco\businesslogic.dll</HintPath>
     </Reference>
-    <Reference Include="interfaces, Version=1.0.4497.23945, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="cms">
+      <HintPath>..\..\packages\umbraco\cms.dll</HintPath>
+    </Reference>
+    <Reference Include="interfaces">
+      <HintPath>..\..\packages\umbraco\interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject, Version=3.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\umbraco\interfaces.dll</HintPath>
+      <HintPath>..\..\packages\Ninject.3.0.1.10\lib\net40\Ninject.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -45,41 +51,44 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="umbraco, Version=1.0.4500.21031, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\umbraco\umbraco.dll</HintPath>
+    <Reference Include="umbraco">
+      <HintPath>..\..\packages\umbraco\umbraco.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Implementation\UmbracoSiteConfigurationDao.cs" />
-    <Compile Include="Implementation\UmbracoWebsiteContentDao.cs" />
-    <Compile Include="Implementation\UmbracoWebsiteEventDao.cs" />
-    <Compile Include="Implementation\UmbracoWebsiteNavigationDao.cs" />
-    <Compile Include="Implementation\UmbracoWebsiteNewsDao.cs" />
-    <Compile Include="ModelMapper\Mapper.cs" />
+    <Compile Include="Cms\Events\Event.cs" />
+    <Compile Include="Cms\Events\WebsiteNewsEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilities\Sites.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Business Objects\Business Objects.csproj">
+    <ProjectReference Include="..\..\Business Objects\Business Objects.csproj">
       <Project>{FD72F282-6DDC-4215-B28D-E568A9BC4AB2}</Project>
       <Name>Business Objects</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Data Objects\DataObjects.csproj">
+    <ProjectReference Include="..\..\Data Objects\DataObjects.csproj">
       <Project>{3924CB6F-9F67-408B-842C-F19CA4076D2C}</Project>
       <Name>DataObjects</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebsiteKernel\WebsiteKernel.Umbraco.Constants\WebsiteKernel.Umbraco.Constants.csproj">
+    <ProjectReference Include="..\WebsiteKernel.Constants\WebsiteKernel.Constants.csproj">
+      <Project>{CDE063AC-EF99-4B0B-A5BF-B190F1871634}</Project>
+      <Name>WebsiteKernel.Constants</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebsiteKernel.Extensions\WebsiteKernel.Extensions.csproj">
+      <Project>{9355B525-1A32-4071-B03F-8165DE6533FD}</Project>
+      <Name>WebsiteKernel.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebsiteKernel.Umbraco.Constants\WebsiteKernel.Umbraco.Constants.csproj">
       <Project>{324D592C-5CBD-4B69-B9F5-8A7D50B01317}</Project>
       <Name>WebsiteKernel.Umbraco.Constants</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebsiteKernel\WebsiteKernel\WebsiteKernel.csproj">
+    <ProjectReference Include="..\WebsiteKernel.Umbraco.Extensions\WebsiteKernel.Umbraco.Extensions.csproj">
+      <Project>{8FFD3B77-19AC-4367-B2F9-BEAB1ED3223E}</Project>
+      <Name>WebsiteKernel.Umbraco.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebsiteKernel\WebsiteKernel.csproj">
       <Project>{17AF8A70-A50A-4251-801C-D9A33B689CA8}</Project>
       <Name>WebsiteKernel %28WebsiteKernel\WebsiteKernel%29</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Constants\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

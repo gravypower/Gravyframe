@@ -14,7 +14,7 @@ namespace WebsiteKernel.Sitecore.Cms.Events.Implementation
             new ID(siteConfiguration.NewsBucket),
             Constants.Templates.News.WebsiteNewsFolder,
             EventItem.Fields["Date"].ToDateTime(),
-            Constants.Enums.DateFiling.YearMonth);
+            WebsiteKernel.Constants.Enums.DateFiling.YearMonth);
         }
 
         protected override bool ExitEvent()

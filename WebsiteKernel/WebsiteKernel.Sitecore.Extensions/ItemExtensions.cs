@@ -89,27 +89,27 @@ namespace WebsiteKernel.Sitecore.Extensions
             contextItem.OrganiseInFolder(rootItemID, folderTemplateId, targetDepth, null);
         }
 
-        public static void OrganiseInFolder(this Item contextItem, ID rootItemID, TemplateID folderTemplateId, DateTime date, Constants.Enums.DateFiling fileingOptions)
+        public static void OrganiseInFolder(this Item contextItem, ID rootItemID, TemplateID folderTemplateId, DateTime date, WebsiteKernel.Constants.Enums.DateFiling fileingOptions)
         {
             var filingPath = new List<string>();
-            if (fileingOptions == Constants.Enums.DateFiling.Day)
+            if (fileingOptions == WebsiteKernel.Constants.Enums.DateFiling.Day)
             {
                 filingPath.Add(date.Day.ToString());
             }
-            else if (fileingOptions == Constants.Enums.DateFiling.Month)
+            else if (fileingOptions == WebsiteKernel.Constants.Enums.DateFiling.Month)
             {
                 filingPath.Add(date.Month.ToString());
             }
-            else if (fileingOptions == Constants.Enums.DateFiling.Year)
+            else if (fileingOptions == WebsiteKernel.Constants.Enums.DateFiling.Year)
             {
                 filingPath.Add(date.Year.ToString());
             }
-            else if (fileingOptions == Constants.Enums.DateFiling.YearMonth)
+            else if (fileingOptions == WebsiteKernel.Constants.Enums.DateFiling.YearMonth)
             {
                 filingPath.Add(date.Year.ToString());
                 filingPath.Add(date.Month.ToString());
             }
-            else if (fileingOptions == Constants.Enums.DateFiling.YearMonthDay)
+            else if (fileingOptions == WebsiteKernel.Constants.Enums.DateFiling.YearMonthDay)
             {
                 filingPath.Add(date.Year.ToString());
                 filingPath.Add(date.Month.ToString());

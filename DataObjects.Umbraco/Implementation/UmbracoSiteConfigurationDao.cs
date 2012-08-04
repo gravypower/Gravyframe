@@ -16,7 +16,7 @@ namespace DataObjects.Umbraco.Implementation
 
         public BusinessObjects.SiteConfiguration GetSiteConfiguration(string siteId)
         {
-            throw new NotImplementedException();
+            return ModelMapper.Mapper.MapSiteConfiguration(Utilities.Sites.GetConfigItem(new Node(int.Parse(siteId))));
         }
     }
 }

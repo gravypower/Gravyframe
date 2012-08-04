@@ -119,6 +119,10 @@
       <Project>{EC1415FF-28FE-4F17-93D3-10DC0E42C0FE}</Project>
       <Name>WebsiteControls</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WebsiteKernel\WebsiteKernel.Umbraco\WebsiteKernel.Umbraco.csproj">
+      <Project>{E3CCE82B-DB21-48BB-8960-A8C749A2B781}</Project>
+      <Name>WebsiteKernel.Umbraco</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WebsiteKernel\WebsiteKernel\WebsiteKernel.csproj">
       <Project>{17AF8A70-A50A-4251-801C-D9A33B689CA8}</Project>
       <Name>WebsiteKernel %28WebsiteKernel\WebsiteKernel%29</Name>

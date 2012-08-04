@@ -50,6 +50,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WebsiteKernel.Constants\WebsiteKernel.Constants.csproj">
+      <Project>{CDE063AC-EF99-4B0B-A5BF-B190F1871634}</Project>
+      <Name>WebsiteKernel.Constants</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WebsiteKernel.Extensions\WebsiteKernel.Extensions.csproj">
       <Project>{9355B525-1A32-4071-B03F-8165DE6533FD}</Project>
       <Name>WebsiteKernel.Extensions</Name>
