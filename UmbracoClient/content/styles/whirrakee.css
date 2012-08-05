@@ -1,0 +1,253 @@
+﻿@font-face {
+    font-family: 'OSPDIN';
+    src: url('../fonts/OSP-DIN-webfont.eot');
+    src: url('../fonts/OSP-DIN-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/OSP-DIN-webfont.woff') format('woff'),
+         url('../fonts/OSP-DIN-webfont.ttf') format('truetype'),
+         url('../fonts/OSP-DIN-webfont.svg#OSPDIN') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+body
+{
+}
+
+.banner
+{
+	position: fixed;
+	width: 100%;
+	top: 0px;
+	left: 0px;
+	z-index: 1;
+}
+img.bg
+{
+	/* Set rules to fill background */
+	min-height: 100%;
+	min-width: 1024px; /* Set up proportionate scaling */
+	width: 100%;
+	height: auto; /* Set up positioning */
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: White;
+}
+
+@media screen and (max-width: 1024px)
+{
+	img.bg
+	{
+		left: 50%;
+		margin-left: -512px;
+	}
+}
+
+.main-menu
+{
+	position: relative;
+	width: 100%;
+	background: Black;
+	height: 30px;
+	color: #000;
+	margin:0;
+	padding:0;
+	text-align: center;
+	text-transform: uppercase;
+	font: 20px 'OSPDIN', Arial, sans-serif;
+}
+.main-menu a
+{
+	color: #999;
+	text-decoration: none;
+	padding-left: 15px;
+}
+
+.main-menu a.active
+{
+	color: #FFF;
+	text-decoration: none;
+}
+
+.main-menu a:hover
+{
+	color: #FFF;
+	text-decoration: none;
+}
+
+.main-menu ul
+{
+	padding:0;
+	margin:0;
+}
+
+.feature-menu
+{
+	min-height: 150px;
+}
+
+.feature-menu a
+{
+	color: Black;
+	text-decoration: none;
+	padding-left: 25px;
+	text-transform: uppercase;
+	font: 20px 'OSPDIN', Arial, sans-serif;
+	float: left;
+}
+
+.feature-menu ul
+{
+	padding:0;
+	margin:0;
+}
+
+.nav-image
+{
+	width:250px; 
+	height: 80px; 
+	border-top: 1px solid #BDBEC1; 
+	padding-top: 15px;
+}
+
+.sub-menu 
+{
+	position: relative;
+	width: 100%;
+	background: white;
+	height: 30px;
+	color: #000;
+	margin:0;
+	padding:0;
+	text-align: center;
+	text-transform: uppercase;
+	font: 20px 'OSPDIN', Arial, sans-serif;
+	border-top: 1px solid #BDBEC1;
+}
+
+.sub-menu  a
+{
+	color: #999;
+	text-decoration: none;
+	padding-left: 15px;
+}
+
+.sub-menu a:hover 
+{
+	color: Black;
+	text-decoration: none;
+}
+
+.sub-menu a.active
+{
+	color: Black;
+	text-decoration: none;
+}
+
+.sub-menu ul
+{
+	padding:0;
+	margin:0;
+}
+
+.sub-menu-space
+{
+	position: relative;
+	width: 870px;
+	height:20px;
+}
+
+.nav li
+{
+	display:inline;
+	padding:0;
+	margin:0;
+}
+
+.nav ul li
+{
+	list-style-type: none;
+}
+
+.top-logo
+{
+	position: relative;
+	width: 100%;
+	background-color: White;
+	height: 100px;
+}
+
+.content
+{
+	position: relative;
+	width: 870px;
+	margin: 150px auto;
+	background-color: White;
+}
+
+.content .content
+{
+	float: left;
+	width: 525px;
+	padding-left: 25px;
+	margin: 0;
+}
+
+.content .title
+{
+	float: left;
+	width: 250px;
+	padding-left: 25px;
+	text-transform: uppercase;
+	margin: 0;
+}
+
+.full-page
+{
+	background-color: White;
+}
+.panel
+{
+	float: left;
+	width: 250px;
+	height: 320px;
+	padding: 20px;
+	background: white;
+	overflow: hidden;
+}
+.hidden
+{
+	background: transparent;
+	color: transparent;
+}
+
+.display-none
+{
+	display: none;
+}
+
+.column p, .column h1 
+{
+	padding: 5px; 
+	font: 25px ,Times New Roman, Arial, sans-serif;
+	margin: 0;
+}
+.wide, .thin { clear:both; }
+
+h2
+{
+	font: 25px 'OSPDIN', Arial, sans-serif;
+}
+
+.am-wrapper{
+	float:left;
+	position:relative;
+	overflow:hidden;
+}
+.am-wrapper img{
+	position:absolute;
+	outline:none;
+}
+
+.clear { clear:both; }
