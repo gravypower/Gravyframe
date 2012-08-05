@@ -8,10 +8,11 @@ using WebsiteControls.Gateways.SiteConfiguration;
 using Ninject;
 using BusinessObjects;
 using Ninject.Web;
+using WebsiteKernel.Umbraco;
 
 namespace UmbracoClient.masterpages
 {
-    public partial class whirrakee : MasterPageBase
+    public partial class whirrakee : UmbracoMasterPageBase
     {
         // <summary>
         /// Gets or sets the site configuration gateway.
@@ -33,11 +34,18 @@ namespace UmbracoClient.masterpages
         }
 
 
-        protected void Page_Load(object sender, EventArgs e)
+        protected override void Page_Load(object sender, EventArgs e)
         {
             //check site settings so that we can work out what to show and hide
             panMainNavigation.Visible = SiteConfiguration.ShowMainNavigation;
             panFooterNavigation.Visible = SiteConfiguration.ShowFooterNavigation;
+
+            base.Page_Load(sender, e);
+        }
+        protected override void OnPreRender(EventArgs e)
+        {
+            panSubMenuSpace.Visible = subMenuNav.Visible = sidebarNavigation.SubNavVisible;
+            base.OnPreRender(e);
         }
     }
 }

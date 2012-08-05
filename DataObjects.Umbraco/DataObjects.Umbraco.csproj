@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="businesslogic, Version=1.0.4583.15473, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\umbraco\businesslogic.dll</HintPath>
+    </Reference>
     <Reference Include="cms">
       <HintPath>..\packages\umbraco\cms.dll</HintPath>
     </Reference>
@@ -61,6 +65,10 @@
     <Compile Include="Utilities\Sites.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Glass.Sitecore.Mapper\Source\Glass.Sitecore.Mapper\Glass.Sitecore.Mapper.csproj">
+      <Project>{564CDD78-0939-436B-9C90-7AF9D95B9024}</Project>
+      <Name>Glass.Sitecore.Mapper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Business Objects\Business Objects.csproj">
       <Project>{FD72F282-6DDC-4215-B28D-E568A9BC4AB2}</Project>
       <Name>Business Objects</Name>

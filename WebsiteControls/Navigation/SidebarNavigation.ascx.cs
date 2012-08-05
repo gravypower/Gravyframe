@@ -9,7 +9,7 @@ using WebsiteControls.Gateways.WebsiteNavigation;
 
 namespace WebsiteControls.Navigation
 {
-    public partial class SidebarNavigation : WebsiteControlBase
+    public partial class SidebarNavigation : SidebarNavigationBase
     {
         [Inject]
         public IWebsitelNavigationGateway WebsitelNavigationGateway { get; set; }
@@ -27,7 +27,7 @@ namespace WebsiteControls.Navigation
             }
             else
             {
-                plhNavSub.Visible = false;
+                subNavVisible = plhNavSub.Visible = false;
             }
         }
     }

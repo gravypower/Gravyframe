@@ -6,6 +6,10 @@ using BusinessObjects;
 using umbraco.interfaces;
 using BusinessObjects.Content;
 using BusinessObjects.Navigation;
+using umbraco.NodeFactory;
+using umbraco.cms.businesslogic.media;
+using umbraco.cms.businesslogic;
+using WebsiteKernel.Umbraco.Constants;
 
 namespace DataObjects.Umbraco.ModelMapper
 {
@@ -45,7 +49,7 @@ namespace DataObjects.Umbraco.ModelMapper
 
         internal static WebsiteContent MapWebsiteContent(INode node)
         {
-            return new WebsiteContent
+            var returnContent = new WebsiteContent
             {
                 //Icon = new  node.GetProperty("icon").Value,
                 ItemClass = node.GetProperty("itemClass").Value,
@@ -55,8 +59,43 @@ namespace DataObjects.Umbraco.ModelMapper
                 //Redirect = bool.Parse(node.GetProperty("redirect").Value),
                 Summary = node.GetProperty("summary").Value,
                 Text = node.GetProperty("text").Value,
-                Title = node.GetProperty("title").Value
+                Title = node.GetProperty("title").Value            
             };
+
+
+            var background = node.GetProperty("backgrounds").Value;
+
+            int backgroundMediaId;
+            if (!String.IsNullOrEmpty(background) && int.TryParse(background, out backgroundMediaId))
+            {
+                var backgroundMedia = new Media(backgroundMediaId);
+                var backgroundList = new List<Glass.Sitecore.Mapper.FieldTypes.Image>();
+                if (backgroundMedia.ContentType.Alias == DocumentTypeAlias.Folder)
+                {
+                    foreach (var child in backgroundMedia.Children)
+                    {
+                        backgroundList.Add(
+                        new Glass.Sitecore.Mapper.FieldTypes.Image
+                        {
+                            Src = (string)child.getProperty("umbracoFile").Value
+                        }
+                    );
+                    }
+                }
+                else if (backgroundMedia.ContentType.Alias == DocumentTypeAlias.Image)
+                {
+                    backgroundList.Add(
+                        new Glass.Sitecore.Mapper.FieldTypes.Image
+                        {
+                            Src = (string)backgroundMedia.getProperty("umbracoFile").Value
+                        }
+                    );
+                }
+
+                returnContent.Backgrounds = backgroundList;
+            }
+
+            return returnContent;
         }
 
         internal static WebsiteNavigation MapWebsiteNavigation(INode node)

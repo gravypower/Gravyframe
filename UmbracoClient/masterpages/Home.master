@@ -1,0 +1,183 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/masterpages/whirrakee.master" AutoEventWireup="true" CodeBehind="Home.master.cs" Inherits="UmbracoClient.masterpages.Home" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="background" runat="server">
+    <asp:Repeater ID="rptBackground" runat="server" OnItemDataBound="rptBackground_ItemDataBound">
+        <ItemTemplate>
+            <asp:Image ID="imgBackground" runat="server" CssClass="bg lazy" AlternateText="background Image" />
+        </ItemTemplate>
+    </asp:Repeater>
+
+</asp:Content>
+
+<asp:Content ID="Content4" ContentPlaceHolderID="pageContent" runat="server">
+
+<div id="body_0">
+		<div class="panel">
+				<h2>
+					Test 11
+				</h2>
+<p>dfasfasdfasd fbdfzbdfbdf</p>		</div>
+		<div class="panel hidden">
+		</div>
+		<div class="panel hidden">
+		</div>
+		<div class="panel hidden">
+		</div>
+		<div class="panel">
+				<img src="/Content/Media/70902fec069743dba4d7c67fae1cc975/press-club-restaurant-and-bar-210399.jpg" alt="background Image" />
+		</div>
+		<div class="panel hidden">
+		</div>
+</div>
+	<div id="body_1" class="display-none">
+			<div class="panel hidden">
+			</div>
+			<div class="panel hidden">
+			</div>
+			<div class="panel hidden">
+			</div>
+			<div class="panel hidden">
+			</div>
+			<div class="panel">
+					<h2>
+						Hello Shell
+					</h2>
+<p>BLAGFFDSFDS</p>			</div>
+			<div class="panel">
+					<img src="/Content/Media/70902fec069743dba4d7c67fae1cc975/press-club-restaurant-and-bar-210399.jpg" alt="background Image" />
+			</div>
+	</div>
+	<div id="body_2" class="display-none">
+			<div class="panel">
+					<h2>
+						Hello Troy
+					</h2>
+<p>HELLO WOLD!!!!</p>			</div>
+			<div class="panel hidden">
+			</div>
+			<div class="panel hidden">
+			</div>
+			<div class="panel">
+					<img src="/Content/Media/70902fec069743dba4d7c67fae1cc975/press-club-restaurant-and-bar-210399.jpg" alt="background Image" />
+			</div>
+			<div class="panel hidden">
+			</div>
+			<div class="panel hidden">
+			</div>
+	</div>
+	<div id="body_3" class="display-none">
+			<div class="panel">
+					<h2>
+						Hello Brent
+					</h2>
+<p>ojhokjhij</p>			</div>
+			<div class="panel">
+					<img src="/Content/Media/70902fec069743dba4d7c67fae1cc975/press-club-restaurant-and-bar-210399.jpg" alt="background Image" />
+			</div>
+			<div class="panel hidden">
+			</div>
+			<div class="panel hidden">
+			</div>
+			<div class="panel hidden">
+			</div>
+			<div class="panel hidden">
+			</div>
+	</div>
+	<div id="body_4" class="display-none">
+			<div class="panel">
+					<h2>
+						123
+					</h2>
+<p>1231546546</p>			</div>
+			<div class="panel hidden">
+			</div>
+			<div class="panel hidden">
+			</div>
+			<div class="panel hidden">
+			</div>
+			<div class="panel">
+					<img src="/Content/Media/2d76fe1678e74073ba36ab4b9cb66c27/aaMinecraft-Poster.png" alt="background Image" />
+			</div>
+			<div class="panel hidden">
+			</div>
+	</div>
+	<div id="body_5" class="display-none">
+			<div class="panel">
+					<h2>
+						Test 1
+					</h2>
+<p>fdsafdsfasdfasdf</p>			</div>
+			<div class="panel hidden">
+			</div>
+			<div class="panel">
+					<img src="/Content/Media/70902fec069743dba4d7c67fae1cc975/press-club-restaurant-and-bar-210399.jpg" alt="background Image" />
+			</div>
+			<div class="panel hidden">
+			</div>
+			<div class="panel hidden">
+			</div>
+			<div class="panel hidden">
+			</div>
+	</div>    </asp:Content>
+
+<asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
+
+    <script type="text/javascript">
+        var numberOfBackgrounds = <%=BackgroundCount%>
+        var numberOfvariants = 5;
+        var backgroundCount = 1;
+        var loopBackgrounds = numberOfBackgrounds > 1;
+
+        var variantCount = 0;
+        var loopVariants = numberOfvariants > variantCount;
+
+        $(document).ready(function () {
+
+            if (numberOfBackgrounds > 0) {
+                $(".lazy").lazyload()
+            }
+        });
+
+        (function loopsiloop() {
+            setTimeout(function () {
+                if (loopBackgrounds || loopVariants) {
+                    if (loopBackgrounds) {
+                        if (numberOfBackgrounds <= backgroundCount) {
+                            backgroundCount = 1;
+                            SwapBackground(backgroundCount, numberOfBackgrounds)
+                        }
+                        else {
+                            SwapBackground(backgroundCount + 1, backgroundCount)
+                            backgroundCount++;
+                        }
+                    }
+
+                    if (loopVariants) {
+                        $("#body_" + variantCount).fadeOut(2000, function () {
+                            variantCount++;
+                            $("#body_" + variantCount).fadeIn(2000);
+                        });
+
+                        if (numberOfvariants == variantCount) {
+                            $("#body_" + variantCount).fadeOut(2000, function () {
+                                variantCount = 0;
+                                $("#body_" + variantCount).fadeIn(2000);
+                            });
+                        }
+
+                        loopsiloop();
+                    }
+                }
+            }, 10000);
+        })();
+
+        function SwapBackground(to) {
+            var background = $(".lazy[data-count=" + to + "]");
+            $(background).fadeIn(2000);
+
+            $(".lazy:not(.lazy[data-count=" + to + "])").fadeOut(2000);
+        }
+	</script>
+</asp:Content>

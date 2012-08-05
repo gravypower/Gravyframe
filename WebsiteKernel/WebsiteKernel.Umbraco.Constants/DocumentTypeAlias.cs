@@ -10,5 +10,8 @@ namespace WebsiteKernel.Umbraco.Constants
         public const string WebsiteNews = "WebsiteNews";
         public const string WebsiteNewsFolder = "WebsiteNewsFolder";
         public const string WebsiteSite = "WebsiteSite";
+
+        public const string Image = "Image";
+        public const string Folder = "Folder";
     }
 }

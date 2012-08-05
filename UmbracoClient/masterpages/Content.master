@@ -1,0 +1,17 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/masterpages/whirrakee.master" AutoEventWireup="true" CodeBehind="Content.master.cs" Inherits="UmbracoClient.masterpages.Content" %>
+
+<asp:content ID="Content1" ContentPlaceHolderId="head" runat="server">
+  
+</asp:content>
+
+<asp:content ID="Content2" ContentPlaceHolderId="background" runat="server">
+  
+</asp:content>
+
+<asp:content ID="Content3" ContentPlaceHolderId="pageContent" runat="server">
+  
+</asp:content>
+
+<asp:content ID="Content4" ContentPlaceHolderId="script" runat="server">
+  
+</asp:content>

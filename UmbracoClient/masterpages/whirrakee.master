@@ -1,38 +1,41 @@
-﻿<%@ Master Language="C#" MasterPageFile="~/umbraco/masterpages/default.Master" AutoEventWireup="true" CodeBehind="whirrakee.master.cs" Inherits="UmbracoClient.masterpages.whirrakee" %>
-<%@ Register Assembly="WebsiteControls" Namespace="WebsiteControls.Navigation" TagPrefix="Gravy" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderDefault" runat="server">
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<link rel="stylesheet" href="../content/styles/whirrakee.css")" />
-    <title>Whirrakee</title>
-</head>
-
-<body id="index" class="home">
-	<header id="banner" class="banner">
-		<nav class="main-menu nav">
-			<asp:Panel id="panMainNavigation" runat="server">
-                <Gravy:MainNavigation ID="mainNavigation" runat="server" />
-            </asp:Panel>
-		</nav>
-		<div class="top-logo">
-			<img src="../content/images/whirrakeeLogo.png" alt="whirrakee" style="display: block; margin-left: auto; margin-right: auto"/>
-		</div>
-        <Gravy:SidebarNavigation ID="sidebarNavigation" runat="server" />
-	</header>
-	
-	<umbraco:Macro ID="Macro1" SiteUrl="whirrakee.umbraco.local" Alias="SimpleContent" runat="server"></umbraco:Macro>
-    <asp:Panel id="panFooterNavigation" runat="server">
-        <Gravy:FooterNavigation ID="footerNavigation" runat="server" />
-    </asp:Panel>
-</body>
-<script type="text/javascript">
-	
-</script>
-<script src="@Url.Content("~/Scripts/jQuery/jquery.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/Scripts/jQuery/jquery.validate.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/Scripts/jQuery/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/Scripts/jquery.lazyload.min.js")" type="text/javascript"></script>
-</html>
-
-</asp:Content>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="whirrakee.master.cs" Inherits="UmbracoClient.masterpages.whirrakee" %>
+    <!doctype html public "-//w3c//dtd xhtml 1.0 transitional//en" "http://www.w3.org/tr/xhtml1/dtd/xhtml1-transitional.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head id="Head1" runat="server">
+        <title></title>
+        <asp:ContentPlaceHolder ID="head" runat="server">
+        </asp:ContentPlaceHolder>
+        <link rel="stylesheet" href="../content/styles/whirrakee.css" />
+    </head>
+    <body id="index" class="home">
+        <form id="form1" runat="server">
+            <header id="banner" class="banner">
+                <nav class="main-menu nav">
+                    <asp:Panel id="panMainNavigation" runat="server">
+                        <Gravy:MainNavigation ID="mainNavigation" runat="server" />
+                    </asp:panel>
+                </nav>
+                <div class="top-logo">
+                    <img src="../content/images/whirrakeeLogo.png" alt="whirrakee" style="display: block; margin-left: auto; margin-right: auto" />
+                </div>
+                <nav id="subMenuNav" runat="server" class="sub-menu nav">
+                    <Gravy:SidebarNavigation ID="sidebarNavigation" runat="server" />
+                </nav>
+            </header>
+            <asp:ContentPlaceHolder ID="background"  runat="server">
+            </asp:ContentPlaceHolder>
+            <section id="content" class="content">
+                <asp:Panel id="panSubMenuSpace" runat="server" CssClass="sub-menu-space"></asp:Panel>
+                <asp:ContentPlaceHolder ID="pageContent"  runat="server">
+            </asp:ContentPlaceHolder>
+            </section>
+            <asp:panel id="panFooterNavigation" runat="server">
+                <Gravy:FooterNavigation ID="footerNavigation" runat="server" />
+            </asp:panel>
+        </form>
+    </body>
+    <script src="/Scripts/jQuery/jquery.js" type="text/javascript"></script>
+    <script src="/Scripts/jquery.lazyload.min.js" type="text/javascript"></script>
+    <asp:ContentPlaceHolder ID="script"  runat="server">
+    </asp:ContentPlaceHolder>
+    </html>

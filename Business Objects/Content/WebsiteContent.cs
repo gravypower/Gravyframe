@@ -61,6 +61,14 @@ namespace BusinessObjects.Content
         [SitecoreField]
         public virtual Glass.Sitecore.Mapper.FieldTypes.Image Icon { get; set; }
 
+
+        /// <summary>
+        /// Gets or sets the icon.
+        /// </summary>
+        /// <value>The icon.</value>
+        [SitecoreField]
+        public virtual IEnumerable<Glass.Sitecore.Mapper.FieldTypes.Image> Backgrounds { get; set; }
+
         /// <summary>
         /// Gets or sets the redirect.
         /// </summary>

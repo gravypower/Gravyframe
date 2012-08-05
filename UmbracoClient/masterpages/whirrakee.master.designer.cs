@@ -13,6 +13,33 @@ namespace UmbracoClient.masterpages {
     public partial class whirrakee {
         
         /// <summary>
+        /// Head1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlHead Head1;
+        
+        /// <summary>
+        /// head control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        
+        /// <summary>
+        /// form1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        
+        /// <summary>
         /// panMainNavigation control.
         /// </summary>
         /// <remarks>
@@ -31,6 +58,15 @@ namespace UmbracoClient.masterpages {
         protected global::WebsiteControls.Navigation.MainNavigation mainNavigation;
         
         /// <summary>
+        /// subMenuNav control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl subMenuNav;
+        
+        /// <summary>
         /// sidebarNavigation control.
         /// </summary>
         /// <remarks>
@@ -40,13 +76,31 @@ namespace UmbracoClient.masterpages {
         protected global::WebsiteControls.Navigation.SidebarNavigation sidebarNavigation;
         
         /// <summary>
-        /// Macro1 control.
+        /// background control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::umbraco.presentation.templateControls.Macro Macro1;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder background;
+        
+        /// <summary>
+        /// panSubMenuSpace control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel panSubMenuSpace;
+        
+        /// <summary>
+        /// pageContent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder pageContent;
         
         /// <summary>
         /// panFooterNavigation control.
@@ -65,5 +119,14 @@ namespace UmbracoClient.masterpages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::WebsiteControls.Navigation.FooterNavigation footerNavigation;
+        
+        /// <summary>
+        /// script control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder script;
     }
 }
