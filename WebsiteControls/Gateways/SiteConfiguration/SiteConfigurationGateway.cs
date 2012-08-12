@@ -30,8 +30,6 @@ namespace WebsiteControls.Gateways.SiteConfiguration
             this.siteConfigurationService = siteConfigurationService;
         }
 
-
-
         /// <summary>
         /// Gets the configuration for the context site.
         /// </summary>

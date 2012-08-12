@@ -79,6 +79,7 @@
     <Content Include="content\styles\whirrakee.css" />
     <Content Include="Scripts\jquery.lazyload.min.js" />
     <Content Include="Scripts\jQuery\jquery.js" />
+    <Content Include="usercontrols\HomeVariant.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -114,13 +115,19 @@
       <DependentUpon>whirrakee.master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="usercontrols\HomeVariant.ascx.cs">
+      <DependentUpon>HomeVariant.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrols\HomeVariant.ascx.designer.cs">
+      <DependentUpon>HomeVariant.ascx</DependentUpon>
+    </Compile>
     <Compile Include="WebsiteControls\ClientTagService.cs" />
     <Compile Include="WebsiteControls\ItemIDService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="config\" />
     <Folder Include="macroScripts\" />
-    <Folder Include="usercontrols\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -15,6 +15,7 @@ namespace UmbracoClient.masterpages
     {
         [Inject]
         public IWebsiteContentGateway WhiteLabelContentGateway { get; set; }
+        
 
         protected int BackgroundCount
         {

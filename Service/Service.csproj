@@ -65,6 +65,8 @@
     <Compile Include="MessageBase\PersistType.cs" />
     <Compile Include="MessageBase\RequestBase.cs" />
     <Compile Include="MessageBase\ResponseBase.cs" />
+    <Compile Include="Messages\HomeVariantRequest.cs" />
+    <Compile Include="Messages\HomeVariantResponse.cs" />
     <Compile Include="Messages\WebsiteNewsRequest.cs" />
     <Compile Include="Messages\WebsiteNewsResponse.cs" />
     <Compile Include="Messages\LoadOptions.cs" />
@@ -86,10 +88,12 @@
     <Compile Include="ServiceContracts\IService.cs" />
     <Compile Include="ServiceContracts\ISiteConfigurationService.cs" />
     <Compile Include="ServiceContracts\IWebsiteContentService.cs" />
+    <Compile Include="ServiceContracts\IWebsiteHomeVariantService.cs" />
     <Compile Include="ServiceImplementations\Service.cs" />
     <Compile Include="ServiceImplementations\SiteConfigurationService.cs" />
     <Compile Include="ServiceImplementations\WebsiteContentService.cs" />
     <Compile Include="ServiceImplementations\WebsiteEventService.cs" />
+    <Compile Include="ServiceImplementations\WebsiteHomeVariantService.cs" />
     <Compile Include="ServiceImplementations\WebsiteNavigationService.cs" />
     <Compile Include="ServiceImplementations\WebsiteNewsService.cs" />
   </ItemGroup>

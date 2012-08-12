@@ -76,12 +76,14 @@ namespace UmbracoClient.App_Start
             kernel.Bind<IWebsiteEventGateway>().To<WebsiteEventGateway>();
             kernel.Bind<IWebsitelNavigationGateway>().To<WebsitelNavigationGateway>();
             kernel.Bind<IWebsiteNewsGateway>().To<WebsiteNewsGateway>();
+            kernel.Bind<IWebsiteHomeVariantGateway>().To<WebsiteHomeVariantGateway>();
 
             kernel.Bind<ISiteConfigurationService>().To<SiteConfigurationService>();
             kernel.Bind<IWebsiteContentService>().To<WebsiteContentService>();
             kernel.Bind<IWebsiteEventService>().To<WebsiteEventService>();
             kernel.Bind<IWebsiteNavigationService>().To<WebsiteNavigationService>();
             kernel.Bind<IWebsiteNewsService>().To<WebsiteNewsService>();
+            kernel.Bind<IWebsiteHomeVariantService>().To<WebsiteHomeVariantService>();
 
 
             //call the RegisterServices in the service layer 

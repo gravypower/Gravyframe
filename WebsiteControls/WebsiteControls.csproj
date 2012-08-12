@@ -66,6 +66,8 @@
       <DependentUpon>SimpleContent.ascx</DependentUpon>
     </Compile>
     <Compile Include="Gateways\GatewayBase.cs" />
+    <Compile Include="Gateways\HomeVariant\IWebsiteHomeVariantGateway.cs" />
+    <Compile Include="Gateways\HomeVariant\WebsiteHomeVariantGateway.cs" />
     <Compile Include="Gateways\SiteConfiguration\ISiteConfigurationGateway.cs" />
     <Compile Include="Gateways\SiteConfiguration\SiteConfigurationGateway.cs" />
     <Compile Include="Gateways\WebsiteContent\IWebsiteContentGateway.cs" />
@@ -76,6 +78,13 @@
     <Compile Include="Gateways\WebsiteNavigation\WebsitelNavigationGateway.cs" />
     <Compile Include="Gateways\WebsiteNews\IWebsiteNewsGateway.cs" />
     <Compile Include="Gateways\WebsiteNews\WebsiteNewsGateway.cs" />
+    <Compile Include="Content\HomeVariants.ascx.cs">
+      <DependentUpon>HomeVariants.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Content\HomeVariants.ascx.designer.cs">
+      <DependentUpon>HomeVariants.ascx</DependentUpon>
+    </Compile>
     <Compile Include="IClientTagService.cs" />
     <Compile Include="IItemIDService.cs" />
     <Compile Include="LayoutUtils.cs" />
@@ -177,6 +186,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\SimpleContent.ascx" />
+    <Content Include="Content\HomeVariants.ascx" />
     <Content Include="Navigation\CommonNavigation.ascx" />
     <Content Include="Navigation\FooterNavigation.ascx" />
     <Content Include="Navigation\MainNavigation.ascx" />

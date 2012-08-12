@@ -55,9 +55,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants\Nodes.cs" />
     <Compile Include="Implementation\UmbracoSiteConfigurationDao.cs" />
     <Compile Include="Implementation\UmbracoWebsiteContentDao.cs" />
     <Compile Include="Implementation\UmbracoWebsiteEventDao.cs" />
+    <Compile Include="Implementation\UmbracoWebsiteHomeVariantDao.cs" />
     <Compile Include="Implementation\UmbracoWebsiteNavigationDao.cs" />
     <Compile Include="Implementation\UmbracoWebsiteNewsDao.cs" />
     <Compile Include="ModelMapper\Mapper.cs" />
@@ -86,9 +88,7 @@
       <Name>WebsiteKernel %28WebsiteKernel\WebsiteKernel%29</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Constants\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

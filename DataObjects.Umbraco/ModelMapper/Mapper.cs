@@ -75,11 +75,11 @@ namespace DataObjects.Umbraco.ModelMapper
                     foreach (var child in backgroundMedia.Children)
                     {
                         backgroundList.Add(
-                        new Glass.Sitecore.Mapper.FieldTypes.Image
-                        {
-                            Src = (string)child.getProperty("umbracoFile").Value
-                        }
-                    );
+                            new Glass.Sitecore.Mapper.FieldTypes.Image
+                            {
+                                Src = (string)child.getProperty("umbracoFile").Value
+                            }
+                        );
                     }
                 }
                 else if (backgroundMedia.ContentType.Alias == DocumentTypeAlias.Image)
@@ -96,6 +96,46 @@ namespace DataObjects.Umbraco.ModelMapper
             }
 
             return returnContent;
+        }
+
+        internal static HomeVariant MapHomeVariant(INode node)
+        {
+            var homeVariant = new HomeVariant
+            {
+                Body = node.GetProperty("body").Value,
+                Heading = node.GetProperty("heading").Value,
+                ImageLocation = node.GetProperty("imageLocation").Value,
+                TextLocation = node.GetProperty("textLocation").Value,
+            };
+
+            var pageImage = node.GetProperty("pageImage").Value;
+            int pageImageMediaID;
+            if (!String.IsNullOrEmpty(pageImage) && int.TryParse(pageImage, out pageImageMediaID))
+            {
+                var pageImageMedia = new Media(pageImageMediaID);
+
+                homeVariant.PageImage = 
+                    new Glass.Sitecore.Mapper.FieldTypes.Image
+                    {
+                        Src = (string)pageImageMedia.getProperty("umbracoFile").Value
+                    };
+            }
+
+            var textFooterIcon = node.GetProperty("textFooterIcon").Value;
+            int textFooterIconMediaID;
+            if (!String.IsNullOrEmpty(textFooterIcon) && int.TryParse(textFooterIcon, out textFooterIconMediaID))
+            {
+                var textFooterIconMedia = new Media(textFooterIconMediaID);
+
+                homeVariant.TextFooterIcon =
+                    new Glass.Sitecore.Mapper.FieldTypes.Image
+                    {
+                        Src = (string)textFooterIconMedia.getProperty("umbracoFile").Value
+                    };
+            }
+
+
+            return homeVariant;
         }
 
         internal static WebsiteNavigation MapWebsiteNavigation(INode node)

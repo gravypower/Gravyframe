@@ -33,6 +33,7 @@ namespace Service.Injection.Implementations
             kernel.Bind<IWebsiteEventDao>().To<UmbracoWebsiteEventDao>().InSingletonScope();
             kernel.Bind<IWebsiteNavigationDao>().To<UmbracoWebsiteNavigationDao>().InSingletonScope();
             kernel.Bind<IWebsiteNewsDao>().To<UmbracoWebsiteNewsDao>().InSingletonScope();
+            kernel.Bind<IWebsiteHomeVariantDao>().To<UmbracoWebsiteHomeVariantDao>().InSingletonScope();
         }
     }
 }

@@ -50,6 +50,7 @@
     <Compile Include="IWebsiteArticleDao.cs" />
     <Compile Include="IWebsiteContentDao.cs" />
     <Compile Include="IWebsiteEventDao.cs" />
+    <Compile Include="IWebsiteHomeVariantDao.cs" />
     <Compile Include="IWebsiteNavigationDao.cs" />
     <Compile Include="IWebsiteNewsDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
