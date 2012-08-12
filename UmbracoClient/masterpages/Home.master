@@ -20,12 +20,12 @@
 
     <script type="text/javascript">
         var numberOfBackgrounds = <%=BackgroundCount%>
-        var numberOfvariants = 5;
+        
         var backgroundCount = 1;
         var loopBackgrounds = numberOfBackgrounds > 1;
 
         var variantCount = 0;
-        var loopVariants = numberOfvariants > variantCount;
+        var loopVariants = numberOfvariants > 0;
 
         $(document).ready(function () {
 
@@ -54,17 +54,14 @@
                             $("#body_" + variantCount).fadeIn(2000);
                         });
 
-                        if (numberOfvariants == variantCount) {
-                            $("#body_" + variantCount).fadeOut(2000, function () {
-                                variantCount = 0;
-                                $("#body_" + variantCount).fadeIn(2000);
-                            });
+                        if (variantCount + 1 >= numberOfvariants) {
+                             variantCount = 0;
                         }
 
                         loopsiloop();
                     }
                 }
-            }, 10000);
+            }, 30000);
         })();
 
         function SwapBackground(to) {

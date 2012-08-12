@@ -32,9 +32,25 @@ namespace WebsiteControls.Gateways.WebsiteContent
 
         public IList<BusinessObjects.Content.HomeVariant> GetHomeVariants()
         {
-            var request = new HomeVariantRequest();
-            request.LoadOptions = new[] { LoadOptions.Get, LoadOptions.ObjectList};
-            return GetHomeVariants(null, request).HomeVariantList;
+            IList<BusinessObjects.Content.HomeVariant> retrunList;
+            //check that context item for the current page so we don't have to fetch it again
+            if (!HttpContext.Current.Items.Contains("GetHomeVariants"))
+            {
+                var request = new HomeVariantRequest();
+                request.LoadOptions = new[] { LoadOptions.Get, LoadOptions.ObjectList };
+                retrunList = GetHomeVariants(null, request).HomeVariantList;
+
+                //save it in the context items 
+                HttpContext.Current.Items.Add("GetHomeVariants", retrunList);
+            }
+            else
+            {
+                //it was there so lets just reuse it
+                retrunList = HttpContext.Current.Items["GetHomeVariants"] as IList<BusinessObjects.Content.HomeVariant>;
+            }
+
+            return retrunList;
+          
         }
 
         private HomeVariantResponse GetHomeVariants(LoadOptions[] loadOptions = null, HomeVariantRequest request = null)

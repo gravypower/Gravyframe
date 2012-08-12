@@ -40,8 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContentLocation.cs" />
     <Compile Include="DocumentTypeAlias.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebsiteKernel.Constants\WebsiteKernel.Constants.csproj">
+      <Project>{CDE063AC-EF99-4B0B-A5BF-B190F1871634}</Project>
+      <Name>WebsiteKernel.Constants</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
