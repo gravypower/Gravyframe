@@ -9,6 +9,8 @@ using Ninject;
 using BusinessObjects;
 using Ninject.Web;
 using WebsiteKernel.Umbraco;
+using WebsiteControls.Gateways.WebsiteContent;
+using BusinessObjects.Content;
 
 namespace UmbracoClient.masterpages
 {
@@ -34,11 +36,39 @@ namespace UmbracoClient.masterpages
         }
 
 
+        [Inject]
+        public IWebsiteContentGateway WhiteLabelContentGateway { get; set; }
+
+
+        protected int BackgroundCount
+        {
+            get
+            {
+                int count = 0;
+                if (Content.Backgrounds != null)
+                {
+                    count = Content.Backgrounds.Count();
+                }
+                return count;
+            }
+        }
+
+        protected WebsiteContent Content
+        {
+            get
+            {
+                return WhiteLabelContentGateway.GetCurrentPage();
+            }
+        }
+
         protected override void Page_Load(object sender, EventArgs e)
         {
             //check site settings so that we can work out what to show and hide
             panMainNavigation.Visible = SiteConfiguration.ShowMainNavigation;
             panFooterNavigation.Visible = SiteConfiguration.ShowFooterNavigation;
+
+            rptBackground.DataSource = Content.Backgrounds;
+            rptBackground.DataBind();
 
             base.Page_Load(sender, e);
         }
@@ -46,6 +76,30 @@ namespace UmbracoClient.masterpages
         {
             panSubMenuSpace.Visible = subMenuNav.Visible = sidebarNavigation.SubNavVisible;
             base.OnPreRender(e);
+        }
+
+        protected void rptBackground_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                var dataItem = (Glass.Sitecore.Mapper.FieldTypes.Image)e.Item.DataItem;
+                var imgBackground = (Image)e.Item.FindControl("imgBackground");
+
+                if ((e.Item.ItemIndex + 1) == BackgroundCount)
+                {
+                    imgBackground.ImageUrl = dataItem.Src;
+                    imgBackground.Attributes.Add("data-count", "1");
+                }
+                else
+                {
+                    imgBackground.ImageUrl = "~/Content/Images/onePixelpng.png";
+                    imgBackground.Attributes.Add("data-count", (BackgroundCount - e.Item.ItemIndex).ToString());
+                }
+
+                imgBackground.Attributes.Add("data-original", dataItem.Src);
+
+
+            }
         }
     }
 }

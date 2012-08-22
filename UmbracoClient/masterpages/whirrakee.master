@@ -22,8 +22,11 @@
                     <Gravy:SidebarNavigation ID="sidebarNavigation" runat="server" />
                 </nav>
             </header>
-            <asp:ContentPlaceHolder ID="background"  runat="server">
-            </asp:ContentPlaceHolder>
+            <asp:Repeater ID="rptBackground" runat="server" OnItemDataBound="rptBackground_ItemDataBound">
+                <ItemTemplate>
+                    <asp:Image ID="imgBackground" runat="server" CssClass="bg lazy" AlternateText="background Image" />
+                </ItemTemplate>
+            </asp:Repeater>
             <section id="content" class="content">
                 <asp:Panel id="panSubMenuSpace" runat="server" CssClass="sub-menu-space"></asp:Panel>
                 <asp:ContentPlaceHolder ID="pageContent"  runat="server">
@@ -36,6 +39,62 @@
     </body>
     <script src="/Scripts/jQuery/jquery.js" type="text/javascript"></script>
     <script src="/Scripts/jquery.lazyload.min.js" type="text/javascript"></script>
+
     <asp:ContentPlaceHolder ID="script"  runat="server">
     </asp:ContentPlaceHolder>
+
+    <script type="text/javascript">
+        var numberOfBackgrounds = <%=BackgroundCount%>
+        
+        var backgroundCount = 1;
+        var loopBackgrounds = numberOfBackgrounds > 1;
+
+        var variantCount = 0;
+        var loopVariants = numberOfvariants > 0;
+
+        $(document).ready(function () {
+
+            if (numberOfBackgrounds > 0) {
+                $(".lazy").lazyload()
+            }
+        });
+
+        (function loopsiloop() {
+            setTimeout(function () {
+                if (loopBackgrounds || loopVariants) {
+                    if (loopBackgrounds) {
+                        if (numberOfBackgrounds <= backgroundCount) {
+                            backgroundCount = 1;
+                            SwapBackground(backgroundCount, numberOfBackgrounds)
+                        }
+                        else {
+                            SwapBackground(backgroundCount + 1, backgroundCount)
+                            backgroundCount++;
+                        }
+                    }
+
+                    if (loopVariants) {
+                        $("#body_" + variantCount).fadeOut(2000, function () {
+                            variantCount++;
+                            $("#body_" + variantCount).fadeIn(2000);
+                        });
+
+                        if (variantCount + 1 >= numberOfvariants) {
+                             variantCount = 0;
+                        }
+
+                        loopsiloop();
+                    }
+                }
+            }, 30000);
+        })();
+
+        function SwapBackground(to) {
+            var background = $(".lazy[data-count=" + to + "]");
+            $(background).fadeIn(2000);
+
+            $(".lazy:not(.lazy[data-count=" + to + "])").fadeOut(2000);
+        }
+	</script>
+    
     </html>

@@ -10,6 +10,7 @@ using umbraco.NodeFactory;
 using umbraco.cms.businesslogic.media;
 using umbraco.cms.businesslogic;
 using WebsiteKernel.Umbraco.Constants;
+using Glass.Sitecore.Mapper.FieldTypes;
 
 namespace DataObjects.Umbraco.ModelMapper
 {
@@ -95,6 +96,18 @@ namespace DataObjects.Umbraco.ModelMapper
                 returnContent.Backgrounds = backgroundList;
             }
 
+            var featureImage = node.GetProperty("featureImage").Value;
+            int featureImageMediaId;
+            if (!String.IsNullOrEmpty(featureImage) && int.TryParse(featureImage, out featureImageMediaId))
+            {
+                var featureImageMedia = new Media(featureImageMediaId);
+
+                returnContent.FeatureImage = new Glass.Sitecore.Mapper.FieldTypes.Image
+                        {
+                            Src = (string)featureImageMedia.getProperty("umbracoFile").Value
+                        };
+            }
+
             return returnContent;
         }
 
@@ -140,15 +153,31 @@ namespace DataObjects.Umbraco.ModelMapper
 
         internal static WebsiteNavigation MapWebsiteNavigation(INode node)
         {
-            return new WebsiteNavigation
+            var websiteNavigation = new WebsiteNavigation
             {
                 //Icon
                 ItemClass = node.GetProperty("itemClass").Value,
                 MenuTitle = node.GetProperty("menuTitle").Value,
                 NavigateUrl = node.NiceUrl,
-                //Redirect = node.GetProperty("itemClass").Value,
                 Title = node.GetProperty("title").Value
             };
+
+            var redirect = node.GetProperty("redirect").Value;
+
+            if (!String.IsNullOrEmpty(redirect))
+            {
+                var redirectNode = new Node(int.Parse(redirect));
+                var link = new Link
+                {
+                    Url = redirectNode.NiceUrl,
+                    Text = node.GetProperty("menuTitle").Value
+                };
+                websiteNavigation.Redirect = link;
+            }
+
+
+
+            return websiteNavigation;
         }
     }
 }

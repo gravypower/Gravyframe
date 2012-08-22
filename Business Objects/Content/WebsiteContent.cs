@@ -45,6 +45,9 @@ namespace BusinessObjects.Content
         [SitecoreField]
         public virtual string Text { get; set; }
 
+        [SitecoreField]
+        public virtual Glass.Sitecore.Mapper.FieldTypes.Image FeatureImage { get; set; }
+
         #region Navigation
 
         /// <summary>

@@ -179,19 +179,12 @@ img.bg
 }
 
 .content
-{
+{    
 	position: relative;
-	width: 870px;
+	width: 790px;
 	margin: 150px auto;
 	background-color: White;
-}
-
-.content .content
-{
-	float: left;
-	width: 525px;
-	padding-left: 25px;
-	margin: 0;
+	padding: 25px;
 }
 
 .content .title
@@ -201,6 +194,14 @@ img.bg
 	padding-left: 25px;
 	text-transform: uppercase;
 	margin: 0;
+}
+
+.content .body
+{
+    float: left;
+    width: 525px;
+    padding-left: 25px;
+    margin: 0;
 }
 
 .full-page

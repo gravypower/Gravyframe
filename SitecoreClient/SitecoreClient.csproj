@@ -155,6 +155,7 @@
     </Content>
     <Content Include="App_Config\ConnectionStrings.config">
       <TransformOnBuild>true</TransformOnBuild>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="App_Config\FieldTypes.config">
       <TransformOnBuild>true</TransformOnBuild>

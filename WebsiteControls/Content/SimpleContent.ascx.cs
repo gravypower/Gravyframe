@@ -35,6 +35,12 @@ namespace WebsiteControls.Content
 
             //sets the body text
             litText.Text = currentItem.Text;
+
+            litTitle.Text = currentItem.Title;
+            if (currentItem.FeatureImage != null)
+            {
+                imgfeatureImage.ImageUrl = currentItem.FeatureImage.Src;
+            }
         }
     }
 }
