@@ -4,7 +4,9 @@
 
 
 <asp:Content ID="Content4" ContentPlaceHolderID="pageContent" runat="server">
-    <Gravy:HomeVariants ID="HomeVariants" runat="server" />
+    <section id="content" class="home-content"> 
+        <Gravy:HomeVariants ID="HomeVariants" runat="server" />
+    </section>
 </asp:Content>
 
 

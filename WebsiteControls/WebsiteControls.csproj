@@ -95,6 +95,13 @@
     <Compile Include="Navigation\CommonNavigation.ascx.designer.cs">
       <DependentUpon>CommonNavigation.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Navigation\FeaturedNavigation.ascx.cs">
+      <DependentUpon>FeaturedNavigation.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Navigation\FeaturedNavigation.ascx.designer.cs">
+      <DependentUpon>FeaturedNavigation.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Navigation\FooterNavigation.ascx.cs">
       <DependentUpon>FooterNavigation.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -192,6 +199,7 @@
     <Content Include="Content\SimpleContent.ascx" />
     <Content Include="Content\HomeVariants.ascx" />
     <Content Include="Navigation\CommonNavigation.ascx" />
+    <Content Include="Navigation\FeaturedNavigation.ascx" />
     <Content Include="Navigation\FooterNavigation.ascx" />
     <Content Include="Navigation\MainNavigation.ascx" />
     <Content Include="Navigation\SidebarNavigation.ascx" />

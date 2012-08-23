@@ -105,5 +105,11 @@ namespace DataObjects.Sitecore.Implementation
 
             return returnWhiteLabelContentList;
         }
+
+
+        public IEnumerable<WebsiteNavigation> GetWebsiteFeaturedNavigation(string contentId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

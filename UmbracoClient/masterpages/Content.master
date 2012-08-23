@@ -5,7 +5,10 @@
 </asp:content>
 
 <asp:content ID="Content3" ContentPlaceHolderId="pageContent" runat="server">
-  <Gravy:SimpleContent ID="SimpleContent" runat="server" />
+    <section id="content" class="content"> 
+        <Gravy:SimpleContent ID="SimpleContent" runat="server" />
+        <Gravy:FeaturedNavigation ID="FeaturedNavigation" runat="server" />
+    </section>
 </asp:content>
 
 <asp:content ID="Content4" ContentPlaceHolderId="script" runat="server">

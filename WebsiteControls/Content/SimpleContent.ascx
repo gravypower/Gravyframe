@@ -15,9 +15,5 @@
 </div>
 	
 
-<nav class="feature-menu nav">
-
-</nav>
-
 <div class="clear"></div>
 

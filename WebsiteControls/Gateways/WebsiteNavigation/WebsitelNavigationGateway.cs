@@ -63,6 +63,14 @@ namespace WebsiteControls.Gateways.WebsiteNavigation
             throw new NotImplementedException();
         }
 
+        public IList<BusinessObjects.Navigation.WebsiteNavigation> GetFeaturedNavigation()
+        {
+            var request = new WebsiteNavigationRequest();
+            request.LoadOptions = new[] { "FeaturedNavigation" };
+            request.ContentId = itemIDService.GetContextItemId();
+            return GetWebsiteNavigation(null, request).WhiteLabelNavigationList;
+        }
+
 
         private WebsiteNavigationResponse GetWebsiteNavigation(string[] loadOptions = null, WebsiteNavigationRequest request = null)
         {

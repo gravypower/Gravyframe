@@ -77,5 +77,24 @@ namespace DataObjects.Umbraco.Implementation
 
             return returnWhiteLabelContentList;
         }
+
+
+        public IEnumerable<WebsiteNavigation> GetWebsiteFeaturedNavigation(string contentId)
+        {
+            var returnWhiteLabelContentList = new List<WebsiteNavigation>();
+            var content = new Node(int.Parse(contentId));
+
+            var featuredNavigation = content.GetProperty("featuredNavigation").Value;
+            
+            var featuredNavigationItems = featuredNavigation.Split(',');
+
+            foreach (var item in featuredNavigationItems)
+            {
+                var node = new Node(int.Parse(item));
+                returnWhiteLabelContentList.Add(ModelMapper.Mapper.MapWebsiteNavigation(node));
+            }
+
+            return returnWhiteLabelContentList;
+        }
     }
 }

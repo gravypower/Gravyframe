@@ -53,6 +53,10 @@ namespace Service.ServiceImplementations
                 var siteConfiguration = siteConfigurationDao.GetSiteConfiguration();
                 response.WhiteLabelNavigationList = websiteNavigationDao.GetWebsiteArticleNavigation(siteConfiguration.NewsBucket).ToList();
             }
+            else if (request.LoadOptions.Contains("FeaturedNavigation"))
+            {
+                response.WhiteLabelNavigationList = websiteNavigationDao.GetWebsiteFeaturedNavigation(request.ContentId).ToList();
+            }
 
             return response;
         }

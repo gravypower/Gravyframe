@@ -40,6 +40,14 @@ namespace BusinessObjects.Navigation
         [SitecoreField]
         public virtual Glass.Sitecore.Mapper.FieldTypes.Image Icon { get; set; }
 
+
+        /// <summary>
+        /// Gets or sets the icon.
+        /// </summary>
+        /// <value>The icon.</value>
+        [SitecoreField]
+        public virtual Glass.Sitecore.Mapper.FieldTypes.Image FeaturedImage { get; set; }
+
         /// <summary>
         /// Gets or sets the redirect.
         /// </summary>

@@ -16,5 +16,7 @@ namespace WebsiteControls.Gateways.WebsiteNavigation
         IList<BusinessObjects.Navigation.WebsiteNavigation> GetNewsNavigation();
 
         IList<BusinessObjects.Navigation.WebsiteNavigation> GetEventNavigation();
+
+        IList<BusinessObjects.Navigation.WebsiteNavigation> GetFeaturedNavigation();
     }
 }

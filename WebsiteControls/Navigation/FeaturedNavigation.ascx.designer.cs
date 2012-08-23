@@ -7,27 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UmbracoClient.masterpages {
+namespace WebsiteControls.Navigation {
     
     
-    public partial class Content {
+    public partial class FeaturedNavigation {
         
         /// <summary>
-        /// SimpleContent control.
+        /// plhNavigation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::WebsiteControls.Content.SimpleContent SimpleContent;
+        protected global::System.Web.UI.WebControls.PlaceHolder plhNavigation;
         
         /// <summary>
-        /// FeaturedNavigation control.
+        /// rptFeaturedNavigation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::WebsiteControls.Navigation.FeaturedNavigation FeaturedNavigation;
+        protected global::System.Web.UI.WebControls.Repeater rptFeaturedNavigation;
     }
 }

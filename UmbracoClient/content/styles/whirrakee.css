@@ -84,14 +84,14 @@ img.bg
 
 .feature-menu
 {
-	min-height: 150px;
+	min-height: 100px;
 }
 
 .feature-menu a
 {
 	color: Black;
 	text-decoration: none;
-	padding-left: 25px;
+	padding-left: 10px;
 	text-transform: uppercase;
 	font: 20px 'OSPDIN', Arial, sans-serif;
 	float: left;
@@ -106,7 +106,7 @@ img.bg
 .nav-image
 {
 	width:250px; 
-	height: 80px; 
+	height: 95px; 
 	border-top: 1px solid #BDBEC1; 
 	padding-top: 15px;
 }
@@ -178,6 +178,14 @@ img.bg
 	height: 100px;
 }
 
+.home-content
+{    
+	position: relative;
+	width: 790px;
+	margin: 150px auto;
+	padding: 25px;
+}
+
 .content
 {    
 	position: relative;
@@ -191,7 +199,6 @@ img.bg
 {
 	float: left;
 	width: 250px;
-	padding-left: 25px;
 	text-transform: uppercase;
 	margin: 0;
 }

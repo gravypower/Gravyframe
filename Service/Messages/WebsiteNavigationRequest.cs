@@ -16,5 +16,8 @@ namespace Service.Messages
         /// <value>The side navigation start item.</value>
         [DataMember]
         public string SideNavigationStartItem { get; set; }
+
+        [DataMember]
+        public string ContentId { get; set; }
     }
 }

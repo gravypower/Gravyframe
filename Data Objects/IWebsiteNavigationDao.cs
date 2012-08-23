@@ -11,5 +11,6 @@ namespace DataObjects
         IEnumerable<WebsiteNavigation> GetNavigationItems(string navigationId);
         IEnumerable<WebsiteNavigation> GetNavigationItems(string navigationId, string navigationStartItemID);
         IEnumerable<WebsiteNavigation> GetWebsiteArticleNavigation(string bucketId);
+        IEnumerable<WebsiteNavigation> GetWebsiteFeaturedNavigation(string contentId);
     }
 }

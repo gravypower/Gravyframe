@@ -175,6 +175,22 @@ namespace DataObjects.Umbraco.ModelMapper
                 websiteNavigation.Redirect = link;
             }
 
+            var featuredNavigationNode = node.GetProperty("featuredNavigationImage");
+            if (featuredNavigationNode != null)
+            {
+                var featuredNavigationImage = featuredNavigationNode.Value;
+                int featuredNavigationImageMediaID;
+                if (!String.IsNullOrEmpty(featuredNavigationImage) && int.TryParse(featuredNavigationImage, out featuredNavigationImageMediaID))
+                {
+                    var textFooterIconMedia = new Media(featuredNavigationImageMediaID);
+
+                    websiteNavigation.FeaturedImage =
+                        new Glass.Sitecore.Mapper.FieldTypes.Image
+                        {
+                            Src = (string)textFooterIconMedia.getProperty("umbracoFile").Value
+                        };
+                }
+            }
 
 
             return websiteNavigation;

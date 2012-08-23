@@ -27,11 +27,11 @@
                     <asp:Image ID="imgBackground" runat="server" CssClass="bg lazy" AlternateText="background Image" />
                 </ItemTemplate>
             </asp:Repeater>
-            <section id="content" class="content">
-                <asp:Panel id="panSubMenuSpace" runat="server" CssClass="sub-menu-space"></asp:Panel>
-                <asp:ContentPlaceHolder ID="pageContent"  runat="server">
+            <asp:Panel id="panSubMenuSpace" runat="server" CssClass="sub-menu-space"></asp:Panel>
+                        
+            <asp:ContentPlaceHolder ID="pageContent"  runat="server">
             </asp:ContentPlaceHolder>
-            </section>
+
             <asp:panel id="panFooterNavigation" runat="server">
                 <Gravy:FooterNavigation ID="footerNavigation" runat="server" />
             </asp:panel>
@@ -95,6 +95,15 @@
 
             $(".lazy:not(.lazy[data-count=" + to + "])").fadeOut(2000);
         }
+
+        $(".nav-image").hover(
+		    function () {
+			    $(this).find(".appearing-image").fadeIn('slow');
+		    },
+		    function () {
+			    $(this).find(".appearing-image").fadeOut('slow');
+		    }
+	    );
 	</script>
     
     </html>
