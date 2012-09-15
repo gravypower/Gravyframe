@@ -90,8 +90,15 @@ namespace DataObjects.Umbraco.Implementation
 
             foreach (var item in featuredNavigationItems)
             {
-                var node = new Node(int.Parse(item));
-                returnWhiteLabelContentList.Add(ModelMapper.Mapper.MapWebsiteNavigation(node));
+                if (!String.IsNullOrEmpty(item))
+                {
+                    int nodeID = 0;
+                    if (Int32.TryParse(item, out nodeID))
+                    {
+                        var node = new Node(nodeID);
+                        returnWhiteLabelContentList.Add(ModelMapper.Mapper.MapWebsiteNavigation(node));
+                    }
+                }
             }
 
             return returnWhiteLabelContentList;

@@ -1,0 +1,1 @@
+XCOPY "C:\Users\Aaron Job\Documents\GitHub\Gravy-Frame\UmbracoClient\*.*" "C:\Users\Aaron Job\Documents\GitHub\Dependency\whirrakee.umbraco\" /D /E /C /R /H /I /K /Y

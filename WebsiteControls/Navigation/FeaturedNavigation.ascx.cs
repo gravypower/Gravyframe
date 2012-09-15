@@ -34,17 +34,20 @@ namespace WebsiteControls.Navigation
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
                 var navDataItem = (WebsiteNavigation)e.Item.DataItem;
-                var hypFeaturedNavigationItem = (HyperLink)e.Item.FindControl("hypFeaturedNavigationItem");
-                var panVisibleImage = (Panel)e.Item.FindControl("panVisibleImage");
-                var panAppearingImage = (Panel)e.Item.FindControl("panAppearingImage");
+                if (navDataItem!= null && navDataItem.FeaturedImage != null)
+                {
+                    var hypFeaturedNavigationItem = (HyperLink)e.Item.FindControl("hypFeaturedNavigationItem");
+                    var panVisibleImage = (Panel)e.Item.FindControl("panVisibleImage");
+                    var panAppearingImage = (Panel)e.Item.FindControl("panAppearingImage");
 
-                var litTitle = (Literal)e.Item.FindControl("litTitle");
+                    var litTitle = (Literal)e.Item.FindControl("litTitle");
 
-                panVisibleImage.Style.Add("background-image", navDataItem.FeaturedImage.Src);
-                panAppearingImage.Style.Add("background-image", navDataItem.FeaturedImage.Src);
+                    panVisibleImage.Style.Add("background-image", navDataItem.FeaturedImage.Src);
+                    panAppearingImage.Style.Add("background-image", navDataItem.FeaturedImage.Src);
 
-                hypFeaturedNavigationItem.NavigateUrl = navDataItem.NavigateUrl;
-                litTitle.Text = navDataItem.Title;
+                    hypFeaturedNavigationItem.NavigateUrl = navDataItem.NavigateUrl;
+                    litTitle.Text = navDataItem.Title;
+                }
 
             }
         }
