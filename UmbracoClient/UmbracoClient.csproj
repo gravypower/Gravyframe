@@ -74,8 +74,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="content\images\McIvorForestLogo.png" />
     <Content Include="content\images\onePixelpng.png" />
     <Content Include="content\images\whirrakeeLogo.png" />
+    <Content Include="content\styles\McIvorForest.css" />
     <Content Include="content\styles\whirrakee.css" />
     <Content Include="Scripts\jquery.lazyload.min.js" />
     <Content Include="Scripts\jQuery\jquery.js" />
@@ -87,6 +89,7 @@
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -98,6 +101,20 @@
     </Compile>
     <Compile Include="masterpages\Content.master.designer.cs">
       <DependentUpon>Content.master</DependentUpon>
+    </Compile>
+    <Compile Include="masterpages\McIvorForestContent.master.cs">
+      <DependentUpon>McIvorForestContent.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="masterpages\McIvorForestContent.master.designer.cs">
+      <DependentUpon>McIvorForestContent.master</DependentUpon>
+    </Compile>
+    <Compile Include="masterpages\McIvorForest.master.cs">
+      <DependentUpon>McIvorForest.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="masterpages\McIvorForest.master.designer.cs">
+      <DependentUpon>McIvorForest.master</DependentUpon>
     </Compile>
     <Compile Include="masterpages\Home.master.cs">
       <DependentUpon>Home.master</DependentUpon>
@@ -166,6 +183,8 @@
     <None Include="content\fonts\OSP-DIN-webfont.ttf" />
     <Content Include="masterpages\Home.master" />
     <Content Include="masterpages\Content.master" />
+    <Content Include="masterpages\McIvorForest.master" />
+    <Content Include="masterpages\McIvorForestContent.master" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
