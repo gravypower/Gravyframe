@@ -61,7 +61,7 @@ namespace WebsiteControls.Navigation
                 else
                 {
                     //otherwise just display the text
-                    hypNavItem.Text = navDataItem.Title;
+                    hypNavItem.Text = String.IsNullOrEmpty(navDataItem.MenuTitle) ? navDataItem.MenuTitle : navDataItem.Title;
                 }
 
                 //is the a redirected item?

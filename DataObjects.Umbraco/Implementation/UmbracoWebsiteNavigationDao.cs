@@ -69,15 +69,19 @@ namespace DataObjects.Umbraco.Implementation
                 startItem = navigationStartItem.Parent;
             }
 
-            if (navigationStartItem.GetProperty("location").Value.Contains(navigationId))
-            {
-                returnWhiteLabelContentList.Add(ModelMapper.Mapper.MapWebsiteNavigation(navigationStartItem));
-            }
+            
 
             //iterate though the children that have the navigationId added to the Location Tree List Field
             foreach (var item in startItem.ChildrenAsList.Where(item => item.GetProperty("location").Value.Contains(navigationId)))
             {
                returnWhiteLabelContentList.Add(ModelMapper.Mapper.MapWebsiteNavigation(item));
+            }
+
+
+            if (navigationStartItem.GetProperty("location").Value.Contains(navigationId) &&
+                !returnWhiteLabelContentList.Any(x=>x.NavigateUrl == navigationStartItem.NiceUrl))
+            {
+                returnWhiteLabelContentList.Insert(0, ModelMapper.Mapper.MapWebsiteNavigation(navigationStartItem));
             }
 
             return returnWhiteLabelContentList;

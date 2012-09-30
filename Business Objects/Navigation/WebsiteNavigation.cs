@@ -10,8 +10,6 @@ namespace BusinessObjects.Navigation
     [SitecoreClass, Serializable]
     public class WebsiteNavigation
     {
-
-
         /// <summary>
         /// Gets or sets the title.
         /// </summary>

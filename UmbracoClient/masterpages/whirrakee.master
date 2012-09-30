@@ -17,7 +17,7 @@
                     </asp:panel>
                 </nav>
                 <div class="top-logo">
-                    <img src="../content/images/whirrakeeLogo.png" alt="whirrakee" style="display: block; margin-left: auto; margin-right: auto" />
+                    <img src="/content/images/whirrakeeLogo.png" alt="whirrakee" style="display: block; margin-left: auto; margin-right: auto" />
                 </div>
                 <nav id="subMenuNav" runat="server" class="sub-menu nav">
                     <Gravy:SidebarNavigation ID="sidebarNavigation" runat="server" />
