@@ -6,6 +6,7 @@
         <asp:ContentPlaceHolder ID="head" runat="server">
         </asp:ContentPlaceHolder>
         <link rel="stylesheet" href="../content/styles/whirrakee.css" />
+        <Gravy:GoogleAnalytics ID="GoogleAnalytics" runat="server" />
     </head>
     <body id="index" class="home">
         <form id="form1" runat="server">
@@ -42,7 +43,10 @@
 
     <asp:ContentPlaceHolder ID="script"  runat="server">
     </asp:ContentPlaceHolder>
-
+    
+    <%--<div><a href="javascript:void(window.open('http://cms.dimmi.com.au/Widget/Default.aspx?id=2288&location=http%253A//www.whirrakeerestaurant.com.au/index-2.html','Dimmi','width=302,height=432,top=60,left=60'))">
+	<img src="../images/book_online.gif" width="150" height="34" style="border:none;" alt="Book Online" /></a></div>
+--%>
     <script type="text/javascript">
         var numberOfBackgrounds = <%=BackgroundCount%>
         

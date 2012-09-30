@@ -8,5 +8,6 @@ namespace WebsiteControls.Gateways.WebsiteContent
     public interface IWebsiteContentGateway
     {
         BusinessObjects.Content.WebsiteContent GetCurrentPage();
+        BusinessObjects.Content.WebsiteContent CurrentPageChildren();
     }
 }

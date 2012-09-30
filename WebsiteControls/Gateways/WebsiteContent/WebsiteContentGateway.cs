@@ -58,6 +58,33 @@ namespace WebsiteControls.Gateways.WebsiteContent
 
 
         /// <summary>
+        /// Gets the current page.
+        /// </summary>
+        /// <returns>the WebsiteContent representing the current page</returns>
+        public BusinessObjects.Content.WebsiteContent CurrentPageChildren()
+        {
+            BusinessObjects.Content.WebsiteContent returnWhiteLabelContent = null;
+
+            //check that context item for the current page so we don't have to fetch it again
+            if (!HttpContext.Current.Items.Contains("CurrentPageChildren"))
+            {
+                //its not there get it form the service
+                returnWhiteLabelContent = GetWhiteLabelContent(new[] { "CurrentPageChildren" }).WebsiteContent;
+
+                //save it in the context items 
+                HttpContext.Current.Items.Add("CurrentPageChildren", returnWhiteLabelContent);
+            }
+            else
+            {
+                //it was there so lets just reuse it
+                returnWhiteLabelContent = HttpContext.Current.Items["CurrentPageChildren"] as BusinessObjects.Content.WebsiteContent;
+            }
+
+            return returnWhiteLabelContent;
+        }
+
+
+        /// <summary>
         /// Gets the content of the white label.
         /// </summary>
         /// <param name="loadOptions">The load options.</param>

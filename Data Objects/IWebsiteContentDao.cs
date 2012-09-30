@@ -10,5 +10,6 @@ namespace DataObjects
     {
         WebsiteContent GetWebsiteContent(string websiteContentContentId);
         WebsiteContent GetCurrentWebsiteContent();
+        IList<BusinessObjects.Content.WebsiteContent> GetCurrentWebsiteContentChildren();
     }
 }

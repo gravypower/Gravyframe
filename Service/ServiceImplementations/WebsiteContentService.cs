@@ -41,6 +41,10 @@ namespace Service.ServiceImplementations
             {
                 response.WebsiteContent = websiteContentDao.GetCurrentWebsiteContent();
             }
+            else if (request.LoadOptions.Contains("CurrentPageChildren"))
+            {
+                response.WebsiteContentList = websiteContentDao.GetCurrentWebsiteContentChildren();
+            }
 
             return response;
         }

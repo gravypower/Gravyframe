@@ -36,5 +36,11 @@ namespace DataObjects.Sitecore.Implementation
         {
             return context.GetItem<BusinessObjects.Content.WebsiteContent>(websiteContentId);
         }
+
+
+        public IList<BusinessObjects.Content.WebsiteContent> GetCurrentWebsiteContentChildren()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

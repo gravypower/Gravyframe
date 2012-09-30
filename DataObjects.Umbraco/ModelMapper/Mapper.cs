@@ -44,7 +44,8 @@ namespace DataObjects.Umbraco.ModelMapper
                 //Twitter = node.GetProperty("twitter").Value,
                 //TwitterIcon = node.GetProperty("twitterIcon").Value,
                 UseDefaultEventImage = node.GetProperty("useDefaultEventImage").Value== "1",
-                UseDefaultNewsImage = node.GetProperty("useDefaultNewsImage").Value == "1"
+                UseDefaultNewsImage = node.GetProperty("useDefaultNewsImage").Value == "1",
+                GoogleAnalyticsTrackingCode = node.GetProperty("googleAnalyticsTrackingCode").Value
             };
         }
 
@@ -70,26 +71,20 @@ namespace DataObjects.Umbraco.ModelMapper
             if (!String.IsNullOrEmpty(background) && int.TryParse(background, out backgroundMediaId))
             {
                 var backgroundMedia = new Media(backgroundMediaId);
-                var backgroundList = new List<Glass.Sitecore.Mapper.FieldTypes.Image>();
+                var backgroundList = new List<Image>();
                 if (backgroundMedia.ContentType.Alias == DocumentTypeAlias.Folder)
                 {
                     foreach (var child in backgroundMedia.Children)
                     {
                         backgroundList.Add(
-                            new Glass.Sitecore.Mapper.FieldTypes.Image
-                            {
-                                Src = (string)child.getProperty("umbracoFile").Value
-                            }
+                           NewImage(child)
                         );
                     }
                 }
                 else if (backgroundMedia.ContentType.Alias == DocumentTypeAlias.Image)
                 {
                     backgroundList.Add(
-                        new Glass.Sitecore.Mapper.FieldTypes.Image
-                        {
-                            Src = (string)backgroundMedia.getProperty("umbracoFile").Value
-                        }
+                        NewImage(backgroundMedia)                        
                     );
                 }
 
@@ -125,29 +120,15 @@ namespace DataObjects.Umbraco.ModelMapper
             int pageImageMediaID;
             if (!String.IsNullOrEmpty(pageImage) && int.TryParse(pageImage, out pageImageMediaID))
             {
-                var pageImageMedia = new Media(pageImageMediaID);
-
-                homeVariant.PageImage = 
-                    new Glass.Sitecore.Mapper.FieldTypes.Image
-                    {
-                        Src = (string)pageImageMedia.getProperty("umbracoFile").Value
-                    };
+                homeVariant.PageImage = NewImage(new Media(pageImageMediaID));
             }
 
             var textFooterIcon = node.GetProperty("textFooterIcon").Value;
             int textFooterIconMediaID;
             if (!String.IsNullOrEmpty(textFooterIcon) && int.TryParse(textFooterIcon, out textFooterIconMediaID))
             {
-                var textFooterIconMedia = new Media(textFooterIconMediaID);
-
-                homeVariant.TextFooterIcon =
-                    new Glass.Sitecore.Mapper.FieldTypes.Image
-                    {
-                        Src = (string)textFooterIconMedia.getProperty("umbracoFile").Value
-                    };
+                homeVariant.TextFooterIcon = NewImage(new Media(textFooterIconMediaID));
             }
-
-
             return homeVariant;
         }
 
@@ -182,18 +163,18 @@ namespace DataObjects.Umbraco.ModelMapper
                 int featuredNavigationImageMediaID;
                 if (!String.IsNullOrEmpty(featuredNavigationImage) && int.TryParse(featuredNavigationImage, out featuredNavigationImageMediaID))
                 {
-                    var textFooterIconMedia = new Media(featuredNavigationImageMediaID);
-
-                    websiteNavigation.FeaturedImage =
-                        new Glass.Sitecore.Mapper.FieldTypes.Image
-                        {
-                            Src = (string)textFooterIconMedia.getProperty("umbracoFile").Value
-                        };
+                    websiteNavigation.FeaturedImage =NewImage(new Media(featuredNavigationImageMediaID));
                 }
             }
-
-
             return websiteNavigation;
+        }
+
+        private static Image NewImage(Media child)
+        {
+            return new Glass.Sitecore.Mapper.FieldTypes.Image
+            {
+                Src = (string)child.getProperty("umbracoFile").Value
+            };
         }
     }
 }

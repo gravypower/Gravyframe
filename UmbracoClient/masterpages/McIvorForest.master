@@ -5,19 +5,19 @@
         <title></title>
         <asp:ContentPlaceHolder ID="head" runat="server">
         </asp:ContentPlaceHolder>
-        <link rel="stylesheet" href="../content/styles/McIvorForest.css" />
+        <link rel="stylesheet" href="/content/styles/McIvorForest.css" />
     </head>
     <body id="index" class="home">
         <form id="form1" runat="server">
-            <header id="banner" class="banner">
+            <header id="banner" class="banner">                
+                <div class="top-logo">
+                    <img src="/content/images/McIvorForestLogo.jpg" alt="McIvorForest" style="display: block; margin-left: auto; margin-right: auto" />
+                </div>
                 <nav class="main-menu nav">
                     <asp:Panel id="panMainNavigation" runat="server">
                         <Gravy:MainNavigation ID="mainNavigation" runat="server" />
                     </asp:Panel>
                 </nav>
-                <div class="top-logo">
-                    <img src="../content/images/McIvorForestLogo.png" alt="McIvorForest" style="display: block; margin-left: auto; margin-right: auto" />
-                </div>
                 <nav id="subMenuNav" runat="server" class="sub-menu nav">
                     <Gravy:SidebarNavigation ID="sidebarNavigation" runat="server" />
                 </nav>

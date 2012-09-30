@@ -1,17 +1,7 @@
-﻿@font-face {
-    font-family: 'OSPDIN';
-    src: url('../fonts/OSP-DIN-webfont.eot');
-    src: url('../fonts/OSP-DIN-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/OSP-DIN-webfont.woff') format('woff'),
-         url('../fonts/OSP-DIN-webfont.ttf') format('truetype'),
-         url('../fonts/OSP-DIN-webfont.svg#OSPDIN') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
+﻿
 body
 {
+    font-family:Times New Roman;
 }
 
 .banner
@@ -48,31 +38,31 @@ img.bg
 {
 	position: relative;
 	width: 100%;
-	background: Black;
+	background: 2d2d58;
 	height: 30px;
 	color: #000;
 	margin:0;
 	padding:0;
 	text-align: center;
 	text-transform: uppercase;
-	font: 20px 'OSPDIN', Arial, sans-serif;
+	font-size: 20px;
 }
 .main-menu a
 {
-	color: #999;
+	color: #3851BF;
 	text-decoration: none;
 	padding-left: 15px;
 }
 
 .main-menu a.active
 {
-	color: #FFF;
+	color: #000080;
 	text-decoration: none;
 }
 
 .main-menu a:hover
 {
-	color: #FFF;
+	color: #000080;
 	text-decoration: none;
 }
 
@@ -93,7 +83,7 @@ img.bg
 	text-decoration: none;
 	padding-left: 10px;
 	text-transform: uppercase;
-	font: 20px 'OSPDIN', Arial, sans-serif;
+	font-size: 20px;
 	float: left;
 }
 
@@ -122,7 +112,7 @@ img.bg
 	padding:0;
 	text-align: center;
 	text-transform: uppercase;
-	font: 20px 'OSPDIN', Arial, sans-serif;
+	font-size: 20px;
 	border-top: 1px solid #BDBEC1;
 }
 
@@ -197,16 +187,12 @@ img.bg
 
 .content .title
 {
-	float: left;
-	width: 250px;
 	text-transform: uppercase;
 	margin: 0;
 }
 
 .content .body
 {
-    float: left;
-    width: 490px;
     padding-left: 25px;
     margin: 0;
 }
@@ -238,14 +224,16 @@ img.bg
 .column p, .column h1 
 {
 	padding: 5px; 
-	font: 25px ,Times New Roman, Arial, sans-serif;
+	font-size: 25px;
+	color: #000080;
 	margin: 0;
 }
 .wide, .thin { clear:both; }
 
 h2
 {
-	font: 25px 'OSPDIN', Arial, sans-serif;
+	font-size: 25px;
+	color: #000080;
 }
 
 .am-wrapper{

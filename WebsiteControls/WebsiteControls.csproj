@@ -58,6 +58,20 @@
     <Reference Include="System.Web.ApplicationServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Analytics\GoogleAnalytics.ascx.cs">
+      <DependentUpon>GoogleAnalytics.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Analytics\GoogleAnalytics.ascx.designer.cs">
+      <DependentUpon>GoogleAnalytics.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Content\Accordion.ascx.cs">
+      <DependentUpon>Accordion.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Content\Accordion.ascx.designer.cs">
+      <DependentUpon>Accordion.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Content\SimpleContent.ascx.cs">
       <DependentUpon>SimpleContent.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -196,6 +210,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Analytics\GoogleAnalytics.ascx" />
+    <Content Include="Content\Accordion.ascx" />
     <Content Include="Content\SimpleContent.ascx" />
     <Content Include="Content\HomeVariants.ascx" />
     <Content Include="Navigation\CommonNavigation.ascx" />

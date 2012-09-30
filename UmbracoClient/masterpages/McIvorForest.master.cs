@@ -63,6 +63,7 @@ namespace UmbracoClient.masterpages
 
         protected override void Page_Load(object sender, EventArgs e)
         {
+
             //check site settings so that we can work out what to show and hide
             panMainNavigation.Visible = SiteConfiguration.ShowMainNavigation;
             panFooterNavigation.Visible = SiteConfiguration.ShowFooterNavigation;

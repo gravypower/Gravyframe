@@ -220,6 +220,17 @@ namespace BusinessObjects
         public DefaultListing DefaultEventListing { get; set; }
 
         #endregion
+
+        #region GoogleanAlytics
+
+        /// <summary>
+        /// Gets or sets the Google Analytics Tracking Code.
+        /// </summary>
+        /// <value>The Google Analytics Tracking Code.</value>
+        [SitecoreField("Google Analytics Tracking Code")]
+        public string GoogleAnalyticsTrackingCode { get; set; }
+        
+        #endregion
     }
 
     [SitecoreClass]

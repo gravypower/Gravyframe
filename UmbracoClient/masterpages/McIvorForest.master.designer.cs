@@ -8,9 +8,9 @@
 //------------------------------------------------------------------------------
 
 namespace UmbracoClient.masterpages {
-
-
-    public partial class mcIvorForest{
+    
+    
+    public partial class mcIvorForest {
         
         /// <summary>
         /// Head1 control.
