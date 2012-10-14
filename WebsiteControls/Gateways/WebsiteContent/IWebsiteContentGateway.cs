@@ -9,5 +9,6 @@ namespace WebsiteControls.Gateways.WebsiteContent
     {
         BusinessObjects.Content.WebsiteContent GetCurrentPage();
         BusinessObjects.Content.WebsiteContent CurrentPageChildren();
+        IList<BusinessObjects.Gallery.GalleryImage> GetImageGallery();
     }
 }

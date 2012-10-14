@@ -5,6 +5,7 @@ using System.Text;
 using Service.MessageBase;
 using System.Runtime.Serialization;
 using BusinessObjects.Content;
+using BusinessObjects.Gallery;
 
 namespace Service.Messages
 {
@@ -17,6 +18,9 @@ namespace Service.Messages
 
         [DataMember]
         public IList<WebsiteContent> WebsiteContentList;
+
+        [DataMember]
+        public IList<GalleryImage> GalleryImageList;
 
         [DataMember]
         public WebsiteContent WebsiteContent;

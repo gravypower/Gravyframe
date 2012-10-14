@@ -50,6 +50,7 @@
     <Compile Include="Content\HomeVariant.cs" />
     <Compile Include="Content\WebsiteContent.cs" />
     <Compile Include="Event\WebsiteEvent.cs" />
+    <Compile Include="Gallery\GalleryImage.cs" />
     <Compile Include="Navigation\WebsiteNavigation.cs" />
     <Compile Include="News\WebsiteNews.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

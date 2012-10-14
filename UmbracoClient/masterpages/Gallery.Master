@@ -1,0 +1,22 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/masterpages/whirrakee.master"  AutoEventWireup="true" CodeBehind="Gallery.master.cs" Inherits="UmbracoClient.masterpages.Gallery" %>
+
+<asp:content ID="Content1" ContentPlaceHolderId="head" runat="server">
+  
+</asp:content>
+
+<asp:content ID="Content3" ContentPlaceHolderId="pageContent" runat="server">
+    <section id="content" class="content"> 
+        <Gravy:Gallery ID="ImageGallery" runat="server" />
+    </section>
+</asp:content>
+
+<asp:content ID="Content4" ContentPlaceHolderId="script" runat="server">
+  <script>
+      $('#container').isotope({
+          itemSelector: '.galleryImage',
+          masonry: {
+              columnWidth: 400
+          }
+      });
+</script>
+</asp:content>

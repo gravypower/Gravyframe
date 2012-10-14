@@ -86,6 +86,7 @@ namespace UmbracoClient.App_Start
             kernel.Bind<IWebsiteNavigationService>().To<WebsiteNavigationService>();
             kernel.Bind<IWebsiteNewsService>().To<WebsiteNewsService>();
             kernel.Bind<IWebsiteHomeVariantService>().To<WebsiteHomeVariantService>();
+            
 
             kernel.Bind<IContentLocation>().To<ContentLocation>();
 

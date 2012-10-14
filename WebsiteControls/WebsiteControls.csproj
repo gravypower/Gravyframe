@@ -72,6 +72,13 @@
     <Compile Include="Content\Accordion.ascx.designer.cs">
       <DependentUpon>Accordion.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Content\Gallery.ascx.cs">
+      <DependentUpon>Gallery.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Content\Gallery.ascx.designer.cs">
+      <DependentUpon>Gallery.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Content\SimpleContent.ascx.cs">
       <DependentUpon>SimpleContent.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -212,6 +219,7 @@
   <ItemGroup>
     <Content Include="Analytics\GoogleAnalytics.ascx" />
     <Content Include="Content\Accordion.ascx" />
+    <Content Include="Content\Gallery.ascx" />
     <Content Include="Content\SimpleContent.ascx" />
     <Content Include="Content\HomeVariants.ascx" />
     <Content Include="Navigation\CommonNavigation.ascx" />

@@ -13,19 +13,24 @@ namespace Service.ServiceImplementations
     {
         private readonly IWebsiteContentDao websiteContentDao;
         private readonly ISiteConfigurationDao siteConfigurationDao;
+        private readonly IWebsiteGalleryDao websiteGalleryDao;
         
          /// <summary>
         /// Initializes a new instance of the <see cref="WhiteLabelContentService" /> class.
         /// </summary>
         /// <param name="whiteLabelContentDao">The white label content DAO.</param>
         /// <param name="siteConfigurationDao">The site configuration DAO.</param>
-        public WebsiteContentService(IWebsiteContentDao websiteContentDao, ISiteConfigurationDao siteConfigurationDao)
+        public WebsiteContentService(IWebsiteContentDao websiteContentDao,
+            IWebsiteGalleryDao websiteGalleryDao,
+            ISiteConfigurationDao siteConfigurationDao)
         {
             Guard.IsNotNull(() => websiteContentDao);
             Guard.IsNotNull(() => siteConfigurationDao);
+            Guard.IsNotNull(() => websiteGalleryDao);
 
             this.websiteContentDao = websiteContentDao;
             this.siteConfigurationDao = siteConfigurationDao;
+            this.websiteGalleryDao = websiteGalleryDao;
         }
 
 
@@ -44,6 +49,10 @@ namespace Service.ServiceImplementations
             else if (request.LoadOptions.Contains("CurrentPageChildren"))
             {
                 response.WebsiteContentList = websiteContentDao.GetCurrentWebsiteContentChildren();
+            }
+            else if (request.LoadOptions.Contains("Gallery"))
+            {
+                response.GalleryImageList = websiteGalleryDao.GetGalleryImages();
             }
 
             return response;

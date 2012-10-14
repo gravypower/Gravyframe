@@ -57,6 +57,12 @@ namespace WebsiteControls.Gateways.WebsiteContent
         }
 
 
+        public IList<BusinessObjects.Gallery.GalleryImage> GetImageGallery()
+        {
+            return GetWhiteLabelContent(new[] { "Gallery" }).GalleryImageList;
+            
+        }
+
         /// <summary>
         /// Gets the current page.
         /// </summary>

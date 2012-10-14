@@ -34,6 +34,7 @@ namespace Service.Injection.Implementations
             kernel.Bind<IWebsiteNavigationDao>().To<UmbracoWebsiteNavigationDao>().InSingletonScope();
             kernel.Bind<IWebsiteNewsDao>().To<UmbracoWebsiteNewsDao>().InSingletonScope();
             kernel.Bind<IWebsiteHomeVariantDao>().To<UmbracoWebsiteHomeVariantDao>().InSingletonScope();
+            kernel.Bind<IWebsiteGalleryDao>().To<UmbracoWebsiteGalleryDao>();
         }
     }
 }

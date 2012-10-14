@@ -59,6 +59,7 @@
     <Compile Include="Implementation\UmbracoSiteConfigurationDao.cs" />
     <Compile Include="Implementation\UmbracoWebsiteContentDao.cs" />
     <Compile Include="Implementation\UmbracoWebsiteEventDao.cs" />
+    <Compile Include="Implementation\UmbracoWebsiteGalleryDao.cs" />
     <Compile Include="Implementation\UmbracoWebsiteHomeVariantDao.cs" />
     <Compile Include="Implementation\UmbracoWebsiteNavigationDao.cs" />
     <Compile Include="Implementation\UmbracoWebsiteNewsDao.cs" />

@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IWebsiteGalleryDao.cs" />
     <Compile Include="ISiteConfigurationDao.cs" />
     <Compile Include="IWebsiteArticleDao.cs" />
     <Compile Include="IWebsiteContentDao.cs" />

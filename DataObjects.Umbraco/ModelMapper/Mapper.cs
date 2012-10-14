@@ -163,7 +163,7 @@ namespace DataObjects.Umbraco.ModelMapper
                 int featuredNavigationImageMediaID;
                 if (!String.IsNullOrEmpty(featuredNavigationImage) && int.TryParse(featuredNavigationImage, out featuredNavigationImageMediaID))
                 {
-                    websiteNavigation.FeaturedImage =NewImage(new Media(featuredNavigationImageMediaID));
+                    websiteNavigation.FeaturedImage = NewImage(new Media(featuredNavigationImageMediaID));
                 }
             }
             return websiteNavigation;
@@ -175,6 +175,11 @@ namespace DataObjects.Umbraco.ModelMapper
             {
                 Src = (string)child.getProperty("umbracoFile").Value
             };
+        }
+
+        internal static BusinessObjects.Gallery.GalleryImage MapGalleryImage(Media child)
+        {
+            return new BusinessObjects.Gallery.GalleryImage() { Image = NewImage(child) };
         }
     }
 }

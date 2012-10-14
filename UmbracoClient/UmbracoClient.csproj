@@ -80,6 +80,8 @@
     <Content Include="content\images\whirrakeeLogo.png" />
     <Content Include="css\McIvorForest.css" />
     <Content Include="css\whirrakee.css" />
+    <Content Include="Scripts\jquery.infinitescroll.min.js" />
+    <Content Include="Scripts\jquery.isotope.min.js" />
     <Content Include="Scripts\jquery.lazyload.min.js" />
     <Content Include="Scripts\jQuery\jquery.js" />
     <Content Include="Web.config">
@@ -102,6 +104,13 @@
     </Compile>
     <Compile Include="masterpages\Content.master.designer.cs">
       <DependentUpon>Content.master</DependentUpon>
+    </Compile>
+    <Compile Include="masterpages\Gallery.Master.cs">
+      <DependentUpon>Gallery.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="masterpages\Gallery.Master.designer.cs">
+      <DependentUpon>Gallery.Master</DependentUpon>
     </Compile>
     <Compile Include="masterpages\McIvorForestContent.master.cs">
       <DependentUpon>McIvorForestContent.master</DependentUpon>
@@ -186,6 +195,7 @@
     <Content Include="masterpages\Content.master" />
     <Content Include="masterpages\McIvorForest.master" />
     <Content Include="masterpages\McIvorForestContent.master" />
+    <Content Include="masterpages\Gallery.Master" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
