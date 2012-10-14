@@ -5,7 +5,7 @@
         <title></title>
         <asp:ContentPlaceHolder ID="head" runat="server">
         </asp:ContentPlaceHolder>
-        <link rel="stylesheet" href="/content/styles/McIvorForest.css" />
+        <link rel="stylesheet" href="/css/McIvorForest.css" />
     </head>
     <body id="index" class="home">
         <form id="form1" runat="server">

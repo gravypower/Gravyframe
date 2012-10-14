@@ -78,8 +78,8 @@
     <Content Include="content\images\McIvorForestLogo.jpg" />
     <Content Include="content\images\onePixelpng.png" />
     <Content Include="content\images\whirrakeeLogo.png" />
-    <Content Include="content\styles\McIvorForest.css" />
-    <Content Include="content\styles\whirrakee.css" />
+    <Content Include="css\McIvorForest.css" />
+    <Content Include="css\whirrakee.css" />
     <Content Include="Scripts\jquery.lazyload.min.js" />
     <Content Include="Scripts\jQuery\jquery.js" />
     <Content Include="Web.config">

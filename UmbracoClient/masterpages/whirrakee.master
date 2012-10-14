@@ -5,7 +5,7 @@
         <title></title>
         <asp:ContentPlaceHolder ID="head" runat="server">
         </asp:ContentPlaceHolder>
-        <link rel="stylesheet" href="../content/styles/whirrakee.css" />
+        <link rel="stylesheet" href="/css/whirrakee.css" />
         <Gravy:GoogleAnalytics ID="GoogleAnalytics" runat="server" />
     </head>
     <body id="index" class="home">

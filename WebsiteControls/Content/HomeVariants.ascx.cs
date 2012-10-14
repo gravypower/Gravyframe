@@ -52,8 +52,12 @@ namespace WebsiteControls.Content
                         panOne = (PlaceHolder)e.Item.FindControl("plhOne");
                         ((HtmlGenericControl)panOne.Parent).Attributes["class"] = "panel";
                     }
+                    var heading = new Label();
+                    heading.CssClass = "heading";
+                    heading.Text = dataItem.Heading;
+                    panSix.Controls.Add(heading);
 
-                    var text = new Literal();
+                    var text = new Label();
                     text.Text = dataItem.Body;
                     panOne.Controls.Add(text);
                 }
@@ -65,7 +69,12 @@ namespace WebsiteControls.Content
                         panTwo = (PlaceHolder)e.Item.FindControl("plhTwo");
                         ((HtmlGenericControl)panTwo.Parent).Attributes["class"] = "panel";
                     }
-                    var text = new Literal();
+                    var heading = new Label();
+                    heading.CssClass = "heading";
+                    heading.Text = dataItem.Heading; 
+                    panSix.Controls.Add(heading);
+
+                    var text = new Label();
                     text.Text = dataItem.Body;
                     panTwo.Controls.Add(text);
                 }
@@ -77,7 +86,12 @@ namespace WebsiteControls.Content
                         panThree = (PlaceHolder)e.Item.FindControl("plhThree");
                         ((HtmlGenericControl)panThree.Parent).Attributes["class"] = "panel";
                     }
-                    var text = new Literal();
+                    var heading = new Label();
+                    heading.CssClass = "heading";
+                    heading.Text = dataItem.Heading;
+                    panSix.Controls.Add(heading);
+
+                    var text = new Label();
                     text.Text = dataItem.Body;
                     panThree.Controls.Add(text);
                 }
@@ -89,7 +103,12 @@ namespace WebsiteControls.Content
                         panFour = (PlaceHolder)e.Item.FindControl("plhFour");
                         ((HtmlGenericControl)panFour.Parent).Attributes["class"] = "panel";
                     }
-                    var text = new Literal();
+                    var heading = new Label();
+                    heading.CssClass = "heading";
+                    heading.Text = dataItem.Heading;
+                    panSix.Controls.Add(heading);
+
+                    var text = new Label();
                     text.Text = dataItem.Body;
                     panFour.Controls.Add(text);
                 }
@@ -101,7 +120,12 @@ namespace WebsiteControls.Content
                         panFive = (PlaceHolder)e.Item.FindControl("plhFive");
                         ((HtmlGenericControl)panFive.Parent).Attributes["class"] = "panel";
                     }
-                    var text = new Literal();
+                    var heading = new Label();
+                    heading.CssClass = "heading";
+                    heading.Text = dataItem.Heading;
+                    panSix.Controls.Add(heading);
+
+                    var text = new Label();
                     text.Text = dataItem.Body;
                     panFive.Controls.Add(text);
                 }
@@ -113,7 +137,12 @@ namespace WebsiteControls.Content
                         panSix = (PlaceHolder)e.Item.FindControl("plhSix");
                         ((HtmlGenericControl)panSix.Parent).Attributes["class"] = "panel";
                     }
-                    var text = new Literal();
+                    var heading = new Label();
+                    heading.CssClass = "heading";
+                    heading.Text = dataItem.Heading;
+                    panSix.Controls.Add(heading);
+
+                    var text = new Label();
                     text.Text = dataItem.Body;
                     panSix.Controls.Add(text);
                 }

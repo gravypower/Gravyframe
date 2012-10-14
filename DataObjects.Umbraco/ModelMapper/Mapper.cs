@@ -140,7 +140,7 @@ namespace DataObjects.Umbraco.ModelMapper
                 ItemClass = node.GetProperty("itemClass").Value,
                 MenuTitle = node.GetProperty("menuTitle").Value,
                 NavigateUrl = node.NiceUrl,
-                Title = node.GetProperty("title").Value
+                Title = node.GetProperty("title").Value,
             };
 
             var redirect = node.GetProperty("redirect").Value;
