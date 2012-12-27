@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" MasterPageFile="~/masterpages/McIvorForest.master" AutoEventWireup="true" CodeBehind="McIvorForestContent.master.cs" Inherits="UmbracoClient.masterpages.Content" %>
+﻿<%@ Master Language="C#" MasterPageFile="~/masterpages/McIvorForest.master" AutoEventWireup="true" CodeBehind="McIvorForestContent.master.cs" Inherits="UmbracoClient.masterpages.McIvorForestContent" %>
 
 <asp:content ID="Content1" ContentPlaceHolderId="head" runat="server">
   
@@ -7,12 +7,16 @@
 <asp:content ID="Content3" ContentPlaceHolderId="pageContent" runat="server">
     <section id="content" class="content"> 
         <Gravy:SimpleContent ID="SimpleContent" runat="server" />
+        <asp:ContentPlaceHolder Id="childContent" runat="server">
+	        <!-- Insert default "childContent" markup here -->
+        </asp:ContentPlaceHolder>
+
         <Gravy:FeaturedNavigation ID="FeaturedNavigation" runat="server" />
     </section>
 </asp:content>
 
 <asp:content ID="Content4" ContentPlaceHolderId="script" runat="server">
-  <script>
-    var numberOfvariants = 0;
+  <script type="text/javascript">      
+      $('img[usemap]').maphilight();
 </script>
 </asp:content>

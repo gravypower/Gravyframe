@@ -38,7 +38,6 @@ img.bg
 {
 	position: relative;
 	width: 100%;
-	background: 2d2d58;
 	height: 30px;
 	color: #000;
 	margin:0;
@@ -105,7 +104,6 @@ img.bg
 {
 	position: relative;
 	width: 100%;
-	background: white;
 	height: 30px;
 	color: #000;
 	margin:0;
@@ -164,8 +162,7 @@ img.bg
 {
 	position: relative;
 	width: 100%;
-	background-color: White;
-	height: 250px;
+	height: 226px;
 }
 
 .home-content
@@ -179,8 +176,8 @@ img.bg
 .content
 {    
 	position: relative;
-	width: 790px;
-	margin: 250px auto;
+	width: 904px;
+	margin: 248px auto;
 	background-color: White;
 	padding: 25px;
 }
@@ -233,7 +230,7 @@ img.bg
 h2
 {
 	font-size: 25px;
-	color: #000080;
+	color: black;
 }
 
 .am-wrapper{
@@ -247,3 +244,23 @@ h2
 }
 
 .clear { clear:both; }
+
+
+img.floatLeft { 
+    float: left; 
+    margin: 4px; 
+}
+
+img.floatRight { 
+    float: right; 
+    margin: 4px; 
+}
+
+p 
+{
+    line-height: 25px;   
+}
+
+.feature-image {
+    float: left;
+}

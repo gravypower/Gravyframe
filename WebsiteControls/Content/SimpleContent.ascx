@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="SimpleContent.ascx.cs" Inherits="WebsiteControls.Content.SimpleContent" %>
 <div>
-    <asp:Image ID="imgfeatureImage" runat="server" />
+    <asp:Image ID="imgfeatureImage" runat="server" CssClass="feature-image" />
 	<div class="title">
 		<h2>
 			<asp:Literal ID="litTitle" runat="server"></asp:Literal>

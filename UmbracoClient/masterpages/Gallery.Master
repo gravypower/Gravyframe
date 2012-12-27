@@ -5,18 +5,26 @@
 </asp:content>
 
 <asp:content ID="Content3" ContentPlaceHolderId="pageContent" runat="server">
-    <section id="content" class="content"> 
+    <section id="content" class="gallery variable-sizes"> 
         <Gravy:Gallery ID="ImageGallery" runat="server" />
     </section>
 </asp:content>
 
 <asp:content ID="Content4" ContentPlaceHolderId="script" runat="server">
+    <script src="/Scripts/jquery.isotope.min.js" type="text/javascript"></script>
+    <script src="/Scripts/jquery.lazyload.min.js" type="text/javascript"></script>
   <script>
-      $('#container').isotope({
-          itemSelector: '.galleryImage',
-          masonry: {
-              columnWidth: 400
-          }
+      $(function () {
+
+          var $container = $('#container');
+
+          $container.imagesLoaded(function () {
+              $container.isotope({
+                  itemSelector: '.photo'
+              });
+          });
+
+
       });
-</script>
+  </script>
 </asp:content>

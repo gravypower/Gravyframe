@@ -55,7 +55,7 @@ namespace WebsiteControls.Content
                     var heading = new Label();
                     heading.CssClass = "heading";
                     heading.Text = dataItem.Heading;
-                    panSix.Controls.Add(heading);
+                    panOne.Controls.Add(heading);
 
                     var text = new Label();
                     text.Text = dataItem.Body;
@@ -71,8 +71,8 @@ namespace WebsiteControls.Content
                     }
                     var heading = new Label();
                     heading.CssClass = "heading";
-                    heading.Text = dataItem.Heading; 
-                    panSix.Controls.Add(heading);
+                    heading.Text = dataItem.Heading;
+                    panTwo.Controls.Add(heading);
 
                     var text = new Label();
                     text.Text = dataItem.Body;
@@ -89,7 +89,7 @@ namespace WebsiteControls.Content
                     var heading = new Label();
                     heading.CssClass = "heading";
                     heading.Text = dataItem.Heading;
-                    panSix.Controls.Add(heading);
+                    panThree.Controls.Add(heading);
 
                     var text = new Label();
                     text.Text = dataItem.Body;
@@ -106,7 +106,7 @@ namespace WebsiteControls.Content
                     var heading = new Label();
                     heading.CssClass = "heading";
                     heading.Text = dataItem.Heading;
-                    panSix.Controls.Add(heading);
+                    panFour.Controls.Add(heading);
 
                     var text = new Label();
                     text.Text = dataItem.Body;
@@ -123,7 +123,7 @@ namespace WebsiteControls.Content
                     var heading = new Label();
                     heading.CssClass = "heading";
                     heading.Text = dataItem.Heading;
-                    panSix.Controls.Add(heading);
+                    panFive.Controls.Add(heading);
 
                     var text = new Label();
                     text.Text = dataItem.Body;

@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using BusinessObjects;
+using DataObjects.Umbraco.Utilities;
 using umbraco.interfaces;
 using BusinessObjects.Content;
 using BusinessObjects.Navigation;
 using umbraco.NodeFactory;
 using umbraco.cms.businesslogic.media;
-using umbraco.cms.businesslogic;
 using WebsiteKernel.Umbraco.Constants;
 using Glass.Sitecore.Mapper.FieldTypes;
 
@@ -97,7 +95,7 @@ namespace DataObjects.Umbraco.ModelMapper
             {
                 var featureImageMedia = new Media(featureImageMediaId);
 
-                returnContent.FeatureImage = new Glass.Sitecore.Mapper.FieldTypes.Image
+                returnContent.FeatureImage = new Image
                         {
                             Src = (string)featureImageMedia.getProperty("umbracoFile").Value
                         };
@@ -117,17 +115,17 @@ namespace DataObjects.Umbraco.ModelMapper
             };
 
             var pageImage = node.GetProperty("pageImage").Value;
-            int pageImageMediaID;
-            if (!String.IsNullOrEmpty(pageImage) && int.TryParse(pageImage, out pageImageMediaID))
+            int pageImageMediaId;
+            if (!String.IsNullOrEmpty(pageImage) && int.TryParse(pageImage, out pageImageMediaId))
             {
-                homeVariant.PageImage = NewImage(new Media(pageImageMediaID));
+                homeVariant.PageImage = NewImage(new Media(pageImageMediaId));
             }
 
             var textFooterIcon = node.GetProperty("textFooterIcon").Value;
-            int textFooterIconMediaID;
-            if (!String.IsNullOrEmpty(textFooterIcon) && int.TryParse(textFooterIcon, out textFooterIconMediaID))
+            int textFooterIconMediaId;
+            if (!String.IsNullOrEmpty(textFooterIcon) && int.TryParse(textFooterIcon, out textFooterIconMediaId))
             {
-                homeVariant.TextFooterIcon = NewImage(new Media(textFooterIconMediaID));
+                homeVariant.TextFooterIcon = NewImage(new Media(textFooterIconMediaId));
             }
             return homeVariant;
         }
@@ -160,26 +158,43 @@ namespace DataObjects.Umbraco.ModelMapper
             if (featuredNavigationNode != null)
             {
                 var featuredNavigationImage = featuredNavigationNode.Value;
-                int featuredNavigationImageMediaID;
-                if (!String.IsNullOrEmpty(featuredNavigationImage) && int.TryParse(featuredNavigationImage, out featuredNavigationImageMediaID))
+                int featuredNavigationImageMediaId;
+                if (!String.IsNullOrEmpty(featuredNavigationImage) && int.TryParse(featuredNavigationImage, out featuredNavigationImageMediaId))
                 {
-                    websiteNavigation.FeaturedImage = NewImage(new Media(featuredNavigationImageMediaID));
+                    websiteNavigation.FeaturedImage = NewImage(new Media(featuredNavigationImageMediaId));
                 }
             }
+
+            var home = Sites.GetHomeItem();
+
+            if (node.Id == home.Id)
+            {
+                websiteNavigation.NavigateUrl = websiteNavigation.NavigateUrl.Replace(
+                    Sites.GetHomeItem().NiceUrl, "/");
+            }
+            else
+            {
+                websiteNavigation.NavigateUrl = websiteNavigation.NavigateUrl.Replace(
+                    "/" + Sites.GetHomeItem().UrlName, "");
+            }
+
             return websiteNavigation;
         }
 
         private static Image NewImage(Media child)
         {
-            return new Glass.Sitecore.Mapper.FieldTypes.Image
+            return new Image
             {
-                Src = (string)child.getProperty("umbracoFile").Value
+                Src = (string)child.getProperty("umbracoFile").Value,
+                Width = int.Parse((string)child.getProperty("umbracoWidth").Value),
+                Height = int.Parse((string)child.getProperty("umbracoHeight").Value)
+                
             };
         }
 
         internal static BusinessObjects.Gallery.GalleryImage MapGalleryImage(Media child)
         {
-            return new BusinessObjects.Gallery.GalleryImage() { Image = NewImage(child) };
+            return new BusinessObjects.Gallery.GalleryImage { Image = NewImage(child) };
         }
     }
 }

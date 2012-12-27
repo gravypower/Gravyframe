@@ -1,4 +1,4 @@
-﻿@font-face {
+﻿f@font-face {
     font-family: 'OSPDIN';
     src: url('../fonts/OSP-DIN-webfont.eot');
     src: url('../fonts/OSP-DIN-webfont.eot?#iefix') format('embedded-opentype'),
@@ -20,7 +20,7 @@ body
 	width: 100%;
 	top: 0px;
 	left: 0px;
-	z-index: 1;
+	z-index: 100000;
 }
 img.bg
 {
@@ -109,6 +109,7 @@ img.bg
 	height: 95px; 
 	border-top: 1px solid #BDBEC1; 
 	padding-top: 15px;
+    display: block;
 }
 
 .sub-menu 
@@ -186,6 +187,15 @@ img.bg
 	padding: 25px;
 }
 
+.gallery {
+    /*position: relative;
+	margin: 150px auto;
+	padding: 25px;
+    width: 95% ;
+    margin-left: auto ;
+    margin-right: auto ;*/
+}
+
 .content
 {    
 	position: relative;
@@ -259,6 +269,14 @@ h2
 }
 
 .clear { clear:both; }
+
+
+.visible-image {
+
+}
+.appearing-image {
+
+}
 
 /* Start: Recommended Isotope styles */
 
@@ -422,7 +440,6 @@ body {
 }
 
 #container {
-  border: 1px solid #666;
   padding: 5px;
   margin-bottom: 20px;
 }
@@ -673,8 +690,8 @@ body {
 /**** Photo demo ****/
 
 .photos .photo {
-  width: 320px;
-  margin: 5px;
+  /*width: 320px;
+  margin: 5px;*/
   float: left;
 }
 
@@ -684,7 +701,6 @@ body {
 }
 
 #content {
-  margin-left: 210px;
 }
 
 .demos #content {

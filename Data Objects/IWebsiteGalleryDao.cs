@@ -8,5 +8,6 @@ namespace DataObjects
     public interface IWebsiteGalleryDao
     {
         IList<BusinessObjects.Gallery.GalleryImage> GetGalleryImages();
+        IList<BusinessObjects.Gallery.GalleryImage> GetGalleryImages(string galleryId);
     }
 }

@@ -1,2 +1,2 @@
-XCOPY "C:\Users\Aaron Job\Documents\GitHub\Gravy-Frame\UmbracoClient\*.*" "C:\Users\Aaron Job\Documents\GitHub\Dependency\whirrakee.umbraco\" /D /E /C /R /H /I /K /Y
-XCOPY "C:\Users\Aaron Job\Documents\GitHub\Gravy-Frame\UmbracoClient\*.*" "C:\Users\Aaron Job\Documents\My Web Sites\mcivorforest\" /D /E /C /R /H /I /K /Y
+XCOPY "C:\Git\Gravyframe\UmbracoClient\*.*" "C:\Git\Dependency\whirrakee.umbraco\" /D /E /C /R /H /I /K /Y
+XCOPY "C:\Git\Gravyframe\UmbracoClient*.*" "C:\Git\Dependency\mcivorforest\" /D /E /C /R /H /I /K /Y

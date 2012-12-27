@@ -135,7 +135,7 @@ namespace WebsiteControls.Gateways.WebsiteEvent
             request.LoadOptions = new[] { LoadOptions.Get, LoadOptions.Category, LoadOptions.ObjectList, LoadOptions.DateFilter, LoadOptions.LimitResult };
             request.From = from;
             request.From = to;
-            request.CategoryIds = itemIDService.GetItemIds(categoryIds).ToList(); ;
+            request.CategoryIds = itemIDService.GetItemIds(categoryIds).ToList();
             request.Offset = offset;
             request.Number = number;
             return GetWebsiteEvent(null, request).WebsiteEventList;

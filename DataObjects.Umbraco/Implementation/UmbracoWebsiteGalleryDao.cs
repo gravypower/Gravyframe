@@ -13,8 +13,16 @@ namespace DataObjects.Umbraco.Implementation
     {
         public IList<BusinessObjects.Gallery.GalleryImage> GetGalleryImages()
         {
-            var galleryNode = Node.GetCurrent();
+            return GetGalleryWorker(Node.GetCurrent());
+        }
 
+        public IList<BusinessObjects.Gallery.GalleryImage> GetGalleryImages(string galleryId)
+        {
+            return GetGalleryWorker(new Node(int.Parse(galleryId)));
+        }
+
+        private static IList<BusinessObjects.Gallery.GalleryImage> GetGalleryWorker(Node galleryNode)
+        {
             var galleryImages = galleryNode.GetProperty("galleryImages").Value;
 
             var returnList = new List<BusinessObjects.Gallery.GalleryImage>();
@@ -28,9 +36,12 @@ namespace DataObjects.Umbraco.Implementation
                 {
                     foreach (var child in galleryImagesMedia.Children)
                     {
-                        returnList.Add(
-                           ModelMapper.Mapper.MapGalleryImage(child)
-                        );
+                        if (child.ContentType.Alias == DocumentTypeAlias.Image)
+                        {
+                            returnList.Add(
+                                ModelMapper.Mapper.MapGalleryImage(child)
+                                );
+                        }
                     }
                 }
 
@@ -38,5 +49,8 @@ namespace DataObjects.Umbraco.Implementation
 
             return returnList;
         }
+
+
+        
     }
 }

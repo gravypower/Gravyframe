@@ -9,9 +9,11 @@
                             <div class="nav-image">
 							    <asp:Panel id="panVisibleImage" runat="server" CssClass="visible-image" style="width:250px; height: 80px;  background-position: 0 0;">
 							    </asp:Panel>
+                                <div class="title">
+                                    <asp:Literal ID="litTitle" runat="server"></asp:Literal>
+                                </div>
 							    <asp:Panel id="panAppearingImage" runat="server" class="appearing-image" style="display:none; width:250px; height: 80px; background-position: 250px 0; position:relative; top: -80px;">
 							    </asp:Panel>
-                                <asp:Literal ID="litTitle" runat="server"></asp:Literal>
 						    </div>
                         </asp:HyperLink>
 			        </li>

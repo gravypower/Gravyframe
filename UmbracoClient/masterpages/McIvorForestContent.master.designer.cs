@@ -8,10 +8,9 @@
 //------------------------------------------------------------------------------
 
 namespace UmbracoClient.masterpages {
-
-
-    public partial class McIvorForestContent
-    {
+    
+    
+    public partial class McIvorForestContent {
         
         /// <summary>
         /// SimpleContent control.
@@ -21,6 +20,15 @@ namespace UmbracoClient.masterpages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::WebsiteControls.Content.SimpleContent SimpleContent;
+        
+        /// <summary>
+        /// childContent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder childContent;
         
         /// <summary>
         /// FeaturedNavigation control.

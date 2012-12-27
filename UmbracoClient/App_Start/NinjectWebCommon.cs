@@ -5,6 +5,7 @@ using Ninject;
 using Ninject.Web.Common;
 using Service.ServiceContracts;
 using WebsiteControls;
+using WebsiteControls.Gateways.WebsiteGallery;
 using WebsiteControls.News;
 using WebsiteControls.Gateways.SiteConfiguration;
 using WebsiteControls.Gateways.WebsiteContent;
@@ -79,6 +80,8 @@ namespace UmbracoClient.App_Start
             kernel.Bind<IWebsitelNavigationGateway>().To<WebsitelNavigationGateway>();
             kernel.Bind<IWebsiteNewsGateway>().To<WebsiteNewsGateway>();
             kernel.Bind<IWebsiteHomeVariantGateway>().To<WebsiteHomeVariantGateway>();
+            kernel.Bind<IWebsiteGalleryGateway>().To<WebsiteGalleryGateway>();
+             
 
             kernel.Bind<ISiteConfigurationService>().To<SiteConfigurationService>();
             kernel.Bind<IWebsiteContentService>().To<WebsiteContentService>();
@@ -86,6 +89,8 @@ namespace UmbracoClient.App_Start
             kernel.Bind<IWebsiteNavigationService>().To<WebsiteNavigationService>();
             kernel.Bind<IWebsiteNewsService>().To<WebsiteNewsService>();
             kernel.Bind<IWebsiteHomeVariantService>().To<WebsiteHomeVariantService>();
+            kernel.Bind<IWebsiteGalleryService>().To<WebsiteGalleryService>();
+            
             
 
             kernel.Bind<IContentLocation>().To<ContentLocation>();

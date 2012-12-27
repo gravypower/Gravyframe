@@ -12,7 +12,4 @@
 </asp:content>
 
 <asp:content ID="Content4" ContentPlaceHolderId="script" runat="server">
-  <script>
-    var numberOfvariants = 0;
-</script>
 </asp:content>
