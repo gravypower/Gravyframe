@@ -30,9 +30,15 @@ namespace WebsiteControls.Content
             var galleryImage = (Image)e.Item.FindControl("galleryImage");
             var photPanel = (Panel) e.Item.FindControl("photPanel");
 
+            var imageHeight = dataItem.Image.Height.ToString(CultureInfo.InvariantCulture);
+            var imageWidth = dataItem.Image.Width.ToString(CultureInfo.InvariantCulture);
+
             galleryImage.ImageUrl = dataItem.Image.Src;
-            photPanel.Style.Add("width", dataItem.Image.Width.ToString(CultureInfo.InvariantCulture) + "px");
-            photPanel.Style.Add("height", dataItem.Image.Height.ToString(CultureInfo.InvariantCulture) + "px");
+            galleryImage.Attributes.Add("height", imageHeight);
+            galleryImage.Attributes.Add("width", imageWidth);
+
+            photPanel.Style.Add("width", imageWidth + "px");
+            photPanel.Style.Add("height", imageHeight + "px");
         }
     }
 }
