@@ -17,16 +17,25 @@ namespace WebsiteControls.Navigation
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            var navItems = WebsitelNavigationGateway.GetFeaturedNavigation();
-            if(navItems.Count > 0)
+            try
             {
-            rptFeaturedNavigation.DataSource = navItems;
-            rptFeaturedNavigation.DataBind();
+                var navItems = WebsitelNavigationGateway.GetFeaturedNavigation();
+                if (navItems.Count > 0)
+                {
+                    rptFeaturedNavigation.DataSource = navItems;
+                    rptFeaturedNavigation.DataBind();
+                }
+                else
+                {
+                    plhNavigation.Visible = false;
+                }
             }
-            else
+            catch (Exception ex)
             {
+
                 plhNavigation.Visible = false;
             }
+            
         }
 
         protected void rptFeaturedNavigation_ItemDataBound(object sender, RepeaterItemEventArgs e)

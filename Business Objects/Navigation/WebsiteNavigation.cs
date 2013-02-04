@@ -10,6 +10,8 @@ namespace BusinessObjects.Navigation
     [SitecoreClass, Serializable]
     public class WebsiteNavigation
     {
+        public virtual string Id { get; set; }
+
         /// <summary>
         /// Gets or sets the title.
         /// </summary>

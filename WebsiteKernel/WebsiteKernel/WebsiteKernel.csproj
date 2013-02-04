@@ -42,6 +42,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Guard.cs" />
+    <Compile Include="HttpHandlers\SvgzHttpHandler.cs" />
     <Compile Include="Mapping\IMapper.cs" />
     <Compile Include="Mapping\Implementations\AutoMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

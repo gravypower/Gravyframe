@@ -62,15 +62,14 @@
     <Compile Include="IWebsiteNewsDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Business Objects\Business Objects.csproj">
-      <Project>{FD72F282-6DDC-4215-B28D-E568A9BC4AB2}</Project>
+      <Project>{fd72f282-6ddc-4215-b28d-e568a9bc4ab2}</Project>
       <Name>Business Objects</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

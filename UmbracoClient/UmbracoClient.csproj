@@ -171,10 +171,6 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Sitecore.Mapper\Source\Glass.Sitecore.Mapper\Glass.Sitecore.Mapper.csproj">
-      <Project>{564cdd78-0939-436b-9c90-7af9d95b9024}</Project>
-      <Name>Glass.Sitecore.Mapper</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Business Objects\Business Objects.csproj">
       <Project>{FD72F282-6DDC-4215-B28D-E568A9BC4AB2}</Project>
       <Name>Business Objects</Name>
@@ -214,6 +210,7 @@
     <Content Include="masterpages\McIvorForest.master" />
     <Content Include="masterpages\McIvorForestContent.master" />
     <Content Include="masterpages\Gallery.Master" />
+    <Content Include="content\images\McIvorForestOveallPlan.svgz" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using umbraco.interfaces;
 using BusinessObjects.Navigation;
 using BusinessObjects;
@@ -13,18 +12,18 @@ namespace DataObjects.Umbraco.Implementation
     public class UmbracoWebsiteNavigationDao : IWebsiteNavigationDao
     {
 
-        private readonly ISiteConfigurationDao siteConfigurationDao;
+        private readonly ISiteConfigurationDao _siteConfigurationDao;
 
-        private SiteConfiguration siteconfig;
+        private SiteConfiguration _siteconfig;
         protected SiteConfiguration Siteconfig
         {
             get
             {
-                if (siteconfig == null)
+                if (_siteconfig == null)
                 {
-                    siteconfig = siteConfigurationDao.GetSiteConfiguration();
+                    _siteconfig = _siteConfigurationDao.GetSiteConfiguration();
                 }
-                return siteconfig;
+                return _siteconfig;
             }
         }
 
@@ -32,21 +31,21 @@ namespace DataObjects.Umbraco.Implementation
         {
             Guard.IsNotNull(() => siteConfigurationDao);
 
-            this.siteConfigurationDao = siteConfigurationDao;
+            this._siteConfigurationDao = siteConfigurationDao;
         }
 
-        public IEnumerable<BusinessObjects.Navigation.WebsiteNavigation> GetNavigationItems(string navigationId)
+        public IEnumerable<WebsiteNavigation> GetNavigationItems(string navigationId)
         {
             return GetNavigationItemsWorker(navigationId, Utilities.Sites.GetHomeItem());
         }
 
-        public IEnumerable<BusinessObjects.Navigation.WebsiteNavigation> GetNavigationItems(string navigationId, string navigationStartItemID)
+        public IEnumerable<WebsiteNavigation> GetNavigationItems(string navigationId, string navigationStartItemId)
         {
-            var navigationStartItem = new Node(int.Parse(navigationStartItemID));
+            var navigationStartItem = new Node(int.Parse(navigationStartItemId));
             return GetNavigationItemsWorker(navigationId, navigationStartItem);
         }
 
-        public IEnumerable<BusinessObjects.Navigation.WebsiteNavigation> GetWebsiteArticleNavigation(string bucketId)
+        public IEnumerable<WebsiteNavigation> GetWebsiteArticleNavigation(string bucketId)
         {
             throw new NotImplementedException();
         }
@@ -79,7 +78,7 @@ namespace DataObjects.Umbraco.Implementation
 
 
             if (navigationStartItem.GetProperty("location").Value.Contains(navigationId) &&
-                !returnWhiteLabelContentList.Any(x=>x.NavigateUrl == navigationStartItem.NiceUrl))
+                returnWhiteLabelContentList.All(x => x.Id != navigationStartItem.Id.ToString()))
             {
                 returnWhiteLabelContentList.Insert(0, ModelMapper.Mapper.MapWebsiteNavigation(navigationStartItem));
             }
@@ -101,7 +100,7 @@ namespace DataObjects.Umbraco.Implementation
             {
                 if (!String.IsNullOrEmpty(item))
                 {
-                    int nodeID = 0;
+                    int nodeID;
                     if (Int32.TryParse(item, out nodeID))
                     {
                         var node = new Node(nodeID);

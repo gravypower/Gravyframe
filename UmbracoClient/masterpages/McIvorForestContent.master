@@ -10,7 +10,7 @@
         <asp:ContentPlaceHolder Id="childContent" runat="server">
 	        <!-- Insert default "childContent" markup here -->
         </asp:ContentPlaceHolder>
-
+<img src="~/content/images/McIvorForestOveallPlan.svgz" />
         <Gravy:FeaturedNavigation ID="FeaturedNavigation" runat="server" />
     </section>
 </asp:content>

@@ -42,9 +42,9 @@ namespace DataObjects.Sitecore.Implementation
             return GetNavigationItemsWorker(navigationId, Utilities.Sites.GetHomeItem());
         }
 
-        public IEnumerable<WebsiteNavigation> GetNavigationItems(string navigationId, string navigationStartItemID)
+        public IEnumerable<WebsiteNavigation> GetNavigationItems(string navigationId, string navigationStartItemId)
         {
-            var navigationStartItem = SC.Context.Database.GetItem(new ID(navigationStartItemID));
+            var navigationStartItem = SC.Context.Database.GetItem(new ID(navigationStartItemId));
             return GetNavigationItemsWorker(navigationId, navigationStartItem);
         }
 
