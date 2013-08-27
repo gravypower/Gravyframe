@@ -1,2 +1,0 @@
-XCOPY "C:\Git\Gravyframe\UmbracoClient\*.*" "C:\Git\Dependency\whirrakee.umbraco\" /D /E /C /R /H /I /K /Y
-XCOPY "C:\Git\Gravyframe\UmbracoClient*.*" "C:\Git\Dependency\mcivorforest\" /D /E /C /R /H /I /K /Y
