@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{B0CF9D5F-3830-440E-B516-78B2CF9113EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gravyframe.Service", "Gravyframe.Service\Gravyframe.Service.csproj", "{732189F6-7A48-4FF2-8705-B1CD80897B67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gravyframe.Service.Tests", "Gravyframe.Service.Tests\Gravyframe.Service.Tests.csproj", "{F1D4B6DF-3042-4E81-A296-6D16F3B51A6B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{732189F6-7A48-4FF2-8705-B1CD80897B67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{732189F6-7A48-4FF2-8705-B1CD80897B67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{732189F6-7A48-4FF2-8705-B1CD80897B67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{732189F6-7A48-4FF2-8705-B1CD80897B67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1D4B6DF-3042-4E81-A296-6D16F3B51A6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1D4B6DF-3042-4E81-A296-6D16F3B51A6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1D4B6DF-3042-4E81-A296-6D16F3B51A6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1D4B6DF-3042-4E81-A296-6D16F3B51A6B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{732189F6-7A48-4FF2-8705-B1CD80897B67} = {B0CF9D5F-3830-440E-B516-78B2CF9113EF}
+		{F1D4B6DF-3042-4E81-A296-6D16F3B51A6B} = {B0CF9D5F-3830-440E-B516-78B2CF9113EF}
+	EndGlobalSection
+EndGlobal
