@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Gravyframe.Service.Messages
+﻿namespace Gravyframe.Service.Messages
 {
     public enum AcknowledgeType
     {

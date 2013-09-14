@@ -9,6 +9,8 @@ namespace Gravyframe.Service.Content
 
         public List<string> Errors { get; set; }
 
+        public Models.Content Content { get; set; }
+
         public ContentResponse()
         {
             Errors = new List<string>();

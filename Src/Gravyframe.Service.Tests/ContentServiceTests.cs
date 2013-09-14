@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using Gravyframe.Data.Content;
 using Gravyframe.Service.Content;
 using Gravyframe.Service.Messages;
+using NSubstitute;
 using NUnit.Framework;
 
 namespace Gravyframe.Service.Tests
@@ -12,11 +12,13 @@ namespace Gravyframe.Service.Tests
     public class ContentServiceTests
     {
         public ContentService Sut;
+        public IContentDao Dao;
 
         [SetUp]
         public void BaseSetUp()
         {
-            Sut = new ContentService();
+            Dao = Substitute.For<IContentDao>();
+            Sut = new ContentService(Dao);
         }
 
         [Test]
@@ -29,11 +31,8 @@ namespace Gravyframe.Service.Tests
         [Test]
         public void WhenContentRequestIsNullContentRequestThrown()
         {
-            // Assign
-            ContentRequest request = null;
-
             // Assert
-            Assert.Throws<ContentService.NullContentRequestException>(() => Sut.Get(request));
+            Assert.Throws<ContentService.NullContentRequestException>(() => Sut.Get(null));
         }
 
         [Test]
@@ -95,17 +94,57 @@ namespace Gravyframe.Service.Tests
         }
         #endregion
 
-        [Test]
-        public void WhenContentRequestContentIdContentResponceSuccess()
+        #region Given Content Request With Content Id
+
+        [TestFixture]
+        public class GivenContentRequestWithContentId : ContentServiceTests
         {
-            // Assign
-            var request = new ContentRequest { ContentId = "SomeID" };
+            public ContentRequest Request;
 
-            // Act
-            var responce = Sut.Get(request);
+            [SetUp]
+            public void ConteIdSetUp()
+            {
+                Request = new ContentRequest { ContentId = "SomeID" };
+            }
 
-            // Assert
-            Assert.AreEqual(AcknowledgeType.Success, responce.Acknowledge);
+            [Test]
+            public void WhenContentRequestContentIdContentResponceSuccess()
+            {
+                // Act
+                var responce = Sut.Get(Request);
+
+                // Assert
+                Assert.AreEqual(AcknowledgeType.Success, responce.Acknowledge);
+            }
+
+            [Test]
+            public void WhenContentRequestedContentIdContentResponceHasContentTitle()
+            {
+                // Assign
+                var content = new Models.Content {Title = "TestTitle"};
+                Dao.GetContent().Returns(content);
+
+                // Act
+                var result = Sut.Get(Request);
+
+                // Assert
+                Assert.AreEqual(content.Title, result.Content.Title);
+            }
+
+            [Test]
+            public void WhenContentRequestedContentIdContentResponceHasContentBody()
+            {
+                // Assign
+                var content = new Models.Content {Body = "TestBody"};
+                Dao.GetContent().Returns(content);
+
+                // Act
+                var result = Sut.Get(Request);
+
+                // Assert
+                Assert.AreEqual(content.Body, result.Content.Body);
+            }
         }
+        #endregion
     }
 }

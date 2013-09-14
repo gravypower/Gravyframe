@@ -46,6 +46,16 @@
     <Compile Include="Messages\AcknowledgeType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Gravyframe.Data\Gravyframe.Data.csproj">
+      <Project>{DA80ABB5-0A99-4DC1-B56F-DAF7018D3BC5}</Project>
+      <Name>Gravyframe.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gravyframe.Model\Gravyframe.Models.csproj">
+      <Project>{5d5eb908-b67b-4e7e-af9e-25bdd03f543e}</Project>
+      <Name>Gravyframe.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
