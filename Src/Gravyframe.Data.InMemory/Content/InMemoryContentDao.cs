@@ -7,7 +7,7 @@ namespace Gravyframe.Data.InMemory.Content
     {
         public Models.Content GetContent()
         {
-            return new Models.Content();
+            return new Models.Content{Title = "Test", Body = "Test"};
         }
     }
 }

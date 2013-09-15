@@ -17,7 +17,7 @@ namespace Gravyframe.ServiceStack.Content
         {
             container.Register<IContentDao>(dao => new InMemoryContentDao());
             Routes
-                .Add<ContentResponse>("/ContentService/{ContentId}");
+                .Add<ContentRequest>("/ContentService/{ContentId}");
         }
     }
 }
