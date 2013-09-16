@@ -77,4 +77,4 @@ _ReSharper.*
 # My specific Visual Studio
 *.vsp
 
-packages/*
+packages/
