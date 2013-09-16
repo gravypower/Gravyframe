@@ -16,8 +16,7 @@ namespace Gravyframe.ServiceStack.Content
         public override void Configure(Funq.Container container)
         {
             container.Register<IContentDao>(dao => new InMemoryContentDao());
-            Routes
-                .Add<ContentRequest>("/ContentService/{ContentId}");
+            Routes.Add<ContentRequest>("/ContentService/{ContentId}");
         }
     }
 }

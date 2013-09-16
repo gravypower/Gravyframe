@@ -28,32 +28,35 @@ namespace Gravyframe.Service.Content
 
         private ContentResponse CreateResponce(ContentRequest request)
         {
-            if (!IsContentIdValid(request))
+            var responce = new ContentResponse();
+
+            if (IsContentIdValid(request))
             {
-                return BuildInvalidContentIdResponce();
+                if (IsCategoryIfValid(request))
+                {
+                    responce.Acknowledge = AcknowledgeType.Failure;
+                    responce.Errors.Add(ContentConstants.ContenIdError);
+                    responce.Errors.Add(ContentConstants.ContenCategoryIdError);
+                }
             }
 
-            return new ContentResponse
-                {
-                    Content = _contentDao.GetContent()
-                };
+            if(responce.Acknowledge == AcknowledgeType.Success)
+            {
+                responce.Content = _contentDao.GetContent();
+            }
+
+
+            return responce;
+        }
+
+        private static bool IsCategoryIfValid(ContentRequest request)
+        {
+            return String.IsNullOrEmpty(request.CategoryId);
         }
 
         private static bool IsContentIdValid(ContentRequest request)
         {
-            return !String.IsNullOrEmpty(request.ContentId);
-        }
-
-        private static ContentResponse BuildInvalidContentIdResponce()
-        {
-            var responce = new ContentResponse
-                {
-                    Acknowledge = AcknowledgeType.Failure
-                };
-
-            responce.Errors.Add(ContentConstants.ContenIdError);
-
-            return responce;
+            return String.IsNullOrEmpty(request.ContentId);
         }
 
         public class NullContentRequestException : Exception

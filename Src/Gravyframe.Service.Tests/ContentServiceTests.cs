@@ -68,7 +68,7 @@ namespace Gravyframe.Service.Tests
             [SetUp]
             public void NoConteIdSetUp()
             {
-                Request = new ContentRequest { ContentId = String.Empty };
+                Request = new ContentRequest();
             }
 
             [Test]
@@ -90,6 +90,7 @@ namespace Gravyframe.Service.Tests
                 // Assert
                 Assert.IsTrue(responce.Errors.Any());
                 Assert.IsTrue(responce.Errors.Any(error => error == ContentConstants.ContenIdError));
+                Assert.IsTrue(responce.Errors.Any(error => error == ContentConstants.ContenCategoryIdError));
             }
         }
         #endregion
@@ -115,6 +116,7 @@ namespace Gravyframe.Service.Tests
 
                 // Assert
                 Assert.AreEqual(AcknowledgeType.Success, responce.Acknowledge);
+                Assert.IsFalse(responce.Errors.Any(error => error == ContentConstants.ContenCategoryIdError));
             }
 
             [Test]
@@ -143,6 +145,31 @@ namespace Gravyframe.Service.Tests
 
                 // Assert
                 Assert.AreEqual(content.Body, result.Content.Body);
+            }
+        }
+        #endregion
+
+        #region Given Content Request With Content Category
+
+        [TestFixture]
+        public class GivenContentRequestWithContentCategory : ContentServiceTests
+        {
+            public ContentRequest Request;
+
+            [SetUp]
+            public void ConteIdSetUp()
+            {
+                Request = new ContentRequest { CategoryId = "SomeCategoryID" };
+            }
+
+            [Test]
+            public void WhenContentRequestCategoryIdAndNoContentIdNoErrors()
+            {
+                // Act
+                var responce = Sut.Get(Request);
+
+                // Assert
+                Assert.IsFalse(responce.Errors.Any());
             }
         }
         #endregion
