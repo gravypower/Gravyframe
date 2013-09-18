@@ -13,12 +13,14 @@ namespace Gravyframe.Service.Tests
     {
         public ContentService Sut;
         public IContentDao Dao;
+        public IContentConstants ContentConstants;
 
         [SetUp]
         public void BaseSetUp()
         {
             Dao = Substitute.For<IContentDao>();
-            Sut = new ContentService(Dao);
+            ContentConstants = new ContentConstants();
+            Sut = new ContentService(Dao, ContentConstants);
         }
 
         [Test]
@@ -78,7 +80,7 @@ namespace Gravyframe.Service.Tests
                 var responce = Sut.Get(Request);
 
                 // Assert
-                Assert.AreEqual(AcknowledgeType.Failure, responce.Acknowledge);
+                Assert.AreEqual(GravyResponceCodes.Failure, responce.ResponceCode);
             }
 
             [Test]
@@ -90,6 +92,16 @@ namespace Gravyframe.Service.Tests
                 // Assert
                 Assert.IsTrue(responce.Errors.Any());
                 Assert.IsTrue(responce.Errors.Any(error => error == ContentConstants.ContenIdError));
+            }
+
+            [Test]
+            public void WhenContentRequestNoContenCategoryIdContenCategoryResponceErrors()
+            {
+                // Act
+                var responce = Sut.Get(Request);
+
+                // Assert
+                Assert.IsTrue(responce.Errors.Any());
                 Assert.IsTrue(responce.Errors.Any(error => error == ContentConstants.ContenCategoryIdError));
             }
         }
@@ -115,7 +127,7 @@ namespace Gravyframe.Service.Tests
                 var responce = Sut.Get(Request);
 
                 // Assert
-                Assert.AreEqual(AcknowledgeType.Success, responce.Acknowledge);
+                Assert.AreEqual(GravyResponceCodes.Success, responce.ResponceCode);
                 Assert.IsFalse(responce.Errors.Any(error => error == ContentConstants.ContenCategoryIdError));
             }
 

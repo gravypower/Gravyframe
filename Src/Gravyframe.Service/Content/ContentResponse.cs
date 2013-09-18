@@ -5,7 +5,7 @@ namespace Gravyframe.Service.Content
 {
     public class ContentResponse
     {
-        public AcknowledgeType Acknowledge { get; set; }
+        public GravyResponceCodes ResponceCode { get; set; }
 
         public List<string> Errors { get; set; }
 

@@ -1,13 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Gravyframe.Service.Content
+﻿namespace Gravyframe.Service.Content
 {
-    public class ContentConstants
+    public interface IContentConstants
     {
-        public const string ContenIdError = "Content Id error";
-        public const string ContenCategoryIdError = "Content Category Id error";
+        string ContenIdError { get;}
+        string ContenCategoryIdError { get;}
+    }
+
+    public class ContentConstants : IContentConstants
+    {
+        public string ContenIdError
+        {
+            get { return "Content Id error"; }
+        }
+
+        public string ContenCategoryIdError
+        {
+            get { return "Content Category Id error"; }
+        }
     }
 }

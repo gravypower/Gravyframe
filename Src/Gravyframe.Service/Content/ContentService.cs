@@ -7,10 +7,12 @@ namespace Gravyframe.Service.Content
     public class ContentService
     {
         private readonly IContentDao _contentDao;
+        private readonly IContentConstants _contentConstants;
 
-        public ContentService(IContentDao contentDao)
+        public ContentService(IContentDao contentDao, IContentConstants contentConstants)
         {
             _contentDao = contentDao;
+            _contentConstants = contentConstants;
         }
 
         public ContentResponse Get(ContentRequest request)
@@ -34,13 +36,13 @@ namespace Gravyframe.Service.Content
             {
                 if (IsCategoryIfValid(request))
                 {
-                    responce.Acknowledge = AcknowledgeType.Failure;
-                    responce.Errors.Add(ContentConstants.ContenIdError);
-                    responce.Errors.Add(ContentConstants.ContenCategoryIdError);
+                    responce.ResponceCode = GravyResponceCodes.Failure;
+                    responce.Errors.Add(_contentConstants.ContenIdError);
+                    responce.Errors.Add(_contentConstants.ContenCategoryIdError);
                 }
             }
 
-            if(responce.Acknowledge == AcknowledgeType.Success)
+            if(responce.ResponceCode == GravyResponceCodes.Success)
             {
                 responce.Content = _contentDao.GetContent();
             }
@@ -59,6 +61,7 @@ namespace Gravyframe.Service.Content
             return String.IsNullOrEmpty(request.ContentId);
         }
 
+        [Serializable]
         public class NullContentRequestException : Exception
         {
         }

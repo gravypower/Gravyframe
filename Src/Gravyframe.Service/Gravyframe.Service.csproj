@@ -43,7 +43,7 @@
     <Compile Include="Content\ContentRequest.cs" />
     <Compile Include="Content\ContentResponse.cs" />
     <Compile Include="Content\ContentService.cs" />
-    <Compile Include="Messages\AcknowledgeType.cs" />
+    <Compile Include="Messages\GravyResponceCodes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
