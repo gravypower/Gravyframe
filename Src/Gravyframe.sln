@@ -28,6 +28,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{ACFAB5
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Kernel", "Kernel", "{5116D4AC-2EAC-4E12-9579-6D8EFE5F3DA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gravyframe.Kernel", "Gravyframe.Kernel\Gravyframe.Kernel.csproj", "{656D1A93-A92A-402E-9AF7-4AF4BE963958}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gravyframe.Kernel.Tests", "Gravyframe.Kernel.Tests\Gravyframe.Kernel.Tests.csproj", "{86BD250A-0144-4497-86A3-90BF8D4FE40D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,6 +64,14 @@ Global
 		{1DDD3B19-2D08-4D0B-9E67-0D82B1073C21}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DDD3B19-2D08-4D0B-9E67-0D82B1073C21}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1DDD3B19-2D08-4D0B-9E67-0D82B1073C21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{656D1A93-A92A-402E-9AF7-4AF4BE963958}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{656D1A93-A92A-402E-9AF7-4AF4BE963958}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{656D1A93-A92A-402E-9AF7-4AF4BE963958}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{656D1A93-A92A-402E-9AF7-4AF4BE963958}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86BD250A-0144-4497-86A3-90BF8D4FE40D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86BD250A-0144-4497-86A3-90BF8D4FE40D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86BD250A-0144-4497-86A3-90BF8D4FE40D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86BD250A-0144-4497-86A3-90BF8D4FE40D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,5 +83,7 @@ Global
 		{1DDD3B19-2D08-4D0B-9E67-0D82B1073C21} = {1B002AE5-A482-4A96-B9B8-0D6E8009BE1A}
 		{5D5EB908-B67B-4E7E-AF9E-25BDD03F543E} = {8E1763CC-5943-4001-AEF5-502A2141685C}
 		{E3203B24-AFEB-4D26-A140-B85858A82735} = {71546743-892B-4AB9-BC8A-B209795E51E3}
+		{656D1A93-A92A-402E-9AF7-4AF4BE963958} = {5116D4AC-2EAC-4E12-9579-6D8EFE5F3DA7}
+		{86BD250A-0144-4497-86A3-90BF8D4FE40D} = {5116D4AC-2EAC-4E12-9579-6D8EFE5F3DA7}
 	EndGlobalSection
 EndGlobal

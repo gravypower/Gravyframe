@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Gravyframe.Data.Content;
 using Gravyframe.Service.Content;
@@ -182,6 +183,28 @@ namespace Gravyframe.Service.Tests
 
                 // Assert
                 Assert.IsFalse(responce.Errors.Any());
+            }
+
+            [Test]
+            public void WhenContentRequestCategoryIdContentResponceHasListOfContent()
+            {
+                // Assign
+                var contentList = new List<Models.Content>
+                    {
+                        new Models.Content {Title = "Test Body", Body = "Test Body"},
+                        new Models.Content {Title = "Test Body1", Body = "Test Body1"}
+                    };
+
+                Dao.GetContentByCategory(Request.CategoryId).Returns(contentList);
+
+                // Act
+                var responce = Sut.Get(Request);
+
+                // Assert
+                Assert.IsTrue(responce.ContentList.Any());
+                Assert.IsTrue(responce.ContentList.Any(content => content == contentList[0]));
+                Assert.IsTrue(responce.ContentList.Any(content => content == contentList[1]));
+
             }
         }
         #endregion

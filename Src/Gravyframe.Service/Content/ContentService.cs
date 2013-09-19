@@ -30,11 +30,24 @@ namespace Gravyframe.Service.Content
 
         private ContentResponse CreateResponce(ContentRequest request)
         {
-            var responce = new ContentResponse();
+            var responce = ValidateRequest(request);
 
+            if (!IsRequestASuccess(responce)) 
+                return responce;
+
+            PopulateContentById(responce, request);
+            PopulateContentByCategoryId(responce, request);
+
+            return responce;
+        }
+
+
+        private ContentResponse ValidateRequest(ContentRequest request)
+        {
+            var responce = new ContentResponse();
             if (IsContentIdValid(request))
             {
-                if (IsCategoryIfValid(request))
+                if (IsCategoryIdValid(request))
                 {
                     responce.ResponceCode = GravyResponceCodes.Failure;
                     responce.Errors.Add(_contentConstants.ContenIdError);
@@ -42,16 +55,10 @@ namespace Gravyframe.Service.Content
                 }
             }
 
-            if(responce.ResponceCode == GravyResponceCodes.Success)
-            {
-                responce.Content = _contentDao.GetContent();
-            }
-
-
             return responce;
         }
 
-        private static bool IsCategoryIfValid(ContentRequest request)
+        private static bool IsCategoryIdValid(ContentRequest request)
         {
             return String.IsNullOrEmpty(request.CategoryId);
         }
@@ -61,8 +68,39 @@ namespace Gravyframe.Service.Content
             return String.IsNullOrEmpty(request.ContentId);
         }
 
+        private static bool IsRequestASuccess(ContentResponse responce)
+        {
+            return responce.ResponceCode == GravyResponceCodes.Success;
+        }
+
+        private void PopulateContentById(ContentResponse responce, ContentRequest request)
+        {
+            if (IsContentRequestedById(request))
+            {
+                responce.Content = _contentDao.GetContent();
+            }
+        }
+
+        private static bool IsContentRequestedById(ContentRequest request)
+        {
+            return !String.IsNullOrEmpty(request.ContentId);
+        }
+
+        private void PopulateContentByCategoryId(ContentResponse responce, ContentRequest request)
+        {
+            if (IsContentRequestedByCategoryId(request))
+            {
+                responce.ContentList = _contentDao.GetContentByCategory(request.CategoryId);
+            }
+        }
+
+        private static bool IsContentRequestedByCategoryId(ContentRequest request)
+        {
+            return !String.IsNullOrEmpty(request.CategoryId);
+        }
+
         [Serializable]
-        public class NullContentRequestException : Exception
+        public class NullContentRequestException : ArgumentNullException
         {
         }
     }
