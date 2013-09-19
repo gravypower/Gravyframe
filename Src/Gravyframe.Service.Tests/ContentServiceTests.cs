@@ -162,10 +162,10 @@ namespace Gravyframe.Service.Tests
         }
         #endregion
 
-        #region Given Content Request With Content Category
+        #region Given Content Request With Content Category Id
 
         [TestFixture]
-        public class GivenContentRequestWithContentCategory : ContentServiceTests
+        public class GivenContentRequestWithContentCategoryId : ContentServiceTests
         {
             public ContentRequest Request;
 
@@ -204,7 +204,6 @@ namespace Gravyframe.Service.Tests
                 Assert.IsTrue(responce.ContentList.Any());
                 Assert.IsTrue(responce.ContentList.Any(content => content == contentList[0]));
                 Assert.IsTrue(responce.ContentList.Any(content => content == contentList[1]));
-
             }
         }
         #endregion

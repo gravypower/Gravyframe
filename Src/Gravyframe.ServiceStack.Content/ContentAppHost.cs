@@ -1,4 +1,5 @@
-﻿using Gravyframe.Data.Content;
+﻿using Funq;
+using Gravyframe.Data.Content;
 using Gravyframe.Data.InMemory.Content;
 using Gravyframe.Service.Content;
 using ServiceStack.WebHost.Endpoints;
@@ -11,7 +12,7 @@ namespace Gravyframe.ServiceStack.Content
         {
         }
 
-        public override void Configure(Funq.Container container)
+        public override void Configure(Container container)
         {
             container.Register<IContentDao>(dao => new InMemoryContentDao());
             container.Register<IContentConstants>(dao => new ContentConstants());
