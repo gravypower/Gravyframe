@@ -2,20 +2,18 @@
 
 namespace Gravyframe.Service.News
 {
-    public class NewsService
+    public class NewsService : Service<NewsRequest, NewsResponse>
     {
-        public object Get(object request)
+        public override NewsResponse Get(NewsRequest request)
         {
             if (request == null)
                 throw new NullNewsRequestException();
 
-            return new object();
-            ;
+            return new NewsResponse();
         }
 
-
         [Serializable]
-        public class NullNewsRequestException : ArgumentNullException
+        public class NullNewsRequestException : NullRequestException
         {
         }
     }

@@ -2,7 +2,7 @@
 
 namespace Gravyframe.Service.News
 {
-    public class NewsRequest:Request
+    public class NewsResponse : Response
     {
     }
 }

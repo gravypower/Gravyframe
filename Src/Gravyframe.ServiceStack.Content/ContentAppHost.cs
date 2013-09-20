@@ -18,6 +18,7 @@ namespace Gravyframe.ServiceStack.Content
             container.Register<IContentConstants>(dao => new ContentConstants());
 
             Routes.Add<ContentRequest>("/ContentService/{ContentId}");
+            Routes.Add<ContentRequest>("/ContentService/Category/{CategoryId}");
         }
     }
 }

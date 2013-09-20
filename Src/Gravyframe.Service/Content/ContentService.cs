@@ -4,10 +4,14 @@ using Gravyframe.Service.Messages;
 
 namespace Gravyframe.Service.Content
 {
-    public class ContentService
+    public class ContentService : Service<ContentRequest, ContentResponse>
     {
         private readonly IContentDao _contentDao;
         private readonly IContentConstants _contentConstants;
+
+        public ContentService()
+        {
+        }
 
         public ContentService(IContentDao contentDao, IContentConstants contentConstants)
         {
@@ -15,7 +19,7 @@ namespace Gravyframe.Service.Content
             _contentConstants = contentConstants;
         }
 
-        public ContentResponse Get(ContentRequest request)
+        public override ContentResponse Get(ContentRequest request)
         {
             GardRequest(request);
 
@@ -100,7 +104,7 @@ namespace Gravyframe.Service.Content
         }
 
         [Serializable]
-        public class NullContentRequestException : ArgumentNullException
+        public class NullContentRequestException : NullRequestException
         {
         }
     }

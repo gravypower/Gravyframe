@@ -10,55 +10,16 @@ using NUnit.Framework;
 namespace Gravyframe.Service.Tests
 {
     [TestFixture]
-    public class ContentServiceTests
+    public class ContentServiceTests:ServiceTests<ContentResponse, ContentRequest, ContentService, ContentService.NullContentRequestException>
     {
-        public ContentService Sut;
         public IContentDao Dao;
         public IContentConstants ContentConstants;
 
-        [SetUp]
-        public void BaseSetUp()
+        protected override void BaseSetUp()
         {
             Dao = Substitute.For<IContentDao>();
             ContentConstants = new ContentConstants();
             Sut = new ContentService(Dao, ContentConstants);
-        }
-
-        [Test]
-        public void CanCreateContentService()
-        {
-            // Assert
-            Assert.IsNotNull(Sut);
-        }
-
-        [Test]
-        public void WhenContentRequestIsNullContentRequestThrown()
-        {
-            // Assert
-            Assert.Throws<ContentService.NullContentRequestException>(() => Sut.Get(null));
-        }
-
-        [Test]
-        public void WhenContentRequestInNotNullNullContentRequestExceptionNotThrown()
-        {
-            // Assign
-            var request = new ContentRequest();
-
-            // Assert
-            Assert.DoesNotThrow(() => Sut.Get(request));
-        }
-
-        [Test]
-        public void WhenContentRequestIsNotNullContentResponceNotNull()
-        {
-            // Assign
-            var request = new ContentRequest();
-
-            // Act
-            var responce = Sut.Get(request);
-
-            // Assert
-            Assert.IsNotNull(responce);
         }
 
         #region Given Content Request With No Content Id
