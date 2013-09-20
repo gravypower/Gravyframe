@@ -10,12 +10,12 @@ using NUnit.Framework;
 namespace Gravyframe.Service.Tests
 {
     [TestFixture]
-    public class ContentServiceTests:ServiceTests<ContentResponse, ContentRequest, ContentService, ContentService.NullContentRequestException>
+    public class ContentServiceTests : ServiceTests<ContentRequest, ContentResponse, ContentService, ContentService.NullContentRequestException>
     {
         public IContentDao Dao;
         public IContentConstants ContentConstants;
 
-        protected override void BaseSetUp()
+        protected override void ServiceSetUp()
         {
             Dao = Substitute.For<IContentDao>();
             ContentConstants = new ContentConstants();

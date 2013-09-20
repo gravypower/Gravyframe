@@ -3,10 +3,10 @@ using NUnit.Framework;
 namespace Gravyframe.Service.Tests
 {
     [TestFixture]
-    public abstract class ServiceTests<TResponce, TRequest, TService, TNullRequestException>
-        where TRequest : Request, new() 
+    public abstract class ServiceTests<TRequest, TResponce, TService, TNullRequestException>
         where TResponce : Response, new()
-        where TService : Service<TRequest, TResponce>, new()
+        where TRequest : Request, new() 
+        where TService : Service<TRequest, TResponce>
         where TNullRequestException : Service<TRequest,TResponce>.NullRequestException
 
     {
@@ -15,10 +15,10 @@ namespace Gravyframe.Service.Tests
         [SetUp]
         public void SetUp()
         {
-            BaseSetUp();
+            ServiceSetUp();
         }
 
-        protected abstract void BaseSetUp();
+        protected abstract void ServiceSetUp();
 
         [Test]
         public void CanCreateTService()

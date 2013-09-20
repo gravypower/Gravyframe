@@ -4,9 +4,9 @@ using NUnit.Framework;
 namespace Gravyframe.Service.Tests
 {
     [TestFixture]
-    public class NewsServiceTests : ServiceTests<NewsResponse, NewsRequest, NewsService, NewsService.NullNewsRequestException>
+    public class NewsServiceTests : ServiceTests<NewsRequest, NewsResponse, NewsService, NewsService.NullNewsRequestException>
     {
-        protected override void BaseSetUp()
+        protected override void ServiceSetUp()
         {
             Sut = new NewsService();
         }

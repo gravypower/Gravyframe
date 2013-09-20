@@ -9,9 +9,9 @@ namespace Gravyframe.Service.Content
         private readonly IContentDao _contentDao;
         private readonly IContentConstants _contentConstants;
 
-        public ContentService()
-        {
-        }
+        //public ContentService()
+        //{
+        //}
 
         public ContentService(IContentDao contentDao, IContentConstants contentConstants)
         {
