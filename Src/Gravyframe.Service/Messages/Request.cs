@@ -1,6 +1,7 @@
 ﻿namespace Gravyframe.Service.Messages
 {
-    public class Request
+    public abstract class Request
     {
+        internal abstract bool IsRequestValid();
     }
 }

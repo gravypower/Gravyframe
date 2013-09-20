@@ -5,15 +5,15 @@ namespace Gravyframe.Service.Tests
     [TestFixture]
     public abstract class ServiceTests<TRequest, TResponce, TService, TNullRequestException>
         where TResponce : Response, new()
-        where TRequest : Request, new() 
-        where TService : Service<TRequest, TResponce>
-        where TNullRequestException : Service<TRequest,TResponce>.NullRequestException
+        where TRequest : Request, new()
+        where TService : Service<TRequest, TResponce, TNullRequestException>
+        where TNullRequestException : Service<TRequest, TResponce, TNullRequestException>.NullRequestException, new()
 
     {
         public TService Sut;
 
         [SetUp]
-        public void SetUp()
+        protected void SetUp()
         {
             ServiceSetUp();
         }
@@ -31,7 +31,7 @@ namespace Gravyframe.Service.Tests
         public void IsAssignableFromTService()
         {
             // Assert 
-            Assert.IsInstanceOf<Service<TRequest, TResponce>>(Sut);
+            Assert.IsInstanceOf<Service<TRequest, TResponce, TNullRequestException>>(Sut);
         }
 
         [Test]

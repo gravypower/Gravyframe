@@ -1,18 +1,21 @@
 ﻿namespace Gravyframe.Service.Blog
 {
-    public class BlogService:Service<BlogRequest, BlogResponce>
+    public class BlogService : Service<BlogRequest, BlogResponce, BlogService.NullBlogRequestException>
     {
-        public override BlogResponce Get(BlogRequest request)
-        {
-            if (request == null)
-                throw new NullBlogRequestException();
-
-            return new BlogResponce();
-        }
-
         
+
         public class NullBlogRequestException:NullRequestException
         {
+        }
+
+        protected override BlogResponce CreateResponce(BlogRequest request, BlogResponce responce)
+        {
+            return responce;
+        }
+
+        protected override BlogResponce ValidateRequest(BlogRequest request)
+        {
+            return new BlogResponce();
         }
     }
 }

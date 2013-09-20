@@ -4,14 +4,10 @@ using Gravyframe.Service.Messages;
 
 namespace Gravyframe.Service.Content
 {
-    public class ContentService : Service<ContentRequest, ContentResponse>
+    public class ContentService : Service<ContentRequest, ContentResponse, ContentService.NullContentRequestException>
     {
         private readonly IContentDao _contentDao;
         private readonly IContentConstants _contentConstants;
-
-        //public ContentService()
-        //{
-        //}
 
         public ContentService(IContentDao contentDao, IContentConstants contentConstants)
         {
@@ -19,26 +15,8 @@ namespace Gravyframe.Service.Content
             _contentConstants = contentConstants;
         }
 
-        public override ContentResponse Get(ContentRequest request)
+        protected override ContentResponse CreateResponce(ContentRequest request, ContentResponse responce)
         {
-            GardRequest(request);
-
-            return CreateResponce(request);
-        }
-
-        private static void GardRequest(ContentRequest request)
-        {
-            if (request == null)
-                throw new NullContentRequestException();
-        }
-
-        private ContentResponse CreateResponce(ContentRequest request)
-        {
-            var responce = ValidateRequest(request);
-
-            if (!IsRequestASuccess(responce)) 
-                return responce;
-
             PopulateContentById(responce, request);
             PopulateContentByCategoryId(responce, request);
 
@@ -46,35 +24,17 @@ namespace Gravyframe.Service.Content
         }
 
 
-        private ContentResponse ValidateRequest(ContentRequest request)
+        protected override ContentResponse ValidateRequest(ContentRequest request)
         {
             var responce = new ContentResponse();
-            if (IsContentIdValid(request))
+            if (request.IsRequestValid())
             {
-                if (IsCategoryIdValid(request))
-                {
-                    responce.ResponceCode = GravyResponceCodes.Failure;
-                    responce.Errors.Add(_contentConstants.ContenIdError);
-                    responce.Errors.Add(_contentConstants.ContenCategoryIdError);
-                }
+                responce.ResponceCode = ResponceCodes.Failure;
+                responce.Errors.Add(_contentConstants.ContenIdError);
+                responce.Errors.Add(_contentConstants.ContenCategoryIdError);
             }
 
             return responce;
-        }
-
-        private static bool IsCategoryIdValid(ContentRequest request)
-        {
-            return String.IsNullOrEmpty(request.CategoryId);
-        }
-
-        private static bool IsContentIdValid(ContentRequest request)
-        {
-            return String.IsNullOrEmpty(request.ContentId);
-        }
-
-        private static bool IsRequestASuccess(ContentResponse responce)
-        {
-            return responce.ResponceCode == GravyResponceCodes.Success;
         }
 
         private void PopulateContentById(ContentResponse responce, ContentRequest request)

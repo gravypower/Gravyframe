@@ -2,20 +2,21 @@
 
 namespace Gravyframe.Service.Calendar
 {
-    public class CalendarService : Service<CalendarRequest, CalendarResponce>
+    public class CalendarService : Service<CalendarRequest, CalendarResponce, CalendarService.NullCalendarRequestException>
     {
-        public override CalendarResponce Get(CalendarRequest request)
-        {
-            if(request == null)
-                throw new NullCalendarRequestException();
-
-            return new CalendarResponce();
-        }
-
-
         [Serializable]
         public class NullCalendarRequestException : NullRequestException
         {
+        }
+
+        protected override CalendarResponce CreateResponce(CalendarRequest request, CalendarResponce responce)
+        {
+            return responce;
+        }
+
+        protected override CalendarResponce ValidateRequest(CalendarRequest request)
+        {
+            return new CalendarResponce();
         }
     }
 }

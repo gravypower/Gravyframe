@@ -30,7 +30,7 @@ namespace Gravyframe.Service.Tests
             public ContentRequest Request;
 
             [SetUp]
-            public void NoConteIdSetUp()
+            public void GivenContentRequestWithNoContentIdSetUp()
             {
                 Request = new ContentRequest();
             }
@@ -42,7 +42,7 @@ namespace Gravyframe.Service.Tests
                 var responce = Sut.Get(Request);
 
                 // Assert
-                Assert.AreEqual(GravyResponceCodes.Failure, responce.ResponceCode);
+                Assert.AreEqual(ResponceCodes.Failure, responce.ResponceCode);
             }
 
             [Test]
@@ -77,7 +77,7 @@ namespace Gravyframe.Service.Tests
             public ContentRequest Request;
 
             [SetUp]
-            public void ConteIdSetUp()
+            public void SetUp()
             {
                 Request = new ContentRequest { ContentId = "SomeID" };
             }
@@ -89,7 +89,7 @@ namespace Gravyframe.Service.Tests
                 var responce = Sut.Get(Request);
 
                 // Assert
-                Assert.AreEqual(GravyResponceCodes.Success, responce.ResponceCode);
+                Assert.AreEqual(ResponceCodes.Success, responce.ResponceCode);
                 Assert.IsFalse(responce.Errors.Any(error => error == ContentConstants.ContenCategoryIdError));
             }
 
@@ -131,7 +131,7 @@ namespace Gravyframe.Service.Tests
             public ContentRequest Request;
 
             [SetUp]
-            public void ConteIdSetUp()
+            public void SetUp()
             {
                 Request = new ContentRequest { CategoryId = "SomeCategoryID" };
             }
