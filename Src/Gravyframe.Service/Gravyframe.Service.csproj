@@ -39,12 +39,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Blog\BlogRequest.cs" />
-    <Compile Include="Blog\BlogResponce.cs" />
-    <Compile Include="Blog\BlogService.cs" />
-    <Compile Include="Calendar\CalendarRequest.cs" />
-    <Compile Include="Calendar\CalendarResponce.cs" />
-    <Compile Include="Calendar\CalendarService.cs" />
     <Compile Include="Content\ContentConstants.cs" />
     <Compile Include="Content\ContentRequest.cs" />
     <Compile Include="Content\ContentResponse.cs" />

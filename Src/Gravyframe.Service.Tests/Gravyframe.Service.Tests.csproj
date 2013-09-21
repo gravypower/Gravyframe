@@ -47,8 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BlogServiceTests.cs" />
-    <Compile Include="CalendarServiceTests.cs" />
     <Compile Include="ContentServiceTests.cs" />
     <Compile Include="NewsServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

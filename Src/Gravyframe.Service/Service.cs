@@ -12,24 +12,14 @@ namespace Gravyframe.Service
         {
             GuardRequest(request);
 
-            CustomGardRequest(request);
-
             var responce = ValidateRequest(request);
-
-            if (!responce.IsRequestASuccess())
-                return responce;
-
-            return CreateResponce(request, responce);
+            return !responce.IsRequestASuccess() ? responce : CreateResponce(request, responce);
         }
 
         private static void GuardRequest(TRequest request)
         {
             if (request == null)
                 throw new TArgumentNullException();
-        }
-
-        protected virtual void CustomGardRequest(TRequest request)
-        {
         }
 
         protected abstract TResponce ValidateRequest(TRequest request);
