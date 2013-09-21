@@ -15,21 +15,22 @@ namespace Gravyframe.Service.Content
             _contentConstants = contentConstants;
         }
 
-        protected override ContentResponse CreateResponce(ContentRequest request, ContentResponse responce)
+        protected override ContentResponse CreateResponce(ContentRequest request)
         {
-            PopulateContentById(responce, request);
-            PopulateContentByCategoryId(responce, request);
+            var response = new ContentResponse();
+            PopulateContentById(response, request);
+            PopulateContentByCategoryId(response, request);
 
-            return responce;
+            return response;
         }
 
 
         protected override ContentResponse ValidateRequest(ContentRequest request)
         {
             var responce = new ContentResponse();
-            if (request.IsRequestValid())
+            if (!request.IsRequestValid())
             {
-                responce.ResponceCode = ResponceCodes.Failure;
+                responce.Code = ResponceCodes.Failure;
                 responce.Errors.Add(_contentConstants.ContenIdError);
                 responce.Errors.Add(_contentConstants.ContenCategoryIdError);
             }

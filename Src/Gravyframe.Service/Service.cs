@@ -3,27 +3,35 @@ using Gravyframe.Service.Messages;
 
 namespace Gravyframe.Service
 {
-    public abstract class Service<TRequest, TResponce, TArgumentNullException>
+    public abstract class Service<TRequest, TResponse, TArgumentNullException>
         where TRequest : Request
-        where TResponce : Response
-        where TArgumentNullException : Service<TRequest, TResponce, TArgumentNullException>.NullRequestException, new()
+        where TResponse : Response, new()
+        where TArgumentNullException : Service<TRequest, TResponse, TArgumentNullException>.NullRequestException, new()
     {
-        public TResponce Get(TRequest request)
+        public TResponse Get(TRequest request)
         {
             GuardRequest(request);
-
-            var responce = ValidateRequest(request);
-            return !responce.IsRequestASuccess() ? responce : CreateResponce(request, responce);
+            return GetResponce(request);
         }
 
-        private static void GuardRequest(TRequest request)
+        protected virtual void GuardRequest(TRequest request)
         {
             if (request == null)
                 throw new TArgumentNullException();
         }
 
-        protected abstract TResponce ValidateRequest(TRequest request);
-        protected abstract TResponce CreateResponce(TRequest request, TResponce responce);
+        protected abstract TResponse ValidateRequest(TRequest request);
+        protected abstract TResponse CreateResponce(TRequest request);
+
+        private TResponse GetResponce(TRequest request)
+        {
+            var responce = ValidateRequest(request);
+
+            if (!responce.IsRequestASuccess())
+                return responce;
+            
+            return CreateResponce(request);   
+        }
 
         [Serializable]
         public abstract class NullRequestException : ArgumentNullException

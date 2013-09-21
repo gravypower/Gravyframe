@@ -4,7 +4,7 @@ namespace Gravyframe.Service.Messages
 {
     public class Response
     {
-        public ResponceCodes ResponceCode { get; set; }
+        public ResponceCodes Code { get; set; }
         public List<string> Errors { get; set; }
 
         public Response()
@@ -14,7 +14,7 @@ namespace Gravyframe.Service.Messages
 
         public bool IsRequestASuccess()
         {
-            return ResponceCode == ResponceCodes.Success;
+            return Code == ResponceCodes.Success;
         }
     }
 }

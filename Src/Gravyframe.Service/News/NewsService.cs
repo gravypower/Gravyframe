@@ -1,4 +1,5 @@
 ﻿using System;
+using Gravyframe.Service.Messages;
 
 namespace Gravyframe.Service.News
 {
@@ -9,14 +10,18 @@ namespace Gravyframe.Service.News
         {
         }
 
-        protected override NewsResponse CreateResponce(NewsRequest request, NewsResponse responce)
+        protected override NewsResponse CreateResponce(NewsRequest request)
         {
-            return responce;
+           return new NewsResponse();
         }
 
         protected override NewsResponse ValidateRequest(NewsRequest request)
         {
+            if (!String.IsNullOrEmpty(request.NewsId))
+                return new NewsResponse {Code = ResponceCodes.Failure};
+
             return new NewsResponse();
+
         }
     }
 }

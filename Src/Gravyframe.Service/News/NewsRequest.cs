@@ -1,4 +1,5 @@
-﻿using Gravyframe.Service.Messages;
+﻿using System;
+using Gravyframe.Service.Messages;
 
 namespace Gravyframe.Service.News
 {
@@ -6,7 +7,9 @@ namespace Gravyframe.Service.News
     {
         internal override bool IsRequestValid()
         {
-            throw new System.NotImplementedException();
+            return !String.IsNullOrEmpty(NewsId);
         }
+
+        public string NewsId { get; set; }
     }
 }

@@ -14,7 +14,7 @@ namespace Gravyframe.ServiceStack.Content
 
         private static bool IsRequestASuccess(ContentResponse responce)
         {
-            return responce.ResponceCode == ResponceCodes.Success;
+            return responce.Code == ResponceCodes.Success;
         }
     }
 }

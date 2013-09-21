@@ -42,7 +42,7 @@ namespace Gravyframe.Service.Tests
                 var responce = Sut.Get(Request);
 
                 // Assert
-                Assert.AreEqual(ResponceCodes.Failure, responce.ResponceCode);
+                Assert.AreEqual(ResponceCodes.Failure, responce.Code);
             }
 
             [Test]
@@ -89,7 +89,7 @@ namespace Gravyframe.Service.Tests
                 var responce = Sut.Get(Request);
 
                 // Assert
-                Assert.AreEqual(ResponceCodes.Success, responce.ResponceCode);
+                Assert.AreEqual(ResponceCodes.Success, responce.Code);
                 Assert.IsFalse(responce.Errors.Any(error => error == ContentConstants.ContenCategoryIdError));
             }
 

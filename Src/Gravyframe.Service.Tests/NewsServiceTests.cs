@@ -26,15 +26,15 @@ namespace Gravyframe.Service.Tests
                 Request = new NewsRequest();
             }
 
-            //[Test]
-            //public void WhenNewsRequestNoNewsIdContentResponceFailure()
-            //{
-            //    // Act
-            //    var responce = Sut.Get(Request);
+            [Test]
+            public void WhenNewsRequestNoNewsIdNewsResponceFailure()
+            {
+                // Act
+                var responce = Sut.Get(Request);
 
-            //    // Assert
-            //    Assert.AreEqual(ResponceCodes.Failure, responce.ResponceCode);
-            //}
+                // Assert
+                Assert.AreEqual(ResponceCodes.Failure, responce.Code);
+            }
         }
         #endregion
     }
