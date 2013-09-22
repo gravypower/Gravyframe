@@ -1,4 +1,5 @@
-﻿using Gravyframe.Service.Messages;
+﻿using System.Linq;
+using Gravyframe.Service.Messages;
 using Gravyframe.Service.News;
 using NUnit.Framework;
 
@@ -7,10 +8,13 @@ namespace Gravyframe.Service.Tests
     [TestFixture]
     public class NewsServiceTests : ServiceTests<NewsRequest, NewsResponse, NewsService, NewsService.NullNewsRequestException>
     {
+        public INewsConstants NewsConstants;
+
         [SetUp]
         protected override void ServiceSetUp()
         {
-            Sut = new NewsService();
+            NewsConstants = new NewsConstants();
+            Sut = new NewsService(NewsConstants);
         }
 
         #region Given News Request With No Content Id
@@ -35,6 +39,19 @@ namespace Gravyframe.Service.Tests
                 // Assert
                 Assert.AreEqual(ResponceCodes.Failure, responce.Code);
             }
+
+            [Test]
+            public void WhenNewsRequestNoNewsIdNewsResponceErrors()
+            {
+                // Act
+                var responce = Sut.Get(Request);
+
+                // Assert
+                Assert.IsTrue(responce.Errors.Any());
+                Assert.IsTrue(responce.Errors.Any(error => error == NewsConstants.NewsIdError));
+            }
+
+
         }
         #endregion
     }

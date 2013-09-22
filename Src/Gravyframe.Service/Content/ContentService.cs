@@ -24,7 +24,6 @@ namespace Gravyframe.Service.Content
             return response;
         }
 
-
         protected override ContentResponse ValidateRequest(ContentRequest request)
         {
             var responce = new ContentResponse();

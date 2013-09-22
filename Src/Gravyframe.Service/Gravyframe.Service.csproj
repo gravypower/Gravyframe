@@ -39,12 +39,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Content\ContentCategoryIdRequest.cs" />
     <Compile Include="Content\ContentConstants.cs" />
+    <Compile Include="Content\ContentIdRequest.cs" />
     <Compile Include="Content\ContentRequest.cs" />
     <Compile Include="Content\ContentResponse.cs" />
     <Compile Include="Content\ContentService.cs" />
     <Compile Include="Messages\ResponceCodes.cs" />
     <Compile Include="Messages\Request.cs" />
+    <Compile Include="News\NewsConstants.cs" />
     <Compile Include="News\NewsRequest.cs" />
     <Compile Include="News\NewsResponse.cs" />
     <Compile Include="News\NewsService.cs" />

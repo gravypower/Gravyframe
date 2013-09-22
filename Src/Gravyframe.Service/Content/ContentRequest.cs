@@ -10,17 +10,17 @@ namespace Gravyframe.Service.Content
 
         internal override bool IsRequestValid()
         {
-            return IsContentIdValid() && IsCategoryIdValid();
+            return IsNotContentIdEmpty() || IsNotCategoryIdEmpty();
         }
 
-        private bool IsCategoryIdValid()
+        private bool IsNotCategoryIdEmpty()
         {
-            return String.IsNullOrEmpty(CategoryId);
+            return !String.IsNullOrEmpty(CategoryId);
         }
 
-        private bool IsContentIdValid()
+        private bool IsNotContentIdEmpty()
         {
-            return String.IsNullOrEmpty(ContentId);
+            return !String.IsNullOrEmpty(ContentId);
         }
     }
 }
