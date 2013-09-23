@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Gravyframe.Data.Content;
 using Gravyframe.Service.Content;
+using Gravyframe.Service.Content.Tasks;
 using Gravyframe.Service.Messages;
 using NSubstitute;
 using NUnit.Framework;
@@ -14,12 +15,19 @@ namespace Gravyframe.Service.Tests
     {
         public IContentDao Dao;
         public IContentConstants ContentConstants;
-
+        public IEnumerable<Task<ContentRequest, ContentResponse>> Tasks;
         protected override void ServiceSetUp()
         {
             Dao = Substitute.For<IContentDao>();
             ContentConstants = new ContentConstants();
-            Sut = new ContentService(Dao, ContentConstants);
+
+            Tasks = new List<Task<ContentRequest, ContentResponse>>
+                {
+                    new PopulateContentByCategoryIdTask(Dao, ContentConstants),
+                    new PopulateContentByIdTask(Dao, ContentConstants)
+                };
+
+            Sut = new ContentService(Tasks);
         }
 
         #region Given Content Request With No Content Id
@@ -77,7 +85,7 @@ namespace Gravyframe.Service.Tests
             public ContentRequest Request;
 
             [SetUp]
-            public void SetUp()
+            public void GivenContentRequestWithContentIdSetUp()
             {
                 Request = new ContentRequest { ContentId = "SomeID" };
             }
@@ -131,7 +139,7 @@ namespace Gravyframe.Service.Tests
             public ContentRequest Request;
 
             [SetUp]
-            public void SetUp()
+            public void GivenContentRequestWithContentCategoryIdSetUp()
             {
                 Request = new ContentRequest { CategoryId = "SomeCategoryID" };
             }

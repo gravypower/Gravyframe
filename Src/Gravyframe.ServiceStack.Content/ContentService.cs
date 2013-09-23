@@ -1,4 +1,6 @@
-﻿using Gravyframe.Data.Content;
+﻿using System.Collections.Generic;
+using Gravyframe.Data.Content;
+using Gravyframe.Service;
 using Gravyframe.Service.Content;
 using Gravyframe.Service.Messages;
 using ServiceStack.ServiceHost;
@@ -7,14 +9,9 @@ namespace Gravyframe.ServiceStack.Content
 {
     public class ContentService : Service.Content.ContentService, IService
     {
-        public ContentService(IContentDao contentDao, IContentConstants contentConstants)
-            : base(contentDao, contentConstants)
+        public ContentService(IEnumerable<Task<ContentRequest, ContentResponse>> tasks)
+            : base(tasks)
         {
-        }
-
-        private static bool IsRequestASuccess(ContentResponse responce)
-        {
-            return responce.Code == ResponceCodes.Success;
         }
     }
 }

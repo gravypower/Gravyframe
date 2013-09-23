@@ -2,6 +2,5 @@
 {
     public abstract class Request
     {
-        internal abstract bool IsRequestValid();
     }
 }

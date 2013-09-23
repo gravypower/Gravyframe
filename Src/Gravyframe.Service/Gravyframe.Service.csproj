@@ -39,21 +39,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Content\ContentCategoryIdRequest.cs" />
     <Compile Include="Content\ContentConstants.cs" />
-    <Compile Include="Content\ContentIdRequest.cs" />
     <Compile Include="Content\ContentRequest.cs" />
     <Compile Include="Content\ContentResponse.cs" />
     <Compile Include="Content\ContentService.cs" />
+    <Compile Include="Content\ContentTask.cs" />
+    <Compile Include="Content\Tasks\PopulateContentByCategoryIdTask.cs" />
+    <Compile Include="Content\Tasks\PopulateContentByIdTask.cs" />
     <Compile Include="Messages\ResponceCodes.cs" />
     <Compile Include="Messages\Request.cs" />
     <Compile Include="News\NewsConstants.cs" />
     <Compile Include="News\NewsRequest.cs" />
     <Compile Include="News\NewsResponse.cs" />
     <Compile Include="News\NewsService.cs" />
+    <Compile Include="News\NewsTask.cs" />
+    <Compile Include="News\Tasks\PopulateNewsByIdTask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Messages\Response.cs" />
     <Compile Include="Service.cs" />
+    <Compile Include="Task.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Gravyframe.Data\Gravyframe.Data.csproj">

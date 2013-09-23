@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Gravyframe.Service.Messages;
 
 namespace Gravyframe.Service
@@ -8,10 +10,17 @@ namespace Gravyframe.Service
         where TResponse : Response, new()
         where TArgumentNullException : Service<TRequest, TResponse, TArgumentNullException>.NullRequestException, new()
     {
+        private readonly IEnumerable<Task<TRequest, TResponse>> _tasks;
+
+        protected Service(IEnumerable<Task<TRequest, TResponse>> tasks)
+        {
+            _tasks = tasks;
+        }
+
         public TResponse Get(TRequest request)
         {
             GuardRequest(request);
-            return GetResponce(request);
+            return CreateResponce(request);
         }
 
         protected virtual void GuardRequest(TRequest request)
@@ -19,19 +28,22 @@ namespace Gravyframe.Service
             if (request == null)
                 throw new TArgumentNullException();
         }
-
-        protected abstract TResponse ValidateRequest(TRequest request);
-        protected abstract TResponse CreateResponce(TRequest request);
-
-        private TResponse GetResponce(TRequest request)
+        
+        protected TResponse CreateResponce(TRequest request)
         {
-            var responce = ValidateRequest(request);
+            var response = new TResponse();
 
-            if (!responce.IsRequestASuccess())
-                return responce;
-            
-            return CreateResponce(request);   
+            foreach (var task in _tasks)
+            {
+                task.PopulateResponse(request, response);
+            }
+
+            if(response.Code == ResponceCodes.Success)
+                response.Errors.Clear();
+
+            return response;
         }
+
 
         [Serializable]
         public abstract class NullRequestException : ArgumentNullException

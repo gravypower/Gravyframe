@@ -6,36 +6,13 @@ namespace Gravyframe.Service.News
 {
     public class NewsService : Service<NewsRequest, NewsResponse, NewsService.NullNewsRequestException>
     {
-        private readonly INewsConstants _newsConstants;
-
         [Serializable]
         public class NullNewsRequestException : NullRequestException
         {
         }
 
-        public NewsService(INewsConstants newsConstants)
+        public NewsService(IEnumerable<Task<NewsRequest, NewsResponse>> tasks) : base(tasks)
         {
-            _newsConstants = newsConstants;
-        }
-
-        protected override NewsResponse CreateResponce(NewsRequest request)
-        {
-           return new NewsResponse();
-        }
-
-        protected override NewsResponse ValidateRequest(NewsRequest request)
-        {
-            if (String.IsNullOrEmpty(request.NewsId))
-            {
-                return new NewsResponse
-                    {
-                        Code = ResponceCodes.Failure,
-                        Errors = new List<string>{ _newsConstants.NewsIdError}
-                    };
-            }
-
-            return new NewsResponse();
-
         }
     }
 }

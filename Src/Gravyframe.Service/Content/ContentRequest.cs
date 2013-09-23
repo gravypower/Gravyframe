@@ -7,20 +7,5 @@ namespace Gravyframe.Service.Content
     {
         public string ContentId { get; set; }
         public string CategoryId { get; set; }
-
-        internal override bool IsRequestValid()
-        {
-            return IsNotContentIdEmpty() || IsNotCategoryIdEmpty();
-        }
-
-        private bool IsNotCategoryIdEmpty()
-        {
-            return !String.IsNullOrEmpty(CategoryId);
-        }
-
-        private bool IsNotContentIdEmpty()
-        {
-            return !String.IsNullOrEmpty(ContentId);
-        }
     }
 }

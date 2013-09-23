@@ -1,6 +1,8 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Gravyframe.Service.Messages;
 using Gravyframe.Service.News;
+using Gravyframe.Service.News.Tasks;
 using NUnit.Framework;
 
 namespace Gravyframe.Service.Tests
@@ -9,12 +11,19 @@ namespace Gravyframe.Service.Tests
     public class NewsServiceTests : ServiceTests<NewsRequest, NewsResponse, NewsService, NewsService.NullNewsRequestException>
     {
         public INewsConstants NewsConstants;
+        public IEnumerable<Task<NewsRequest, NewsResponse>> Tasks;
 
         [SetUp]
         protected override void ServiceSetUp()
         {
             NewsConstants = new NewsConstants();
-            Sut = new NewsService(NewsConstants);
+
+            Tasks = new List<Task<NewsRequest, NewsResponse>>
+                {
+                    new PopulateNewsByIdTask(NewsConstants)
+                };
+
+            Sut = new NewsService(Tasks);
         }
 
         #region Given News Request With No Content Id
