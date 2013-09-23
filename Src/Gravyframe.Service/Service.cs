@@ -32,14 +32,25 @@ namespace Gravyframe.Service
         protected TResponse CreateResponce(TRequest request)
         {
             var response = new TResponse();
-
+            var errorList = new List<string>();
             foreach (var task in _tasks)
             {
-                task.PopulateResponse(request, response);
+                var errors = task.ValidateResponse(request).ToArray();
+                if (errors.Any() && response.Code != ResponceCodes.Success)
+                {
+                    errorList.AddRange(errors);
+                }
+                else
+                {
+                    task.PopulateResponse(request, response);
+                    response.Code = ResponceCodes.Success;
+                }
             }
 
-            if(response.Code == ResponceCodes.Success)
-                response.Errors.Clear();
+            if (response.Code == ResponceCodes.Failure)
+            {
+                response.Errors = errorList;
+            }
 
             return response;
         }

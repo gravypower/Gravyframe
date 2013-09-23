@@ -2,8 +2,8 @@
 {
     public enum ResponceCodes
     {
-        Unknown,
-        Success,
-        Failure
+        Failure,
+        Success
+        
     }
 }

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Gravyframe.Service.Messages;
 
 namespace Gravyframe.Service.News.Tasks
 {
@@ -14,11 +11,16 @@ namespace Gravyframe.Service.News.Tasks
 
         public override void PopulateResponse(NewsRequest request, NewsResponse response)
         {
+        }
+
+        public override IEnumerable<string> ValidateResponse(NewsRequest request)
+        {
             if (String.IsNullOrEmpty(request.NewsId))
-            {
-                response.Code = ResponceCodes.Failure;
-                response.Errors.Add(NewsConstants.NewsIdError);
-            }
+                return new List<string>
+                    {
+                        NewsConstants.NewsIdError
+                    };
+            return new List<string>();
         }
     }
 }

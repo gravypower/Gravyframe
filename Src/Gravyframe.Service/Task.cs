@@ -1,4 +1,5 @@
-﻿using Gravyframe.Service.Messages;
+﻿using System.Collections.Generic;
+using Gravyframe.Service.Messages;
 
 namespace Gravyframe.Service
 {
@@ -6,6 +7,7 @@ namespace Gravyframe.Service
         where TRequest : Request
         where TResponse : Response
     {
+        public abstract IEnumerable<string> ValidateResponse(TRequest request);
         public abstract void PopulateResponse(TRequest request, TResponse response);
     }
 }

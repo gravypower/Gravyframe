@@ -1,5 +1,4 @@
-﻿using System;
-using Gravyframe.Service.Messages;
+﻿using Gravyframe.Service.Messages;
 
 namespace Gravyframe.Service.Content
 {

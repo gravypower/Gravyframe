@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
 using Gravyframe.Data.Content;
-using Gravyframe.Service.Messages;
 
 namespace Gravyframe.Service.Content.Tasks
 {
@@ -12,16 +12,18 @@ namespace Gravyframe.Service.Content.Tasks
 
         public override void PopulateResponse(ContentRequest request, ContentResponse response)
         {
-            if (!String.IsNullOrEmpty(request.CategoryId))
-            {
-                response.ContentList = ContentDao.GetContentByCategory(request.CategoryId);
-                response.Code = ResponceCodes.Success;
-            }
-            else if (response.Code != ResponceCodes.Success)
-            {
-                response.Code = ResponceCodes.Failure;
-                response.Errors.Add(ContentConstants.ContenIdError);   
-            }
+            response.ContentList = ContentDao.GetContentByCategory(request.CategoryId);         
+        }
+
+        public override IEnumerable<string> ValidateResponse(ContentRequest request)
+        {
+            if (String.IsNullOrEmpty(request.CategoryId))
+                return new List<string>
+                    {
+                        ContentConstants.ContenIdError
+                    };
+
+            return new List<string>();
         }
     }
 }
