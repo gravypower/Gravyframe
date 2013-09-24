@@ -14,19 +14,19 @@ namespace Gravyframe.Service.Tests
     {
         public IContentDao Dao;
         public IContentConstants ContentConstants;
-        public IEnumerable<Task<ContentRequest, ContentResponse>> Tasks;
+        public IEnumerable<ResponseHydrator<ContentRequest, ContentResponse>> ResponseHydratationTasks;
         protected override void ServiceSetUp()
         {
             Dao = Substitute.For<IContentDao>();
             ContentConstants = new ContentConstants();
 
-            Tasks = new List<Task<ContentRequest, ContentResponse>>
+            ResponseHydratationTasks = new List<ResponseHydrator<ContentRequest, ContentResponse>>
                 {
-                    new PopulateContentByCategoryIdTask(Dao, ContentConstants),
-                    new PopulateContentByIdTask(Dao, ContentConstants)
+                    new PopulateContentByCategoryIdResponseHydrator(Dao, ContentConstants),
+                    new PopulateContentByIdResponseHydrator(Dao, ContentConstants)
                 };
 
-            Sut = new ContentService(Tasks);
+            Sut = new ContentService(ResponseHydratationTasks);
         }
 
         #region Given Content Request With No Content Id
@@ -105,7 +105,7 @@ namespace Gravyframe.Service.Tests
             {
                 // Assign
                 var content = new Models.Content {Title = "TestTitle"};
-                Dao.GetContent().Returns(content);
+                Dao.GetContent(Request.ContentId).Returns(content);
 
                 // Act
                 var result = Sut.Get(Request);
@@ -119,7 +119,7 @@ namespace Gravyframe.Service.Tests
             {
                 // Assign
                 var content = new Models.Content {Body = "TestBody"};
-                Dao.GetContent().Returns(content);
+                Dao.GetContent(Request.ContentId).Returns(content);
 
                 // Act
                 var result = Sut.Get(Request);

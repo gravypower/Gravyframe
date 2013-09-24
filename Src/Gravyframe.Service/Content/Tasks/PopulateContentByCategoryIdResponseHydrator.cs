@@ -4,9 +4,9 @@ using Gravyframe.Data.Content;
 
 namespace Gravyframe.Service.Content.Tasks
 {
-    public class PopulateContentByCategoryIdTask : ContentTask
+    public class PopulateContentByCategoryIdResponseHydrator : ContentResponseHydrator
     {
-        public PopulateContentByCategoryIdTask(IContentDao contentDao, IContentConstants contentConstants) : base(contentDao, contentConstants)
+        public PopulateContentByCategoryIdResponseHydrator(IContentDao contentDao, IContentConstants contentConstants) : base(contentDao, contentConstants)
         {
         }
 

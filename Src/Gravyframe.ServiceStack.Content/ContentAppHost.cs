@@ -20,11 +20,11 @@ namespace Gravyframe.ServiceStack.Content
             container.Register<IContentDao>(dao => new InMemoryContentDao());
             container.Register<IContentConstants>(constants => new ContentConstants());
 
-            container.Register<IEnumerable<Task<ContentRequest, ContentResponse>>>(tasks => 
-                new List<Task<ContentRequest, ContentResponse>>
+            container.Register<IEnumerable<ResponseHydrator<ContentRequest, ContentResponse>>>(responseHydratationTasks => 
+                new List<ResponseHydrator<ContentRequest, ContentResponse>>
                     {
-                        new PopulateContentByCategoryIdTask(container.Resolve<IContentDao>(), container.Resolve<IContentConstants>()),
-                        new PopulateContentByIdTask(container.Resolve<IContentDao>(), container.Resolve<IContentConstants>())
+                        new PopulateContentByCategoryIdResponseHydrator(container.Resolve<IContentDao>(), container.Resolve<IContentConstants>()),
+                        new PopulateContentByIdResponseHydrator(container.Resolve<IContentDao>(), container.Resolve<IContentConstants>())
                     }
                 );
 

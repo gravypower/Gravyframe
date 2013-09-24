@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Gravyframe.Service.Messages;
 
 namespace Gravyframe.Service
@@ -10,11 +9,11 @@ namespace Gravyframe.Service
         where TResponse : Response, new()
         where TArgumentNullException : Service<TRequest, TResponse, TArgumentNullException>.NullRequestException, new()
     {
-        private readonly IEnumerable<Task<TRequest, TResponse>> _tasks;
+        private readonly IEnumerable<ResponseHydrator<TRequest, TResponse>> _responseHydratationTasks;
 
-        protected Service(IEnumerable<Task<TRequest, TResponse>> tasks)
+        protected Service(IEnumerable<ResponseHydrator<TRequest, TResponse>> responseHydratationTasks)
         {
-            _tasks = tasks;
+            _responseHydratationTasks = responseHydratationTasks;
         }
 
         public TResponse Get(TRequest request)
@@ -31,35 +30,12 @@ namespace Gravyframe.Service
         
         protected TResponse CreateResponce(TRequest request)
         {
-            var response = new TResponse();
-            var errorList = new List<string>();
-            foreach (var task in _tasks)
-            {
-                var errors = task.ValidateResponse(request).ToArray();
-                if (errors.Any() && response.Code != ResponceCodes.Success)
-                {
-                    errorList.AddRange(errors);
-                }
-                else
-                {
-                    task.PopulateResponse(request, response);
-                    response.Code = ResponceCodes.Success;
-                }
-            }
-
-            if (response.Code == ResponceCodes.Failure)
-            {
-                response.Errors = errorList;
-            }
-
-            return response;
+            return new ResponseHydratationRunner<TRequest, TResponse>(_responseHydratationTasks, request).RunTasks();
         }
-
 
         [Serializable]
         public abstract class NullRequestException : ArgumentNullException
         {
-             
         }
     }
 }

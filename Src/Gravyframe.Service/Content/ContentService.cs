@@ -5,7 +5,7 @@ namespace Gravyframe.Service.Content
 {
     public class ContentService : Service<ContentRequest, ContentResponse, ContentService.NullContentRequestException>
     {
-        public ContentService(IEnumerable<Task<ContentRequest, ContentResponse>> tasks):base(tasks)
+        public ContentService(IEnumerable<ResponseHydrator<ContentRequest, ContentResponse>> responseHydratationTasks):base(responseHydratationTasks)
         {
         }
 

@@ -5,7 +5,7 @@ namespace Gravyframe.Data.InMemory.Content
 {
     public class InMemoryContentDao : IContentDao
     {
-        public Models.Content GetContent()
+        public Models.Content GetContent(string contentId)
         {
             return new Models.Content{Title = "Test", Body = "Test"};
         }
