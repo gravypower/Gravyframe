@@ -53,6 +53,7 @@
     <Compile Include="News\NewsResponse.cs" />
     <Compile Include="News\NewsService.cs" />
     <Compile Include="News\NewsResponseHydrator.cs" />
+    <Compile Include="News\Tasks\PopulateNewsByCategoryIdResponseHydrator.cs" />
     <Compile Include="News\Tasks\PopulateNewsByIdResponseHydrator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Messages\Response.cs" />

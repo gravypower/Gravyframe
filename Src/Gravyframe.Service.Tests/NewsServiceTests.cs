@@ -24,7 +24,8 @@ namespace Gravyframe.Service.Tests
 
             ResponseHydratationTasks = new List<ResponseHydrator<NewsRequest, NewsResponse>>
                 {
-                    new PopulateNewsByIdResponseHydrator(NewsConstants, Dao)
+                    new PopulateNewsByIdResponseHydrator(NewsConstants, Dao),
+                    new PopulateNewsByCategoryIdResponseHydrator(NewsConstants, Dao)
                 };
 
             Sut = new NewsService(ResponseHydratationTasks);
@@ -115,6 +116,52 @@ namespace Gravyframe.Service.Tests
 
                 // Assert
                 Assert.AreEqual(news.Body, result.News.Body);
+            }
+        }
+        #endregion
+
+        #region Given Content Request With News Category Id
+
+        [TestFixture]
+        public class GivenContentRequestWithNewsCategoryId : NewsServiceTests
+        {
+            public NewsRequest Request;
+
+            [SetUp]
+            public void GivenContentRequestWithContentCategoryIdSetUp()
+            {
+                Request = new NewsRequest { CategoryId = "SomeCategoryID" };
+            }
+
+            [Test]
+            public void WhenNewsRequestCategoryIdAndNoContentIdNoErrors()
+            {
+                // Act
+                var responce = Sut.Get(Request);
+
+                // Assert
+                Assert.IsFalse(responce.Errors.Any());
+            }
+
+            [Test]
+            public void WhenContentRequestCategoryIdContentResponceHasListOfContent()
+            {
+                // Assign
+                var contentList = new List<Models.News>
+                    {
+                        new Models.News {Title = "Test Body", Body = "Test Body"},
+                        new Models.News {Title = "Test Body1", Body = "Test Body1"}
+                    };
+
+                Dao.GetNewsByCategoryId(Request.CategoryId).Returns(contentList);
+
+                // Act
+                var responce = Sut.Get(Request);
+
+                // Assert
+                Assert.IsTrue(responce.NewsList.Any());
+                Assert.IsTrue(responce.NewsList.Any(content => content == contentList[0]));
+                Assert.IsTrue(responce.NewsList.Any(content => content == contentList[1]));
             }
         }
         #endregion

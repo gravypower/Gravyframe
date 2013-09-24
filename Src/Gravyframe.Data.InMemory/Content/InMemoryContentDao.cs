@@ -10,7 +10,6 @@ namespace Gravyframe.Data.InMemory.Content
             return new Models.Content{Title = "Test", Body = "Test"};
         }
 
-
         public IEnumerable<Models.Content> GetContentByCategory(string categoryId)
         {
             return
