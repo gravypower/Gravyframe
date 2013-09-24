@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Gravyframe.Constants;
 using Gravyframe.Data.News;
 using Gravyframe.Service.Messages;
 using Gravyframe.Service.News;
@@ -34,12 +35,12 @@ namespace Gravyframe.Service.Tests
         #region Given News Request With No News Id
 
         [TestFixture]
-        public class GivenContentRequestWithNoNewstId : NewsServiceTests
+        public class GivenNewsRequestWithNoNewstId : NewsServiceTests
         {
             public NewsRequest Request;
 
             [SetUp]
-            public void GivenContentRequestWithNoContentIdSetUp()
+            public void GivenNewsRequestWithNoNewsIdSetUp()
             {
                 Request = new NewsRequest();
             }
@@ -67,21 +68,21 @@ namespace Gravyframe.Service.Tests
         }
         #endregion
 
-        #region Given Content Request With News Id
+        #region Given News Request With News Id
 
         [TestFixture]
-        public class GivenContentRequestWithNewsId : NewsServiceTests
+        public class GivenNewsRequestWithNewsId : NewsServiceTests
         {
             public NewsRequest Request;
 
             [SetUp]
-            public void GivenContentRequestWithContentIdSetUp()
+            public void GivenNewsRequestWithNewsIdSetUp()
             {
                 Request = new NewsRequest { NewsId = "SomeID" };
             }
 
             [Test]
-            public void WhenContentRequestContentIdContentResponceSuccess()
+            public void WhenNewsRequestNewsIdNewsResponceSuccess()
             {
                 // Act
                 var responce = Sut.Get(Request);
@@ -91,7 +92,7 @@ namespace Gravyframe.Service.Tests
             }
 
             [Test]
-            public void WhenContentRequestedContentIdContentResponceHasContentTitle()
+            public void WhenNewsRequestedNewsIdNewsResponceHasTitle()
             {
                 // Assign
                 var news = new Models.News { Title = "TestTitle" };
@@ -105,7 +106,7 @@ namespace Gravyframe.Service.Tests
             }
 
             [Test]
-            public void WhenContentRequestedContentIdContentResponceHasContentBody()
+            public void WhenNewsRequestedNewsIdNewsResponceHasBody()
             {
                 // Assign
                 var news = new Models.News { Body = "TestBody" };
@@ -120,21 +121,21 @@ namespace Gravyframe.Service.Tests
         }
         #endregion
 
-        #region Given Content Request With News Category Id
+        #region Given News Request With News Category Id
 
         [TestFixture]
-        public class GivenContentRequestWithNewsCategoryId : NewsServiceTests
+        public class GivenNewsRequestWithNewsCategoryId : NewsServiceTests
         {
             public NewsRequest Request;
 
             [SetUp]
-            public void GivenContentRequestWithContentCategoryIdSetUp()
+            public void GivenNewsRequestWithNewsCategoryIdSetUp()
             {
                 Request = new NewsRequest { CategoryId = "SomeCategoryID" };
             }
 
             [Test]
-            public void WhenNewsRequestCategoryIdAndNoContentIdNoErrors()
+            public void WhenNewsRequestCategoryIdAndNoNewsIdNoErrors()
             {
                 // Act
                 var responce = Sut.Get(Request);
@@ -144,25 +145,25 @@ namespace Gravyframe.Service.Tests
             }
 
             [Test]
-            public void WhenContentRequestCategoryIdContentResponceHasListOfContent()
+            public void WhenNewsRequestCategoryIdNewsResponceHasListOfNews()
             {
                 // Assign
-                var contentList = new List<Models.News>
+                var newsList = new List<Models.News>
                     {
                         new Models.News {Title = "Test Body", Body = "Test Body"},
                         new Models.News {Title = "Test Body1", Body = "Test Body1"}
                     };
 
-                Dao.GetNewsByCategoryId(Request.CategoryId).Returns(contentList);
+                Dao.GetNewsByCategoryId(Request.CategoryId).Returns(newsList);
 
                 // Act
                 var responce = Sut.Get(Request);
 
                 // Assert
                 Assert.IsTrue(responce.NewsList.Any());
-                Assert.IsTrue(responce.NewsList.Any(content => content == contentList[0]));
-                Assert.IsTrue(responce.NewsList.Any(content => content == contentList[1]));
-            }
+                Assert.IsTrue(responce.NewsList.Any(news => news == newsList[0]));
+                Assert.IsTrue(responce.NewsList.Any(news => news == newsList[1]));
+            }           
         }
         #endregion
     }

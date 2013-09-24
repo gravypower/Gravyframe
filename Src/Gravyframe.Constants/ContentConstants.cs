@@ -1,11 +1,5 @@
-﻿namespace Gravyframe.Service.Content
+﻿namespace Gravyframe.Constants
 {
-    public interface IContentConstants
-    {
-        string ContenIdError { get;}
-        string ContenCategoryIdError { get;}
-    }
-
     public class ContentConstants : IContentConstants
     {
         public string ContenIdError

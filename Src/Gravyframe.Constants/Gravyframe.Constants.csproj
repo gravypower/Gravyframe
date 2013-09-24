@@ -4,15 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F1D4B6DF-3042-4E81-A296-6D16F3B51A6B}</ProjectGuid>
+    <ProjectGuid>{9F685246-E7D2-43D8-A76F-027787420687}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Gravyframe.Service.Tests</RootNamespace>
-    <AssemblyName>Gravyframe.Service.Tests</AssemblyName>
+    <RootNamespace>Gravyframe.Constants</RootNamespace>
+    <AssemblyName>Gravyframe.Constants</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,12 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NSubstitute">
-      <HintPath>..\packages\NSubstitute.1.6.1.0\lib\NET40\NSubstitute.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework">
-      <HintPath>..\packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,34 +39,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContentServiceTests.cs" />
-    <Compile Include="NewsServiceTests.cs" />
+    <Compile Include="ContentConstants.cs" />
+    <Compile Include="IContentConstants.cs" />
+    <Compile Include="INewsConstants.cs" />
+    <Compile Include="NewsConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServiceTests.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Gravyframe.Constants\Gravyframe.Constants.csproj">
-      <Project>{9F685246-E7D2-43D8-A76F-027787420687}</Project>
-      <Name>Gravyframe.Constants</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Gravyframe.Data\Gravyframe.Data.csproj">
-      <Project>{da80abb5-0a99-4dc1-b56f-daf7018d3bc5}</Project>
-      <Name>Gravyframe.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Gravyframe.Model\Gravyframe.Models.csproj">
-      <Project>{5d5eb908-b67b-4e7e-af9e-25bdd03f543e}</Project>
-      <Name>Gravyframe.Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Gravyframe.Service\Gravyframe.Service.csproj">
-      <Project>{732189f6-7a48-4ff2-8705-b1cd80897b67}</Project>
-      <Name>Gravyframe.Service</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

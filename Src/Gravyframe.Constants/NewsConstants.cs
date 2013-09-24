@@ -1,11 +1,5 @@
-﻿namespace Gravyframe.Service.News
+﻿namespace Gravyframe.Constants
 {
-    public interface INewsConstants
-    {
-        string NewsIdError { get; }
-        string NewsCategoryIdError { get; }
-    }
-
     public class NewsConstants : INewsConstants
     {
         public string NewsIdError
@@ -16,6 +10,12 @@
         public string NewsCategoryIdError
         {
             get { return "News Category Id error"; }
+        }
+
+
+        public int DefaultListSize
+        {
+            get { return 10; }
         }
     }
 }

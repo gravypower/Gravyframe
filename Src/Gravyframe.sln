@@ -34,6 +34,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gravyframe.Kernel", "Gravyf
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gravyframe.Kernel.Tests", "Gravyframe.Kernel.Tests\Gravyframe.Kernel.Tests.csproj", "{86BD250A-0144-4497-86A3-90BF8D4FE40D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Constants", "Constants", "{22BD1D53-7363-4021-AA83-B610406660B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gravyframe.Constants", "Gravyframe.Constants\Gravyframe.Constants.csproj", "{9F685246-E7D2-43D8-A76F-027787420687}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,6 +76,10 @@ Global
 		{86BD250A-0144-4497-86A3-90BF8D4FE40D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86BD250A-0144-4497-86A3-90BF8D4FE40D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86BD250A-0144-4497-86A3-90BF8D4FE40D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F685246-E7D2-43D8-A76F-027787420687}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F685246-E7D2-43D8-A76F-027787420687}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F685246-E7D2-43D8-A76F-027787420687}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F685246-E7D2-43D8-A76F-027787420687}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -85,5 +93,6 @@ Global
 		{E3203B24-AFEB-4D26-A140-B85858A82735} = {71546743-892B-4AB9-BC8A-B209795E51E3}
 		{656D1A93-A92A-402E-9AF7-4AF4BE963958} = {5116D4AC-2EAC-4E12-9579-6D8EFE5F3DA7}
 		{86BD250A-0144-4497-86A3-90BF8D4FE40D} = {5116D4AC-2EAC-4E12-9579-6D8EFE5F3DA7}
+		{9F685246-E7D2-43D8-A76F-027787420687} = {22BD1D53-7363-4021-AA83-B610406660B8}
 	EndGlobalSection
 EndGlobal

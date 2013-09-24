@@ -39,7 +39,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Content\ContentConstants.cs" />
     <Compile Include="Content\ContentRequest.cs" />
     <Compile Include="Content\ContentResponse.cs" />
     <Compile Include="Content\ContentService.cs" />
@@ -48,7 +47,6 @@
     <Compile Include="Content\Tasks\PopulateContentByIdResponseHydrator.cs" />
     <Compile Include="Messages\ResponceCodes.cs" />
     <Compile Include="Messages\Request.cs" />
-    <Compile Include="News\NewsConstants.cs" />
     <Compile Include="News\NewsRequest.cs" />
     <Compile Include="News\NewsResponse.cs" />
     <Compile Include="News\NewsService.cs" />
@@ -62,6 +60,10 @@
     <Compile Include="ResponseHydratationRunner.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Gravyframe.Constants\Gravyframe.Constants.csproj">
+      <Project>{9F685246-E7D2-43D8-A76F-027787420687}</Project>
+      <Name>Gravyframe.Constants</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Gravyframe.Data\Gravyframe.Data.csproj">
       <Project>{DA80ABB5-0A99-4DC1-B56F-DAF7018D3BC5}</Project>
       <Name>Gravyframe.Data</Name>
