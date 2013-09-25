@@ -40,9 +40,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Content\InMemoryContentDao.cs" />
+    <Compile Include="News\InMemoryNewsDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Gravyframe.Constants\Gravyframe.Constants.csproj">
+      <Project>{9F685246-E7D2-43D8-A76F-027787420687}</Project>
+      <Name>Gravyframe.Constants</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Gravyframe.Data\Gravyframe.Data.csproj">
       <Project>{da80abb5-0a99-4dc1-b56f-daf7018d3bc5}</Project>
       <Name>Gravyframe.Data</Name>
@@ -52,6 +57,7 @@
       <Name>Gravyframe.Models</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

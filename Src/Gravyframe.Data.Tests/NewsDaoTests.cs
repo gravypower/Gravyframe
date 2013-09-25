@@ -12,7 +12,7 @@ namespace Gravyframe.Data.Tests
         [SetUp]
         public void SetUp()
         {
-            Sut = Substitute.For<NewsDao>();
+            //Sut = Substitute.For<NewsDao>();
         }
     }
 }

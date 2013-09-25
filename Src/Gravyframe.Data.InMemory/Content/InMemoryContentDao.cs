@@ -5,6 +5,18 @@ namespace Gravyframe.Data.InMemory.Content
 {
     public class InMemoryContentDao : IContentDao
     {
+        private List<Models.Content> _contentList;
+
+        public InMemoryContentDao()
+        {
+            _contentList = new List<Models.Content>();
+
+            for (int i = 0; i < 100; i++)
+            {
+               _contentList.Add(new Models.Content { Title = "Test", Body = "Test" });
+            }
+        }
+
         public Models.Content GetContent(string contentId)
         {
             return new Models.Content{Title = "Test", Body = "Test"};
@@ -12,15 +24,7 @@ namespace Gravyframe.Data.InMemory.Content
 
         public IEnumerable<Models.Content> GetContentByCategory(string categoryId)
         {
-            return
-                new List<Models.Content>
-                    {
-                        new Models.Content {Title = "Test", Body = "Test"},
-                        new Models.Content {Title = "Test", Body = "Test"},
-                        new Models.Content {Title = "Test", Body = "Test"},
-                        new Models.Content {Title = "Test", Body = "Test"},
-                        new Models.Content {Title = "Test", Body = "Test"}
-                    };
+            return _contentList;
         }
     }
 }
