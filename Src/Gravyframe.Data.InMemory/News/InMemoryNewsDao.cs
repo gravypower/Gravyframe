@@ -21,7 +21,7 @@ namespace Gravyframe.Data.InMemory.News
 
         public override Models.News GetNews(string newsId)
         {
-            throw new System.NotImplementedException();
+            return new Models.News();
         }
 
         public override IEnumerable<Models.News> GetNewsByCategoryId(string categoryId)

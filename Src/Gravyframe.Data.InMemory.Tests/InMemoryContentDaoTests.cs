@@ -19,7 +19,6 @@ namespace Gravyframe.Data.InMemory.Tests
 
             // Assert
             Assert.IsTrue(result.Any());
-
         }
     }
 }

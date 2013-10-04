@@ -29,5 +29,19 @@ namespace Gravyframe.Data.InMemory.Tests
             // Assert
             Assert.AreEqual(_newsConstants.DefaultListSize, result.Count());
         }
+
+        [Test]
+        public void SomeOTherTEst()
+        {
+            // Assign
+            var sut = new InMemoryNewsDao(_newsConstants);
+            var newsId = "newsId";
+
+            // Act
+            var result = sut.GetNews(newsId);
+
+            // Assert
+            Assert.NotNull(result);
+        }
     }
 }
