@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using Gravyframe.Data.News;
-using NSubstitute;
 using NUnit.Framework;
 
 namespace Gravyframe.Data.Tests
