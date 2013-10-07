@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit.framework">
+      <HintPath>..\Gravyframe.Service.Tests\bin\Debug\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,6 +43,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UmbracoNewsDaoTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Gravyframe.Data.Tests\Gravyframe.Data.Tests.csproj">
+      <Project>{EC67B062-8ABC-4B40-94D1-097421B04CE4}</Project>
+      <Name>Gravyframe.Data.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gravyframe.Data.Umbraco\Gravyframe.Data.Umbraco.csproj">
+      <Project>{A4C5ABE0-66A7-401C-A05E-0D03E8805838}</Project>
+      <Name>Gravyframe.Data.Umbraco</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
