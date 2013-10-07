@@ -6,9 +6,9 @@ namespace Gravyframe.Service.News
     public abstract class NewsResponseHydrator : ResponseHydrator<NewsRequest, NewsResponse>
     {
         protected readonly INewsConstants NewsConstants;
-        protected readonly INewsDao NewsDao;
+        protected readonly NewsDao NewsDao;
 
-        protected NewsResponseHydrator(INewsConstants newsConstants, INewsDao newsDao)
+        protected NewsResponseHydrator(INewsConstants newsConstants, NewsDao newsDao)
         {
             NewsConstants = newsConstants;
             NewsDao = newsDao;

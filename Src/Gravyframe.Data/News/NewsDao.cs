@@ -7,6 +7,10 @@ namespace Gravyframe.Data.News
     {
         public readonly INewsConstants NewsConstants;
 
+        protected NewsDao()
+        {
+        }
+
         protected NewsDao(INewsConstants newsConstants)
         {
             NewsConstants = newsConstants;
@@ -15,5 +19,10 @@ namespace Gravyframe.Data.News
         public abstract Models.News GetNews(string newsId);
 
         public abstract IEnumerable<Models.News> GetNewsByCategoryId(string categoryId);
+
+        public abstract IEnumerable<Models.News> GetNewsByCategoryId(string categoryId, int listSize);
+
+        public abstract IEnumerable<Models.News> GetNewsByCategoryId(string categoryId, int listSize, int page);
+
     }
 }

@@ -13,9 +13,9 @@ namespace Gravyframe.Data.InMemory.News
         {
             _newsList = new List<Models.News>();
 
-            for (var i = 0; i < 100; i++)
+            for (var i = 1; i < 100; i++)
             {
-                _newsList.Add(new Models.News { Title = "Test", Body = "Test" });
+                _newsList.Add(new Models.News {Sequence = i, Title = "Test" + i, Body = "Test" + i});
             }
         }
 
@@ -27,6 +27,22 @@ namespace Gravyframe.Data.InMemory.News
         public override IEnumerable<Models.News> GetNewsByCategoryId(string categoryId)
         {
             return _newsList.Take(NewsConstants.DefaultListSize);
+        }
+
+        public override IEnumerable<Models.News> GetNewsByCategoryId(string categoryId, int listSize)
+        {
+            return _newsList.Take(listSize);
+        }
+
+        public override IEnumerable<Models.News> GetNewsByCategoryId(string categoryId, int listSize, int page)
+        {
+            var pagesToSkip = CalculateNunberToSkip(listSize, page);
+            return _newsList.Skip(pagesToSkip).Take(listSize);
+        }
+
+        private static int CalculateNunberToSkip(int listSize, int page)
+        {
+            return (page - 1) * listSize;
         }
     }
 }

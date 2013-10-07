@@ -7,7 +7,7 @@ namespace Gravyframe.Service.News.Tasks
 {
     public class PopulateNewsByCategoryIdResponseHydrator : NewsResponseHydrator
     {
-        public PopulateNewsByCategoryIdResponseHydrator(INewsConstants newsConstants, INewsDao newsDao) : base(newsConstants, newsDao)
+        public PopulateNewsByCategoryIdResponseHydrator(INewsConstants newsConstants, NewsDao newsDao) : base(newsConstants, newsDao)
         {
         }
 
