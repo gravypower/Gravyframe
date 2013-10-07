@@ -3,9 +3,9 @@ using Gravyframe.Constants;
 
 namespace Gravyframe.Data.News
 {
-    public abstract class NewsDao:INewsDao
+    public abstract class NewsDao
     {
-        protected INewsConstants NewsConstants;
+        public readonly INewsConstants NewsConstants;
 
         protected NewsDao(INewsConstants newsConstants)
         {

@@ -51,9 +51,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Gravyframe.Constants\Gravyframe.Constants.csproj">
+      <Project>{9F685246-E7D2-43D8-A76F-027787420687}</Project>
+      <Name>Gravyframe.Constants</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Gravyframe.Data\Gravyframe.Data.csproj">
       <Project>{DA80ABB5-0A99-4DC1-B56F-DAF7018D3BC5}</Project>
       <Name>Gravyframe.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gravyframe.Model\Gravyframe.Models.csproj">
+      <Project>{5D5EB908-B67B-4E7E-AF9E-25BDD03F543E}</Project>
+      <Name>Gravyframe.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

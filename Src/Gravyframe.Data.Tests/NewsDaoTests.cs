@@ -1,18 +1,39 @@
-﻿using Gravyframe.Data.News;
+﻿using System.Linq;
+using Gravyframe.Data.News;
 using NSubstitute;
 using NUnit.Framework;
 
 namespace Gravyframe.Data.Tests
 {
     [TestFixture]
-    public class NewsDaoTests
+    public abstract class NewsDaoTests
     {
-        public INewsDao Sut;
+        public NewsDao Sut;
 
-        [SetUp]
-        public void SetUp()
+        [Test]
+        public void GetNewsByCategoryListIsDefaultSize()
         {
-            //Sut = Substitute.For<NewsDao>();
+            // Assign
+            var categoryId = "categoryId";
+
+            // Act
+            var result = Sut.GetNewsByCategoryId(categoryId);
+
+            // Assert
+            Assert.AreEqual(Sut.NewsConstants.DefaultListSize, result.Count());
+        }
+
+        [Test]
+        public void CanGetNewByNewsId()
+        {
+            // Assign
+            var newsId = "newsId";
+
+            // Act
+            var result = Sut.GetNews(newsId);
+
+            // Assert
+            Assert.NotNull(result);
         }
     }
 }

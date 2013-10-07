@@ -1,47 +1,20 @@
-﻿using System.Linq;
-using Gravyframe.Constants;
+﻿using Gravyframe.Constants;
 using Gravyframe.Data.InMemory.News;
+using Gravyframe.Data.Tests;
 using NUnit.Framework;
 
 namespace Gravyframe.Data.InMemory.Tests
 {
     [TestFixture]
-    public class InMemoryNewsDaoTests
+    public class InMemoryNewsDaoTests : NewsDaoTests
     {
         private INewsConstants _newsConstants;
 
         [SetUp]
-        public void SetUp()
+        public void Setp()
         {
             _newsConstants = new NewsConstants();
-        }
-
-        [Test]
-        public void SomeTest()
-        {
-            // Assign
-            var sut = new InMemoryNewsDao(_newsConstants);
-            var categoryId = "categoryId";
-
-            // Act
-            var result = sut.GetNewsByCategoryId(categoryId);
-
-            // Assert
-            Assert.AreEqual(_newsConstants.DefaultListSize, result.Count());
-        }
-
-        [Test]
-        public void SomeOTherTEst()
-        {
-            // Assign
-            var sut = new InMemoryNewsDao(_newsConstants);
-            var newsId = "newsId";
-
-            // Act
-            var result = sut.GetNews(newsId);
-
-            // Assert
-            Assert.NotNull(result);
+            Sut = new InMemoryNewsDao(_newsConstants);
         }
     }
 }

@@ -40,7 +40,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Content\IContentDao.cs" />
-    <Compile Include="News\INewsDao.cs" />
     <Compile Include="News\NewsDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

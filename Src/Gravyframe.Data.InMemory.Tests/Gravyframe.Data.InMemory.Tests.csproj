@@ -55,6 +55,10 @@
       <Project>{1DDD3B19-2D08-4D0B-9E67-0D82B1073C21}</Project>
       <Name>Gravyframe.Data.InMemory</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Gravyframe.Data.Tests\Gravyframe.Data.Tests.csproj">
+      <Project>{EC67B062-8ABC-4B40-94D1-097421B04CE4}</Project>
+      <Name>Gravyframe.Data.Tests</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Gravyframe.Data\Gravyframe.Data.csproj">
       <Project>{da80abb5-0a99-4dc1-b56f-daf7018d3bc5}</Project>
       <Name>Gravyframe.Data</Name>
