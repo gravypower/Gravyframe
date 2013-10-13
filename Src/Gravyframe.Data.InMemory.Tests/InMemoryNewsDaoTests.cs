@@ -16,5 +16,10 @@ namespace Gravyframe.Data.InMemory.Tests
             _newsConstants = new NewsConstants();
             Sut = new InMemoryNewsDao(_newsConstants);
         }
+
+        protected override string GetExampleId()
+        {
+            return "ExampleId";
+        }
     }
 }

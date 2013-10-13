@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Examine;
 using Gravyframe.Data.News;
 using Gravyframe.Kernel.Umbraco;
 using umbraco.interfaces;
@@ -7,11 +8,13 @@ namespace Gravyframe.Data.Umbraco.News
 {
     public class UmbracoNewsDao:NewsDao
     {
-        public readonly INodeFactoryFacade NodeFactoryFacade;
+        protected readonly ISearcher Searcher;
+        protected readonly INodeFactoryFacade NodeFactoryFacade;
         protected readonly INode NewsConfigrationNode;
 
-        public UmbracoNewsDao(INode newsConfigrationNode, INodeFactoryFacade nodeFactoryFacade)
+        public UmbracoNewsDao(INode newsConfigrationNode, INodeFactoryFacade nodeFactoryFacade, ISearcher searcher)
         {
+            Searcher = searcher;
             NodeFactoryFacade = nodeFactoryFacade;
             NewsConfigrationNode = newsConfigrationNode;
         }

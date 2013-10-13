@@ -112,7 +112,7 @@ namespace Gravyframe.Data.Tests
         public void CanGetNewByNewsId()
         {
             // Assign
-            var newsId = "newsId";
+            var newsId = GetExampleId();
 
             // Act
             var result = Sut.GetNews(newsId);
@@ -120,5 +120,7 @@ namespace Gravyframe.Data.Tests
             // Assert
             Assert.NotNull(result);
         }
+
+        protected abstract string GetExampleId();
     }
 }

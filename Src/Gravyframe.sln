@@ -48,6 +48,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gravyframe.Data.Umbraco.Tes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gravyframe.Kernel.Umbraco", "Gravyframe.Kernel.Umbraco\Gravyframe.Kernel.Umbraco.csproj", "{35D78ACD-3AA6-4593-AD64-5ABF3C3BB7B6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gravyframe.Kernel.Umbraco.Tests", "Gravyframe.Kernel.Umbraco.Tests\Gravyframe.Kernel.Umbraco.Tests.csproj", "{B5105E60-0C2B-494E-A7D0-8336572AB469}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -110,6 +112,10 @@ Global
 		{35D78ACD-3AA6-4593-AD64-5ABF3C3BB7B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35D78ACD-3AA6-4593-AD64-5ABF3C3BB7B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35D78ACD-3AA6-4593-AD64-5ABF3C3BB7B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5105E60-0C2B-494E-A7D0-8336572AB469}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5105E60-0C2B-494E-A7D0-8336572AB469}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5105E60-0C2B-494E-A7D0-8336572AB469}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5105E60-0C2B-494E-A7D0-8336572AB469}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -128,6 +134,7 @@ Global
 		{656D1A93-A92A-402E-9AF7-4AF4BE963958} = {5116D4AC-2EAC-4E12-9579-6D8EFE5F3DA7}
 		{86BD250A-0144-4497-86A3-90BF8D4FE40D} = {5116D4AC-2EAC-4E12-9579-6D8EFE5F3DA7}
 		{35D78ACD-3AA6-4593-AD64-5ABF3C3BB7B6} = {5116D4AC-2EAC-4E12-9579-6D8EFE5F3DA7}
+		{B5105E60-0C2B-494E-A7D0-8336572AB469} = {5116D4AC-2EAC-4E12-9579-6D8EFE5F3DA7}
 		{9F685246-E7D2-43D8-A76F-027787420687} = {22BD1D53-7363-4021-AA83-B610406660B8}
 	EndGlobalSection
 EndGlobal

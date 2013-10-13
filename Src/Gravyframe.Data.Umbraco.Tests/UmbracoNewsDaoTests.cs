@@ -2,12 +2,14 @@
 using Gravyframe.Data.Tests;
 using Gravyframe.Data.Umbraco.News;
 using Gravyframe.Kernel.Umbraco;
+using Gravyframe.Kernel.Umbraco.Tests;
 using NSubstitute;
 using NUnit.Framework;
 using umbraco.interfaces;
 
 namespace Gravyframe.Data.Umbraco.Tests
 {
+    [TestFixture]
     public class UmbracoNewsDaoTests : NewsDaoTests
     {
         private INode _newsConfigrationNode;
@@ -23,12 +25,22 @@ namespace Gravyframe.Data.Umbraco.Tests
         }
 
         [Test]
-        public void someTest()
+        public void SomeTest()
         {
             // Assign
-            var newsID = 1;
-            //_nodeFactoryFacade.GetNode(1).Returns(new Node())
-            //Sut.GetNews()
+            var node = MockNodeFactory.BuildNode(new Dictionary<string, object> {{"Body", "Test"}});
+            _nodeFactoryFacade.GetNode(1).Returns(node);
+
+            // Act
+            var result = Sut.GetNews("1");
+
+            // Assert
+            Assert.AreEqual("Test", result.Body);
+        }
+
+        protected override string GetExampleId()
+        {
+            return "1";
         }
     }
 }
