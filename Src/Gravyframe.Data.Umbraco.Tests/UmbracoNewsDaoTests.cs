@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using Examine;
+using Examine.LuceneEngine.Providers;
 using Gravyframe.Data.Tests;
 using Gravyframe.Data.Umbraco.News;
 using Gravyframe.Kernel.Umbraco;
@@ -14,14 +16,15 @@ namespace Gravyframe.Data.Umbraco.Tests
     {
         private INode _newsConfigrationNode;
         private INodeFactoryFacade _nodeFactoryFacade;
+        private ISearcher _searcher;
 
         [SetUp]
         public void SetUp()
         {
             _newsConfigrationNode = Substitute.For<INode>();
             _nodeFactoryFacade = Substitute.For<INodeFactoryFacade>();
-
-            Sut = new UmbracoNewsDao(_newsConfigrationNode, _nodeFactoryFacade);
+            _searcher = Substitute.For<ISearcher>();
+            Sut = new UmbracoNewsDao(_newsConfigrationNode, _nodeFactoryFacade, _searcher);
         }
 
         [Test]
@@ -36,6 +39,12 @@ namespace Gravyframe.Data.Umbraco.Tests
 
             // Assert
             Assert.AreEqual("Test", result.Body);
+        }
+
+        [Test]
+        public void SomeOtherTEst()
+        {
+            _searcher.Search()
         }
 
         protected override string GetExampleId()
