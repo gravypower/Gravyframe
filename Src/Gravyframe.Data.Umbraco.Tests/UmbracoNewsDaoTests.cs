@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Examine;
-using Examine.LuceneEngine.Providers;
 using Gravyframe.Data.Tests;
 using Gravyframe.Data.Umbraco.News;
 using Gravyframe.Kernel.Umbraco;
@@ -11,6 +10,11 @@ using umbraco.interfaces;
 
 namespace Gravyframe.Data.Umbraco.Tests
 {
+    using Lucene.Net.Analysis;
+    using Lucene.Net.Index;
+    using Lucene.Net.Search;
+    using Lucene.Net.Store;
+
     [TestFixture]
     public class UmbracoNewsDaoTests : NewsDaoTests
     {
@@ -44,7 +48,25 @@ namespace Gravyframe.Data.Umbraco.Tests
         [Test]
         public void SomeOtherTEst()
         {
-            _searcher.Search()
+            var document = new Lucene.Net.Documents.Document();
+            var directory = new RAMDirectory();
+            var analyzer = new SimpleAnalyzer();
+            var writer = new IndexWriter(directory, analyzer, true);
+
+            writer.AddDocument(document);
+
+            writer.Close();
+
+
+            var reader = IndexReader.Open(directory, true);
+            var searcher = new IndexSearcher(reader);
+
+            //searcher.Search()
+
+            reader.Close();
+            searcher.Close();
+
+
         }
 
         protected override string GetExampleId()
