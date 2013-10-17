@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
 using Examine;
-using Examine.LuceneEngine.SearchCriteria;
 using Gravyframe.Data.News;
 using Gravyframe.Kernel.Umbraco;
 using umbraco.interfaces;
@@ -34,13 +33,13 @@ namespace Gravyframe.Data.Umbraco.News
 
         public override IEnumerable<Models.News> GetNewsByCategoryId(string categoryId)
         {
-            var searchCriteria = Searcher.CreateSearchCriteria();
+            var searchCriteria = this.Searcher.CreateSearchCriteria();
             var query = searchCriteria.Field("categoryId", categoryId).Compile();
 
             var newsList = new List<Models.News>();
-            foreach (var result in Searcher.Search(query))
+            foreach (var result in this.Searcher.Search(query))
             {
-                newsList.Add(GetNews(result.Id.ToString(CultureInfo.InvariantCulture)));
+                newsList.Add(this.GetNews(result.Id.ToString(CultureInfo.InvariantCulture)));
             }
 
             return newsList;

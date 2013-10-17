@@ -16,6 +16,7 @@ namespace Gravyframe.Kernel.Umbraco.Tests
                 property.Value.Returns(pair.Value);
                 node.GetProperty(pair.Key).Returns(property);   
             }
+
             return node;
         }
     }

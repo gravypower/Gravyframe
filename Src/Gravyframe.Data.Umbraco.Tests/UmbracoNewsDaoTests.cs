@@ -12,9 +12,15 @@ using umbraco.interfaces;
 
 namespace Gravyframe.Data.Umbraco.Tests
 {
+    using System.Linq;
+
+    using Examine.Providers;
+
     using Lucene.Net.Analysis;
+    using Lucene.Net.Analysis.Standard;
     using Lucene.Net.Index;
     using Lucene.Net.Store;
+    using Lucene.Net.Util;
 
     [TestFixture]
     public class UmbracoNewsDaoTests : NewsDaoTests
@@ -49,29 +55,33 @@ namespace Gravyframe.Data.Umbraco.Tests
         [Test]
         public void SomeOtherTEst()
         {
-            var document = new Document();
-            var feild = Substitute.For<Fieldable>();
-            feild.Name().Returns("nodeName");
-            feild.StringValue().Returns("Hello");
- 
-            document.Add(feild);
             var directory = new RAMDirectory();
-            var analyzer = new SimpleAnalyzer();
-            var writer = new IndexWriter(directory, analyzer, true, new IndexWriter.MaxFieldLength(10));
+            var analyzer = new StandardAnalyzer(Version.LUCENE_29);
+            var writer = new IndexWriter(directory, analyzer, true, IndexWriter.MaxFieldLength.LIMITED);
 
+            var document = new Document();
+            document.Add(new Field("Id", "1", Field.Store.YES, Field.Index.NOT_ANALYZED));
+            document.Add(new Field("categoryId", "TestCategory", Field.Store.YES, Field.Index.NOT_ANALYZED));
             writer.AddDocument(document);
-
+            
+            writer.Optimize();
             writer.Close();
 
-            var reader = IndexReader.Open(directory, true);
 
             var searcher = new UmbracoExamineSearcher(directory, new KeywordAnalyzer());
+
+            this.Sut = new UmbracoNewsDao(_newsConfigrationNode, _nodeFactoryFacade, searcher);
+
             var searchCriteria = searcher.CreateSearchCriteria();
-            var query = searchCriteria.Field("nodeName", "hello").Compile();
+            var query = searchCriteria.Field("categoryId", "TestCategory").Compile();
             var searchResults = searcher.Search(query);
 
-            reader.Close();
             Assert.IsTrue(searchResults.TotalItemCount > 0);
+            var t = searchResults.ToArray();
+
+            var result = Sut.GetNewsByCategoryId("TestCategory");
+
+            Assert.IsTrue(result.Any());
         }
 
         protected override string GetExampleId()
