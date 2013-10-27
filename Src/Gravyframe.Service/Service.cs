@@ -9,17 +9,17 @@ namespace Gravyframe.Service
         where TResponse : Response, new()
         where TArgumentNullException : Service<TRequest, TResponse, TArgumentNullException>.NullRequestException, new()
     {
-        private readonly IEnumerable<ResponseHydrator<TRequest, TResponse>> _responseHydratationTasks;
+        private readonly IEnumerable<ResponseHydrator<TRequest, TResponse>> _responseHydrogenationTasks;
 
-        protected Service(IEnumerable<ResponseHydrator<TRequest, TResponse>> responseHydratationTasks)
+        protected Service(IEnumerable<ResponseHydrator<TRequest, TResponse>> responseHydrogenationTasks)
         {
-            _responseHydratationTasks = responseHydratationTasks;
+            _responseHydrogenationTasks = responseHydrogenationTasks;
         }
 
         public TResponse Get(TRequest request)
         {
             GuardRequest(request);
-            return CreateResponce(request);
+            return CreateResponse(request);
         }
 
         protected virtual void GuardRequest(TRequest request)
@@ -28,9 +28,9 @@ namespace Gravyframe.Service
                 throw new TArgumentNullException();
         }
         
-        protected TResponse CreateResponce(TRequest request)
+        protected TResponse CreateResponse(TRequest request)
         {
-            return new ResponseHydratationRunner<TRequest, TResponse>(_responseHydratationTasks, request).RunTasks();
+            return new ResponseHydrogenationRunner<TRequest, TResponse>(_responseHydrogenationTasks, request).RunTasks();
         }
 
         [Serializable]

@@ -13,14 +13,14 @@ namespace Gravyframe.Service.Tests
     [TestFixture]
     public class NewsServiceTests : ServiceTests<NewsRequest, NewsResponse, NewsService, NewsService.NullNewsRequestException>
     {
-        public NewsDao Dao;
+        public NewsDao<Models.News> Dao;
         public INewsConstants NewsConstants;
         public IEnumerable<ResponseHydrator<NewsRequest, NewsResponse>> ResponseHydratationTasks;
 
         [SetUp]
         protected override void ServiceSetUp()
         {
-            Dao = Substitute.For<NewsDao>();
+            Dao = Substitute.For<NewsDao<Models.News>>();
             NewsConstants = new NewsConstants();
 
             ResponseHydratationTasks = new List<ResponseHydrator<NewsRequest, NewsResponse>>

@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Gravyframe.Models.Umbraco.Fakes</name>
+    </assembly>
+    <members>
+        <member name="T:Gravyframe.Models.Umbraco.Fakes.ShimUmbracoNews">
+            <summary>Shim type of Gravyframe.Models.Umbraco.UmbracoNews</summary>
+        </member>
+        <member name="M:Gravyframe.Models.Umbraco.Fakes.ShimUmbracoNews.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:Gravyframe.Models.Umbraco.Fakes.ShimUmbracoNews.#ctor(Gravyframe.Models.Umbraco.UmbracoNews)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:Gravyframe.Models.Umbraco.Fakes.ShimUmbracoNews.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:Gravyframe.Models.Umbraco.Fakes.ShimUmbracoNews.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:Gravyframe.Models.Umbraco.Fakes.ShimUmbracoNews.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:Gravyframe.Models.Umbraco.Fakes.ShimUmbracoNews.Constructor">
+            <summary>Sets the shim of UmbracoNews.UmbracoNews()</summary>
+        </member>
+        <member name="P:Gravyframe.Models.Umbraco.Fakes.ShimUmbracoNews.IdGet">
+            <summary>Sets the shim of UmbracoNews.get_Id()</summary>
+        </member>
+        <member name="P:Gravyframe.Models.Umbraco.Fakes.ShimUmbracoNews.IdSetInt32">
+            <summary>Sets the shim of UmbracoNews.set_Id(Int32 value)</summary>
+        </member>
+        <member name="T:Gravyframe.Models.Umbraco.Fakes.ShimUmbracoNews.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:Gravyframe.Models.Umbraco.Fakes.ShimUmbracoNews.AllInstances.IdGet">
+            <summary>Sets the shim of UmbracoNews.get_Id()</summary>
+        </member>
+        <member name="P:Gravyframe.Models.Umbraco.Fakes.ShimUmbracoNews.AllInstances.IdSetInt32">
+            <summary>Sets the shim of UmbracoNews.set_Id(Int32 value)</summary>
+        </member>
+        <member name="T:Gravyframe.Models.Umbraco.Fakes.StubUmbracoNews">
+            <summary>Stub type of Gravyframe.Models.Umbraco.UmbracoNews</summary>
+        </member>
+        <member name="M:Gravyframe.Models.Umbraco.Fakes.StubUmbracoNews.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:Gravyframe.Models.Umbraco.Fakes.StubUmbracoNews.InitializeStub">
+            <summary>Initializes a new instance of type StubUmbracoNews</summary>
+        </member>
+        <member name="P:Gravyframe.Models.Umbraco.Fakes.StubUmbracoNews.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:Gravyframe.Models.Umbraco.Fakes.StubUmbracoNews.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:Gravyframe.Models.Umbraco.Fakes.StubUmbracoNews.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+    </members>
+</doc>

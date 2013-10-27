@@ -10,7 +10,7 @@ namespace Gravyframe.Service.News
         {
         }
 
-        public NewsService(IEnumerable<ResponseHydrator<NewsRequest, NewsResponse>> responseHydratationTasks) : base(responseHydratationTasks)
+        public NewsService(IEnumerable<ResponseHydrator<NewsRequest, NewsResponse>> responseHydrogenationTasks) : base(responseHydrogenationTasks)
         {
         }
     }

@@ -7,8 +7,8 @@ namespace Gravyframe.ServiceStack.Content
 {
     public class ContentService : Service.Content.ContentService, IService
     {
-        public ContentService(IEnumerable<ResponseHydrator<ContentRequest, ContentResponse>> responseHydratationTasks)
-            : base(responseHydratationTasks)
+        public ContentService(IEnumerable<ResponseHydrator<ContentRequest, ContentResponse>> responseHydrogenationTasks)
+            : base(responseHydrogenationTasks)
         {
         }
     }

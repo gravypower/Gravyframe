@@ -6,7 +6,7 @@ using NUnit.Framework;
 namespace Gravyframe.Data.InMemory.Tests
 {
     [TestFixture]
-    public class InMemoryNewsDaoTests : NewsDaoTests
+    public class InMemoryNewsDaoTests : NewsDaoTests<Models.News>
     {
         private INewsConstants _newsConstants;
 

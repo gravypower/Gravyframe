@@ -5,12 +5,12 @@ using NUnit.Framework;
 namespace Gravyframe.Data.Tests
 {
     [TestFixture]
-    public abstract class NewsDaoTests
+    public abstract class NewsDaoTests<TNews> where TNews : Models.News
     {
-        public NewsDao Sut;
+        public NewsDao<TNews> Sut;
 
         [Test]
-        public void GetNewsByCategoryListIsDefaultSize()
+        public virtual void GetNewsByCategoryListIsDefaultSize()
         {
             // Assign
             var categoryId = "categoryId";
@@ -23,7 +23,7 @@ namespace Gravyframe.Data.Tests
         }
 
         [Test]
-        public void GetNewByCategoryWithCustomListSize()
+        public virtual void GetNewByCategoryWithCustomListSize()
         {
             // Assign
             var categoryId = "categoryId";
@@ -37,7 +37,7 @@ namespace Gravyframe.Data.Tests
         }
 
         [Test]
-        public void GetNewsByCategoryIDCustomListSizeFirstPage()
+        public virtual void GetNewsByCategoryIdCustomListSizeFirstPage()
         {
             // Assign
             var categoryId = "categoryId";
@@ -55,7 +55,7 @@ namespace Gravyframe.Data.Tests
         }
 
         [Test]
-        public void GetNewsByCategoryIDCustomListSizeSecondPage()
+        public virtual void GetNewsByCategoryIdCustomListSizeSecondPage()
         {
             // Assign
             var categoryId = "categoryId";
@@ -73,7 +73,7 @@ namespace Gravyframe.Data.Tests
         }
 
         [Test]
-        public void GetNewsByCategoryIDCustomListSizeThirdPage()
+        public virtual void GetNewsByCategoryIdCustomListSizeThirdPage()
         {
             // Assign
             var categoryId = "categoryId";
@@ -91,7 +91,7 @@ namespace Gravyframe.Data.Tests
         }
 
         [Test]
-        public void GetNewsByCategoryIDCustomListSizeForthPage()
+        public virtual void GetNewsByCategoryIdCustomListSizeForthPage()
         {
             // Assign
             var categoryId = "categoryId";

@@ -4,17 +4,17 @@ using Gravyframe.Service.Messages;
 
 namespace Gravyframe.Service
 {
-    public class ResponseHydratationRunner<TRequest, TResponse> 
+    public class ResponseHydrogenationRunner<TRequest, TResponse> 
         where TRequest : Request
         where TResponse : Response, new()
     {
-        private readonly IEnumerable<ResponseHydrator<TRequest, TResponse>> _responseHydratationTasks;
+        private readonly IEnumerable<ResponseHydrator<TRequest, TResponse>> _responseHydrogenationTasks;
         private readonly TRequest _request;
         private readonly List<string> _errorList; 
 
-        public ResponseHydratationRunner(IEnumerable<ResponseHydrator<TRequest, TResponse>> responseHydratationTasks, TRequest request)
+        public ResponseHydrogenationRunner(IEnumerable<ResponseHydrator<TRequest, TResponse>> responseHydrogenationTasks, TRequest request)
         {
-            _responseHydratationTasks = responseHydratationTasks;
+            _responseHydrogenationTasks = responseHydrogenationTasks;
             _request = request;
             _errorList = new List<string>();
         }
@@ -23,7 +23,7 @@ namespace Gravyframe.Service
         {
             var response = new TResponse();
 
-            foreach (var task in _responseHydratationTasks.Where(ValidateResponse))
+            foreach (var task in _responseHydrogenationTasks.Where(ValidateResponse))
                 PopulateResponse(response, task);
 
             AddErrors(response);

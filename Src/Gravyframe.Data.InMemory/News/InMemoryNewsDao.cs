@@ -5,7 +5,7 @@ using Gravyframe.Data.News;
 
 namespace Gravyframe.Data.InMemory.News
 {
-    public class InMemoryNewsDao : NewsDao
+    public class InMemoryNewsDao : NewsDao<Models.News>
     {
         private readonly List<Models.News> _newsList;
 
@@ -36,13 +36,8 @@ namespace Gravyframe.Data.InMemory.News
 
         public override IEnumerable<Models.News> GetNewsByCategoryId(string categoryId, int listSize, int page)
         {
-            var pagesToSkip = CalculateNunberToSkip(listSize, page);
+            var pagesToSkip = CalculateNumberToSkip(listSize, page);
             return _newsList.Skip(pagesToSkip).Take(listSize);
-        }
-
-        private static int CalculateNunberToSkip(int listSize, int page)
-        {
-            return (page - 1) * listSize;
         }
     }
 }

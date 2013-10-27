@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Gravyframe.Data.Umbraco.Tests</RootNamespace>
     <AssemblyName>Gravyframe.Data.Umbraco.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -20,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -28,11 +30,11 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Examine, Version=0.1.52.2941, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Gravyframe.Data.Umbraco\bin\Debug\Examine.dll</HintPath>
+    <Reference Include="Examine">
+      <HintPath>..\packages\UmbracoCms.Core.6.1.6\lib\Examine.dll</HintPath>
     </Reference>
     <Reference Include="interfaces">
       <HintPath>..\packages\UmbracoCms.Core.6.1.6\lib\interfaces.dll</HintPath>
@@ -40,11 +42,14 @@
     <Reference Include="Lucene.Net">
       <HintPath>..\packages\Lucene.Net.2.9.4.1\lib\net40\Lucene.Net.dll</HintPath>
     </Reference>
-    <Reference Include="NSubstitute">
-      <HintPath>..\Gravyframe.Service.Tests\bin\Debug\NSubstitute.dll</HintPath>
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="NSubstitute, Version=1.6.1.0, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NSubstitute.1.6.1.0\lib\NET40\NSubstitute.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.framework">
-      <HintPath>..\Gravyframe.Service.Tests\bin\Debug\nunit.framework.dll</HintPath>
+    <Reference Include="nunit.framework, Version=2.6.2.12296, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -73,12 +78,16 @@
       <Name>Gravyframe.Data.Tests</Name>
     </ProjectReference>
     <ProjectReference Include="..\Gravyframe.Data.Umbraco\Gravyframe.Data.Umbraco.csproj">
-      <Project>{A4C5ABE0-66A7-401C-A05E-0D03E8805838}</Project>
+      <Project>{a4c5abe0-66a7-401c-a05e-0d03e8805838}</Project>
       <Name>Gravyframe.Data.Umbraco</Name>
     </ProjectReference>
     <ProjectReference Include="..\Gravyframe.Data\Gravyframe.Data.csproj">
       <Project>{DA80ABB5-0A99-4DC1-B56F-DAF7018D3BC5}</Project>
       <Name>Gravyframe.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gravyframe.Kernel.Tests\Gravyframe.Kernel.Tests.csproj">
+      <Project>{86bd250a-0144-4497-86a3-90bf8d4fe40d}</Project>
+      <Name>Gravyframe.Kernel.Tests</Name>
     </ProjectReference>
     <ProjectReference Include="..\Gravyframe.Kernel.Umbraco.Tests\Gravyframe.Kernel.Umbraco.Tests.csproj">
       <Project>{B5105E60-0C2B-494E-A7D0-8336572AB469}</Project>
@@ -87,6 +96,10 @@
     <ProjectReference Include="..\Gravyframe.Kernel.Umbraco\Gravyframe.Kernel.Umbraco.csproj">
       <Project>{35D78ACD-3AA6-4593-AD64-5ABF3C3BB7B6}</Project>
       <Name>Gravyframe.Kernel.Umbraco</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gravyframe.Models.Umbraco\Gravyframe.Models.Umbraco.csproj">
+      <Project>{cc84f5c7-7cca-4638-bd8b-4bbcc75ab9b1}</Project>
+      <Name>Gravyframe.Models.Umbraco</Name>
     </ProjectReference>
     <ProjectReference Include="..\Gravyframe.Model\Gravyframe.Models.csproj">
       <Project>{5D5EB908-B67B-4E7E-AF9E-25BDD03F543E}</Project>
