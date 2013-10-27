@@ -3,6 +3,8 @@ using System.Linq;
 using Examine;
 using Examine.LuceneEngine;
 using Examine.LuceneEngine.Providers;
+using Gravyframe.Constants;
+using Gravyframe.Constants.Umbraco;
 using Gravyframe.Data.Tests;
 using Gravyframe.Data.Umbraco.News;
 using Gravyframe.Kernel.Umbraco;
@@ -21,7 +23,7 @@ namespace Gravyframe.Data.Umbraco.Tests
     [TestFixture]
     public class UmbracoNewsDaoTests : NewsDaoTests<UmbracoNews>
     {
-        private const int _newsConfigurationNodeId = 1000;
+        private const int NewsConfigurationNodeId = 1000;
         private INodeFactoryFacade _nodeFactoryFacade;
         private ISearcher _searcher;
         private IIndexer _indexer;
@@ -74,7 +76,7 @@ namespace Gravyframe.Data.Umbraco.Tests
         {
             _nodeFactoryFacade = Substitute.For<INodeFactoryFacade>();
             MockIndex();
-            Sut = new UmbracoNewsDao(_newsConfigurationNodeId, _nodeFactoryFacade, _searcher);
+            Sut = new UmbracoNewsDao(NewsConfigurationNodeId, _nodeFactoryFacade, _searcher);
         }
 
         [Test]
@@ -154,12 +156,27 @@ namespace Gravyframe.Data.Umbraco.Tests
         public override void GetNewsByCategoryListIsDefaultSize()
         {
             // Assign
-            var node = MockNodeFactory.BuildNode(new Dictionary<string, object> { { "DefaultListSize", "10" } });
-            _nodeFactoryFacade.GetNode(_newsConfigurationNodeId).Returns(node);
+            var defaultListSize = 20;
+            var node = MockNodeFactory.BuildNode(new Dictionary<string, object> { { UmbracoNewsConstants.DefaultListSizePropertyAlias, defaultListSize.ToString() } });
+            _nodeFactoryFacade.GetNode(NewsConfigurationNodeId).Returns(node);
 
             MockNewsItemsInIndex(20);
 
             base.GetNewsByCategoryListIsDefaultSize();
+            Assert.AreEqual(defaultListSize, Sut.NewsConstants.DefaultListSize);
+        }
+
+        [Test]
+        public void GetNewsByCategoryListIsDefaultSi()
+        {
+            // Assign
+            var node = MockNodeFactory.BuildNode(new Dictionary<string, object> ());
+            _nodeFactoryFacade.GetNode(NewsConfigurationNodeId).Returns(node);
+            MockNewsItemsInIndex(20);
+
+            base.GetNewsByCategoryListIsDefaultSize();
+
+            Assert.AreEqual(new NewsConstants().DefaultListSize, Sut.NewsConstants.DefaultListSize);
         }
 
         protected override string GetExampleId()

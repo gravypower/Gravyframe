@@ -15,7 +15,7 @@ namespace Gravyframe.Data.Umbraco.News
         protected readonly INodeFactoryFacade NodeFactoryFacade;
 
         public UmbracoNewsDao(int newsConfigurationNodeId, INodeFactoryFacade nodeFactoryFacade, ISearcher searcher)
-            :base(new UmbracoNewsConstants(nodeFactoryFacade.GetNode(newsConfigurationNodeId)))
+            : base(new UmbracoNewsConstants(nodeFactoryFacade, newsConfigurationNodeId))
         {
             Searcher = searcher;
             NodeFactoryFacade = nodeFactoryFacade;
@@ -34,7 +34,6 @@ namespace Gravyframe.Data.Umbraco.News
 
         public override IEnumerable<UmbracoNews> GetNewsByCategoryId(string categoryId)
         {
-
             return GetAllNewsByCategoryId(categoryId).Take(NewsConstants.DefaultListSize);
         }
 

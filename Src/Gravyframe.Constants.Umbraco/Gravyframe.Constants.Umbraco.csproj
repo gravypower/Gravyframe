@@ -50,6 +50,10 @@
       <Project>{9F685246-E7D2-43D8-A76F-027787420687}</Project>
       <Name>Gravyframe.Constants</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Gravyframe.Kernel.Umbraco\Gravyframe.Kernel.Umbraco.csproj">
+      <Project>{35D78ACD-3AA6-4593-AD64-5ABF3C3BB7B6}</Project>
+      <Name>Gravyframe.Kernel.Umbraco</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -73,6 +73,14 @@
     <Compile Include="UmbracoNewsDaoTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Gravyframe.Constants.Umbraco\Gravyframe.Constants.Umbraco.csproj">
+      <Project>{66D63608-084C-4169-A041-C08725A5ABA1}</Project>
+      <Name>Gravyframe.Constants.Umbraco</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gravyframe.Constants\Gravyframe.Constants.csproj">
+      <Project>{9F685246-E7D2-43D8-A76F-027787420687}</Project>
+      <Name>Gravyframe.Constants</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Gravyframe.Data.Tests\Gravyframe.Data.Tests.csproj">
       <Project>{EC67B062-8ABC-4B40-94D1-097421B04CE4}</Project>
       <Name>Gravyframe.Data.Tests</Name>
