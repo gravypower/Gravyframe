@@ -24,32 +24,10 @@ namespace Gravyframe.Data.Umbraco.Tests
     {
         private const int NewsConfigurationNodeId = 1000;
         private INodeFactoryFacade _nodeFactoryFacade;
-        private ISearcher _searcher;
-        private IIndexer _indexer;
-        private ISimpleDataService _simpleDataService;
+        private MockedIndex _mockedIndex;
 
-        private void MockIndex()
-        {
-            _simpleDataService = Substitute.For<ISimpleDataService>();
-
-            var standFields = new MockIndexFieldList()
-                .AddIndexField("id", "Number", true);
-
-            var userFields = new MockIndexFieldList()
-                .AddIndexField("categoryId");
-
-            var indexTypes = new[] {"News"};
-            var includeNodeTypes = new string[] {};
-            var excludeNodeTypes = new string[] {};
-
-            var luceneDir = new RAMDirectory();
-            var indexCriteria = new IndexCriteria(standFields, userFields, includeNodeTypes, excludeNodeTypes, -1);
-            var analyzer = new StandardAnalyzer(Lucene.Net.Util.Version.LUCENE_29);
-
-            _indexer = new SimpleDataIndexer(indexCriteria, luceneDir, analyzer, _simpleDataService, indexTypes, false);
-
-            _searcher = new UmbracoExamineSearcher(luceneDir, new StandardAnalyzer(Lucene.Net.Util.Version.LUCENE_29));
-        }
+        private const string IndexType = "News";
+        private const string IndexFieldName = "categoryId";
 
         private void MockNewsItemsInIndex(int numberToMock)
         {
@@ -58,16 +36,16 @@ namespace Gravyframe.Data.Umbraco.Tests
             var bodyText = "Test Body Text";
             var node = MockNodeFactory.BuildNode(new Dictionary<string, object> { { "Body", bodyText } });
 
-            var mockDataSet = new MockSimpleDataSet("News");
+            var mockDataSet = new MockSimpleDataSet(IndexType);
             for (var i = 1; i < numberToMock; i++)
             {
                 _nodeFactoryFacade.GetNode(i).Returns(node);
-                mockDataSet.AddData(i, "categoryId", "categoryId");
+                mockDataSet.AddData(i, IndexFieldName, "categoryId");
             }
 
-            _simpleDataService.GetAllData("News").Returns(mockDataSet);
+            _mockedIndex.SimpleDataService.GetAllData("News").Returns(mockDataSet);
 
-            _indexer.RebuildIndex();
+            _mockedIndex.Indexer.RebuildIndex();
         }
 
         private static int AdjustForLoop(int numberToMock)
@@ -79,8 +57,14 @@ namespace Gravyframe.Data.Umbraco.Tests
         public void SetUp()
         {
             _nodeFactoryFacade = Substitute.For<INodeFactoryFacade>();
-            MockIndex();
-            Sut = new UmbracoNewsDao(NewsConfigurationNodeId, _nodeFactoryFacade, _searcher);
+            _mockedIndex = MockIndexFactory.GetMock(
+                new MockIndexFieldList().AddIndexField("id", "Number", true),
+                new MockIndexFieldList().AddIndexField(IndexFieldName),
+                new[] { IndexType },
+                new string[] { },
+                new string[] { });
+
+            Sut = new UmbracoNewsDao(NewsConfigurationNodeId, _nodeFactoryFacade, _mockedIndex.Searcher);
         }
 
         [Test]
