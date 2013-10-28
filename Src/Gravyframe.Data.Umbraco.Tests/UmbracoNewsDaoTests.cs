@@ -15,7 +15,6 @@ using Lucene.Net.Analysis.Standard;
 using Lucene.Net.Store;
 using NSubstitute;
 using NUnit.Framework;
-using umbraco.interfaces;
 using UmbracoExamine;
 
 namespace Gravyframe.Data.Umbraco.Tests
@@ -54,7 +53,7 @@ namespace Gravyframe.Data.Umbraco.Tests
 
         private void MockNewsItemsInIndex(int numberToMock)
         {
-            numberToMock++;
+            numberToMock = AdjustForLoop(numberToMock);
 
             var bodyText = "Test Body Text";
             var node = MockNodeFactory.BuildNode(new Dictionary<string, object> { { "Body", bodyText } });
@@ -63,12 +62,17 @@ namespace Gravyframe.Data.Umbraco.Tests
             for (var i = 1; i < numberToMock; i++)
             {
                 _nodeFactoryFacade.GetNode(i).Returns(node);
-                mockDataSet = mockDataSet.AddData(i, "categoryId", "categoryId");
+                mockDataSet.AddData(i, "categoryId", "categoryId");
             }
 
             _simpleDataService.GetAllData("News").Returns(mockDataSet);
 
             _indexer.RebuildIndex();
+        }
+
+        private static int AdjustForLoop(int numberToMock)
+        {
+            return numberToMock + 1;
         }
 
         [SetUp]
@@ -157,7 +161,16 @@ namespace Gravyframe.Data.Umbraco.Tests
         {
             // Assign
             var defaultListSize = 20;
-            var node = MockNodeFactory.BuildNode(new Dictionary<string, object> { { UmbracoNewsConstants.DefaultListSizePropertyAlias, defaultListSize.ToString() } });
+            var node =
+                MockNodeFactory.BuildNode(
+                    new Dictionary<string, object>
+                        {
+                            {
+                                UmbracoNewsConstants.DefaultListSizePropertyAlias,
+                                defaultListSize.ToString()
+                            }
+                        });
+
             _nodeFactoryFacade.GetNode(NewsConfigurationNodeId).Returns(node);
 
             MockNewsItemsInIndex(20);

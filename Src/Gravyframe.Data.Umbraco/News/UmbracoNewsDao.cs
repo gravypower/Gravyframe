@@ -62,6 +62,7 @@ namespace Gravyframe.Data.Umbraco.News
                 news.Sequence = sequence++;
                 newsList.Add(news);
             }
+
             return newsList;
         }
     }
