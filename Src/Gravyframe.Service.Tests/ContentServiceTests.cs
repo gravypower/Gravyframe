@@ -13,12 +13,12 @@ namespace Gravyframe.Service.Tests
     [TestFixture]
     public class ContentServiceTests : ServiceTests<ContentRequest, ContentResponse, ContentService, ContentService.NullContentRequestException>
     {
-        public IContentDao Dao;
+        public ContentDao<Models.Content> Dao;
         public IContentConstants ContentConstants;
         public IEnumerable<ResponseHydrator<ContentRequest, ContentResponse>> ResponseHydratationTasks;
         protected override void ServiceSetUp()
         {
-            Dao = Substitute.For<IContentDao>();
+            Dao = Substitute.For<ContentDao<Models.Content>>();
             ContentConstants = new ContentConstants();
 
             ResponseHydratationTasks = new List<ResponseHydrator<ContentRequest, ContentResponse>>

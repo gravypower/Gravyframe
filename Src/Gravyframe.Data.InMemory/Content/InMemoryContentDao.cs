@@ -3,7 +3,7 @@ using Gravyframe.Data.Content;
 
 namespace Gravyframe.Data.InMemory.Content
 {
-    public class InMemoryContentDao : IContentDao
+    public class InMemoryContentDao : ContentDao<Models.Content>
     {
         private List<Models.Content> _contentList;
 
@@ -17,12 +17,12 @@ namespace Gravyframe.Data.InMemory.Content
             }
         }
 
-        public Models.Content GetContent(string contentId)
+        public override Models.Content GetContent(string contentId)
         {
             return new Models.Content{Title = "Test", Body = "Test"};
         }
 
-        public IEnumerable<Models.Content> GetContentByCategory(string categoryId)
+        public override IEnumerable<Models.Content> GetContentByCategory(string categoryId)
         {
             return _contentList;
         }

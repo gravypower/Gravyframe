@@ -7,7 +7,7 @@ namespace Gravyframe.Service.Content.Tasks
 {
     public class PopulateContentByCategoryIdResponseHydrator : ContentResponseHydrator
     {
-        public PopulateContentByCategoryIdResponseHydrator(IContentDao contentDao, IContentConstants contentConstants) : base(contentDao, contentConstants)
+        public PopulateContentByCategoryIdResponseHydrator(ContentDao<Models.Content> contentDao, IContentConstants contentConstants) : base(contentDao, contentConstants)
         {
         }
 

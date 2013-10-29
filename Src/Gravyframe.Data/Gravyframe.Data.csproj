@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Content\IContentDao.cs" />
+    <Compile Include="Content\ContentDao.cs" />
     <Compile Include="News\NewsDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

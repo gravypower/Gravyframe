@@ -4,21 +4,25 @@ using NUnit.Framework;
 
 namespace Gravyframe.Data.InMemory.Tests
 {
+    using Gravyframe.Data.Tests;
+
     [TestFixture]
-    public class InMemoryContentDaoTests
+    public class InMemoryContentDaoTests : ContentDaoTests<Models.Content>
     {
-        [Test]
-        public void SomeTest()
+        [SetUp]
+        public void SetUp()
         {
-            // Assign
-            var sut = new InMemoryContentDao();
-            var categoryId = "SomeCategoryId";
+            Sut = new InMemoryContentDao();
+        }
 
-            // act
-            var result = sut.GetContentByCategory(categoryId);
+        protected override string GetExampleCategoryId()
+        {
+            return "categoryId";
+        }
 
-            // Assert
-            Assert.IsTrue(result.Any());
+        protected override string GetExampleId()
+        {
+            return "1";
         }
     }
 }

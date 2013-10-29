@@ -19,14 +19,14 @@ namespace Gravyframe.ServiceStack.Content
         public override void Configure(Container container)
         {
 
-            container.Register<IContentDao>(dao => new InMemoryContentDao());
+            container.Register<ContentDao<Models.Content>>(dao => new InMemoryContentDao());
             container.Register<IContentConstants>(constants => new ContentConstants());
 
             container.Register<IEnumerable<ResponseHydrator<ContentRequest, ContentResponse>>>(responseHydrationTasks => 
                 new List<ResponseHydrator<ContentRequest, ContentResponse>>
                     {
-                        new PopulateContentByCategoryIdResponseHydrator(container.Resolve<IContentDao>(), container.Resolve<IContentConstants>()),
-                        new PopulateContentByIdResponseHydrator(container.Resolve<IContentDao>(), container.Resolve<IContentConstants>())
+                        new PopulateContentByCategoryIdResponseHydrator(container.Resolve<ContentDao<Models.Content>>(), container.Resolve<IContentConstants>()),
+                        new PopulateContentByIdResponseHydrator(container.Resolve<ContentDao<Models.Content>>(), container.Resolve<IContentConstants>())
                     }
                 );
 

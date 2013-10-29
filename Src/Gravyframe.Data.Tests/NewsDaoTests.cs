@@ -13,7 +13,7 @@ namespace Gravyframe.Data.Tests
         public virtual void GetNewsByCategoryListIsDefaultSize()
         {
             // Assign
-            var categoryId = "categoryId";
+            var categoryId = GetExampleCategoryId();
 
             // Act
             var result = Sut.GetNewsByCategoryId(categoryId);
@@ -26,7 +26,7 @@ namespace Gravyframe.Data.Tests
         public virtual void GetNewByCategoryWithCustomListSize()
         {
             // Assign
-            var categoryId = "categoryId";
+            var categoryId = GetExampleCategoryId();
             var listSize = 5;
 
             // Act
@@ -40,7 +40,7 @@ namespace Gravyframe.Data.Tests
         public virtual void GetNewsByCategoryIdCustomListSizeFirstPage()
         {
             // Assign
-            var categoryId = "categoryId";
+            var categoryId = GetExampleCategoryId();
             var listSize = 5;
 
             // Act
@@ -58,7 +58,7 @@ namespace Gravyframe.Data.Tests
         public virtual void GetNewsByCategoryIdCustomListSizeSecondPage()
         {
             // Assign
-            var categoryId = "categoryId";
+            var categoryId = GetExampleCategoryId();
             var listSize = 5;
 
             // Act
@@ -76,7 +76,7 @@ namespace Gravyframe.Data.Tests
         public virtual void GetNewsByCategoryIdCustomListSizeThirdPage()
         {
             // Assign
-            var categoryId = "categoryId";
+            var categoryId = GetExampleCategoryId();
             var listSize = 5;
 
             // Act
@@ -94,7 +94,7 @@ namespace Gravyframe.Data.Tests
         public virtual void GetNewsByCategoryIdCustomListSizeForthPage()
         {
             // Assign
-            var categoryId = "categoryId";
+            var categoryId = GetExampleCategoryId();
             var listSize = 5;
 
             // Act
@@ -120,6 +120,8 @@ namespace Gravyframe.Data.Tests
             // Assert
             Assert.NotNull(result);
         }
+
+        protected abstract string GetExampleCategoryId();
 
         protected abstract string GetExampleId();
     }

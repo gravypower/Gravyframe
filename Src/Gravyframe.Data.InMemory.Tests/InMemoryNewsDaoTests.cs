@@ -21,5 +21,10 @@ namespace Gravyframe.Data.InMemory.Tests
         {
             return "ExampleId";
         }
+
+        protected override string GetExampleCategoryId()
+        {
+            return "categoryId";
+        }
     }
 }
