@@ -1,8 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Examine;
-using Examine.LuceneEngine;
-using Examine.LuceneEngine.Providers;
 using Gravyframe.Constants;
 using Gravyframe.Constants.Umbraco;
 using Gravyframe.Data.Tests;
@@ -11,11 +8,8 @@ using Gravyframe.Kernel.Umbraco;
 using Gravyframe.Kernel.Umbraco.Tests;
 using Gravyframe.Kernel.Umbraco.Tests.Examine;
 using Gravyframe.Models.Umbraco;
-using Lucene.Net.Analysis.Standard;
-using Lucene.Net.Store;
 using NSubstitute;
 using NUnit.Framework;
-using UmbracoExamine;
 
 namespace Gravyframe.Data.Umbraco.Tests
 {
@@ -179,6 +173,11 @@ namespace Gravyframe.Data.Umbraco.Tests
         protected override string GetExampleId()
         {
             return "1";
+        }
+
+        protected override string GetExampleCategoryId()
+        {
+            return IndexFieldName;
         }
     }
 }
