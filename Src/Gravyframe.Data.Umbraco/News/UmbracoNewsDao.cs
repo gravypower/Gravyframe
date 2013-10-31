@@ -9,6 +9,10 @@ using Gravyframe.Models.Umbraco;
 
 namespace Gravyframe.Data.Umbraco.News
 {
+    using Gravyframe.Kernel.Umbraco.Facades;
+
+    using umbraco.NodeFactory;
+
     public class UmbracoNewsDao : NewsDao<UmbracoNews>
     {
         protected readonly ISearcher Searcher;

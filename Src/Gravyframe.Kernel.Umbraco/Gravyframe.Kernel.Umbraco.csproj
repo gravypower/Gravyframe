@@ -50,8 +50,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="INodeFactoryFacade.cs" />
-    <Compile Include="NodeFactoryFacade.cs" />
+    <Compile Include="Facades\INodeFactoryFacade.cs" />
+    <Compile Include="Facades\NodeFactoryFacade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

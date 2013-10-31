@@ -3,6 +3,8 @@ using umbraco.interfaces;
 
 namespace Gravyframe.Configuration.Umbraco
 {
+    using Gravyframe.Kernel.Umbraco.Facades;
+
     /// <summary>
     /// 
     /// </summary>

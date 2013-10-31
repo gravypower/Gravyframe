@@ -13,6 +13,8 @@ using NUnit.Framework;
 
 namespace Gravyframe.Data.Umbraco.Tests
 {
+    using Gravyframe.Kernel.Umbraco.Facades;
+
     [TestFixture]
     public class UmbracoNewsDaoTests : NewsDaoTests<UmbracoNews>
     {

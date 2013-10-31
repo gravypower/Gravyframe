@@ -1,8 +1,8 @@
-﻿using umbraco.NodeFactory;
-using umbraco.interfaces;
-
-namespace Gravyframe.Kernel.Umbraco
+﻿namespace Gravyframe.Kernel.Umbraco.Facades
 {
+    using umbraco.interfaces;
+    using umbraco.NodeFactory;
+
     public class NodeFactoryFacade : INodeFactoryFacade
     {
         public INode GetNode(int nodeId)
