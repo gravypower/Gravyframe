@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2010
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{B0CF9D5F-3830-440E-B516-78B2CF9113EF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gravyframe.Service", "Gravyframe.Service\Gravyframe.Service.csproj", "{732189F6-7A48-4FF2-8705-B1CD80897B67}"
@@ -34,9 +34,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gravyframe.Kernel", "Gravyf
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gravyframe.Kernel.Tests", "Gravyframe.Kernel.Tests\Gravyframe.Kernel.Tests.csproj", "{86BD250A-0144-4497-86A3-90BF8D4FE40D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Constants", "Constants", "{22BD1D53-7363-4021-AA83-B610406660B8}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{22BD1D53-7363-4021-AA83-B610406660B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gravyframe.Constants", "Gravyframe.Constants\Gravyframe.Constants.csproj", "{9F685246-E7D2-43D8-A76F-027787420687}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gravyframe.Configuration", "Gravyframe.Constants\Gravyframe.Configuration.csproj", "{9F685246-E7D2-43D8-A76F-027787420687}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gravyframe.Data.Tests", "Gravyframe.Data.Tests\Gravyframe.Data.Tests.csproj", "{EC67B062-8ABC-4B40-94D1-097421B04CE4}"
 EndProject
@@ -52,7 +52,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gravyframe.Models.Umbraco",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gravyframe.Data.Umbraco", "Gravyframe.Data.Umbraco\Gravyframe.Data.Umbraco.csproj", "{A4C5ABE0-66A7-401C-A05E-0D03E8805838}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gravyframe.Constants.Umbraco", "Gravyframe.Constants.Umbraco\Gravyframe.Constants.Umbraco.csproj", "{66D63608-084C-4169-A041-C08725A5ABA1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gravyframe.Configuration.Umbraco", "Gravyframe.Constants.Umbraco\Gravyframe.Configuration.Umbraco.csproj", "{66D63608-084C-4169-A041-C08725A5ABA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

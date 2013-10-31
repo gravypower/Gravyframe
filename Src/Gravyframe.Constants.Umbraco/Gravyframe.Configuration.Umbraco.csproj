@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9F685246-E7D2-43D8-A76F-027787420687}</ProjectGuid>
+    <ProjectGuid>{66D63608-084C-4169-A041-C08725A5ABA1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Gravyframe.Constants</RootNamespace>
-    <AssemblyName>Gravyframe.Constants</AssemblyName>
+    <RootNamespace>Gravyframe.Configuration.Umbraco</RootNamespace>
+    <AssemblyName>Gravyframe.Configuration.Umbraco</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,7 +20,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,9 +28,11 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="interfaces">
+      <HintPath>..\packages\UmbracoCms.Core.6.1.6\lib\interfaces.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,11 +42,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContentConstants.cs" />
-    <Compile Include="IContentConstants.cs" />
-    <Compile Include="INewsConstants.cs" />
-    <Compile Include="NewsConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UmbracoNewsConstants.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Gravyframe.Constants\Gravyframe.Configuration.csproj">
+      <Project>{9F685246-E7D2-43D8-A76F-027787420687}</Project>
+      <Name>Gravyframe.Configuration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gravyframe.Kernel.Umbraco\Gravyframe.Kernel.Umbraco.csproj">
+      <Project>{35D78ACD-3AA6-4593-AD64-5ABF3C3BB7B6}</Project>
+      <Name>Gravyframe.Kernel.Umbraco</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

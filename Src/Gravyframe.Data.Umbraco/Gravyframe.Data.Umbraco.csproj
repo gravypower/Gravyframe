@@ -59,13 +59,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Gravyframe.Constants.Umbraco\Gravyframe.Constants.Umbraco.csproj">
+    <ProjectReference Include="..\Gravyframe.Constants.Umbraco\Gravyframe.Configuration.Umbraco.csproj">
       <Project>{66d63608-084c-4169-a041-c08725a5aba1}</Project>
-      <Name>Gravyframe.Constants.Umbraco</Name>
+      <Name>Gravyframe.Configuration.Umbraco</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Gravyframe.Constants\Gravyframe.Constants.csproj">
+    <ProjectReference Include="..\Gravyframe.Constants\Gravyframe.Configuration.csproj">
       <Project>{9F685246-E7D2-43D8-A76F-027787420687}</Project>
-      <Name>Gravyframe.Constants</Name>
+      <Name>Gravyframe.Configuration</Name>
     </ProjectReference>
     <ProjectReference Include="..\Gravyframe.Data\Gravyframe.Data.csproj">
       <Project>{DA80ABB5-0A99-4DC1-B56F-DAF7018D3BC5}</Project>

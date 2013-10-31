@@ -47,9 +47,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Gravyframe.Constants\Gravyframe.Constants.csproj">
+    <ProjectReference Include="..\Gravyframe.Constants\Gravyframe.Configuration.csproj">
       <Project>{9F685246-E7D2-43D8-A76F-027787420687}</Project>
-      <Name>Gravyframe.Constants</Name>
+      <Name>Gravyframe.Configuration</Name>
     </ProjectReference>
     <ProjectReference Include="..\Gravyframe.Model\Gravyframe.Models.csproj">
       <Project>{5d5eb908-b67b-4e7e-af9e-25bdd03f543e}</Project>

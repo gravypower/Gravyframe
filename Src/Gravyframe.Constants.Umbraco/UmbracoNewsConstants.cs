@@ -1,7 +1,7 @@
 ﻿using Gravyframe.Kernel.Umbraco;
 using umbraco.interfaces;
 
-namespace Gravyframe.Constants.Umbraco
+namespace Gravyframe.Configuration.Umbraco
 {
     /// <summary>
     /// 

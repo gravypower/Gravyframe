@@ -1,5 +1,6 @@
-﻿namespace Gravyframe.Constants
+﻿namespace Gravyframe.Configuration
 {
+
     public class ContentConstants : IContentConstants
     {
         public string ContenIdError

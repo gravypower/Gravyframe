@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Gravyframe.Constants;
+using Gravyframe.Configuration;
 using Gravyframe.Data.News;
 
 namespace Gravyframe.Data.InMemory.News

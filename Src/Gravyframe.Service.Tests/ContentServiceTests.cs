@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Gravyframe.Constants;
+using Gravyframe.Configuration;
 using Gravyframe.Data.Content;
 using Gravyframe.Service.Content;
 using Gravyframe.Service.Content.Tasks;
@@ -10,6 +10,8 @@ using NUnit.Framework;
 
 namespace Gravyframe.Service.Tests
 {
+    using Gravyframe.Configuration;
+
     [TestFixture]
     public class ContentServiceTests : ServiceTests<ContentRequest, ContentResponse, ContentService, ContentService.NullContentRequestException>
     {

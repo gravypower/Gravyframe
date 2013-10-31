@@ -1,4 +1,4 @@
-﻿using Gravyframe.Constants;
+﻿using Gravyframe.Configuration;
 using Gravyframe.Data.InMemory.News;
 using Gravyframe.Data.Tests;
 using NUnit.Framework;

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Gravyframe.Constants;
+using Gravyframe.Configuration;
 
 namespace Gravyframe.Data.News
 {

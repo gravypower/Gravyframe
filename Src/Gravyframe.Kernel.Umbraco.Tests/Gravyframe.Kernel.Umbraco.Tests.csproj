@@ -75,7 +75,7 @@
     <Compile Include="Examine\MockIndexFactory.cs" />
     <Compile Include="Examine\MockIndexFieldList.cs" />
     <Compile Include="Examine\MockSimpleDataSet.cs" />
-    <Compile Include="MockNodeFactory.cs" />
+    <Compile Include="MockNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

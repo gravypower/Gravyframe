@@ -1,5 +1,5 @@
 ﻿using Funq;
-using Gravyframe.Constants;
+using Gravyframe.Configuration;
 using Gravyframe.Data.Content;
 using Gravyframe.Data.InMemory.Content;
 using Gravyframe.Service;
@@ -10,6 +10,8 @@ using System.Collections.Generic;
 
 namespace Gravyframe.ServiceStack.Content
 {
+    using Gravyframe.Configuration;
+
     public class ContentAppHost : AppHostBase 
     {
         public ContentAppHost () : base("Gravyframe Content Web Services", typeof(ContentService).Assembly)

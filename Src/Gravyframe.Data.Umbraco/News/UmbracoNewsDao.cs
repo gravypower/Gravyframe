@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Linq;
 using Examine;
-using Gravyframe.Constants.Umbraco;
+using Gravyframe.Configuration.Umbraco;
 using Gravyframe.Data.News;
 using Gravyframe.Kernel.Umbraco;
 using Gravyframe.Models.Umbraco;

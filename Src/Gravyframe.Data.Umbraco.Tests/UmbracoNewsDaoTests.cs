@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Gravyframe.Constants;
-using Gravyframe.Constants.Umbraco;
+using Gravyframe.Configuration;
+using Gravyframe.Configuration.Umbraco;
 using Gravyframe.Data.Tests;
 using Gravyframe.Data.Umbraco.News;
 using Gravyframe.Kernel.Umbraco;
@@ -28,12 +28,15 @@ namespace Gravyframe.Data.Umbraco.Tests
             numberToMock = AdjustForLoop(numberToMock);
 
             var bodyText = "Test Body Text";
-            var node = MockNodeFactory.BuildNode(new Dictionary<string, object> { { "Body", bodyText } });
+
+            var mockNode = new MockNode()
+                .AddProperty("Body", bodyText)
+                .Mock();
 
             var mockDataSet = new MockSimpleDataSet(IndexType);
             for (var i = 1; i < numberToMock; i++)
             {
-                _nodeFactoryFacade.GetNode(i).Returns(node);
+                _nodeFactoryFacade.GetNode(i).Returns(mockNode);
                 mockDataSet.AddData(i, IndexFieldName, "categoryId");
             }
 
@@ -65,8 +68,11 @@ namespace Gravyframe.Data.Umbraco.Tests
         public void GetNewsFromUmbraco()
         {
             // Assign
-            var node = MockNodeFactory.BuildNode(new Dictionary<string, object> {{"Body", "Test"}});
-            _nodeFactoryFacade.GetNode(1).Returns(node);
+            //var node = MockNodeFactory.Mock(new Dictionary<string, object> {{"Body", "Test"}});
+            var mockNode = new MockNode()
+                .AddProperty("Body", "Test")
+                .Mock();
+            _nodeFactoryFacade.GetNode(1).Returns(mockNode);
 
             // Act
             var result = Sut.GetNews("1");
@@ -139,17 +145,13 @@ namespace Gravyframe.Data.Umbraco.Tests
         {
             // Assign
             var defaultListSize = 20;
-            var node =
-                MockNodeFactory.BuildNode(
-                    new Dictionary<string, object>
-                        {
-                            {
-                                UmbracoNewsConstants.DefaultListSizePropertyAlias,
-                                defaultListSize.ToString()
-                            }
-                        });
 
-            _nodeFactoryFacade.GetNode(NewsConfigurationNodeId).Returns(node);
+            var mockNode = new MockNode()
+                    .AddProperty(UmbracoNewsConstants.DefaultListSizePropertyAlias,defaultListSize.ToString())
+                    .Mock();
+
+
+            _nodeFactoryFacade.GetNode(NewsConfigurationNodeId).Returns(mockNode);
 
             MockNewsItemsInIndex(20);
 
@@ -158,17 +160,18 @@ namespace Gravyframe.Data.Umbraco.Tests
         }
 
         [Test]
-        public void GetNewsByCategoryListIsDefaultSi()
+        public void GetNewsByCategoryListIsDefaultSize1()
         {
             // Assign
-            var node = MockNodeFactory.BuildNode(new Dictionary<string, object> ());
-            _nodeFactoryFacade.GetNode(NewsConfigurationNodeId).Returns(node);
-            MockNewsItemsInIndex(20);
+            var mockNode = new MockNode().Mock();
+            _nodeFactoryFacade.GetNode(NewsConfigurationNodeId).Returns(mockNode);
 
-            base.GetNewsByCategoryListIsDefaultSize();
-
+            //Assert
             Assert.AreEqual(new NewsConstants().DefaultListSize, Sut.NewsConstants.DefaultListSize);
         }
+
+        //[Test]
+        //public void Can
 
         protected override string GetExampleId()
         {

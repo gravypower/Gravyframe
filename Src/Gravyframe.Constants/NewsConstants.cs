@@ -1,4 +1,4 @@
-﻿namespace Gravyframe.Constants
+﻿namespace Gravyframe.Configuration
 {
     public class NewsConstants : INewsConstants
     {

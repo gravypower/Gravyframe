@@ -1,4 +1,4 @@
-﻿using Gravyframe.Constants;
+﻿using Gravyframe.Configuration;
 using Gravyframe.Data.News;
 
 namespace Gravyframe.Service.News

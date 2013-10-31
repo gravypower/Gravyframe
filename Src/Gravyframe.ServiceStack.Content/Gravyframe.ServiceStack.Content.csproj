@@ -106,9 +106,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Gravyframe.Constants\Gravyframe.Constants.csproj">
+    <ProjectReference Include="..\Gravyframe.Constants\Gravyframe.Configuration.csproj">
       <Project>{9F685246-E7D2-43D8-A76F-027787420687}</Project>
-      <Name>Gravyframe.Constants</Name>
+      <Name>Gravyframe.Configuration</Name>
     </ProjectReference>
     <ProjectReference Include="..\Gravyframe.Data.InMemory\Gravyframe.Data.InMemory.csproj">
       <Project>{1ddd3b19-2d08-4d0b-9e67-0d82b1073c21}</Project>

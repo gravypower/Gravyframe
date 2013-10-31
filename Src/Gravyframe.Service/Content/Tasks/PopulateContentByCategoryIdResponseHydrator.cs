@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Gravyframe.Constants;
+using Gravyframe.Configuration;
 using Gravyframe.Data.Content;
 
 namespace Gravyframe.Service.Content.Tasks
