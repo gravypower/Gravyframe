@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Gravyframe.ServiceStack.Content
+namespace Gravyframe.ServiceStack.InMemory
 {
     public class Global : System.Web.HttpApplication
     {

@@ -19,7 +19,7 @@ namespace Gravyframe.Data.Tests
             var result = Sut.GetNewsByCategoryId(categoryId);
 
             // Assert
-            Assert.AreEqual(Sut.NewsConstants.DefaultListSize, result.Count());
+            Assert.AreEqual(Sut.NewsConfiguration.DefaultListSize, result.Count());
         }
 
         [Test]

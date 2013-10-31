@@ -1,20 +1,17 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Gravyframe.Configuration;
 using Gravyframe.Configuration.Umbraco;
 using Gravyframe.Data.Tests;
 using Gravyframe.Data.Umbraco.News;
-using Gravyframe.Kernel.Umbraco;
 using Gravyframe.Kernel.Umbraco.Tests;
 using Gravyframe.Kernel.Umbraco.Tests.Examine;
 using Gravyframe.Models.Umbraco;
 using NSubstitute;
 using NUnit.Framework;
+using Gravyframe.Kernel.Umbraco.Facades;
 
 namespace Gravyframe.Data.Umbraco.Tests
 {
-    using Gravyframe.Kernel.Umbraco.Facades;
-
     [TestFixture]
     public class UmbracoNewsDaoTests : NewsDaoTests<UmbracoNews>
     {
@@ -23,7 +20,7 @@ namespace Gravyframe.Data.Umbraco.Tests
         private MockedIndex _mockedIndex;
 
         private const string IndexType = "News";
-        private const string IndexFieldName = "categoryId";
+        private const string TestCategoryId = "TestCategoryId";
 
         private void MockNewsItemsInIndex(int numberToMock)
         {
@@ -32,14 +29,14 @@ namespace Gravyframe.Data.Umbraco.Tests
             var bodyText = "Test Body Text";
 
             var mockNode = new MockNode()
-                .AddProperty("Body", bodyText)
+                .AddProperty(UmbracoNewsDao.BodyAlias, bodyText)
                 .Mock();
 
             var mockDataSet = new MockSimpleDataSet(IndexType);
             for (var i = 1; i < numberToMock; i++)
             {
                 _nodeFactoryFacade.GetNode(i).Returns(mockNode);
-                mockDataSet.AddData(i, IndexFieldName, "categoryId");
+                mockDataSet.AddData(i, UmbracoNewsDao.CategoriesAlias, TestCategoryId);
             }
 
             _mockedIndex.SimpleDataService.GetAllData("News").Returns(mockDataSet);
@@ -58,21 +55,22 @@ namespace Gravyframe.Data.Umbraco.Tests
             _nodeFactoryFacade = Substitute.For<INodeFactoryFacade>();
             _mockedIndex = MockIndexFactory.GetMock(
                 new MockIndexFieldList().AddIndexField("id", "Number", true),
-                new MockIndexFieldList().AddIndexField(IndexFieldName),
+                new MockIndexFieldList().AddIndexField(UmbracoNewsDao.CategoriesAlias),
                 new[] { IndexType },
                 new string[] { },
                 new string[] { });
 
-            Sut = new UmbracoNewsDao(NewsConfigurationNodeId, _nodeFactoryFacade, _mockedIndex.Searcher);
+
+            var newsConfiguration = new UmbracoNewsConfiguration(_nodeFactoryFacade, NewsConfigurationNodeId);
+            Sut = new UmbracoNewsDao(newsConfiguration, _nodeFactoryFacade, _mockedIndex.Searcher);
         }
 
         [Test]
         public void GetNewsFromUmbraco()
         {
             // Assign
-            //var node = MockNodeFactory.Mock(new Dictionary<string, object> {{"Body", "Test"}});
             var mockNode = new MockNode()
-                .AddProperty("Body", "Test")
+                .AddProperty(UmbracoNewsDao.BodyAlias, "Test")
                 .Mock();
             _nodeFactoryFacade.GetNode(1).Returns(mockNode);
 
@@ -91,7 +89,7 @@ namespace Gravyframe.Data.Umbraco.Tests
             MockNewsItemsInIndex(1);
 
             // Act
-            var result = Sut.GetNewsByCategoryId("categoryId");
+            var result = Sut.GetNewsByCategoryId(TestCategoryId);
 
             // Assert
             Assert.IsTrue(result.Any());
@@ -149,7 +147,7 @@ namespace Gravyframe.Data.Umbraco.Tests
             var defaultListSize = 20;
 
             var mockNode = new MockNode()
-                    .AddProperty(UmbracoNewsConstants.DefaultListSizePropertyAlias,defaultListSize.ToString())
+                    .AddProperty(UmbracoNewsConfiguration.DefaultListSizePropertyAlias,defaultListSize.ToString())
                     .Mock();
 
 
@@ -158,7 +156,7 @@ namespace Gravyframe.Data.Umbraco.Tests
             MockNewsItemsInIndex(20);
 
             base.GetNewsByCategoryListIsDefaultSize();
-            Assert.AreEqual(defaultListSize, Sut.NewsConstants.DefaultListSize);
+            Assert.AreEqual(defaultListSize, Sut.NewsConfiguration.DefaultListSize);
         }
 
         [Test]
@@ -169,7 +167,7 @@ namespace Gravyframe.Data.Umbraco.Tests
             _nodeFactoryFacade.GetNode(NewsConfigurationNodeId).Returns(mockNode);
 
             //Assert
-            Assert.AreEqual(new NewsConstants().DefaultListSize, Sut.NewsConstants.DefaultListSize);
+            Assert.AreEqual(new NewsConfiguration().DefaultListSize, Sut.NewsConfiguration.DefaultListSize);
         }
 
         //[Test]
@@ -182,7 +180,7 @@ namespace Gravyframe.Data.Umbraco.Tests
 
         protected override string GetExampleCategoryId()
         {
-            return IndexFieldName;
+            return TestCategoryId;
         }
     }
 }

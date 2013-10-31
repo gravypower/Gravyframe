@@ -5,15 +5,15 @@ namespace Gravyframe.Data.News
 {
     public abstract class NewsDao<TNews> where TNews: Models.News
     {
-        public readonly INewsConstants NewsConstants;
+        public readonly INewsConfiguration NewsConfiguration;
 
         protected NewsDao()
         {
         }
 
-        protected NewsDao(INewsConstants newsConstants)
+        protected NewsDao(INewsConfiguration newsConfiguration)
         {
-            NewsConstants = newsConstants;
+            NewsConfiguration = newsConfiguration;
         }
 
         public abstract TNews GetNews(string newsId);

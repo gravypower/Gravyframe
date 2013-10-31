@@ -3,14 +3,15 @@ using Gravyframe.Data.News;
 
 namespace Gravyframe.Service.News
 {
-    public abstract class NewsResponseHydrator : ResponseHydrator<NewsRequest, NewsResponse>        
+    public abstract class NewsResponseHydrator<TNews>  : ResponseHydrator<NewsRequest, NewsResponse<TNews>>
+        where TNews : Models.News
     {
-        protected readonly INewsConstants NewsConstants;
-        protected readonly NewsDao<Models.News> NewsDao;
+        protected readonly INewsConfiguration NewsConfiguration;
+        protected readonly NewsDao<TNews> NewsDao;
 
-        protected NewsResponseHydrator(INewsConstants newsConstants, NewsDao<Models.News> newsDao)
+        protected NewsResponseHydrator(NewsDao<TNews> newsDao, INewsConfiguration newsConfiguration)
         {
-            NewsConstants = newsConstants;
+            NewsConfiguration = newsConfiguration;
             NewsDao = newsDao;
         }
     }

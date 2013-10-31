@@ -5,14 +5,15 @@ using Gravyframe.Data.News;
 
 namespace Gravyframe.Service.News.Tasks
 {
-    public class PopulateNewsByIdResponseHydrator : NewsResponseHydrator
+    public class PopulateNewsByIdResponseHydrator<TNews> : NewsResponseHydrator<TNews>
+        where TNews : Models.News
     {
-        public PopulateNewsByIdResponseHydrator(INewsConstants newsConstants, NewsDao<Models.News> newsDao)
-            : base(newsConstants, newsDao)
+        public PopulateNewsByIdResponseHydrator(NewsDao<TNews> newsDao, INewsConfiguration newsConfiguration)
+            : base(newsDao, newsConfiguration)
         {
         }
 
-        public override void PopulateResponse(NewsRequest request, NewsResponse response)
+        public override void PopulateResponse(NewsRequest request, NewsResponse<TNews> response)
         {
             response.News = NewsDao.GetNews(request.NewsId);
         }
@@ -22,7 +23,7 @@ namespace Gravyframe.Service.News.Tasks
             if (String.IsNullOrEmpty(request.NewsId))
                 return new List<string>
                     {
-                        NewsConstants.NewsIdError
+                        NewsConfiguration.NewsIdError
                     };
             return new List<string>();
         }

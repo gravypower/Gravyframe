@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="Gravyframe.ServiceStack.Content.Global" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="Gravyframe.ServiceStack.InMemory.Global" Language="C#" %>

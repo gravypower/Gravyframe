@@ -1,6 +1,6 @@
 ﻿namespace Gravyframe.Configuration
 {
-    public class NewsConstants : INewsConstants
+    public class NewsConfiguration : INewsConfiguration
     {
         public string NewsIdError
         {

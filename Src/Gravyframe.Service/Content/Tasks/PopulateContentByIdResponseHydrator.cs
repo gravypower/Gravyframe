@@ -7,8 +7,8 @@ namespace Gravyframe.Service.Content.Tasks
 {
     public class PopulateContentByIdResponseHydrator : ContentResponseHydrator
     {
-        public PopulateContentByIdResponseHydrator(ContentDao<Models.Content> contentDao, IContentConstants contentConstants)
-            : base(contentDao, contentConstants)
+        public PopulateContentByIdResponseHydrator(ContentDao<Models.Content> contentDao, IContentConfiguration contentConfiguration)
+            : base(contentDao, contentConfiguration)
         {
         }
 
@@ -22,7 +22,7 @@ namespace Gravyframe.Service.Content.Tasks
             if (String.IsNullOrEmpty(request.ContentId))
                 return new List<string>
                     {
-                        ContentConstants.ContenCategoryIdError
+                        ContentConfiguration.ContentCategoryIdError
                     };
 
             return new List<string>();

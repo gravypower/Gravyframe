@@ -1,14 +1,14 @@
 ﻿namespace Gravyframe.Configuration
 {
 
-    public class ContentConstants : IContentConstants
+    public class ContentConfiguration : IContentConfiguration
     {
-        public string ContenIdError
+        public string ContentIdError
         {
             get { return "Content Id error"; }
         }
 
-        public string ContenCategoryIdError
+        public string ContentCategoryIdError
         {
             get { return "Content Category Id error"; }
         }

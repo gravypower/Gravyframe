@@ -16,17 +16,17 @@ namespace Gravyframe.Service.Tests
     public class ContentServiceTests : ServiceTests<ContentRequest, ContentResponse, ContentService, ContentService.NullContentRequestException>
     {
         public ContentDao<Models.Content> Dao;
-        public IContentConstants ContentConstants;
+        public IContentConfiguration ContentConfiguration;
         public IEnumerable<ResponseHydrator<ContentRequest, ContentResponse>> ResponseHydratationTasks;
         protected override void ServiceSetUp()
         {
             Dao = Substitute.For<ContentDao<Models.Content>>();
-            ContentConstants = new ContentConstants();
+            ContentConfiguration = new ContentConfiguration();
 
             ResponseHydratationTasks = new List<ResponseHydrator<ContentRequest, ContentResponse>>
                 {
-                    new PopulateContentByCategoryIdResponseHydrator(Dao, ContentConstants),
-                    new PopulateContentByIdResponseHydrator(Dao, ContentConstants)
+                    new PopulateContentByCategoryIdResponseHydrator(Dao, ContentConfiguration),
+                    new PopulateContentByIdResponseHydrator(Dao, ContentConfiguration)
                 };
 
             Sut = new ContentService(ResponseHydratationTasks);
@@ -63,7 +63,7 @@ namespace Gravyframe.Service.Tests
 
                 // Assert
                 Assert.IsTrue(responce.Errors.Any());
-                Assert.IsTrue(responce.Errors.Any(error => error == ContentConstants.ContenIdError));
+                Assert.IsTrue(responce.Errors.Any(error => error == ContentConfiguration.ContentIdError));
             }
 
             [Test]
@@ -74,7 +74,7 @@ namespace Gravyframe.Service.Tests
 
                 // Assert
                 Assert.IsTrue(responce.Errors.Any());
-                Assert.IsTrue(responce.Errors.Any(error => error == ContentConstants.ContenCategoryIdError));
+                Assert.IsTrue(responce.Errors.Any(error => error == ContentConfiguration.ContentCategoryIdError));
             }
         }
         #endregion
@@ -100,7 +100,7 @@ namespace Gravyframe.Service.Tests
 
                 // Assert
                 Assert.AreEqual(ResponceCodes.Success, responce.Code);
-                Assert.IsFalse(responce.Errors.Any(error => error == ContentConstants.ContenCategoryIdError));
+                Assert.IsFalse(responce.Errors.Any(error => error == ContentConfiguration.ContentCategoryIdError));
             }
 
             [Test]

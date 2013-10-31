@@ -8,13 +8,13 @@ namespace Gravyframe.Data.InMemory.Tests
     [TestFixture]
     public class InMemoryNewsDaoTests : NewsDaoTests<Models.News>
     {
-        private INewsConstants _newsConstants;
+        private INewsConfiguration _newsConfiguration;
 
         [SetUp]
         public void Setp()
         {
-            _newsConstants = new NewsConstants();
-            Sut = new InMemoryNewsDao(_newsConstants);
+            _newsConfiguration = new NewsConfiguration();
+            Sut = new InMemoryNewsDao(_newsConfiguration);
         }
 
         protected override string GetExampleId()

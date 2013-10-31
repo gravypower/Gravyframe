@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2010
+# Visual Studio 2012
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{B0CF9D5F-3830-440E-B516-78B2CF9113EF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gravyframe.Service", "Gravyframe.Service\Gravyframe.Service.csproj", "{732189F6-7A48-4FF2-8705-B1CD80897B67}"
@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gravyframe.Models", "Gravyf
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hosting", "Hosting", "{71546743-892B-4AB9-BC8A-B209795E51E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gravyframe.ServiceStack.Content", "Gravyframe.ServiceStack.Content\Gravyframe.ServiceStack.Content.csproj", "{E3203B24-AFEB-4D26-A140-B85858A82735}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gravyframe.ServiceStack.InMemory", "Gravyframe.ServiceStack.Content\Gravyframe.ServiceStack.InMemory.csproj", "{E3203B24-AFEB-4D26-A140-B85858A82735}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gravyframe.Data.InMemory", "Gravyframe.Data.InMemory\Gravyframe.Data.InMemory.csproj", "{1DDD3B19-2D08-4D0B-9E67-0D82B1073C21}"
 EndProject
@@ -53,6 +53,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gravyframe.Data.Umbraco", "Gravyframe.Data.Umbraco\Gravyframe.Data.Umbraco.csproj", "{A4C5ABE0-66A7-401C-A05E-0D03E8805838}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gravyframe.Configuration.Umbraco", "Gravyframe.Constants.Umbraco\Gravyframe.Configuration.Umbraco.csproj", "{66D63608-084C-4169-A041-C08725A5ABA1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gravyframe.ServiceStack.Umbraco", "Gravyframe.ServiceStack.Umbraco\Gravyframe.ServiceStack.Umbraco.csproj", "{70F36221-8949-40EB-8996-4F7CA11CC007}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gravyframe.ServiceStack.Umbraco.Tests", "Gravyframe.ServiceStack.Umbraco.Tests\Gravyframe.ServiceStack.Umbraco.Tests.csproj", "{16D84073-7F6B-43E5-A1EF-FFBE3201865F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -128,6 +132,14 @@ Global
 		{66D63608-084C-4169-A041-C08725A5ABA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66D63608-084C-4169-A041-C08725A5ABA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66D63608-084C-4169-A041-C08725A5ABA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70F36221-8949-40EB-8996-4F7CA11CC007}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70F36221-8949-40EB-8996-4F7CA11CC007}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70F36221-8949-40EB-8996-4F7CA11CC007}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70F36221-8949-40EB-8996-4F7CA11CC007}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16D84073-7F6B-43E5-A1EF-FFBE3201865F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16D84073-7F6B-43E5-A1EF-FFBE3201865F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16D84073-7F6B-43E5-A1EF-FFBE3201865F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16D84073-7F6B-43E5-A1EF-FFBE3201865F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -144,6 +156,8 @@ Global
 		{5D5EB908-B67B-4E7E-AF9E-25BDD03F543E} = {8E1763CC-5943-4001-AEF5-502A2141685C}
 		{CC84F5C7-7CCA-4638-BD8B-4BBCC75AB9B1} = {8E1763CC-5943-4001-AEF5-502A2141685C}
 		{E3203B24-AFEB-4D26-A140-B85858A82735} = {71546743-892B-4AB9-BC8A-B209795E51E3}
+		{70F36221-8949-40EB-8996-4F7CA11CC007} = {71546743-892B-4AB9-BC8A-B209795E51E3}
+		{16D84073-7F6B-43E5-A1EF-FFBE3201865F} = {71546743-892B-4AB9-BC8A-B209795E51E3}
 		{656D1A93-A92A-402E-9AF7-4AF4BE963958} = {5116D4AC-2EAC-4E12-9579-6D8EFE5F3DA7}
 		{86BD250A-0144-4497-86A3-90BF8D4FE40D} = {5116D4AC-2EAC-4E12-9579-6D8EFE5F3DA7}
 		{35D78ACD-3AA6-4593-AD64-5ABF3C3BB7B6} = {5116D4AC-2EAC-4E12-9579-6D8EFE5F3DA7}

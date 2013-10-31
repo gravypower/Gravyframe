@@ -6,12 +6,12 @@ namespace Gravyframe.Service.Content
     public abstract class ContentResponseHydrator:ResponseHydrator<ContentRequest, ContentResponse>
     {
         protected readonly ContentDao<Models.Content> ContentDao;
-        protected readonly IContentConstants ContentConstants;
+        protected readonly IContentConfiguration ContentConfiguration;
 
-        protected ContentResponseHydrator(ContentDao<Models.Content> contentDao, IContentConstants contentConstants)
+        protected ContentResponseHydrator(ContentDao<Models.Content> contentDao, IContentConfiguration contentConfiguration)
         {
             ContentDao = contentDao;
-            ContentConstants = contentConstants;
+            ContentConfiguration = contentConfiguration;
         }
     }
 }

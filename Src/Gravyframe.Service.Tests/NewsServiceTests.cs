@@ -11,25 +11,25 @@ using NUnit.Framework;
 namespace Gravyframe.Service.Tests
 {
     [TestFixture]
-    public class NewsServiceTests : ServiceTests<NewsRequest, NewsResponse, NewsService, NewsService.NullNewsRequestException>
+    public class NewsServiceTests : ServiceTests<NewsRequest, NewsResponse<Models.News>, NewsService<Models.News>, NewsService<Models.News>.NullNewsRequestException>
     {
         public NewsDao<Models.News> Dao;
-        public INewsConstants NewsConstants;
-        public IEnumerable<ResponseHydrator<NewsRequest, NewsResponse>> ResponseHydratationTasks;
+        public INewsConfiguration NewsConfiguration;
+        public IEnumerable<ResponseHydrator<NewsRequest, NewsResponse<Models.News>>> ResponseHydrogenationTasks;
 
         [SetUp]
         protected override void ServiceSetUp()
         {
             Dao = Substitute.For<NewsDao<Models.News>>();
-            NewsConstants = new NewsConstants();
+            NewsConfiguration = new NewsConfiguration();
 
-            ResponseHydratationTasks = new List<ResponseHydrator<NewsRequest, NewsResponse>>
+            ResponseHydrogenationTasks = new List<ResponseHydrator<NewsRequest, NewsResponse<Models.News>>>
                 {
-                    new PopulateNewsByIdResponseHydrator(NewsConstants, Dao),
-                    new PopulateNewsByCategoryIdResponseHydrator(NewsConstants, Dao)
+                    new PopulateNewsByIdResponseHydrator<Models.News>(Dao, NewsConfiguration),
+                    new PopulateNewsByCategoryIdResponseHydrator<Models.News>(Dao, NewsConfiguration)
                 };
 
-            Sut = new NewsService(ResponseHydratationTasks);
+            Sut = new NewsService<Models.News>(ResponseHydrogenationTasks);
         }
 
         #region Given News Request With No News Id
@@ -63,7 +63,7 @@ namespace Gravyframe.Service.Tests
 
                 // Assert
                 Assert.IsTrue(responce.Errors.Any());
-                Assert.IsTrue(responce.Errors.Any(error => error == NewsConstants.NewsIdError));
+                Assert.IsTrue(responce.Errors.Any(error => error == NewsConfiguration.NewsIdError));
             }
         }
         #endregion

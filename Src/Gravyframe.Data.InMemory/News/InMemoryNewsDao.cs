@@ -9,7 +9,7 @@ namespace Gravyframe.Data.InMemory.News
     {
         private readonly List<Models.News> _newsList;
 
-        public InMemoryNewsDao(INewsConstants newsConstants) : base(newsConstants)
+        public InMemoryNewsDao(INewsConfiguration newsConfiguration) : base(newsConfiguration)
         {
             _newsList = new List<Models.News>();
 
@@ -26,7 +26,7 @@ namespace Gravyframe.Data.InMemory.News
 
         public override IEnumerable<Models.News> GetNewsByCategoryId(string categoryId)
         {
-            return _newsList.Take(NewsConstants.DefaultListSize);
+            return _newsList.Take(NewsConfiguration.DefaultListSize);
         }
 
         public override IEnumerable<Models.News> GetNewsByCategoryId(string categoryId, int listSize)

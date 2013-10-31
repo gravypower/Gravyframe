@@ -1,20 +1,27 @@
-﻿using Gravyframe.Kernel.Umbraco;
-using umbraco.interfaces;
-
+﻿using umbraco.interfaces;
+using Gravyframe.Kernel.Umbraco.Facades;
 namespace Gravyframe.Configuration.Umbraco
 {
-    using Gravyframe.Kernel.Umbraco.Facades;
-
-    /// <summary>
-    /// 
-    /// </summary>
-    public class UmbracoNewsConstants : INewsConstants
+    public class UmbracoNewsConfiguration : INewsConfiguration
     {
         private readonly INodeFactoryFacade _nodeFactoryFacade;
         private readonly int _newsConfigurationNodeId;
-        public const string DefaultListSizePropertyAlias = "DefaultListSize";
-        public string NewsIdError { get; private set; }
-        public string NewsCategoryIdError { get; private set; }
+        public const string DefaultListSizePropertyAlias = "defaultListSize";
+
+        public string NewsIdError
+        {
+            get
+            {
+                return string.Empty;
+            }
+        }
+        public string NewsCategoryIdError
+        {
+            get
+            {
+                return string.Empty;
+            }
+        }
 
         private INode _newsConfigurationNode;
         public INode NewsConfigurationNode
@@ -36,7 +43,7 @@ namespace Gravyframe.Configuration.Umbraco
             {
                 if (!int.TryParse(NewsConfigurationNode.GetProperty(DefaultListSizePropertyAlias).Value, out _defaultListSize))
                 {
-                    var newsConstants = new NewsConstants();
+                    var newsConstants = new NewsConfiguration();
                     _defaultListSize = newsConstants.DefaultListSize;
                 }
 
@@ -44,7 +51,7 @@ namespace Gravyframe.Configuration.Umbraco
             }
         }
 
-        public UmbracoNewsConstants(INodeFactoryFacade nodeFactoryFacade, int newsConfigurationNodeId)
+        public UmbracoNewsConfiguration(INodeFactoryFacade nodeFactoryFacade, int newsConfigurationNodeId)
         {
             _nodeFactoryFacade = nodeFactoryFacade;
             _newsConfigurationNodeId = newsConfigurationNodeId;

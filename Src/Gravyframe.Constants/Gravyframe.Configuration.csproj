@@ -42,10 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContentConstants.cs" />
-    <Compile Include="IContentConstants.cs" />
-    <Compile Include="INewsConstants.cs" />
-    <Compile Include="NewsConstants.cs" />
+    <Compile Include="ContentConfiguration.cs" />
+    <Compile Include="IContentConfiguration.cs" />
+    <Compile Include="INewsConfiguration.cs" />
+    <Compile Include="NewsConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
