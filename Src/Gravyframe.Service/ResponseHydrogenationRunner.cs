@@ -12,7 +12,7 @@ namespace Gravyframe.Service
         private readonly TRequest _request;
         private readonly List<string> _errorList; 
 
-        public ResponseHydrogenationRunner(IEnumerable<ResponseHydrator<TRequest, TResponse>> responseHydrogenationTasks, TRequest request)
+        public ResponseHydrogenationRunner(IResponseHydrogenationTaskList<TRequest, TResponse> responseHydrogenationTasks, TRequest request)
         {
             _responseHydrogenationTasks = responseHydrogenationTasks;
             _request = request;

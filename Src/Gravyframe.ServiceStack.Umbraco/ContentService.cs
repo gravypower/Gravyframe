@@ -3,7 +3,7 @@ using Gravyframe.Service;
 using Gravyframe.Service.Content;
 using ServiceStack.ServiceHost;
 
-namespace Gravyframe.ServiceStack.InMemory
+namespace Gravyframe.ServiceStack.Umbraco
 {
     public class ContentService : Service.Content.ContentService, IService
     {

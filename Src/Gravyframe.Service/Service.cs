@@ -9,9 +9,9 @@ namespace Gravyframe.Service
         where TResponse : Response, new()
         where TArgumentNullException : Service<TRequest, TResponse, TArgumentNullException>.NullRequestException, new()
     {
-        private readonly IEnumerable<ResponseHydrator<TRequest, TResponse>> _responseHydrogenationTasks;
+        private readonly IResponseHydrogenationTaskList<TRequest, TResponse> _responseHydrogenationTasks;
 
-        protected Service(IEnumerable<ResponseHydrator<TRequest, TResponse>> responseHydrogenationTasks)
+        protected Service(IResponseHydrogenationTaskList<TRequest, TResponse> responseHydrogenationTasks)
         {
             _responseHydrogenationTasks = responseHydrogenationTasks;
         }

@@ -17,19 +17,22 @@ namespace Gravyframe.Service.Tests
     {
         public ContentDao<Models.Content> Dao;
         public IContentConfiguration ContentConfiguration;
-        public IEnumerable<ResponseHydrator<ContentRequest, ContentResponse>> ResponseHydratationTasks;
+        public IResponseHydrogenationTaskList<ContentRequest, ContentResponse> ResponseHydrogenationTasks;
         protected override void ServiceSetUp()
         {
             Dao = Substitute.For<ContentDao<Models.Content>>();
             ContentConfiguration = new ContentConfiguration();
 
-            ResponseHydratationTasks = new List<ResponseHydrator<ContentRequest, ContentResponse>>
+            ResponseHydrogenationTasks = Substitute.For<IResponseHydrogenationTaskList<ContentRequest, ContentResponse>>();
+
+            ResponseHydrogenationTasks.GetEnumerator().Returns(
+                new List<ResponseHydrator<ContentRequest, ContentResponse>>
                 {
                     new PopulateContentByCategoryIdResponseHydrator(Dao, ContentConfiguration),
                     new PopulateContentByIdResponseHydrator(Dao, ContentConfiguration)
-                };
+                });
 
-            Sut = new ContentService(ResponseHydratationTasks);
+            Sut = new ContentService(ResponseHydrogenationTasks);
         }
 
         #region Given Content Request With No Content Id

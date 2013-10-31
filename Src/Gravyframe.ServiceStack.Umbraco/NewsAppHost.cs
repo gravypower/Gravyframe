@@ -22,18 +22,20 @@ namespace Gravyframe.ServiceStack.Umbraco
 
         public override void Configure(Container container)
         {
-            container.Register<INodeFactoryFacade>(new NodeFactoryFacade());
-            container.Register<INewsConfiguration>(new UmbracoNewsConfiguration(Resolve<INodeFactoryFacade>(), 1069));
+            ConfigureNews();
+        }
 
-            container.Register<NewsDao<UmbracoNews>>(new UmbracoNewsDao(Resolve<INewsConfiguration>(), Resolve<INodeFactoryFacade>(), Resolve<ISearcher>()));
-            container.Register<IContentConfiguration>(constants => new ContentConfiguration());
+        private void ConfigureNews()
+        {
+            Register<INodeFactoryFacade>(new NodeFactoryFacade());
+            Register<INewsConfiguration>(new UmbracoNewsConfiguration(Resolve<INodeFactoryFacade>(), 1069));
 
-            container.Register<IEnumerable<ResponseHydrator<NewsRequest, NewsResponse<UmbracoNews>>>>(
-                new List<ResponseHydrator<NewsRequest, NewsResponse<UmbracoNews>>>
-                    {
-                        new PopulateNewsByCategoryIdResponseHydrator<UmbracoNews>(Resolve<NewsDao<UmbracoNews>>(), Resolve<INewsConfiguration>()),
-                        new PopulateNewsByIdResponseHydrator<UmbracoNews>(Resolve<NewsDao<UmbracoNews>>(), Resolve<INewsConfiguration>())
-                    }
+            Register<NewsDao<UmbracoNews>>(new UmbracoNewsDao(Resolve<INewsConfiguration>(),
+            Resolve<INodeFactoryFacade>(), Resolve<ISearcher>()));
+            Register<IContentConfiguration>(new ContentConfiguration());
+
+            Register<IResponseHydrogenationTaskList<NewsRequest, NewsResponse<UmbracoNews>>>(
+               new NewsResponseHydrogenationTaskList(Container)
                 );
 
             Routes.Add<NewsRequest>("/NewsService/");
