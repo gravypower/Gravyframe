@@ -1,5 +1,4 @@
 ﻿using Examine;
-using Funq;
 using Gravyframe.Configuration;
 using Gravyframe.Data.News;
 using Gravyframe.Data.Umbraco.News;
@@ -33,10 +32,6 @@ namespace Gravyframe.ServiceStack.Umbraco
             Register<IResponseHydrogenationTaskList<NewsRequest, NewsResponse<UmbracoNews>>>(
                new NewsResponseHydrogenationTaskList(Container)
                 );
-
-            Routes.Add<NewsRequest>("/UmbracoNewsService/");
-            Routes.Add<NewsRequest>("/UmbracoNewsService/{NewsId}");
-            Routes.Add<NewsRequest>("/UmbracoNewsService/Category/{CategoryId}");
         }
     }
 }

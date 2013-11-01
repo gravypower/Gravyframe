@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using Gravyframe.Service.News;
 using ServiceStack.WebHost.Endpoints;
 
 namespace Gravyframe.ServiceStack
@@ -13,11 +14,19 @@ namespace Gravyframe.ServiceStack
 
         public override void Configure(Container container)
         {
-            this.RegisterExternalDependencies();
-            this.RegisterDependencies();
+            RegisterExternalDependencies();
+            RegisterDependencies();
+            RegisterRoutes();
         }
 
         protected abstract void RegisterDependencies();
         protected abstract void RegisterExternalDependencies();
+
+        protected virtual void RegisterRoutes()
+        {
+            Routes.Add<NewsRequest>("/NewsService/");
+            Routes.Add<NewsRequest>("/NewsService/{NewsId}");
+            Routes.Add<NewsRequest>("/NewsService/Category/{CategoryId}");
+        }
     }
 }
