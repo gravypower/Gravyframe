@@ -20,12 +20,7 @@ namespace Gravyframe.ServiceStack.Umbraco
 
         public override void Configure(Container container)
         {
-            ConfigureNews();
-        }
-
-        private void ConfigureNews()
-        {
-            Register<INewsConfiguration>(new UmbracoNewsConfiguration(Resolve<INodeFactoryFacade>(), 1069));
+            this.RegisterExternalDependencies();
 
             Register<NewsDao<UmbracoNews>>(new UmbracoNewsDao(Resolve<INewsConfiguration>(),
             Resolve<INodeFactoryFacade>(), Resolve<ISearcher>()));
@@ -38,6 +33,13 @@ namespace Gravyframe.ServiceStack.Umbraco
             Routes.Add<NewsRequest>("/NewsService/");
             Routes.Add<NewsRequest>("/NewsService/{NewsId}");
             Routes.Add<NewsRequest>("/NewsService/Category/{CategoryId}");
+        }
+
+        public virtual void RegisterExternalDependencies()
+        {
+            Register<ISearcher>(ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"]);
+            Register<INodeFactoryFacade>(new NodeFactoryFacade());
+            Register<INewsConfiguration>(new UmbracoNewsConfiguration(Resolve<INodeFactoryFacade>(), 1069));
         }
     }
 }

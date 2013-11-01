@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Funq;
 using Gravyframe.Configuration;
 using Gravyframe.Data.News;
@@ -7,11 +6,10 @@ using Gravyframe.Models.Umbraco;
 using Gravyframe.Service;
 using Gravyframe.Service.News;
 using Gravyframe.Service.News.Tasks;
+using System.Collections;
 
 namespace Gravyframe.ServiceStack.Umbraco
 {
-    using System.Collections;
-
     public class NewsResponseHydrogenationTaskList : IResponseHydrogenationTaskList<NewsRequest, NewsResponse<UmbracoNews>>
     {
         private readonly Container _container;
