@@ -290,6 +290,10 @@
       <Project>{70f36221-8949-40eb-8996-4f7ca11cc007}</Project>
       <Name>Gravyframe.ServiceStack.Umbraco</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Gravyframe.ServiceStack\Gravyframe.ServiceStack.csproj">
+      <Project>{AC4D7CBB-0D87-4CD7-B642-65D2710E9E6F}</Project>
+      <Name>Gravyframe.ServiceStack</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Gravyframe.Service\Gravyframe.Service.csproj">
       <Project>{732189F6-7A48-4FF2-8705-B1CD80897B67}</Project>
       <Name>Gravyframe.Service</Name>

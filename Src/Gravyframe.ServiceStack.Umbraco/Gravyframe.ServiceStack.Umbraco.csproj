@@ -161,13 +161,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NewsAppHost.cs" />
+    <Compile Include="UmbracoNewsAppHost.cs" />
     <Compile Include="ContentService.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="NewsResponseHydrogenationTaskList.cs" />
-    <Compile Include="NewsService.cs" />
+    <Compile Include="UmbracoNewsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -211,6 +211,10 @@
     <ProjectReference Include="..\Gravyframe.Model\Gravyframe.Models.csproj">
       <Project>{5d5eb908-b67b-4e7e-af9e-25bdd03f543e}</Project>
       <Name>Gravyframe.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gravyframe.ServiceStack\Gravyframe.ServiceStack.csproj">
+      <Project>{AC4D7CBB-0D87-4CD7-B642-65D2710E9E6F}</Project>
+      <Name>Gravyframe.ServiceStack</Name>
     </ProjectReference>
     <ProjectReference Include="..\Gravyframe.Service\Gravyframe.Service.csproj">
       <Project>{732189f6-7a48-4ff2-8705-b1cd80897b67}</Project>
