@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2010
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{B0CF9D5F-3830-440E-B516-78B2CF9113EF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gravyframe.Service", "Gravyframe.Service\Gravyframe.Service.csproj", "{732189F6-7A48-4FF2-8705-B1CD80897B67}"
@@ -57,6 +57,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gravyframe.ServiceStack.Umbraco", "Gravyframe.ServiceStack.Umbraco\Gravyframe.ServiceStack.Umbraco.csproj", "{70F36221-8949-40EB-8996-4F7CA11CC007}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gravyframe.ServiceStack.Umbraco.Tests", "Gravyframe.ServiceStack.Umbraco.Tests\Gravyframe.ServiceStack.Umbraco.Tests.csproj", "{16D84073-7F6B-43E5-A1EF-FFBE3201865F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gravyframe.ServiceStack.Tests", "Gravyframe.ServiceStack.Tests\Gravyframe.ServiceStack.Tests.csproj", "{37C54F92-581C-4FDE-AE60-526CD01FD1FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gravyframe.ServiceStack", "Gravyframe.ServiceStack\Gravyframe.ServiceStack.csproj", "{AC4D7CBB-0D87-4CD7-B642-65D2710E9E6F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gravyframe.ServiceStack.InMemory.Tests", "Gravyframe.ServiceStack.InMemory.Tests\Gravyframe.ServiceStack.InMemory.Tests.csproj", "{B35F2B34-06CF-42A0-927E-3869816E2145}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -140,6 +146,18 @@ Global
 		{16D84073-7F6B-43E5-A1EF-FFBE3201865F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16D84073-7F6B-43E5-A1EF-FFBE3201865F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16D84073-7F6B-43E5-A1EF-FFBE3201865F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37C54F92-581C-4FDE-AE60-526CD01FD1FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37C54F92-581C-4FDE-AE60-526CD01FD1FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37C54F92-581C-4FDE-AE60-526CD01FD1FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37C54F92-581C-4FDE-AE60-526CD01FD1FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC4D7CBB-0D87-4CD7-B642-65D2710E9E6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC4D7CBB-0D87-4CD7-B642-65D2710E9E6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC4D7CBB-0D87-4CD7-B642-65D2710E9E6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC4D7CBB-0D87-4CD7-B642-65D2710E9E6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B35F2B34-06CF-42A0-927E-3869816E2145}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B35F2B34-06CF-42A0-927E-3869816E2145}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B35F2B34-06CF-42A0-927E-3869816E2145}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B35F2B34-06CF-42A0-927E-3869816E2145}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -158,6 +176,9 @@ Global
 		{E3203B24-AFEB-4D26-A140-B85858A82735} = {71546743-892B-4AB9-BC8A-B209795E51E3}
 		{70F36221-8949-40EB-8996-4F7CA11CC007} = {71546743-892B-4AB9-BC8A-B209795E51E3}
 		{16D84073-7F6B-43E5-A1EF-FFBE3201865F} = {71546743-892B-4AB9-BC8A-B209795E51E3}
+		{37C54F92-581C-4FDE-AE60-526CD01FD1FD} = {71546743-892B-4AB9-BC8A-B209795E51E3}
+		{AC4D7CBB-0D87-4CD7-B642-65D2710E9E6F} = {71546743-892B-4AB9-BC8A-B209795E51E3}
+		{B35F2B34-06CF-42A0-927E-3869816E2145} = {71546743-892B-4AB9-BC8A-B209795E51E3}
 		{656D1A93-A92A-402E-9AF7-4AF4BE963958} = {5116D4AC-2EAC-4E12-9579-6D8EFE5F3DA7}
 		{86BD250A-0144-4497-86A3-90BF8D4FE40D} = {5116D4AC-2EAC-4E12-9579-6D8EFE5F3DA7}
 		{35D78ACD-3AA6-4593-AD64-5ABF3C3BB7B6} = {5116D4AC-2EAC-4E12-9579-6D8EFE5F3DA7}
