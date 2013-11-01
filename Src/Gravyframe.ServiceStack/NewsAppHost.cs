@@ -6,7 +6,7 @@ namespace Gravyframe.ServiceStack
 {
     using Funq;
 
-    public abstract class NewsAppHost : AppHostHttpListenerBase
+    public abstract class NewsAppHost : AppHostBase
     {
         protected NewsAppHost(string serviceName, params Assembly[] assembliesWithServices):base(serviceName, assembliesWithServices)
         {

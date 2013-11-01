@@ -7,8 +7,7 @@ namespace Gravyframe.ServiceStack.Umbraco
     {
         protected override void OnApplicationStarted(object sender, EventArgs e)
         {
-            var app = new UmbracoNewsAppHost();
-            app.Init();
+            new UmbracoNewsAppHost().Init();
 
             base.OnApplicationStarted(sender, e);
         }

@@ -5,23 +5,17 @@ using Gravyframe.Kernel.Umbraco.Facades;
 using Gravyframe.Kernel.Umbraco.Tests;
 using Gravyframe.Kernel.Umbraco.Tests.Examine;
 using Gravyframe.Models.Umbraco;
-using Gravyframe.Service.News;
+using Gravyframe.ServiceStack.Tests;
 using NSubstitute;
 using NUnit.Framework;
-using ServiceStack.Service;
 using ServiceStack.ServiceClient.Web;
+using ServiceStack.WebHost.Endpoints;
 
 namespace Gravyframe.ServiceStack.Umbraco.Tests
 {
     [TestFixture]
-    public class NewsAppHostTests
+    public class UmbracoNewsAppHostTests : NewsAppHostTests<UmbracoNews>
     {
-
-        private TestUmbracoNewsAppHost _sut;
-        private const string BaseUrl = "http://localhost:8024";
-        private const string ListeningOn = BaseUrl + "/";
-        private IRestClient _jsonServiceClient;
-
         private class TestUmbracoNewsAppHost : UmbracoNewsAppHost
         {
             private readonly MockedIndex _mockedIndex;
@@ -41,6 +35,26 @@ namespace Gravyframe.ServiceStack.Umbraco.Tests
             }
         }
 
+        public class t : AppHostHttpListenerBase
+        {
+            private readonly MockedIndex _mockedIndex;
+            private readonly INodeFactoryFacade _nodeFactoryFacade;
+            public t(MockedIndex mockedIndex, INodeFactoryFacade nodeFactoryFacade)
+                : base("Gravyframe News Web Services", typeof(UmbracoNewsService).Assembly)
+            {
+                _mockedIndex = mockedIndex;
+                _nodeFactoryFacade = nodeFactoryFacade;
+            }
+
+
+            public override void Configure(Funq.Container container)
+            {
+                var t1 = new TestUmbracoNewsAppHost(_mockedIndex, _nodeFactoryFacade);
+                t1.Configure(container);
+
+            }
+        }
+
         [SetUp]
         public void SetUp()
         {
@@ -51,8 +65,11 @@ namespace Gravyframe.ServiceStack.Umbraco.Tests
                new string[] { },
                new string[] { });
 
-            var nodeFactoryFacade = Substitute.For<INodeFactoryFacade>();
+            var mockDataSet = new MockSimpleDataSet("News");
+            mockDataSet.AddData(1, UmbracoNewsDao.CategoriesAlias, "TestCategoryId");
 
+            mockedIndex.SimpleDataService.GetAllData("News").Returns(mockDataSet);
+            var nodeFactoryFacade = Substitute.For<INodeFactoryFacade>();
 
             var mockNode = new MockNode()
                .AddProperty(UmbracoNewsDao.BodyAlias, "BodyText")
@@ -60,28 +77,27 @@ namespace Gravyframe.ServiceStack.Umbraco.Tests
 
             nodeFactoryFacade.GetNode(1).Returns(mockNode);
 
-            _sut = new TestUmbracoNewsAppHost(mockedIndex, nodeFactoryFacade);
-            _sut.Container.Register(mockedIndex.Searcher);
-            _sut.Init();
-            _sut.Start(ListeningOn);
+            mockedIndex.Indexer.RebuildIndex();
 
-            _jsonServiceClient = new JsonServiceClient(ListeningOn);
+            Sut = new t(mockedIndex, nodeFactoryFacade);
+            Sut.Container.Register(mockedIndex.Searcher);
+            Sut.Init();
+            
+
+            //Sut.Start(ListeningOn);
+
+            RestClient = new JsonServiceClient(ListeningOn);
         }
 
-        [TearDown]
-        public void TearDown()
+
+        public override string GetTestNewsId()
         {
-            _sut.Dispose();
+            return "1";
         }
 
-        [Test]
-        public void Test()
+        public override string GetTestCategoryId()
         {
-            // Act
-            var result = _jsonServiceClient.Get<NewsResponse<UmbracoNews>>("/NewsService/");
-
-            // Assert
-            Assert.IsNotNull(result);
+            return "TestCategoryId";
         }
     }
 }

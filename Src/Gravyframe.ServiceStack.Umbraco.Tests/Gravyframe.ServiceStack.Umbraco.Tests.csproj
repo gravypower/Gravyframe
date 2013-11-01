@@ -247,7 +247,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="INewsConfiguration.cs" />
-    <Compile Include="NewsAppHostTests.cs" />
+    <Compile Include="UmbracoNewsAppHostTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -285,6 +285,10 @@
     <ProjectReference Include="..\Gravyframe.Model\Gravyframe.Models.csproj">
       <Project>{5d5eb908-b67b-4e7e-af9e-25bdd03f543e}</Project>
       <Name>Gravyframe.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gravyframe.ServiceStack.Tests\Gravyframe.ServiceStack.Tests.csproj">
+      <Project>{37C54F92-581C-4FDE-AE60-526CD01FD1FD}</Project>
+      <Name>Gravyframe.ServiceStack.Tests</Name>
     </ProjectReference>
     <ProjectReference Include="..\Gravyframe.ServiceStack.Umbraco\Gravyframe.ServiceStack.Umbraco.csproj">
       <Project>{70f36221-8949-40eb-8996-4f7ca11cc007}</Project>
