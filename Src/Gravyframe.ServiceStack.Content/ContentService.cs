@@ -7,7 +7,7 @@ namespace Gravyframe.ServiceStack.InMemory
 {
     public class ContentService : Service.Content.ContentService, IService
     {
-        public ContentService(IEnumerable<ResponseHydrator<ContentRequest, ContentResponse>> responseHydrogenationTasks)
+        public ContentService(IResponseHydrogenationTaskList<ContentRequest, ContentResponse> responseHydrogenationTasks)
             : base(responseHydrogenationTasks)
         {
         }

@@ -105,6 +105,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="NSubstitute, Version=1.6.1.0, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
+      <HintPath>..\packages\NSubstitute.1.6.1.0\lib\NET40\NSubstitute.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
     </Reference>
@@ -262,6 +265,10 @@
       <Project>{B5105E60-0C2B-494E-A7D0-8336572AB469}</Project>
       <Name>Gravyframe.Kernel.Umbraco.Tests</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Gravyframe.Kernel.Umbraco\Gravyframe.Kernel.Umbraco.csproj">
+      <Project>{35D78ACD-3AA6-4593-AD64-5ABF3C3BB7B6}</Project>
+      <Name>Gravyframe.Kernel.Umbraco</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Gravyframe.Models.Umbraco\Gravyframe.Models.Umbraco.csproj">
       <Project>{cc84f5c7-7cca-4638-bd8b-4bbcc75ab9b1}</Project>
       <Name>Gravyframe.Models.Umbraco</Name>
@@ -273,6 +280,10 @@
     <ProjectReference Include="..\Gravyframe.ServiceStack.Umbraco\Gravyframe.ServiceStack.Umbraco.csproj">
       <Project>{70f36221-8949-40eb-8996-4f7ca11cc007}</Project>
       <Name>Gravyframe.ServiceStack.Umbraco</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gravyframe.Service\Gravyframe.Service.csproj">
+      <Project>{732189F6-7A48-4FF2-8705-B1CD80897B67}</Project>
+      <Name>Gravyframe.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -15,7 +15,7 @@ namespace Gravyframe.Service.Tests
     {
         public NewsDao<Models.News> Dao;
         public INewsConfiguration NewsConfiguration;
-        public IEnumerable<ResponseHydrator<NewsRequest, NewsResponse<Models.News>>> ResponseHydrogenationTasks;
+        public IResponseHydrogenationTaskList<NewsRequest, NewsResponse<Models.News>> ResponseHydrogenationTasks;
 
         [SetUp]
         protected override void ServiceSetUp()
@@ -23,11 +23,15 @@ namespace Gravyframe.Service.Tests
             Dao = Substitute.For<NewsDao<Models.News>>();
             NewsConfiguration = new NewsConfiguration();
 
-            ResponseHydrogenationTasks = new List<ResponseHydrator<NewsRequest, NewsResponse<Models.News>>>
+
+            ResponseHydrogenationTasks = Substitute.For<IResponseHydrogenationTaskList<NewsRequest, NewsResponse<Models.News>>>();
+
+            ResponseHydrogenationTasks.GetEnumerator().Returns(
+               new List<ResponseHydrator<NewsRequest, NewsResponse<Models.News>>>
                 {
                     new PopulateNewsByIdResponseHydrator<Models.News>(Dao, NewsConfiguration),
                     new PopulateNewsByCategoryIdResponseHydrator<Models.News>(Dao, NewsConfiguration)
-                };
+                }.GetEnumerator());
 
             Sut = new NewsService<Models.News>(ResponseHydrogenationTasks);
         }

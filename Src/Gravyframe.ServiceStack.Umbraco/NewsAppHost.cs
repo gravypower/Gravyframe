@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Examine;
+﻿using Examine;
 using Funq;
 using Gravyframe.Configuration;
 using Gravyframe.Data.News;
@@ -8,13 +7,12 @@ using Gravyframe.Kernel.Umbraco.Facades;
 using Gravyframe.Models.Umbraco;
 using Gravyframe.Service;
 using Gravyframe.Service.News;
-using Gravyframe.Service.News.Tasks;
 using ServiceStack.WebHost.Endpoints;
 using Gravyframe.Configuration.Umbraco;
 
 namespace Gravyframe.ServiceStack.Umbraco
 {
-    public class NewsAppHost : AppHostBase 
+    public class NewsAppHost : AppHostHttpListenerBase 
     {
         public NewsAppHost () : base("Gravyframe Content Web Services", typeof(NewsService).Assembly)
         {
@@ -27,7 +25,6 @@ namespace Gravyframe.ServiceStack.Umbraco
 
         private void ConfigureNews()
         {
-            Register<INodeFactoryFacade>(new NodeFactoryFacade());
             Register<INewsConfiguration>(new UmbracoNewsConfiguration(Resolve<INodeFactoryFacade>(), 1069));
 
             Register<NewsDao<UmbracoNews>>(new UmbracoNewsDao(Resolve<INewsConfiguration>(),

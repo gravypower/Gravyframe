@@ -8,7 +8,7 @@ namespace Gravyframe.ServiceStack.Umbraco
 {
     public class NewsService : NewsService<UmbracoNews>, IService
     {
-        public NewsService(IEnumerable<ResponseHydrator<NewsRequest, NewsResponse<UmbracoNews>>> responseHydrogenationTasks)
+        public NewsService(IResponseHydrogenationTaskList<NewsRequest, NewsResponse<UmbracoNews>> responseHydrogenationTasks)
             : base(responseHydrogenationTasks)
         {
         }

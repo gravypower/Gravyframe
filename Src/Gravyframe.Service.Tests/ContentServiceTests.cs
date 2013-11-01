@@ -3,14 +3,13 @@ using System.Linq;
 using Gravyframe.Configuration;
 using Gravyframe.Data.Content;
 using Gravyframe.Service.Content;
-using Gravyframe.Service.Content.Tasks;
 using Gravyframe.Service.Messages;
 using NSubstitute;
 using NUnit.Framework;
 
 namespace Gravyframe.Service.Tests
 {
-    using Gravyframe.Configuration;
+    using Gravyframe.Service.Content.Tasks;
 
     [TestFixture]
     public class ContentServiceTests : ServiceTests<ContentRequest, ContentResponse, ContentService, ContentService.NullContentRequestException>
@@ -30,7 +29,7 @@ namespace Gravyframe.Service.Tests
                 {
                     new PopulateContentByCategoryIdResponseHydrator(Dao, ContentConfiguration),
                     new PopulateContentByIdResponseHydrator(Dao, ContentConfiguration)
-                });
+                }.GetEnumerator());
 
             Sut = new ContentService(ResponseHydrogenationTasks);
         }

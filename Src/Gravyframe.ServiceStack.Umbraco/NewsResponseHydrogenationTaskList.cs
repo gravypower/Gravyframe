@@ -10,6 +10,8 @@ using Gravyframe.Service.News.Tasks;
 
 namespace Gravyframe.ServiceStack.Umbraco
 {
+    using System.Collections;
+
     public class NewsResponseHydrogenationTaskList : IResponseHydrogenationTaskList<NewsRequest, NewsResponse<UmbracoNews>>
     {
         private readonly Container _container;
@@ -24,18 +26,19 @@ namespace Gravyframe.ServiceStack.Umbraco
             return GetTasks();
         }
 
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        IEnumerator IEnumerable.GetEnumerator()
         {
             return GetTasks();
         }
 
-
         private IEnumerator<ResponseHydrator<NewsRequest, NewsResponse<UmbracoNews>>> GetTasks()
         {
-            yield return new PopulateNewsByCategoryIdResponseHydrator<UmbracoNews>(_container.Resolve<NewsDao<UmbracoNews>>(),
+            yield return new PopulateNewsByCategoryIdResponseHydrator<UmbracoNews>(
+                _container.Resolve<NewsDao<UmbracoNews>>(),
                 _container.Resolve<INewsConfiguration>());
 
-            yield return new PopulateNewsByIdResponseHydrator<UmbracoNews>(_container.Resolve<NewsDao<UmbracoNews>>(),
+            yield return new PopulateNewsByIdResponseHydrator<UmbracoNews>(
+                _container.Resolve<NewsDao<UmbracoNews>>(),
                 _container.Resolve<INewsConfiguration>());
         }
     }
