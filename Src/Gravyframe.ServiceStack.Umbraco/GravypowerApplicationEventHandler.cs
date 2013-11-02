@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Gravyframe.ServiceStack.Umbraco.News;
 using Umbraco.Core;
 using umbraco.NodeFactory;
 
@@ -9,28 +10,17 @@ namespace Gravyframe.ServiceStack.Umbraco
     {
         protected override void ApplicationStarted(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext)
         {
-            System.Threading.Thread.Sleep(5000);
-
-            foreach (var node  in GetChildNodesByType(-1, "Site"))
-            {
-                var homeNode = GetChildNodesByType(node, "Home");
-                var domains = umbraco.library.GetCurrentDomains(homeNode.First().Id);
-                foreach (var domain in domains)
-                {
-                    //domain.Name
-                }
-            }
-
-
+            var sites = GetChildNodesByType(-1, "Site").Select(node => node.Name).ToList();
+            new UmbracoNewsAppHost(new UmbracoNewsAppHostConfigurationStrategy(sites)).Init();
         }
 
 
-        private IEnumerable<Node> GetChildNodesByType(int nodeId, string typeName)
+        private static IEnumerable<Node> GetChildNodesByType(int nodeId, string typeName)
         {
             return GetChildNodesByType(new Node(nodeId), typeName);
         }
 
-        private IEnumerable<Node> GetChildNodesByType(Node node, string typeName)
+        private static IEnumerable<Node> GetChildNodesByType(Node node, string typeName)
         {
             return node.Children.Cast<Node>().Where(child => child.NodeTypeAlias == typeName).ToList();
         }

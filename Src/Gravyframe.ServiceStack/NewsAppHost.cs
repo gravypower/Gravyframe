@@ -1,11 +1,9 @@
 ﻿using System.Reflection;
-using Gravyframe.Service.News;
 using ServiceStack.WebHost.Endpoints;
+using Funq;
 
 namespace Gravyframe.ServiceStack
 {
-    using Funq;
-
     public abstract class NewsAppHost : AppHostBase
     {
         private readonly NewsAppHostConfigurationStrategy _configurationStrategy;
