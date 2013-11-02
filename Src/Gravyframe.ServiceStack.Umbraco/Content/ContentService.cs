@@ -2,7 +2,7 @@
 using Gravyframe.Service.Content;
 using ServiceStack.ServiceHost;
 
-namespace Gravyframe.ServiceStack.Umbraco
+namespace Gravyframe.ServiceStack.Umbraco.Content
 {
     public class ContentService : Service.Content.ContentService, IService
     {

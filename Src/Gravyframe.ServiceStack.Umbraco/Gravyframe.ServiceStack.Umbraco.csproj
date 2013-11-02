@@ -161,15 +161,15 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UmbracoNewsAppHost.cs" />
-    <Compile Include="ContentService.cs" />
+    <Compile Include="News\UmbracoNewsAppHost.cs" />
+    <Compile Include="Content\ContentService.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="NewsResponseHydrogenationTaskList.cs" />
-    <Compile Include="UmbracoNewsAppHostConfigurationStrategy.cs" />
-    <Compile Include="UmbracoNewsAppHostHttpListener.cs" />
-    <Compile Include="UmbracoNewsService.cs" />
+    <Compile Include="News\NewsResponseHydrogenationTaskList.cs" />
+    <Compile Include="News\UmbracoNewsAppHostConfigurationStrategy.cs" />
+    <Compile Include="News\UmbracoNewsAppHostHttpListener.cs" />
+    <Compile Include="News\UmbracoNewsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,4 @@
-﻿namespace Gravyframe.ServiceStack.Umbraco
+﻿namespace Gravyframe.ServiceStack.Umbraco.News
 {
     public class UmbracoNewsAppHost : NewsAppHost 
     {

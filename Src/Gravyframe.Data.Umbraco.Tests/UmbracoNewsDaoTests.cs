@@ -23,6 +23,8 @@ namespace Gravyframe.Data.Umbraco.Tests
         private const string IndexType = "News";
         private const string TestCategoryId = "TestCategoryId";
 
+        private class TestNewsConfiguration : NewsConfiguration { }
+
         private void MockNewsItemsInIndex(int numberToMock)
         {
             numberToMock = AdjustForLoop(numberToMock);
@@ -175,12 +177,25 @@ namespace Gravyframe.Data.Umbraco.Tests
         [Test]
         public void GetNewsByCategoryListIsDefaultSize1()
         {
+
             // Assign
             var mockNode = new MockNode().Mock(2);
             _nodeFactoryFacade.GetNode(NewsConfigurationNodeId).Returns(mockNode);
+            var newsConfiguration = new TestNewsConfiguration();
 
             //Assert
-            Assert.AreEqual(new NewsConfiguration().DefaultListSize, Sut.NewsConfiguration.DefaultListSize);
+            Assert.AreEqual(newsConfiguration.DefaultListSize, Sut.NewsConfiguration.DefaultListSize);
+        }
+
+        [Test]
+        public void WhenNewsConfigurationNodeIsNullDefaultListSize()
+        {
+            // Assign
+            _nodeFactoryFacade.GetNode(NewsConfigurationNodeId).Returns(default(INode));
+            var newsConfiguration = new TestNewsConfiguration();
+
+            //Assert
+            Assert.AreEqual(newsConfiguration.DefaultListSize, Sut.NewsConfiguration.DefaultListSize);
         }
 
         protected override string GetExampleId()

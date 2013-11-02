@@ -21,7 +21,7 @@ namespace Gravyframe.Service.Tests
         protected override void ServiceSetUp()
         {
             Dao = Substitute.For<NewsDao<Models.News>>();
-            NewsConfiguration = new NewsConfiguration();
+            NewsConfiguration = Substitute.For<NewsConfiguration>();
 
 
             ResponseHydrogenationTasks = Substitute.For<IResponseHydrogenationTaskList<NewsRequest, NewsResponse<Models.News>>>();
@@ -68,7 +68,7 @@ namespace Gravyframe.Service.Tests
 
                 // Assert
                 Assert.IsTrue(response.Errors.Any());
-                Assert.IsTrue(response.Errors.Any(error => error == NewsConfiguration.NewsIdError));
+                Assert.IsTrue(response.Errors.Any(error => error == NewsConfiguration.NullNewsError));
             }
         }
         #endregion
@@ -114,6 +114,7 @@ namespace Gravyframe.Service.Tests
 
                 // Assert
                 Assert.AreEqual(ResponceCodes.Failure, response.Code);
+                Assert.Contains(NewsConfiguration.NewsIdError, response.Errors);
             }
 
             [Test]

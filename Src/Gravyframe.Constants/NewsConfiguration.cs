@@ -1,20 +1,26 @@
 ﻿namespace Gravyframe.Configuration
 {
-    public class NewsConfiguration : INewsConfiguration
+    public abstract class NewsConfiguration : INewsConfiguration
     {
-        public string NewsIdError
+        public virtual string NewsIdError
         {
             get { return "News Id error"; }
         }
 
-        public string NewsCategoryIdError
+        public virtual string NewsCategoryIdError
         {
             get { return "News Category Id error"; }
         }
 
-        public int DefaultListSize
+        public virtual int DefaultListSize
         {
             get { return 10; }
+        }
+
+
+        public virtual string NullNewsError
+        {
+            get { return "Null News error"; }
         }
     }
 }

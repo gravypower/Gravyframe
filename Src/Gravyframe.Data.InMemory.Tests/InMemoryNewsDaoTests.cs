@@ -1,6 +1,7 @@
 ﻿using Gravyframe.Configuration;
 using Gravyframe.Data.InMemory.News;
 using Gravyframe.Data.Tests;
+using NSubstitute;
 using NUnit.Framework;
 
 namespace Gravyframe.Data.InMemory.Tests
@@ -13,7 +14,7 @@ namespace Gravyframe.Data.InMemory.Tests
         [SetUp]
         public void Setp()
         {
-            _newsConfiguration = new NewsConfiguration();
+            _newsConfiguration = Substitute.For<NewsConfiguration>();
             Sut = new InMemoryNewsDao(_newsConfiguration);
         }
 

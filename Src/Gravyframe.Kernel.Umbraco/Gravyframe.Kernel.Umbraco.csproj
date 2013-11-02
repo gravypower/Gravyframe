@@ -52,6 +52,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extinctions\Node.cs" />
     <Compile Include="Facades\INodeFactoryFacade.cs" />
     <Compile Include="Facades\NodeFactoryFacade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

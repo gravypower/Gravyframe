@@ -1,4 +1,5 @@
 ﻿using System;
+using Gravyframe.ServiceStack.Umbraco.News;
 using Umbraco.Web;
 
 namespace Gravyframe.ServiceStack.Umbraco

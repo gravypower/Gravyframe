@@ -11,6 +11,7 @@ using Gravyframe.Models.Umbraco;
 using Gravyframe.Service;
 using Gravyframe.Service.News;
 using Gravyframe.ServiceStack.Tests;
+using Gravyframe.ServiceStack.Umbraco.News;
 using NSubstitute;
 using NUnit.Framework;
 using ServiceStack.ServiceClient.Web;

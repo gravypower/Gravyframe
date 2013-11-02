@@ -4,6 +4,7 @@
     {
         string NewsIdError { get; }
         string NewsCategoryIdError { get; }
+        string NullNewsError { get; }
         int DefaultListSize { get; }
     }
 }

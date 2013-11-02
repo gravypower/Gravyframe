@@ -1,6 +1,4 @@
-﻿using System.Reflection;
-
-namespace Gravyframe.ServiceStack.Umbraco
+﻿namespace Gravyframe.ServiceStack.Umbraco.News
 {
     public class UmbracoNewsAppHostHttpListener : NewsAppHostHttpListener
     {

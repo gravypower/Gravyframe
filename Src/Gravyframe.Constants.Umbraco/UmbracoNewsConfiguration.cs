@@ -1,61 +1,46 @@
 ﻿using umbraco.interfaces;
 using Gravyframe.Kernel.Umbraco.Facades;
+using Gravyframe.Kernel.Umbraco.Extinctions;
 namespace Gravyframe.Configuration.Umbraco
 {
-    public class UmbracoNewsConfiguration : INewsConfiguration
+    public class UmbracoNewsConfiguration : NewsConfiguration
     {
         private readonly INodeFactoryFacade _nodeFactoryFacade;
-        private readonly int _newsConfigurationNodeId;
+        private readonly int _configurationNodeId;
         public const string DefaultListSizePropertyAlias = "defaultListSize";
 
-        private INode _newsConfigurationNode;
-        public INode NewsConfigurationNode
+        private INode _configurationNode;
+        public INode ConfigurationNode
         {
             get
             {
-                if (_newsConfigurationNode == null)
+                if (_configurationNode == null)
                 {
-                    _newsConfigurationNode = _nodeFactoryFacade.GetNode(_newsConfigurationNodeId);
-                }
-                return _newsConfigurationNode;
-            }
-        }
-
-        public string NewsIdError
-        {
-            get
-            {
-                return string.Empty;
-            }
-        }
-
-        public string NewsCategoryIdError
-        {
-            get
-            {
-                return string.Empty;
-            }
-        }
-
-        private int _defaultListSize;
-        public int DefaultListSize
-        {
-            get
-            {
-                if (!int.TryParse(NewsConfigurationNode.GetProperty(DefaultListSizePropertyAlias).Value, out _defaultListSize))
-                {
-                    var newsConstants = new NewsConfiguration();
-                    _defaultListSize = newsConstants.DefaultListSize;
+                    _configurationNode = _nodeFactoryFacade.GetNode(_configurationNodeId);
                 }
 
-                return _defaultListSize;
+                return _configurationNode;
             }
         }
 
-        public UmbracoNewsConfiguration(INodeFactoryFacade nodeFactoryFacade, int newsConfigurationNodeId)
+        private int? _defaultListSize;
+        public override int DefaultListSize
+        {
+            get
+            {
+                if (!_defaultListSize.HasValue)
+                {
+                    _defaultListSize = ConfigurationNode.GetProperty(DefaultListSizePropertyAlias, base.DefaultListSize, int.TryParse);
+                }
+
+                return _defaultListSize.Value;
+            }
+        }
+
+        public UmbracoNewsConfiguration(INodeFactoryFacade nodeFactoryFacade, int configurationNodeId)
         {
             _nodeFactoryFacade = nodeFactoryFacade;
-            _newsConfigurationNodeId = newsConfigurationNodeId;
+            _configurationNodeId = configurationNodeId;
         }
     }
 }

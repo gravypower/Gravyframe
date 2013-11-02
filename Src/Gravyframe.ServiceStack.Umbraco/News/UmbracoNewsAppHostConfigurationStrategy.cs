@@ -8,7 +8,7 @@ using Gravyframe.Models.Umbraco;
 using Gravyframe.Service;
 using Gravyframe.Service.News;
 
-namespace Gravyframe.ServiceStack.Umbraco
+namespace Gravyframe.ServiceStack.Umbraco.News
 {
     public class UmbracoNewsAppHostConfigurationStrategy : NewsAppHostConfigurationStrategy
     {
