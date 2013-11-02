@@ -1,6 +1,7 @@
 ﻿using umbraco.interfaces;
 using Gravyframe.Kernel.Umbraco.Facades;
 using Gravyframe.Kernel.Umbraco.Extinctions;
+
 namespace Gravyframe.Configuration.Umbraco
 {
     public class UmbracoNewsConfiguration : NewsConfiguration
