@@ -14,6 +14,7 @@ namespace Gravyframe.ServiceStack.Tests
         protected const string BaseUrl = "http://localhost:8024";
         protected const string ListeningOn = BaseUrl + "/";
         protected IRestClient RestClient;
+        protected NewsAppHostConfigurationStrategy ConfigurationStrategy;
 
         [TearDown]
         public virtual void TearDown()
@@ -25,7 +26,7 @@ namespace Gravyframe.ServiceStack.Tests
         public void CanGetResponse()
         {
             // Act
-            var result = RestClient.Get<NewsResponse<TNews>>("/NewsService/");
+            var result = RestClient.Get<NewsResponse<TNews>>(ConfigurationStrategy.GetNewsServiceRestPath());
 
             // Assert
             Assert.IsNotNull(result);
@@ -35,7 +36,7 @@ namespace Gravyframe.ServiceStack.Tests
         public void CanGetNewsItem()
         {
             // Act
-            var result = RestClient.Get<NewsResponse<TNews>>("/NewsService/" + GetTestNewsId());
+            var result = RestClient.Get<NewsResponse<TNews>>(ConfigurationStrategy.GetNewsByIdNewsServiceRestPath(GetTestNewsId()));
 
             // Assert
             Assert.IsNotNull(result.News);
@@ -45,7 +46,7 @@ namespace Gravyframe.ServiceStack.Tests
         public void CanGetNewsItemByCategoryId()
         {
             // Act
-            var result = RestClient.Get<NewsResponse<TNews>>("/NewsService/Category/" + GetTestCategoryId());
+            var result = RestClient.Get<NewsResponse<TNews>>(ConfigurationStrategy.GetNewsByCategoryIdNewsServiceRestPath(GetTestCategoryId()));
 
             // Assert
             Assert.IsTrue(result.NewsList.Any());

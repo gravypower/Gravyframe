@@ -72,13 +72,11 @@ namespace Gravyframe.ServiceStack.Umbraco.Tests
 
             mockedIndex.Indexer.RebuildIndex();
 
-            var configurationStrategy = new TestNewsAppHostConfigurationStrategy(mockedIndex, nodeFactoryFacade);
+            ConfigurationStrategy = new TestNewsAppHostConfigurationStrategy(mockedIndex, nodeFactoryFacade);
 
-            var listeningOn = "http://localhost:1337/";
-
-            Sut = new UmbracoNewsAppHostHttpListener(configurationStrategy);
+            Sut = new UmbracoNewsAppHostHttpListener(ConfigurationStrategy);
             Sut.Init();
-            Sut.Start(listeningOn);
+            Sut.Start(ListeningOn);
 
             RestClient = new JsonServiceClient(ListeningOn);
         }
