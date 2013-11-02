@@ -1,16 +1,14 @@
 ﻿using System.Reflection;
-using Gravyframe.Service.News;
+using Funq;
 using ServiceStack.WebHost.Endpoints;
 
 namespace Gravyframe.ServiceStack
 {
-    using Funq;
-
-    public abstract class NewsAppHost : AppHostBase
+    public class NewsAppHostHttpListener : AppHostHttpListenerBase
     {
         private readonly NewsAppHostConfigurationStrategy _configurationStrategy;
 
-        protected NewsAppHost(NewsAppHostConfigurationStrategy configurationStrategy, string serviceName, params Assembly[] assembliesWithServices)
+        protected NewsAppHostHttpListener(NewsAppHostConfigurationStrategy configurationStrategy, string serviceName, params Assembly[] assembliesWithServices)
             : base(serviceName, assembliesWithServices)
         {
             _configurationStrategy = configurationStrategy;

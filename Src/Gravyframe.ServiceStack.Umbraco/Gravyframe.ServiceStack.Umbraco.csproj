@@ -167,6 +167,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="NewsResponseHydrogenationTaskList.cs" />
+    <Compile Include="UmbracoNewsAppHostConfigurationStrategy.cs" />
+    <Compile Include="UmbracoNewsAppHostHttpListener.cs" />
     <Compile Include="UmbracoNewsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

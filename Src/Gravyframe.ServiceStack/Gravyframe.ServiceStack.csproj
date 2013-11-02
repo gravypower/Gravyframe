@@ -67,6 +67,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NewsAppHost.cs" />
+    <Compile Include="NewsAppHostConfigurationStrategy.cs" />
+    <Compile Include="NewsAppHostHttpListener.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
