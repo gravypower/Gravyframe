@@ -19,7 +19,6 @@ namespace Gravyframe.ServiceStack.Umbraco
             container.Register<INewsConfiguration>(new UmbracoNewsConfiguration(container.Resolve<INodeFactoryFacade>(), 1069));
             container.Register<NewsDao<UmbracoNews>>(new UmbracoNewsDao(container.Resolve<INewsConfiguration>(),
             container.Resolve<INodeFactoryFacade>(), container.Resolve<ISearcher>()));
-            container.Register<IContentConfiguration>(new ContentConfiguration());
 
             container.Register<IResponseHydrogenationTaskList<NewsRequest, NewsResponse<UmbracoNews>>>(
                new NewsResponseHydrogenationTaskList(container)

@@ -19,9 +19,10 @@ namespace Gravyframe.Kernel.Umbraco.Tests
             return this;
         }
 
-        public INode Mock()
+        public INode Mock(int nodeId)
         {
             var node = Substitute.For<INode>();
+            node.Id.ReturnsForAnyArgs(nodeId);
             foreach (var pair in properties)
             {
                 var property = Substitute.For<IProperty>();

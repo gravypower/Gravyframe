@@ -26,5 +26,9 @@ namespace Gravyframe.Data.InMemory.Tests
         {
             return "categoryId";
         }
+
+        protected override void MockExampleId()
+        {
+        }
     }
 }

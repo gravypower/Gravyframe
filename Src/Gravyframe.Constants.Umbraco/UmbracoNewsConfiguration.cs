@@ -8,21 +8,6 @@ namespace Gravyframe.Configuration.Umbraco
         private readonly int _newsConfigurationNodeId;
         public const string DefaultListSizePropertyAlias = "defaultListSize";
 
-        public string NewsIdError
-        {
-            get
-            {
-                return string.Empty;
-            }
-        }
-        public string NewsCategoryIdError
-        {
-            get
-            {
-                return string.Empty;
-            }
-        }
-
         private INode _newsConfigurationNode;
         public INode NewsConfigurationNode
         {
@@ -33,6 +18,22 @@ namespace Gravyframe.Configuration.Umbraco
                     _newsConfigurationNode = _nodeFactoryFacade.GetNode(_newsConfigurationNodeId);
                 }
                 return _newsConfigurationNode;
+            }
+        }
+
+        public string NewsIdError
+        {
+            get
+            {
+                return string.Empty;
+            }
+        }
+
+        public string NewsCategoryIdError
+        {
+            get
+            {
+                return string.Empty;
             }
         }
 

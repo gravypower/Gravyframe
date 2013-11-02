@@ -46,7 +46,11 @@ namespace Gravyframe.Service
         private void PopulateResponse(TResponse response, ResponseHydrator<TRequest, TResponse> responseHydrator)
         {
             responseHydrator.PopulateResponse(_request, response);
-            response.Code = ResponceCodes.Success;
+
+            if (response.Code == ResponceCodes.Unknown)
+            {
+                response.Code = ResponceCodes.Success;
+            }
         }
 
         private void AddErrors(TResponse response)

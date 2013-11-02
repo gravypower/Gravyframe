@@ -39,7 +39,7 @@ namespace Gravyframe.Service.Tests
         #region Given News Request With No News Id
 
         [TestFixture]
-        public class GivenNewsRequestWithNoNewstId : NewsServiceTests
+        public class GivenNewsRequestWithNoNewsId : NewsServiceTests
         {
             public NewsRequest Request;
 
@@ -50,24 +50,25 @@ namespace Gravyframe.Service.Tests
             }
 
             [Test]
-            public void WhenNewsRequestNoNewsIdNewsResponceFailure()
+            public void WhenNewsRequestNoNewsIdNewsResponseFailure()
             {
                 // Act
-                var responce = Sut.Get(Request);
+                var response = Sut.Get(Request);
 
                 // Assert
-                Assert.AreEqual(ResponceCodes.Failure, responce.Code);
+                Assert.AreEqual(ResponceCodes.Failure, response.Code);
+                Assert.AreEqual(ResponceCodes.Failure, response.Code);
             }
 
             [Test]
-            public void WhenNewsRequestNoNewsIdNewsResponceErrors()
+            public void WhenNewsRequestNoNewsIdNewsResponseErrors()
             {
                 // Act
-                var responce = Sut.Get(Request);
+                var response = Sut.Get(Request);
 
                 // Assert
-                Assert.IsTrue(responce.Errors.Any());
-                Assert.IsTrue(responce.Errors.Any(error => error == NewsConfiguration.NewsIdError));
+                Assert.IsTrue(response.Errors.Any());
+                Assert.IsTrue(response.Errors.Any(error => error == NewsConfiguration.NewsIdError));
             }
         }
         #endregion
@@ -85,18 +86,38 @@ namespace Gravyframe.Service.Tests
                 Request = new NewsRequest { NewsId = "SomeID" };
             }
 
+            /// <summary>
+            /// Whens the news request news id news response success.
+            /// </summary>
             [Test]
-            public void WhenNewsRequestNewsIdNewsResponceSuccess()
+            public void WhenNewsRequestNewsIdNewsResponseSuccess()
             {
+                // Assign
+                var news = new Models.News();
+                Dao.GetNews(Request.NewsId).Returns(news);
+
                 // Act
-                var responce = Sut.Get(Request);
+                var response = Sut.Get(Request);
 
                 // Assert
-                Assert.AreEqual(ResponceCodes.Success, responce.Code);
+                Assert.AreEqual(ResponceCodes.Success, response.Code);
             }
 
             [Test]
-            public void WhenNewsRequestedNewsIdNewsResponceHasTitle()
+            public void WhenNewsRequestNewsIdNeNewsInResponseFailure()
+            {
+                // Assign
+                Dao.GetNews(Request.NewsId).Returns(default(Models.News));
+
+                // Act
+                var response = Sut.Get(Request);
+
+                // Assert
+                Assert.AreEqual(ResponceCodes.Failure, response.Code);
+            }
+
+            [Test]
+            public void WhenNewsRequestedNewsIdNewsResponseHasTitle()
             {
                 // Assign
                 var news = new Models.News { Title = "TestTitle" };
@@ -110,7 +131,7 @@ namespace Gravyframe.Service.Tests
             }
 
             [Test]
-            public void WhenNewsRequestedNewsIdNewsResponceHasBody()
+            public void WhenNewsRequestedNewsIdNewsResponseHasBody()
             {
                 // Assign
                 var news = new Models.News { Body = "TestBody" };

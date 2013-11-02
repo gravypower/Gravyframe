@@ -112,6 +112,7 @@ namespace Gravyframe.Data.Tests
         public void CanGetNewByNewsId()
         {
             // Assign
+            MockExampleId();
             var newsId = GetExampleId();
 
             // Act
@@ -124,5 +125,7 @@ namespace Gravyframe.Data.Tests
         protected abstract string GetExampleCategoryId();
 
         protected abstract string GetExampleId();
+
+        protected abstract void MockExampleId();
     }
 }

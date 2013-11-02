@@ -40,7 +40,6 @@ namespace Gravyframe.ServiceStack.Umbraco.Tests
 
                 container.Register<NewsDao<UmbracoNews>>(new UmbracoNewsDao(container.Resolve<INewsConfiguration>(),
                     container.Resolve<INodeFactoryFacade>(), container.Resolve<ISearcher>()));
-                container.Register<IContentConfiguration>(new ContentConfiguration());
 
                 container.Register<IResponseHydrogenationTaskList<NewsRequest, NewsResponse<UmbracoNews>>>(
                     new NewsResponseHydrogenationTaskList(container)
@@ -66,7 +65,7 @@ namespace Gravyframe.ServiceStack.Umbraco.Tests
 
             var mockNode = new MockNode()
                .AddProperty(UmbracoNewsDao.BodyAlias, "BodyText")
-               .Mock();
+               .Mock(1);
 
             nodeFactoryFacade.GetNode(1).Returns(mockNode);
 

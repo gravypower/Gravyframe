@@ -246,7 +246,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="INewsConfiguration.cs" />
     <Compile Include="UmbracoNewsAppHostTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

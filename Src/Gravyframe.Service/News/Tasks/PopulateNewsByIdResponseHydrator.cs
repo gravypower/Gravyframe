@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Gravyframe.Configuration;
 using Gravyframe.Data.News;
+using Gravyframe.Service.Messages;
 
 namespace Gravyframe.Service.News.Tasks
 {
@@ -15,7 +16,15 @@ namespace Gravyframe.Service.News.Tasks
 
         public override void PopulateResponse(NewsRequest request, NewsResponse<TNews> response)
         {
-            response.News = NewsDao.GetNews(request.NewsId);
+            var news = NewsDao.GetNews(request.NewsId);
+            if (news != null)
+            {
+                response.News = news;
+            }
+            else
+            {
+                response.Code = ResponceCodes.Failure;
+            }
         }
 
         public override IEnumerable<string> ValidateResponse(NewsRequest request)

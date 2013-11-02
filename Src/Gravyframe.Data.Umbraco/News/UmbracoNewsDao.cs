@@ -28,13 +28,27 @@ namespace Gravyframe.Data.Umbraco.News
         public override UmbracoNews GetNews(string newsId)
         {
             var node = NodeFactoryFacade.GetNode(int.Parse(newsId));
-            return new UmbracoNews
-                {
-                    Id = node.Id,
-                    Body = node.GetProperty(BodyAlias).Value,
-                    Title = node.GetProperty(TitleAlias).Value,
-                    Sequence = 0
-                };
+
+            if (node == null || node.Id == 0)
+                return null;
+
+            var umbracoNews = new UmbracoNews
+            {
+                Id = node.Id,
+                Sequence = 0
+            };
+
+            if (node.GetProperty(BodyAlias) != null)
+            {
+                umbracoNews.Body = node.GetProperty(BodyAlias).Value;
+            }
+
+            if (node.GetProperty(TitleAlias) != null)
+            {
+                umbracoNews.Title = node.GetProperty(TitleAlias).Value;
+            }
+
+            return umbracoNews;
         }
 
         public override IEnumerable<UmbracoNews> GetNewsByCategoryId(string categoryId)
