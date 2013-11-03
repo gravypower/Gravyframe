@@ -16,7 +16,10 @@ namespace Gravyframe.Service.News.Tasks
 
         public override void PopulateResponse(NewsRequest request, NewsResponse<TNews> response)
         {
-            var news = NewsDao.GetNews(request.NewsId);
+            var news = string.IsNullOrEmpty(request.SiteId)
+                ? NewsDao.GetNews(request.NewsId)
+                : NewsDao.GetNews(request.SiteId, request.NewsId);
+
             if (news != null)
             {
                 response.News = news;

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Funq;
+﻿using Funq;
 using Gravyframe.Service.News;
 using ServiceStack.ServiceHost;
 
@@ -7,17 +6,7 @@ namespace Gravyframe.ServiceStack
 {
     public abstract class NewsAppHostConfigurationStrategy
     {
-        private readonly IEnumerable<string> _sites;
-
-        protected NewsAppHostConfigurationStrategy()
-        {
-            _sites = new List<string>{string.Empty};
-        }
-        
-        protected NewsAppHostConfigurationStrategy(IEnumerable<string> sites)
-        {
-            _sites = sites;
-        }
+        public const string SiteIdToken = "{SiteId}";
 
         public const string NewsServiceRestPath = "/NewsService";
 
@@ -31,18 +20,13 @@ namespace Gravyframe.ServiceStack
 
         public virtual void ConfigureRoutes(IServiceRoutes routes)
         {
-            foreach (var site in _sites)
-            {
-                var siteRoute = string.Empty;
-                if (!string.IsNullOrEmpty(site))
-                {
-                    siteRoute = "/" + site;
-                }
+            routes.Add<NewsRequest>("/" + SiteIdToken + GetNewsServiceRestPath());
+            routes.Add<NewsRequest>("/" + SiteIdToken + GetNewsByIdNewsServiceRestPath());
+            routes.Add<NewsRequest>("/" + SiteIdToken + GetNewsByCategoryIdNewsServiceRestPath());
 
-                routes.Add<NewsRequest>(siteRoute + GetNewsServiceRestPath());
-                routes.Add<NewsRequest>(siteRoute + GetNewsByIdNewsServiceRestPath());
-                routes.Add<NewsRequest>(siteRoute + GetNewsByCategoryIdNewsServiceRestPath());
-            }
+            routes.Add<NewsRequest>(GetNewsServiceRestPath());
+            routes.Add<NewsRequest>(GetNewsByIdNewsServiceRestPath());
+            routes.Add<NewsRequest>(GetNewsByCategoryIdNewsServiceRestPath());
         }
 
         public virtual string GetNewsServiceRestPath()

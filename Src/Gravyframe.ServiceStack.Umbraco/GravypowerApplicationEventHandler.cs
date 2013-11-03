@@ -10,10 +10,9 @@ namespace Gravyframe.ServiceStack.Umbraco
     {
         protected override void ApplicationStarted(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext)
         {
-            var sites = GetChildNodesByType(-1, "Site").Select(node => node.Name).ToList();
-            new UmbracoNewsAppHost(new UmbracoNewsAppHostConfigurationStrategy(sites)).Init();
+            //var sites = GetChildNodesByType(-1, "Site").Select(node => node.Name).ToList();
+            new UmbracoNewsAppHost(new UmbracoNewsAppHostConfigurationStrategy()).Init();
         }
-
 
         private static IEnumerable<Node> GetChildNodesByType(int nodeId, string typeName)
         {

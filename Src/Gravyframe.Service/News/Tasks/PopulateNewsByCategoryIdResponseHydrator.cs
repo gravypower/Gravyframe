@@ -26,7 +26,9 @@ namespace Gravyframe.Service.News.Tasks
 
         public override void PopulateResponse(NewsRequest request, NewsResponse<TNews> response)
         {
-            response.NewsList = NewsDao.GetNewsByCategoryId(request.CategoryId);
+            response.NewsList = string.IsNullOrEmpty(request.SiteId)
+                ? NewsDao.GetNewsByCategoryId(request.CategoryId)
+                : NewsDao.GetNewsByCategoryId(request.SiteId, request.CategoryId);
         }
     }
 }

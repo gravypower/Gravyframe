@@ -52,7 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContentServiceTests.cs" />
-    <Compile Include="NewsServiceTests.cs" />
+    <Compile Include="News\GetNewsByCategoryIdGivenNewsRequestWith.cs" />
+    <Compile Include="News\GetNewsByIdGivenNewsRequestWith.cs" />
+    <Compile Include="News\NewsServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceTests.cs" />
   </ItemGroup>

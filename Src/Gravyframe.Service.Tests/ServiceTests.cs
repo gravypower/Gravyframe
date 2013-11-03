@@ -3,11 +3,11 @@ using NUnit.Framework;
 namespace Gravyframe.Service.Tests
 {
     [TestFixture]
-    public abstract class ServiceTests<TRequest, TResponce, TService, TNullRequestException>
-        where TResponce : Response, new()
+    public abstract class ServiceTests<TRequest, TResponse, TService, TNullRequestException>
+        where TResponse : Response, new()
         where TRequest : Request, new()
-        where TService : Service<TRequest, TResponce, TNullRequestException>
-        where TNullRequestException : Service<TRequest, TResponce, TNullRequestException>.NullRequestException, new()
+        where TService : Service<TRequest, TResponse, TNullRequestException>
+        where TNullRequestException : Service<TRequest, TResponse, TNullRequestException>.NullRequestException, new()
 
     {
         public TService Sut;
@@ -31,7 +31,7 @@ namespace Gravyframe.Service.Tests
         public void IsAssignableFromTService()
         {
             // Assert 
-            Assert.IsInstanceOf<Service<TRequest, TResponce, TNullRequestException>>(Sut);
+            Assert.IsInstanceOf<Service<TRequest, TResponse, TNullRequestException>>(Sut);
         }
 
         [Test]
@@ -58,10 +58,10 @@ namespace Gravyframe.Service.Tests
             var request = new TRequest();
 
             // Act
-            var responce = Sut.Get(request);
+            var response = Sut.Get(request);
 
             // Assert
-            Assert.IsNotNull(responce);
+            Assert.IsNotNull(response);
         }
     }
 }

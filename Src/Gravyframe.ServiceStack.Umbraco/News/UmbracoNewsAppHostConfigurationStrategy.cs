@@ -13,15 +13,6 @@ namespace Gravyframe.ServiceStack.Umbraco.News
 {
     public class UmbracoNewsAppHostConfigurationStrategy : NewsAppHostConfigurationStrategy
     {
-        public UmbracoNewsAppHostConfigurationStrategy()
-        {
-        }
-
-        public UmbracoNewsAppHostConfigurationStrategy(IEnumerable<string> sites):base(sites)
-        {
-            
-        }
-
         public override void ConfigureContainer(Funq.Container container)
         {
             container.Register<ISearcher>(ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"]);

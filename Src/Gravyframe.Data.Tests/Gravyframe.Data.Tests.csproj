@@ -51,7 +51,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContentDaoTests.cs" />
-    <Compile Include="NewsDaoTests.cs" />
+    <Compile Include="NewsDao\WithoutSiteId.cs" />
+    <Compile Include="NewsDao\NewsDaoTests.cs" />
+    <Compile Include="NewsDao\WithSiteId.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

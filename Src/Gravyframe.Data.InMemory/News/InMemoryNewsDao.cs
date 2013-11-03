@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Gravyframe.Configuration;
 using Gravyframe.Data.News;
@@ -17,6 +18,11 @@ namespace Gravyframe.Data.InMemory.News
             {
                 _newsList.Add(new Models.News {Sequence = i, Title = "Test" + i, Body = "Test" + i});
             }
+        }
+
+        public override Models.News GetNews(string siteId, string newsId)
+        {
+            return GetNews(newsId);
         }
 
         public override Models.News GetNews(string newsId)
@@ -38,6 +44,21 @@ namespace Gravyframe.Data.InMemory.News
         {
             var pagesToSkip = CalculateNumberToSkip(listSize, page);
             return _newsList.Skip(pagesToSkip).Take(listSize);
+        }
+
+        public override IEnumerable<Models.News> GetNewsByCategoryId(string siteId, string categoryId)
+        {
+            return GetNewsByCategoryId(categoryId);
+        }
+
+        public override IEnumerable<Models.News> GetNewsByCategoryId(string siteId, string categoryId, int listSize)
+        {
+            return GetNewsByCategoryId(categoryId, listSize);
+        }
+
+        public override IEnumerable<Models.News> GetNewsByCategoryId(string siteId, string categoryId, int listSize, int page)
+        {
+            return GetNewsByCategoryId(categoryId, listSize, page);
         }
     }
 }

@@ -25,6 +25,11 @@ namespace Gravyframe.Data.Umbraco.News
             NodeFactoryFacade = nodeFactoryFacade;
         }
 
+        public override UmbracoNews GetNews(string siteId, string newsId)
+        {
+            return GetNews(newsId);
+        }
+
         public override UmbracoNews GetNews(string newsId)
         {
             var node = NodeFactoryFacade.GetNode(int.Parse(newsId));
@@ -83,6 +88,21 @@ namespace Gravyframe.Data.Umbraco.News
             }
 
             return newsList;
+        }
+
+        public override IEnumerable<UmbracoNews> GetNewsByCategoryId(string siteId, string categoryId)
+        {
+            return GetNewsByCategoryId(categoryId);
+        }
+
+        public override IEnumerable<UmbracoNews> GetNewsByCategoryId(string siteId, string categoryId, int listSize)
+        {
+            return GetNewsByCategoryId(categoryId, listSize);
+        }
+
+        public override IEnumerable<UmbracoNews> GetNewsByCategoryId(string siteId, string categoryId, int listSize, int page)
+        {
+            return GetNewsByCategoryId(categoryId, listSize, page);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using Gravyframe.Configuration;
 using Gravyframe.Data.InMemory.News;
-using Gravyframe.Data.Tests;
+using Gravyframe.Data.Tests.NewsDao;
 using NSubstitute;
 using NUnit.Framework;
 
@@ -28,8 +28,13 @@ namespace Gravyframe.Data.InMemory.Tests
             return "categoryId";
         }
 
-        protected override void MockExampleId()
+        protected override void MockExampleNode()
         {
+        }
+
+        protected override string GetExampleSiteId()
+        {
+            return "InMemorySite";
         }
     }
 }
