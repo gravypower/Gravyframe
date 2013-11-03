@@ -24,7 +24,7 @@ namespace Gravyframe.Data.Umbraco.Tests.UmbracoNewsDao
 
         private class TestNewsConfiguration : NewsConfiguration { }
 
-        private void MockNewsItemsInIndex(int numberToMock)
+        private MockSimpleDataSet MockNewsItemsInIndex(int numberToMock, string site = "")
         {
             numberToMock = AdjustForLoop(numberToMock);
 
@@ -39,11 +39,14 @@ namespace Gravyframe.Data.Umbraco.Tests.UmbracoNewsDao
                 var mn = mockNode.Mock(i);
                 _nodeFactoryFacade.GetNode(i).Returns(mn);
                 mockDataSet.AddData(i, News.UmbracoNewsDao.CategoriesAlias, TestCategoryId);
+                mockDataSet.AddData(i, News.UmbracoNewsDao.Site, site);
             }
 
-            _mockedIndex.SimpleDataService.GetAllData("News").Returns(mockDataSet);
+            _mockedIndex.SimpleDataService.GetAllData(IndexType).Returns(mockDataSet);
 
             _mockedIndex.Indexer.RebuildIndex();
+
+            return mockDataSet;
         }
 
         private static int AdjustForLoop(int numberToMock)
@@ -57,7 +60,9 @@ namespace Gravyframe.Data.Umbraco.Tests.UmbracoNewsDao
             _nodeFactoryFacade = Substitute.For<INodeFactoryFacade>();
             _mockedIndex = MockIndexFactory.GetMock(
                 new MockIndexFieldList().AddIndexField("id", "Number", true),
-                new MockIndexFieldList().AddIndexField(News.UmbracoNewsDao.CategoriesAlias),
+                new MockIndexFieldList()
+                    .AddIndexField(News.UmbracoNewsDao.CategoriesAlias)
+                    .AddIndexField(News.UmbracoNewsDao.Site),
                 new[] { IndexType },
                 new string[] { },
                 new string[] { });
@@ -108,8 +113,6 @@ namespace Gravyframe.Data.Umbraco.Tests.UmbracoNewsDao
             // Assert
             Assert.IsTrue(result.Any());
         }
-
-        
 
         [Test]
         public void GetNewsByCategoryListIsDefaultSize1()

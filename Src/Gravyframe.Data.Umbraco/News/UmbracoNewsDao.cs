@@ -14,6 +14,7 @@ namespace Gravyframe.Data.Umbraco.News
         public const string BodyAlias = "body";
         public const string TitleAlias = "title";
         public const string CategoriesAlias = "categories";
+        public const string Site = "site";
 
         protected readonly ISearcher Searcher;
         protected readonly INodeFactoryFacade NodeFactoryFacade;
@@ -24,6 +25,8 @@ namespace Gravyframe.Data.Umbraco.News
             Searcher = searcher;
             NodeFactoryFacade = nodeFactoryFacade;
         }
+
+        
 
         public override UmbracoNews GetNews(string siteId, string newsId)
         {
@@ -72,15 +75,20 @@ namespace Gravyframe.Data.Umbraco.News
             return GetAllNewsByCategoryId(categoryId).Skip(pagesToSkip).Take(listSize);
         }
 
-        protected virtual IEnumerable<UmbracoNews> GetAllNewsByCategoryId(string categoryId)
+        protected virtual IEnumerable<UmbracoNews> GetAllNewsByCategoryId(string categoryId, string siteId = null)
         {
             var searchCriteria = Searcher.CreateSearchCriteria();
-            var query = searchCriteria.Field(CategoriesAlias, categoryId).Compile();
+            var query = searchCriteria.Field(CategoriesAlias, categoryId);
+
+            if (!string.IsNullOrEmpty(siteId))
+            {
+                query.And().Field(Site, siteId);
+            }
 
             var newsList = new List<UmbracoNews>();
 
             var sequence = 1;
-            foreach (var result in Searcher.Search(query))
+            foreach (var result in Searcher.Search(query.Compile()))
             {
                 var news = GetNews(result.Id.ToString(CultureInfo.InvariantCulture));
                 news.Sequence = sequence++;
@@ -92,7 +100,7 @@ namespace Gravyframe.Data.Umbraco.News
 
         public override IEnumerable<UmbracoNews> GetNewsByCategoryId(string siteId, string categoryId)
         {
-            return GetNewsByCategoryId(categoryId);
+            return GetAllNewsByCategoryId(categoryId, siteId).Take(NewsConfiguration.DefaultListSize);
         }
 
         public override IEnumerable<UmbracoNews> GetNewsByCategoryId(string siteId, string categoryId, int listSize)

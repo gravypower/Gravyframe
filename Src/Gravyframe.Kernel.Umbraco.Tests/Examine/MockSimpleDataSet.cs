@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Examine;
 using Examine.LuceneEngine;
 
@@ -18,7 +19,14 @@ namespace Gravyframe.Kernel.Umbraco.Tests.Examine
 
         public MockSimpleDataSet AddData(int id, string name, string value)
         {
-            var nodeDefinition = new IndexedNode {NodeId = id, Type = Type};
+            var simpleDataSet = ListOfSimpleData.SingleOrDefault(row => row.NodeDefinition.NodeId == id);
+            if (simpleDataSet != null)
+            {
+                simpleDataSet.RowData.Add(name, value);
+                return this;
+            }
+
+            var nodeDefinition = new IndexedNode { NodeId = id, Type = Type };
 
             var rowData = new Dictionary<string, string>
             {
