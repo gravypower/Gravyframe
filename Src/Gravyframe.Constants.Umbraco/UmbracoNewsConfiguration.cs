@@ -1,6 +1,6 @@
 ﻿using umbraco.interfaces;
 using Gravyframe.Kernel.Umbraco.Facades;
-using Gravyframe.Kernel.Umbraco.Extinctions;
+using Gravyframe.Kernel.Umbraco.Extension;
 
 namespace Gravyframe.Configuration.Umbraco
 {
