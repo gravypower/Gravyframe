@@ -1,0 +1,5 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Gravyframe.master.cs" Inherits="Gravyframe.UI.CMS.Umbraco.masterpages.Gravyframe" %>
+
+<asp:ContentPlaceHolder ID="ContentPlaceHolderDefault" runat="server">
+    Hello World!
+</asp:ContentPlaceHolder>
