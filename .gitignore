@@ -56,8 +56,6 @@ ehthumbs.db
 Icon?
 Thumbs.db
  
-# below are rules added by me (@kmorcinek)
- 
 # NCrunch
 *.crunchsolution.cache
 *.ncrunchsolution
@@ -78,5 +76,8 @@ _ReSharper.*
 *.vsp
 
 packages/
-Gravyframe.UI.CMS.Umbraco/App_Data/*
-!Gravyframe.UI.CMS.Umbraco/App_Data/Umbraco.sdf
+
+App_Data/
+Umbraco/
+Umbraco_Client/
+!App_Data/Umbraco.sdf*
