@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="Gravyframe.ServiceStack.Umbraco.Global" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="Umbraco.Web.UmbracoApplication" Language="C#" %>

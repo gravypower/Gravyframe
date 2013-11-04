@@ -81,3 +81,4 @@ App_Data/
 Umbraco/
 Umbraco_Client/
 !App_Data/Umbraco.sdf*
+backup/
