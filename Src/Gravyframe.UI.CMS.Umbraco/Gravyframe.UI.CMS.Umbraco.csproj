@@ -7,14 +7,14 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>8d09e606-ea43-4e3e-9be8-2f5f84d98ced</ProjectGuid>
+    <ProjectGuid>{E13C60FD-E160-470B-9B6A-D3496A485517}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Gravyframe.UI.CMS.Umbraco</RootNamespace>
     <AssemblyName>Gravyframe.UI.CMS.Umbraco</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -57,10 +57,58 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Umbraco.sdf" />
+    <Content Include="Config\Splashes\booting.aspx" />
+    <Content Include="Config\Splashes\noNodes.aspx" />
+    <Content Include="default.aspx" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="UserControls\IndexStatus.ascx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Browsers\Form.browser" />
+    <Content Include="App_Browsers\w3cvalidator.browser" />
+    <Content Include="Config\404handlers.config" />
+    <Content Include="Config\applications.config" />
+    <Content Include="Config\BaseRestExtensions.config" />
+    <Content Include="Config\ClientDependency.config" />
+    <Content Include="Config\Dashboard.config" />
+    <Content Include="Config\EmbeddedMedia.config" />
+    <Content Include="Config\ExamineIndex.config" />
+    <Content Include="Config\ExamineSettings.config" />
+    <Content Include="Config\feedProxy.config" />
+    <Content Include="Config\FileSystemProviders.config" />
+    <Content Include="Config\log4net.config" />
+    <Content Include="Config\metablogConfig.config" />
+    <Content Include="Config\restExtensions.config" />
+    <Content Include="Config\scripting.config" />
+    <Content Include="Config\Skinning.config" />
+    <Content Include="Config\tinyMceConfig.config" />
+    <Content Include="Config\trees.config" />
+    <Content Include="Config\umbracoSettings.config" />
+    <Content Include="Config\UrlRewriting.config" />
+    <Content Include="Config\xsltExtensions.config" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config.transform" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <Content Include="Xslt\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Css\" />
+    <Folder Include="MacroScripts\" />
+    <Folder Include="Masterpages\" />
+    <Folder Include="Scripts\" />
+    <Folder Include="Views\MacroPartials\" />
+    <Folder Include="Views\Partials\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -73,12 +121,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>
-          </IISUrl>
+          <IISUrl>http://localhost:60379/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
