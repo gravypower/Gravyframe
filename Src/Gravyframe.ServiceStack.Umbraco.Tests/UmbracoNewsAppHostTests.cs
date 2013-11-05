@@ -54,7 +54,7 @@ namespace Gravyframe.ServiceStack.Umbraco.Tests
         [SetUp]
         public void SetUp()
         {
-            var mockedIndex = MockIndexFactory.GetMock(
+            var mockedIndex = MockIndexFactory.GetSimpleDataServiceMock(
                new MockIndexFieldList().AddIndexField("id", "Number", true),
                new MockIndexFieldList().AddIndexField(UmbracoNewsDao.CategoriesAlias),
                new[] { "News" },

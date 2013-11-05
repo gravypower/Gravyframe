@@ -1,14 +1,12 @@
 ﻿using System.Linq;
 using Gravyframe.Configuration.Umbraco;
 using Gravyframe.Kernel.Umbraco.Tests;
-using Gravyframe.Kernel.Umbraco.Tests.Examine;
 using NSubstitute;
 using NUnit.Framework;
+using Gravyframe.Kernel.Umbraco.Tests.Examine.Helpers;
 
 namespace Gravyframe.Data.Umbraco.Tests.UmbracoNewsDao
 {
-    using Gravyframe.Kernel.Umbraco.Tests.Examine.Helpers;
-
     public partial class UmbracoNewsDaoTests
     {
         [Test]
@@ -68,7 +66,7 @@ namespace Gravyframe.Data.Umbraco.Tests.UmbracoNewsDao
 
             _nodeFactoryFacade.GetNode(NewsConfigurationNodeId).Returns(mockNode);
 
-            MockNewsItemsInIndex(20, GetExampleSiteId());
+            MockNewsItemsInIndex(20, site: GetExampleSiteId());
 
             base.GetNewsByCategoryListIsDefaultSizeWithSiteId();
             Assert.AreEqual(defaultListSize, Sut.NewsConfiguration.DefaultListSize);

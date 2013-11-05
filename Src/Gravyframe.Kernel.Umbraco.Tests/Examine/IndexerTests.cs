@@ -1,8 +1,12 @@
-﻿using NUnit.Framework;
+﻿using System.Linq;
+using System.Reflection;
+using Gravyframe.Kernel.Umbraco.Tests.Examine.Helpers.MockContentService;
+using NUnit.Framework;
 using Gravyframe.Kernel.Umbraco.Examine;
 using Gravyframe.Kernel.Umbraco.Facades;
 using NSubstitute;
 using Gravyframe.Kernel.Umbraco.Tests.Examine.Helpers.MockIndex;
+using UmbracoExamine;
 
 namespace Gravyframe.Kernel.Umbraco.Tests.Examine
 {
@@ -11,22 +15,33 @@ namespace Gravyframe.Kernel.Umbraco.Tests.Examine
     [TestFixture]    
     public class IndexerTests
     {
+        [SetUp]
+        public void SetUp()
+        {
+            var fields = typeof(BaseUmbracoIndexer).GetFields(BindingFlags.NonPublic | BindingFlags.Static);
+            var disableInitializationCheckField = fields.SingleOrDefault(x => x.Name == "DisableInitializationCheck");
+            if (disableInitializationCheckField == null)
+            {
+                Assert.Fail("Could Not Set DisableInitializationCheck");
+            }
+
+            disableInitializationCheckField.SetValue(null, true);
+        }
+
         [Test]
         public void sometest()
         {
-           var mockedIndex = MockIndexFactory.GetMock(
+            var mockedIndex = MockIndexFactory.GetSimpleDataServiceMock(
                 new MockIndexFieldList().AddIndexField("id", "Number", true),
-                new MockIndexFieldList()
-                    .AddIndexField("Test"),
-                new[] { "Test" },
-                new string[] { },
-                new string[] { });
+                new MockIndexFieldList(),
+                new[] {"Test"},
+                new string[] {},
+                new string[] {});
 
-            var contentService = Substitute.For<IContentService>();
 
             var dataService = Substitute.For<IDataService>();
-            dataService.ContentService.Returns(contentService);
-            
+            dataService.ContentService.Returns(new MockedContentService());
+
             var nodeFactoryFacade = Substitute.For<INodeFactoryFacade>();
             var sut = new Indexer(
                 mockedIndex.IndexCriteria,
@@ -36,9 +51,8 @@ namespace Gravyframe.Kernel.Umbraco.Tests.Examine
                 false,
                 nodeFactoryFacade);
 
-            sut.RebuildIndex();
+            sut.IndexAll("Test");
 
-            
 
         }
     }

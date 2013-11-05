@@ -12,9 +12,9 @@ namespace Gravyframe.Kernel.Umbraco.Tests.Examine.Helpers.MockIndex
 
         public IIndexer Indexer { get; set; }
 
-        public ISimpleDataService SimpleDataService { get; set; }
-
         public Directory LuceneDir { get; set; }
+
+        public ISimpleDataService SimpleDataService { get; set; }
 
         public MockIndexFieldList StandardFields { get; set; }
 

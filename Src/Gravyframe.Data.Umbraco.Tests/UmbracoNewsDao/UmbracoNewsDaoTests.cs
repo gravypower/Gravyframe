@@ -4,17 +4,15 @@ using Gravyframe.Configuration.Umbraco;
 using Gravyframe.Data.Tests.NewsDao;
 using Gravyframe.Kernel.Umbraco.Facades;
 using Gravyframe.Kernel.Umbraco.Tests;
-using Gravyframe.Kernel.Umbraco.Tests.Examine;
 using Gravyframe.Models.Umbraco;
 using NSubstitute;
 using NUnit.Framework;
 using umbraco.interfaces;
+using Gravyframe.Kernel.Umbraco.Tests.Examine.Helpers;
+using Gravyframe.Kernel.Umbraco.Tests.Examine.Helpers.MockIndex;
 
 namespace Gravyframe.Data.Umbraco.Tests.UmbracoNewsDao
 {
-    using Gravyframe.Kernel.Umbraco.Tests.Examine.Helpers;
-    using Gravyframe.Kernel.Umbraco.Tests.Examine.Helpers.MockIndex;
-
     [TestFixture]
     public partial class UmbracoNewsDaoTests : NewsDaoTests<UmbracoNews>
     {
@@ -27,7 +25,7 @@ namespace Gravyframe.Data.Umbraco.Tests.UmbracoNewsDao
 
         private class TestNewsConfiguration : NewsConfiguration { }
 
-        private MockSimpleDataSet MockNewsItemsInIndex(int numberToMock, string site = "")
+        private void MockNewsItemsInIndex(int numberToMock, string site = "")
         {
             numberToMock = AdjustForLoop(numberToMock);
 
@@ -48,8 +46,6 @@ namespace Gravyframe.Data.Umbraco.Tests.UmbracoNewsDao
             _mockedIndex.SimpleDataService.GetAllData(IndexType).Returns(mockDataSet);
 
             _mockedIndex.Indexer.RebuildIndex();
-
-            return mockDataSet;
         }
 
         private static int AdjustForLoop(int numberToMock)
@@ -61,7 +57,7 @@ namespace Gravyframe.Data.Umbraco.Tests.UmbracoNewsDao
         public void SetUp()
         {
             _nodeFactoryFacade = Substitute.For<INodeFactoryFacade>();
-            _mockedIndex = MockIndexFactory.GetMock(
+            _mockedIndex = MockIndexFactory.GetSimpleDataServiceMock(
                 new MockIndexFieldList().AddIndexField("id", "Number", true),
                 new MockIndexFieldList()
                     .AddIndexField(News.UmbracoNewsDao.CategoriesAlias)
