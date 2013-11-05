@@ -7,6 +7,8 @@ using NUnit.Framework;
 
 namespace Gravyframe.Data.Umbraco.Tests.UmbracoNewsDao
 {
+    using Gravyframe.Kernel.Umbraco.Tests.Examine.Helpers;
+
     public partial class UmbracoNewsDaoTests
     {
         [Test]

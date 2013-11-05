@@ -2,7 +2,7 @@
 
 namespace Gravyframe.Kernel.Umbraco.Extension
 {
-    public static class Node
+    public static class NodeExtensions
     {
         public delegate bool TryParseHandler<T>(string value, out T result);
         public static T GetProperty<T>(this INode node, string propertyAlias, T defaultValue, TryParseHandler<T> handler)

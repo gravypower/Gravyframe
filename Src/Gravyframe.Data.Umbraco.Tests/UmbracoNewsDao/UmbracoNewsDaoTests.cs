@@ -12,6 +12,9 @@ using umbraco.interfaces;
 
 namespace Gravyframe.Data.Umbraco.Tests.UmbracoNewsDao
 {
+    using Gravyframe.Kernel.Umbraco.Tests.Examine.Helpers;
+    using Gravyframe.Kernel.Umbraco.Tests.Examine.Helpers.MockIndex;
+
     [TestFixture]
     public partial class UmbracoNewsDaoTests : NewsDaoTests<UmbracoNews>
     {

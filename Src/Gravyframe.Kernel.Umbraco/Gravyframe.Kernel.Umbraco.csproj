@@ -213,7 +213,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Examine\Indexer.cs" />
-    <Compile Include="Extension\Node.cs" />
+    <Compile Include="Extension\NodeExtensions.cs" />
     <Compile Include="Facades\INodeFactoryFacade.cs" />
     <Compile Include="Facades\NodeFactoryFacade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,11 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using Examine;
-using Examine.LuceneEngine;
-
-namespace Gravyframe.Kernel.Umbraco.Tests.Examine
+﻿namespace Gravyframe.Kernel.Umbraco.Tests.Examine.Helpers
 {
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Linq;
+
+    using global::Examine;
+    using global::Examine.LuceneEngine;
+
     public class MockSimpleDataSet : IEnumerable<SimpleDataSet>
     {
         private List<SimpleDataSet> ListOfSimpleData { get; set; }
@@ -13,27 +14,27 @@ namespace Gravyframe.Kernel.Umbraco.Tests.Examine
 
         public MockSimpleDataSet(string type)
         {
-            ListOfSimpleData = new List<SimpleDataSet>();
-            Type = type;
+            this.ListOfSimpleData = new List<SimpleDataSet>();
+            this.Type = type;
         }
 
         public MockSimpleDataSet AddData(int id, string name, string value)
         {
-            var simpleDataSet = ListOfSimpleData.SingleOrDefault(row => row.NodeDefinition.NodeId == id);
+            var simpleDataSet = this.ListOfSimpleData.SingleOrDefault(row => row.NodeDefinition.NodeId == id);
             if (simpleDataSet != null)
             {
                 simpleDataSet.RowData.Add(name, value);
                 return this;
             }
 
-            var nodeDefinition = new IndexedNode { NodeId = id, Type = Type };
+            var nodeDefinition = new IndexedNode { NodeId = id, Type = this.Type };
 
             var rowData = new Dictionary<string, string>
             {
                 {name, value}
             };
 
-            ListOfSimpleData.Add(
+            this.ListOfSimpleData.Add(
                 new SimpleDataSet
                 {
                     NodeDefinition = nodeDefinition,
@@ -45,12 +46,12 @@ namespace Gravyframe.Kernel.Umbraco.Tests.Examine
 
         public IEnumerator<SimpleDataSet> GetEnumerator()
         {
-            return ListOfSimpleData.GetEnumerator();
+            return this.ListOfSimpleData.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return ListOfSimpleData.GetEnumerator();
+            return this.ListOfSimpleData.GetEnumerator();
         }
     }
 }

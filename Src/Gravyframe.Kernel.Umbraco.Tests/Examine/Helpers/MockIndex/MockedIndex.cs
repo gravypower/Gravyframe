@@ -1,10 +1,10 @@
-﻿using Examine;
+﻿using System.Collections.Generic;
+using Examine;
 using Examine.LuceneEngine;
-using Lucene.Net.Store;
-using System.Collections.Generic;
 using Lucene.Net.Analysis;
+using Lucene.Net.Store;
 
-namespace Gravyframe.Kernel.Umbraco.Tests.Examine
+namespace Gravyframe.Kernel.Umbraco.Tests.Examine.Helpers.MockIndex
 {
     public class MockedIndex
     {

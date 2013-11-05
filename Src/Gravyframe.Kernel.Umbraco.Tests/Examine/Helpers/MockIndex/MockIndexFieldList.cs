@@ -2,7 +2,7 @@
 using Examine;
 using NSubstitute;
 
-namespace Gravyframe.Kernel.Umbraco.Tests.Examine
+namespace Gravyframe.Kernel.Umbraco.Tests.Examine.Helpers.MockIndex
 {
     public class MockIndexFieldList : IEnumerable<IIndexField>
     {
@@ -10,17 +10,17 @@ namespace Gravyframe.Kernel.Umbraco.Tests.Examine
 
         public MockIndexFieldList()
         {
-            IndexFieldList = new List<IIndexField>();
+            this.IndexFieldList = new List<IIndexField>();
         }
 
         public MockIndexFieldList AddIndexField(string name, bool enableSorting)
         {
-            return AddIndexField(name, string.Empty, enableSorting);
+            return this.AddIndexField(name, string.Empty, enableSorting);
         }
 
         public MockIndexFieldList AddIndexField(string name)
         {
-            return AddIndexField(name, string.Empty);
+            return this.AddIndexField(name, string.Empty);
         }
 
         public MockIndexFieldList AddIndexField(string name, string type, bool enableSorting = false)
@@ -30,19 +30,19 @@ namespace Gravyframe.Kernel.Umbraco.Tests.Examine
             indexField.EnableSorting.Returns(enableSorting);
             indexField.Type.Returns(type);
 
-            IndexFieldList.Add(indexField);
+            this.IndexFieldList.Add(indexField);
 
             return this;
         }
 
         public IEnumerator<IIndexField> GetEnumerator()
         {
-            return IndexFieldList.GetEnumerator();
+            return this.IndexFieldList.GetEnumerator();
         }
 
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
-            return IndexFieldList.GetEnumerator();
+            return this.IndexFieldList.GetEnumerator();
         }
     }
 }

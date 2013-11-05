@@ -66,15 +66,19 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="UmbracoExamine">
       <HintPath>..\packages\UmbracoCms.Core.6.1.6\lib\UmbracoExamine.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Examine\MockedIndex.cs" />
-    <Compile Include="Examine\MockIndexFactory.cs" />
-    <Compile Include="Examine\MockIndexFieldList.cs" />
-    <Compile Include="Examine\MockSimpleDataSet.cs" />
+    <Compile Include="Examine\Helpers\MockContentService\MockContentServiceFactory.cs" />
+    <Compile Include="Examine\Helpers\MockContentService\MockedContentService.cs" />
+    <Compile Include="Examine\IndexerTests.cs" />
+    <Compile Include="Examine\Helpers\MockIndex\MockedIndex.cs" />
+    <Compile Include="Examine\Helpers\MockIndex\MockIndexFactory.cs" />
+    <Compile Include="Examine\Helpers\MockIndex\MockIndexFieldList.cs" />
+    <Compile Include="Examine\Helpers\MockSimpleDataSet.cs" />
     <Compile Include="MockNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
