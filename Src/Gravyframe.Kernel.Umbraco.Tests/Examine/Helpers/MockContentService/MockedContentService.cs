@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
-using System.Xml.XPath;
 using UmbracoExamine.DataServices;
 
 namespace Gravyframe.Kernel.Umbraco.Tests.Examine.Helpers.MockContentService
@@ -12,7 +11,6 @@ namespace Gravyframe.Kernel.Umbraco.Tests.Examine.Helpers.MockContentService
 
         public MockedContentService()
         {
-            ////*[(number(@id) > 0 and (@isDoc or @nodeTypeAlias))]
             _xDoc = new XDocument();
             _xDoc.Add(
                 new XElement("test", new XAttribute("id", 90))
@@ -32,7 +30,10 @@ namespace Gravyframe.Kernel.Umbraco.Tests.Examine.Helpers.MockContentService
         public XDocument GetLatestContentByXPath(string xpath)
         {
             var xdoc = XDocument.Parse("<content></content>");
-            xdoc.Root.Add(_xDoc.XPathSelectElements(xpath));
+            if (xdoc.Root != null)
+            {
+                xdoc.Root.Add(this._xDoc.FirstNode);
+            }
 
             return xdoc;
         }
@@ -40,7 +41,10 @@ namespace Gravyframe.Kernel.Umbraco.Tests.Examine.Helpers.MockContentService
         public XDocument GetPublishedContentByXPath(string xpath)
         {
             var xdoc = XDocument.Parse("<content></content>");
-            xdoc.Root.Add(_xDoc.FirstNode);
+            if (xdoc.Root != null)
+            {
+                xdoc.Root.Add(this._xDoc.FirstNode);
+            }
 
             return xdoc;
         }
