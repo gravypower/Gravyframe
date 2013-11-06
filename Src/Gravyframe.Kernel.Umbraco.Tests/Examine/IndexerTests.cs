@@ -34,7 +34,7 @@ namespace Gravyframe.Kernel.Umbraco.Tests.Examine
             var mockedIndex = MockIndexFactory.GetSimpleDataServiceMock(
                 new MockIndexFieldList().AddIndexField("id", "Number", true),
                 new MockIndexFieldList(),
-                new[] {"Test"},
+                new[] {"test"},
                 new string[] {},
                 new string[] {});
 
@@ -51,7 +51,7 @@ namespace Gravyframe.Kernel.Umbraco.Tests.Examine
                 false,
                 nodeFactoryFacade);
 
-            sut.IndexAll("Test");
+            sut.IndexAll("test");
 
 
         }

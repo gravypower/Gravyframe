@@ -12,7 +12,11 @@ namespace Gravyframe.Kernel.Umbraco.Tests.Examine.Helpers.MockContentService
 
         public MockedContentService()
         {
+            ////*[(number(@id) > 0 and (@isDoc or @nodeTypeAlias))]
             _xDoc = new XDocument();
+            _xDoc.Add(
+                new XElement("test", new XAttribute("id", 90))
+                );
         }
 
         public IEnumerable<string> GetAllSystemPropertyNames()
