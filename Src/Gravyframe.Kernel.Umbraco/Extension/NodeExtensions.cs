@@ -22,17 +22,12 @@ namespace Gravyframe.Kernel.Umbraco.Extension
 
             T result;
             
-            if (handler(value, out result))
-            {
-                return result;
-            }
-
-            return defaultValue;
+            return handler(value, out result) ? result : defaultValue;
         }
 
         public static INode FindNodeUpTree(this INode node, string type)
         {
-            while (node.Id != -1)
+            while (node.Id != -1 && node.Id != 0 )
             {
                 if (node.Parent.NodeTypeAlias == type)
                     return node.Parent;
@@ -40,7 +35,7 @@ namespace Gravyframe.Kernel.Umbraco.Extension
                 node = node.Parent;
             }
 
-            return node;
+            return null;
         }
     }
     

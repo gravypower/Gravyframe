@@ -38,7 +38,7 @@ namespace Gravyframe.Kernel.Umbraco.Examine
         {
             var currentNode = _nodeFactoryFacade.GetNode(e.NodeId);
             var siteNode = currentNode.FindNodeUpTree("Site");
-            if (siteNode.Id != -1)
+            if (siteNode != null && siteNode.Id != -1)
             {
                 e.Fields.Add("site", siteNode.UrlName);
             }

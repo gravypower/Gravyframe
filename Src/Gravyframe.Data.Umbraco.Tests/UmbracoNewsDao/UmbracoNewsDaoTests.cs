@@ -66,7 +66,6 @@ namespace Gravyframe.Data.Umbraco.Tests.UmbracoNewsDao
                 new string[] { },
                 new string[] { });
 
-
             var newsConfiguration = new UmbracoNewsConfiguration(_nodeFactoryFacade, NewsConfigurationNodeId);
             Sut = new News.UmbracoNewsDao(newsConfiguration, _nodeFactoryFacade, _mockedIndex.Searcher);
         }

@@ -10,6 +10,12 @@ using UmbracoExamine;
 
 namespace Gravyframe.Kernel.Umbraco.Tests.Examine
 {
+    using System.Collections;
+    using System.Collections.Generic;
+
+    using Lucene.Net.Documents;
+    using Lucene.Net.Index;
+
     using UmbracoExamine.DataServices;
 
     [TestFixture]    
@@ -43,6 +49,13 @@ namespace Gravyframe.Kernel.Umbraco.Tests.Examine
             dataService.ContentService.Returns(new MockedContentService());
 
             var nodeFactoryFacade = Substitute.For<INodeFactoryFacade>();
+
+            var mockedParent = new MockNode().AddNodeTypeAlias("Site").AddUrlName("SiteName").Mock(10);
+
+            var mockedNode = new MockNode().AddNodeTypeAlias("test").AddParent(mockedParent).Mock(90);
+
+            nodeFactoryFacade.GetNode(90).Returns(mockedNode);
+
             var sut = new Indexer(
                 mockedIndex.IndexCriteria,
                 mockedIndex.LuceneDir,
@@ -54,6 +67,19 @@ namespace Gravyframe.Kernel.Umbraco.Tests.Examine
             sut.IndexAll("test");
 
 
+            var feilds = new Dictionary<string, string>();
+            var reader = IndexReader.Open(mockedIndex.LuceneDir, true);
+            for (var i = 0; i < reader.MaxDoc(); i++)
+            {
+                if (reader.IsDeleted(i)) continue;
+
+                var doc = reader.Document(i);
+                foreach (var field in doc.GetFields().Cast<Field>())
+                    feilds.Add(field.Name(), doc.Get(field.Name()));
+            }
+
+            Assert.Contains("site", feilds.Keys);
+            Assert.AreEqual("SiteName", feilds["site"]);
         }
     }
 }

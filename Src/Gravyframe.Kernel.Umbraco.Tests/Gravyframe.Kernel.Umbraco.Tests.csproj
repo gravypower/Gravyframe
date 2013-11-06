@@ -80,6 +80,7 @@
     <Compile Include="Examine\Helpers\MockIndex\MockIndexFactory.cs" />
     <Compile Include="Examine\Helpers\MockIndex\MockIndexFieldList.cs" />
     <Compile Include="Examine\Helpers\MockSimpleDataSet.cs" />
+    <Compile Include="Extension\NodeExtensionsTests.cs" />
     <Compile Include="MockNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

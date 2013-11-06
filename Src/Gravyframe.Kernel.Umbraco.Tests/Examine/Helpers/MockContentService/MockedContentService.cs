@@ -40,7 +40,7 @@ namespace Gravyframe.Kernel.Umbraco.Tests.Examine.Helpers.MockContentService
         public XDocument GetPublishedContentByXPath(string xpath)
         {
             var xdoc = XDocument.Parse("<content></content>");
-            xdoc.Root.Add(_xDoc.XPathSelectElements(xpath));
+            xdoc.Root.Add(_xDoc.FirstNode);
 
             return xdoc;
         }
