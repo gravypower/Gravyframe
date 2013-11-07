@@ -1,19 +1,21 @@
-﻿using Gravyframe.Service.Messages;
-using Gravyframe.Service.News;
-using NSubstitute;
-using NUnit.Framework;
-
-namespace Gravyframe.Service.Tests.News
+﻿namespace Gravyframe.Service.Tests.News.NewsService
 {
+    using Gravyframe.Service.Messages;
+    using Gravyframe.Service.News;
+
+    using NSubstitute;
+
+    using NUnit.Framework;
+
     [TestFixture]
-    public abstract class GetNewsByIdGivenNewsRequestWith : NewsServiceTests
+    public abstract class GetNewsByIdGivenNewsRequestWith : Tests
     {
         public NewsRequest Request;
 
         public virtual void WhenNewsRequestNewsIdNewsResponseSuccess()
         {
             // Act
-            var response = Sut.Get(Request);
+            var response = this.Sut.Get(this.Request);
 
             // Assert
             Assert.AreEqual(ResponceCodes.Success, response.Code);
@@ -22,17 +24,17 @@ namespace Gravyframe.Service.Tests.News
         public virtual void WhenNewsRequestNewsIdNeNewsInResponseFailure()
         {
             // Act
-            var response = Sut.Get(Request);
+            var response = this.Sut.Get(this.Request);
 
             // Assert
             Assert.AreEqual(ResponceCodes.Failure, response.Code);
-            Assert.Contains(NewsConfiguration.NewsIdError, response.Errors);
+            Assert.Contains(this.NewsConfiguration.NewsIdError, response.Errors);
         }
 
         public virtual void WhenNewsRequestedNewsIdNewsResponseHasTitle(Models.News news)
         {
             // Act
-            var result = Sut.Get(Request);
+            var result = this.Sut.Get(this.Request);
 
             // Assert
             Assert.AreEqual(news.Title, result.News.Title);
@@ -41,7 +43,7 @@ namespace Gravyframe.Service.Tests.News
         public virtual void WhenNewsRequestedNewsIdNewsResponseHasBody(Models.News news)
         {
             // Act
-            var result = Sut.Get(Request);
+            var result = this.Sut.Get(this.Request);
 
             // Assert
             Assert.AreEqual(news.Body, result.News.Body);
@@ -55,7 +57,7 @@ namespace Gravyframe.Service.Tests.News
         [SetUp]
         public void GivenNewsRequestWithNewsIdSetUp()
         {
-            Request = new NewsRequest { NewsId = "SomeID" };
+            this.Request = new NewsRequest { NewsId = "SomeID" };
         }
 
         [Test]
@@ -63,7 +65,7 @@ namespace Gravyframe.Service.Tests.News
         {
             // Assign
             var news = new Models.News();
-            Dao.GetNews(Request.NewsId).Returns(news);
+            this.Dao.GetNews(this.Request.NewsId).Returns(news);
 
             base.WhenNewsRequestNewsIdNewsResponseSuccess();
         }
@@ -72,7 +74,7 @@ namespace Gravyframe.Service.Tests.News
         public override void WhenNewsRequestNewsIdNeNewsInResponseFailure()
         {
             // Assign
-            Dao.GetNews(Request.NewsId).Returns(default(Models.News));
+            this.Dao.GetNews(this.Request.NewsId).Returns(default(Models.News));
 
             base.WhenNewsRequestNewsIdNeNewsInResponseFailure();
         }
@@ -82,7 +84,7 @@ namespace Gravyframe.Service.Tests.News
         {
             // Assign
             var news = new Models.News { Title = "TestTitle" };
-            Dao.GetNews(Request.NewsId).Returns(news);
+            this.Dao.GetNews(this.Request.NewsId).Returns(news);
 
             base.WhenNewsRequestedNewsIdNewsResponseHasTitle(news);
         }
@@ -92,7 +94,7 @@ namespace Gravyframe.Service.Tests.News
         {
             // Assign
             var news = new Models.News { Body = "TestBody" };
-            Dao.GetNews(Request.NewsId).Returns(news);
+            this.Dao.GetNews(this.Request.NewsId).Returns(news);
 
             base.WhenNewsRequestedNewsIdNewsResponseHasBody(news);
         }
@@ -106,7 +108,7 @@ namespace Gravyframe.Service.Tests.News
         [SetUp]
         public void GivenNewsRequestWithNewsIdSetUp()
         {
-            Request = new NewsRequest { NewsId = "SomeID", SiteId = "TestSite"};
+            this.Request = new NewsRequest { NewsId = "SomeID", SiteId = "TestSite"};
         }
 
         [Test]
@@ -114,7 +116,7 @@ namespace Gravyframe.Service.Tests.News
         {
             // Assign
             var news = new Models.News();
-            Dao.GetNews(Request.SiteId, Request.NewsId).Returns(news);
+            this.Dao.GetNews(this.Request.SiteId, this.Request.NewsId).Returns(news);
 
             base.WhenNewsRequestNewsIdNewsResponseSuccess();
         }
@@ -123,7 +125,7 @@ namespace Gravyframe.Service.Tests.News
         public override void WhenNewsRequestNewsIdNeNewsInResponseFailure()
         {
             // Assign
-            Dao.GetNews(Request.SiteId, Request.NewsId).Returns(default(Models.News));
+            this.Dao.GetNews(this.Request.SiteId, this.Request.NewsId).Returns(default(Models.News));
 
             base.WhenNewsRequestNewsIdNeNewsInResponseFailure();
         }
@@ -133,7 +135,7 @@ namespace Gravyframe.Service.Tests.News
         {
             // Assign
             var news = new Models.News { Title = "TestTitle" };
-            Dao.GetNews(Request.SiteId, Request.NewsId).Returns(news);
+            this.Dao.GetNews(this.Request.SiteId, this.Request.NewsId).Returns(news);
 
             base.WhenNewsRequestedNewsIdNewsResponseHasTitle(news);
         }
@@ -143,7 +145,7 @@ namespace Gravyframe.Service.Tests.News
         {
             // Assign
             var news = new Models.News { Body = "TestBody" };
-            Dao.GetNews(Request.SiteId, Request.NewsId).Returns(news);
+            this.Dao.GetNews(this.Request.SiteId, this.Request.NewsId).Returns(news);
 
             base.WhenNewsRequestedNewsIdNewsResponseHasBody(news);
         }

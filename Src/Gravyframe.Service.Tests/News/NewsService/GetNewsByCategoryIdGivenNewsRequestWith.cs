@@ -1,13 +1,16 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Gravyframe.Service.News;
-using NSubstitute;
-using NUnit.Framework;
-
-namespace Gravyframe.Service.Tests.News
+﻿namespace Gravyframe.Service.Tests.News.NewsService
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
+    using Gravyframe.Service.News;
+
+    using NSubstitute;
+
+    using NUnit.Framework;
+
     [TestFixture]
-    public abstract class GetNewsByCategoryIdGivenNewsRequestWith : NewsServiceTests
+    public abstract class GetNewsByCategoryIdGivenNewsRequestWith : Tests
     {
         public NewsRequest Request;
 
@@ -15,7 +18,7 @@ namespace Gravyframe.Service.Tests.News
         public void WhenNewsRequestCategoryIdAndNoNewsIdNoErrors()
         {
             // Act
-            var response = Sut.Get(Request);
+            var response = this.Sut.Get(this.Request);
 
             // Assert
             Assert.IsFalse(response.Errors.Any());
@@ -27,7 +30,7 @@ namespace Gravyframe.Service.Tests.News
             var newsArray = newsList.ToArray();
 
             // Act
-            var response = Sut.Get(Request);
+            var response = this.Sut.Get(this.Request);
 
             // Assert
             Assert.IsTrue(response.NewsList.Any());
@@ -43,7 +46,7 @@ namespace Gravyframe.Service.Tests.News
         [SetUp]
         public void GivenNewsRequestWithNewsCategoryIdSetUp()
         {
-            Request = new NewsRequest { CategoryId = "SomeCategoryID" };
+            this.Request = new NewsRequest { CategoryId = "SomeCategoryID" };
         }
 
         [Test]
@@ -56,9 +59,9 @@ namespace Gravyframe.Service.Tests.News
                         new Models.News {Title = "Test Body1", Body = "Test Body1"}
                     };
 
-            Dao.GetNewsByCategoryId(Request.CategoryId).Returns(newsList);
+            this.Dao.GetNewsByCategoryId(this.Request.CategoryId).Returns(newsList);
 
-            WhenNewsRequestCategoryIdNewsResponseHasListOfNews(newsList);
+            this.WhenNewsRequestCategoryIdNewsResponseHasListOfNews(newsList);
         }
     }
     #endregion
@@ -70,7 +73,7 @@ namespace Gravyframe.Service.Tests.News
         [SetUp]
         public void GivenNewsRequestWithNewsCategoryIdSetUp()
         {
-            Request = new NewsRequest { CategoryId = "SomeCategoryID", SiteId = "TestSite"};
+            this.Request = new NewsRequest { CategoryId = "SomeCategoryID", SiteId = "TestSite"};
         }
 
         [Test]
@@ -83,9 +86,9 @@ namespace Gravyframe.Service.Tests.News
                         new Models.News {Title = "Test Body1", Body = "Test Body1"}
                     };
 
-            Dao.GetNewsByCategoryId(Request.SiteId, Request.CategoryId).Returns(newsList);
+            this.Dao.GetNewsByCategoryId(this.Request.SiteId, this.Request.CategoryId).Returns(newsList);
 
-            WhenNewsRequestCategoryIdNewsResponseHasListOfNews(newsList);
+            this.WhenNewsRequestCategoryIdNewsResponseHasListOfNews(newsList);
         }
     }
     #endregion

@@ -1,34 +1,35 @@
-﻿using System.Linq;
-using System.Reflection;
-using Gravyframe.Kernel.Umbraco.Tests.Examine.Helpers.MockContentService;
-using NUnit.Framework;
-using Gravyframe.Kernel.Umbraco.Examine;
-using Gravyframe.Kernel.Umbraco.Facades;
-using NSubstitute;
-using Gravyframe.Kernel.Umbraco.Tests.Examine.Helpers.MockIndex;
-using UmbracoExamine;
-using System.Collections.Generic;
-using Lucene.Net.Documents;
-using Lucene.Net.Index;
-using UmbracoExamine.DataServices;
-
-namespace Gravyframe.Kernel.Umbraco.Tests.Examine
+﻿namespace Gravyframe.Kernel.Umbraco.Tests.Examine.Indexer
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Reflection;
+
+    using Gravyframe.Kernel.Umbraco.Examine;
+    using Gravyframe.Kernel.Umbraco.Facades;
+    using Gravyframe.Kernel.Umbraco.Tests.Examine.Helpers.MockContentService;
+    using Gravyframe.Kernel.Umbraco.Tests.Examine.Helpers.MockIndex;
+
+    using Lucene.Net.Documents;
+    using Lucene.Net.Index;
+
+    using NSubstitute;
+
+    using NUnit.Framework;
+
+    using UmbracoExamine;
+    using UmbracoExamine.DataServices;
+
     [TestFixture]    
-    public class IndexerTests
+    public class Tests
     {
         protected INodeFactoryFacade NodeFactoryFacade;
-
         protected IDataService DataService;
-
         protected MockedContentService MockedContentService;
-
         protected Indexer Sut;
-
         protected MockedIndex MockedIndex;
 
         [SetUp]
-        public void SetUp()
+        public void IndexerTestsSetUp()
         {
             var fields = typeof(BaseUmbracoIndexer).GetFields(BindingFlags.NonPublic | BindingFlags.Static);
             var disableInitializationCheckField = fields.SingleOrDefault(x => x.Name == "DisableInitializationCheck");
@@ -59,31 +60,10 @@ namespace Gravyframe.Kernel.Umbraco.Tests.Examine
                 this.NodeFactoryFacade);
         }
 
-        [Test]
-        public void DoesIncludeSiteFeild()
+        
+        protected Dictionary<string, List<string>> GetFeildsFromDocumnet()
         {
-           // Assign
-            var mockedParent = new MockNode().AddNodeTypeAlias("Site").AddUrlName("SiteName").Mock(10);
-            var mockedNode = new MockNode().AddNodeTypeAlias("test").AddParent(mockedParent).Mock(90);
-
-            this.NodeFactoryFacade.GetNode(mockedNode.Id).Returns(mockedNode);
-
-            this.MockedContentService.AddNode(mockedNode);
-            this.DataService.ContentService.Returns(this.MockedContentService);
-
-            // Act
-            this.Sut.IndexAll("test");
-
-            // Assert
-            var feilds = this.GetFeildsFromDocumnet();
-
-            Assert.Contains("site", feilds.Keys);
-            Assert.AreEqual("SiteName", feilds["site"]);
-        }
-
-        private Dictionary<string, string> GetFeildsFromDocumnet()
-        {
-            var feilds = new Dictionary<string, string>();
+            var feilds = new Dictionary<string, List<string>>();
             var reader = IndexReader.Open(this.MockedIndex.LuceneDir, true);
 
             for (var i = 0; i < reader.MaxDoc(); i++)
@@ -91,10 +71,19 @@ namespace Gravyframe.Kernel.Umbraco.Tests.Examine
                 var doc = reader.Document(i);
                 foreach (var field in doc.GetFields().Cast<Field>())
                 {
-                    feilds.Add(field.Name(), doc.Get(field.Name()));
+                    var feildName = field.Name();
+                    if (!feilds.ContainsKey(feildName))
+                    {
+                        feilds.Add(feildName, new List<string> { doc.Get(feildName) });
+                    }
+                    else
+                    {
+                        feilds[feildName].Add(doc.Get(feildName));
+                    }
                 }
             }
-            return feilds;
+            return
+                feilds;
         }
     }
 }
