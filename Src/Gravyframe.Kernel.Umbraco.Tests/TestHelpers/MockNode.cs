@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
-using NSubstitute;
-using umbraco.interfaces;
-
-namespace Gravyframe.Kernel.Umbraco.Tests
+﻿namespace Gravyframe.Kernel.Umbraco.Tests.TestHelpers
 {
+    using System.Collections.Generic;
+
+    using NSubstitute;
+
+    using umbraco.interfaces;
+
     public class MockNode
     {
         private readonly IDictionary<string, object> properties;
@@ -20,25 +22,25 @@ namespace Gravyframe.Kernel.Umbraco.Tests
 
         public MockNode AddNodeTypeAlias(string nodeTypeAlias)
         {
-            NodeTypeAlias = nodeTypeAlias;
+            this.NodeTypeAlias = nodeTypeAlias;
             return this;
         }
 
         public MockNode AddUrlName(string urlName)
         {
-            UrlName = urlName;
+            this.UrlName = urlName;
             return this;
         }
 
         public MockNode AddProperty(string alias, string value)
         {
-            properties.Add(alias, value);
+            this.properties.Add(alias, value);
             return this;
         }
 
         public MockNode AddParent(INode parentNode)
         {
-            parent = parentNode;
+            this.parent = parentNode;
             return this;
         }
 
@@ -46,7 +48,7 @@ namespace Gravyframe.Kernel.Umbraco.Tests
         {
             var node = Substitute.For<INode>();
             node.Id.ReturnsForAnyArgs(nodeId);
-            foreach (var pair in properties)
+            foreach (var pair in this.properties)
             {
                 var property = Substitute.For<IProperty>();
                 property.Alias.Returns(pair.Key);
@@ -59,14 +61,14 @@ namespace Gravyframe.Kernel.Umbraco.Tests
                 node.NodeTypeAlias.Returns(this.NodeTypeAlias);
             }
 
-            if (!string.IsNullOrEmpty(UrlName))
+            if (!string.IsNullOrEmpty(this.UrlName))
             {
-                node.UrlName.Returns(UrlName);
+                node.UrlName.Returns(this.UrlName);
             }
 
-            if (parent != null)
+            if (this.parent != null)
             {
-                node.Parent.Returns(parent);
+                node.Parent.Returns(this.parent);
             }
 
             

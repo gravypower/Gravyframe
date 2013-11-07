@@ -1,11 +1,13 @@
-﻿using System.Collections.Generic;
-using Examine;
-using Examine.LuceneEngine;
-using Lucene.Net.Analysis;
-using Lucene.Net.Store;
-
-namespace Gravyframe.Kernel.Umbraco.Tests.Examine.Helpers.MockIndex
+﻿namespace Gravyframe.Kernel.Umbraco.Tests.TestHelpers.Examine.MockIndex
 {
+    using System.Collections.Generic;
+
+    using global::Examine;
+    using global::Examine.LuceneEngine;
+
+    using Lucene.Net.Analysis;
+    using Lucene.Net.Store;
+
     public class MockedIndex
     {
         public ISearcher Searcher { get; set; }

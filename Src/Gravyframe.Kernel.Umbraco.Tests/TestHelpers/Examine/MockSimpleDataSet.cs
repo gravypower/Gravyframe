@@ -1,4 +1,4 @@
-﻿namespace Gravyframe.Kernel.Umbraco.Tests.Examine.Helpers
+﻿namespace Gravyframe.Kernel.Umbraco.Tests.TestHelpers.Examine
 {
     using System.Collections;
     using System.Collections.Generic;

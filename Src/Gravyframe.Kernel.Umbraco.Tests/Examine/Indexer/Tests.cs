@@ -6,8 +6,8 @@
 
     using Gravyframe.Kernel.Umbraco.Examine;
     using Gravyframe.Kernel.Umbraco.Facades;
-    using Gravyframe.Kernel.Umbraco.Tests.Examine.Helpers.MockContentService;
-    using Gravyframe.Kernel.Umbraco.Tests.Examine.Helpers.MockIndex;
+    using Gravyframe.Kernel.Umbraco.Tests.TestHelpers.Examine.MockContentService;
+    using Gravyframe.Kernel.Umbraco.Tests.TestHelpers.Examine.MockIndex;
 
     using Lucene.Net.Documents;
     using Lucene.Net.Index;

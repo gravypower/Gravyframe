@@ -2,7 +2,7 @@
 
 namespace Gravyframe.Data.Tests.NewsDao
 {
-    public abstract partial class NewsDaoTests<TNews> where TNews : Models.News
+    public abstract partial class Tests<TNews> where TNews : Models.News
     {
         [Test]
         public virtual void GetNewsByCategoryListIsDefaultSize()

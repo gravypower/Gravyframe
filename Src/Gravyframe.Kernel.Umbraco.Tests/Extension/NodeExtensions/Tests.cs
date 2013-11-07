@@ -1,10 +1,12 @@
-﻿using NUnit.Framework;
-using Gravyframe.Kernel.Umbraco.Extension;
-
-namespace Gravyframe.Kernel.Umbraco.Tests.Extension
+﻿namespace Gravyframe.Kernel.Umbraco.Tests.Extension.NodeExtensions
 {
+    using Gravyframe.Kernel.Umbraco.Extension;
+    using Gravyframe.Kernel.Umbraco.Tests.TestHelpers;
+
+    using NUnit.Framework;
+
     [TestFixture]
-    public class NodeExtensionsTests
+    public class Tests
     {
         [Test]
         public void CanFindParent()

@@ -50,8 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InMemoryContentDaoTests.cs" />
-    <Compile Include="InMemoryNewsDaoTests.cs" />
+    <Compile Include="InMemoryContentDao\Tests.cs" />
+    <Compile Include="InMemoryNewsDao\Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

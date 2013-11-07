@@ -1,11 +1,14 @@
-﻿using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using System.Xml.Linq;
-using UmbracoExamine.DataServices;
-using umbraco.interfaces;
-namespace Gravyframe.Kernel.Umbraco.Tests.Examine.Helpers.MockContentService
+﻿namespace Gravyframe.Kernel.Umbraco.Tests.TestHelpers.Examine.MockContentService
 {
+    using System.Collections.Generic;
+    using System.Text.RegularExpressions;
+    using System.Xml.Linq;
+
     using NUnit.Framework;
+
+    using umbraco.interfaces;
+
+    using UmbracoExamine.DataServices;
 
     public class MockedContentService : IContentService
     {
@@ -13,14 +16,14 @@ namespace Gravyframe.Kernel.Umbraco.Tests.Examine.Helpers.MockContentService
 
         public MockedContentService()
         {
-            nodes = new List<INode>();
+            this.nodes = new List<INode>();
         }
 
         public MockedContentService AddNode(INode node)
         {
             Assert.IsNotNullOrEmpty(node.NodeTypeAlias, "Node Type Alias can not be null or empty when mocking IContentService");
 
-            nodes.Add(node);
+            this.nodes.Add(node);
 
             return this;
         }
@@ -37,7 +40,7 @@ namespace Gravyframe.Kernel.Umbraco.Tests.Examine.Helpers.MockContentService
 
         public XDocument GetLatestContentByXPath(string xpath)
         {
-            return  GetPublishedContentByXPath(xpath);
+            return  this.GetPublishedContentByXPath(xpath);
         }
 
         public XDocument GetPublishedContentByXPath(string xpath)

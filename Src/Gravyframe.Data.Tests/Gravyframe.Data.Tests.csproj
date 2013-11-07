@@ -50,9 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContentDaoTests.cs" />
+    <Compile Include="ContentDao\Tests.cs" />
     <Compile Include="NewsDao\WithoutSiteId.cs" />
-    <Compile Include="NewsDao\NewsDaoTests.cs" />
+    <Compile Include="NewsDao\Tests.cs" />
     <Compile Include="NewsDao\WithSiteId.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

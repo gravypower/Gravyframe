@@ -1,4 +1,4 @@
-﻿namespace Gravyframe.Data.Tests
+﻿namespace Gravyframe.Data.Tests.ContentDao
 {
     using System.Linq;
 
@@ -6,7 +6,7 @@
 
     using NUnit.Framework;
 
-    public abstract class ContentDaoTests<TContent> where TContent : Models.Content
+    public abstract class Tests<TContent> where TContent : Models.Content
     {
         public ContentDao<TContent> Sut;
 
@@ -14,10 +14,10 @@
         public void GetContentByContentId()
         {
             // Assign
-            var contentId = GetExampleId();
+            var contentId = this.GetExampleId();
 
             // act
-            var result = Sut.GetContent(contentId);
+            var result = this.Sut.GetContent(contentId);
 
             // Assert
             Assert.IsNotNull(result);
@@ -27,10 +27,10 @@
         public void GetContentByCategoryId()
         {
             // Assign
-            var categoryId = GetExampleCategoryId();
+            var categoryId = this.GetExampleCategoryId();
 
             // act
-            var result = Sut.GetContentByCategory(categoryId);
+            var result = this.Sut.GetContentByCategory(categoryId);
 
             // Assert
             Assert.IsTrue(result.Any());

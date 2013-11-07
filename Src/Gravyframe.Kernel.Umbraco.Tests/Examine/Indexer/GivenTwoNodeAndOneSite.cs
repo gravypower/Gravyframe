@@ -1,5 +1,7 @@
 ﻿namespace Gravyframe.Kernel.Umbraco.Tests.Examine.Indexer
 {
+    using Gravyframe.Kernel.Umbraco.Tests.TestHelpers;
+
     using NSubstitute;
 
     using NUnit.Framework;

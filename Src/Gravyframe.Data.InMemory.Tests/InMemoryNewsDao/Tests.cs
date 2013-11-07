@@ -1,21 +1,23 @@
-﻿using Gravyframe.Configuration;
-using Gravyframe.Data.InMemory.News;
-using Gravyframe.Data.Tests.NewsDao;
-using NSubstitute;
-using NUnit.Framework;
-
-namespace Gravyframe.Data.InMemory.Tests
+﻿namespace Gravyframe.Data.InMemory.Tests.InMemoryNewsDao
 {
+    using Gravyframe.Configuration;
+    using Gravyframe.Data.InMemory.News;
+    using Gravyframe.Data.Tests.NewsDao;
+
+    using NSubstitute;
+
+    using NUnit.Framework;
+
     [TestFixture]
-    public class InMemoryNewsDaoTests : NewsDaoTests<Models.News>
+    public class Tests : Tests<Models.News>
     {
         private INewsConfiguration _newsConfiguration;
 
         [SetUp]
         public void Setp()
         {
-            _newsConfiguration = Substitute.For<NewsConfiguration>();
-            Sut = new InMemoryNewsDao(_newsConfiguration);
+            this._newsConfiguration = Substitute.For<NewsConfiguration>();
+            this.Sut = new InMemoryNewsDao(this._newsConfiguration);
         }
 
         protected override string GetExampleId()

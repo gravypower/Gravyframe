@@ -1,16 +1,19 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Examine;
-using Examine.LuceneEngine;
-using Examine.LuceneEngine.Providers;
-using Lucene.Net.Analysis.Standard;
-using Lucene.Net.Store;
-using NSubstitute;
-using UmbracoExamine;
-
-namespace Gravyframe.Kernel.Umbraco.Tests.Examine.Helpers.MockIndex
+﻿namespace Gravyframe.Kernel.Umbraco.Tests.TestHelpers.Examine.MockIndex
 {
-    
+    using System.Collections.Generic;
+    using System.Linq;
+
+    using global::Examine;
+    using global::Examine.LuceneEngine;
+    using global::Examine.LuceneEngine.Providers;
+
+    using Lucene.Net.Analysis.Standard;
+    using Lucene.Net.Store;
+
+    using NSubstitute;
+
+    using UmbracoExamine;
+
     public class MockIndexFactory
     {
         public static MockedIndex GetSimpleDataServiceMock(

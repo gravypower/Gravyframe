@@ -6,7 +6,7 @@ using NUnit.Framework;
 namespace Gravyframe.Data.Tests.NewsDao
 {
     [TestFixture]
-    public abstract partial class NewsDaoTests<TNews> where TNews : Models.News
+    public abstract partial class Tests<TNews> where TNews : Models.News
     {
         public NewsDao<TNews> Sut;
 

@@ -73,18 +73,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Examine\Helpers\MockContentService\MockContentServiceFactory.cs" />
-    <Compile Include="Examine\Helpers\MockContentService\MockedContentService.cs" />
+    <Compile Include="TestHelpers\Examine\MockContentService\MockedContentService.cs" />
     <Compile Include="Examine\Indexer\Tests.cs" />
-    <Compile Include="Examine\Helpers\MockIndex\MockedIndex.cs" />
-    <Compile Include="Examine\Helpers\MockIndex\MockIndexFactory.cs" />
-    <Compile Include="Examine\Helpers\MockIndex\MockIndexFieldList.cs" />
-    <Compile Include="Examine\Helpers\MockSimpleDataSet.cs" />
+    <Compile Include="TestHelpers\Examine\MockIndex\MockedIndex.cs" />
+    <Compile Include="TestHelpers\Examine\MockIndex\MockIndexFactory.cs" />
+    <Compile Include="TestHelpers\Examine\MockIndex\MockIndexFieldList.cs" />
+    <Compile Include="TestHelpers\Examine\MockSimpleDataSet.cs" />
     <Compile Include="Examine\Indexer\GivenOneNodeAndOneSite.cs" />
     <Compile Include="Examine\Indexer\GivenTwoNodeAndOneSite.cs" />
     <Compile Include="Examine\Indexer\GivenTwoNodeAndTwoSite.cs" />
-    <Compile Include="Extension\NodeExtensionsTests.cs" />
-    <Compile Include="MockNode.cs" />
+    <Compile Include="Extension\NodeExtensions\Tests.cs" />
+    <Compile Include="TestHelpers\MockNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,17 +1,20 @@
-﻿using Gravyframe.Configuration.Umbraco;
-using Gravyframe.Kernel.Umbraco.Tests;
-using NSubstitute;
-using NUnit.Framework;
-
-namespace Gravyframe.Data.Umbraco.Tests.UmbracoNewsDao
+﻿namespace Gravyframe.Data.Umbraco.Tests.UmbracoNewsDao
 {
-    public partial class UmbracoNewsDaoTests
+    using Gravyframe.Configuration.Umbraco;
+    using Gravyframe.Kernel.Umbraco.Tests;
+    using Gravyframe.Kernel.Umbraco.Tests.TestHelpers;
+
+    using NSubstitute;
+
+    using NUnit.Framework;
+
+    public partial class Tests
     {
         [Test]
         public override void GetNewByCategoryWithCustomListSize()
         {
             // Assign
-            MockNewsItemsInIndex(10);
+            this.MockNewsItemsInIndex(10);
 
             base.GetNewByCategoryWithCustomListSize();
         }
@@ -20,7 +23,7 @@ namespace Gravyframe.Data.Umbraco.Tests.UmbracoNewsDao
         public override void GetNewsByCategoryIdCustomListSizeFirstPage()
         {
             // Assign
-            MockNewsItemsInIndex(10);
+            this.MockNewsItemsInIndex(10);
 
             base.GetNewsByCategoryIdCustomListSizeFirstPage();
         }
@@ -29,7 +32,7 @@ namespace Gravyframe.Data.Umbraco.Tests.UmbracoNewsDao
         public override void GetNewsByCategoryIdCustomListSizeForthPage()
         {
             // Assign
-            MockNewsItemsInIndex(20);
+            this.MockNewsItemsInIndex(20);
 
             base.GetNewsByCategoryIdCustomListSizeForthPage();
         }
@@ -38,7 +41,7 @@ namespace Gravyframe.Data.Umbraco.Tests.UmbracoNewsDao
         public override void GetNewsByCategoryIdCustomListSizeSecondPage()
         {
             // Assign
-            MockNewsItemsInIndex(20);
+            this.MockNewsItemsInIndex(20);
 
             base.GetNewsByCategoryIdCustomListSizeSecondPage();
         }
@@ -47,7 +50,7 @@ namespace Gravyframe.Data.Umbraco.Tests.UmbracoNewsDao
         public override void GetNewsByCategoryIdCustomListSizeThirdPage()
         {
             // Assign
-            MockNewsItemsInIndex(20);
+            this.MockNewsItemsInIndex(20);
 
             base.GetNewsByCategoryIdCustomListSizeThirdPage();
         }
@@ -63,12 +66,12 @@ namespace Gravyframe.Data.Umbraco.Tests.UmbracoNewsDao
                     .Mock(2);
 
 
-            _nodeFactoryFacade.GetNode(NewsConfigurationNodeId).Returns(mockNode);
+            this._nodeFactoryFacade.GetNode(NewsConfigurationNodeId).Returns(mockNode);
 
-            MockNewsItemsInIndex(20);
+            this.MockNewsItemsInIndex(20);
 
             base.GetNewsByCategoryListIsDefaultSize();
-            Assert.AreEqual(defaultListSize, Sut.NewsConfiguration.DefaultListSize);
+            Assert.AreEqual(defaultListSize, this.Sut.NewsConfiguration.DefaultListSize);
         }
     }
 }

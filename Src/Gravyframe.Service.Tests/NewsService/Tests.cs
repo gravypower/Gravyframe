@@ -1,4 +1,4 @@
-﻿namespace Gravyframe.Service.Tests.News.NewsService
+﻿namespace Gravyframe.Service.Tests.News.Service
 {
     using System.Collections.Generic;
     using System.Linq;

@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
-using Examine;
-using NSubstitute;
-
-namespace Gravyframe.Kernel.Umbraco.Tests.Examine.Helpers.MockIndex
+﻿namespace Gravyframe.Kernel.Umbraco.Tests.TestHelpers.Examine.MockIndex
 {
+    using System.Collections.Generic;
+
+    using global::Examine;
+
+    using NSubstitute;
+
     public class MockIndexFieldList : IEnumerable<IIndexField>
     {
         private List<IIndexField> IndexFieldList { get; set; }
