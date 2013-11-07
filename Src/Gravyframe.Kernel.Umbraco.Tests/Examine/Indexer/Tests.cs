@@ -29,7 +29,7 @@
         protected MockedIndex MockedIndex;
 
         [SetUp]
-        public void IndexerTestsSetUp()
+        public void TestsSetUp()
         {
             var fields = typeof(BaseUmbracoIndexer).GetFields(BindingFlags.NonPublic | BindingFlags.Static);
             var disableInitializationCheckField = fields.SingleOrDefault(x => x.Name == "DisableInitializationCheck");

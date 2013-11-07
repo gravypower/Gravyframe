@@ -4,10 +4,10 @@
     using NUnit.Framework;
 
     [TestFixture]
-    public class WhenOneNodeAndOneSite : Tests
+    public class GivenOneNodeAndOneSite : Tests
     {
         [SetUp]
-        public void WhenOneNodeAndOneSiteSetUp()
+        public void SetUp()
         {
             var mockedParent = new MockNode().AddNodeTypeAlias("Site").AddUrlName("SiteName").Mock(10);
             var mockedNode = new MockNode().AddNodeTypeAlias("test").AddParent(mockedParent).Mock(90);
@@ -19,7 +19,7 @@
         }
 
         [Test]
-        public void DoesIncludeSiteFeild()
+        public void WhenIndexedDoesIncludeSiteFeild()
         {
             // Act
             this.Sut.IndexAll("test");

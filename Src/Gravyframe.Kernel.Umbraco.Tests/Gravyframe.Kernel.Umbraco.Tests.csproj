@@ -80,9 +80,9 @@
     <Compile Include="Examine\Helpers\MockIndex\MockIndexFactory.cs" />
     <Compile Include="Examine\Helpers\MockIndex\MockIndexFieldList.cs" />
     <Compile Include="Examine\Helpers\MockSimpleDataSet.cs" />
-    <Compile Include="Examine\Indexer\WhenOneNodeAndOneSite.cs" />
-    <Compile Include="Examine\Indexer\WhenTwoNodeAndOneSite.cs" />
-    <Compile Include="Examine\Indexer\WhenTwoNodeAndTwoSite.cs" />
+    <Compile Include="Examine\Indexer\GivenOneNodeAndOneSite.cs" />
+    <Compile Include="Examine\Indexer\GivenTwoNodeAndOneSite.cs" />
+    <Compile Include="Examine\Indexer\GivenTwoNodeAndTwoSite.cs" />
     <Compile Include="Extension\NodeExtensionsTests.cs" />
     <Compile Include="MockNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

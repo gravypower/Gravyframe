@@ -1,20 +1,14 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="WhenTwoNodeAndOneSite.cs" company="">
-// TODO: Update copyright text.
-// </copyright>
-// -----------------------------------------------------------------------
-
-namespace Gravyframe.Kernel.Umbraco.Tests.Examine.Indexer
+﻿namespace Gravyframe.Kernel.Umbraco.Tests.Examine.Indexer
 {
     using NSubstitute;
 
     using NUnit.Framework;
 
     [TestFixture]
-    public class WhenTwoNodeAndOneSite : Tests
+    public class GivenTwoNodeAndOneSite : Tests
     {
         [SetUp]
-        public void WhenOneNodeAndOneSiteSetUp()
+        public void SetUp()
         {
             var mockedParent = new MockNode().AddNodeTypeAlias("Site").AddUrlName("SiteName").Mock(10);
             var mockedNodeOne = new MockNode().AddNodeTypeAlias("test").AddParent(mockedParent).Mock(90);
@@ -30,7 +24,7 @@ namespace Gravyframe.Kernel.Umbraco.Tests.Examine.Indexer
         }
 
         [Test]
-        public void DoesIncludeSiteFeild()
+        public void WhenIndexedDoesIncludeSiteFeild()
         {
             // Act
             this.Sut.IndexAll("test");
