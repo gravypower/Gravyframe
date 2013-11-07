@@ -2,19 +2,27 @@
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using UmbracoExamine.DataServices;
-
+using umbraco.interfaces;
 namespace Gravyframe.Kernel.Umbraco.Tests.Examine.Helpers.MockContentService
 {
+    using NUnit.Framework;
+
     public class MockedContentService : IContentService
     {
-        private readonly XDocument _xDoc;
+        private readonly List<INode> nodes;
 
         public MockedContentService()
         {
-            _xDoc = new XDocument();
-            _xDoc.Add(
-                new XElement("test", new XAttribute("id", 90))
-                );
+            nodes = new List<INode>();
+        }
+
+        public MockedContentService AddNode(INode node)
+        {
+            Assert.IsNotNullOrEmpty(node.NodeTypeAlias, "Node Type Alias can not be null or empty when mocking IContentService");
+
+            nodes.Add(node);
+
+            return this;
         }
 
         public IEnumerable<string> GetAllSystemPropertyNames()
@@ -29,21 +37,16 @@ namespace Gravyframe.Kernel.Umbraco.Tests.Examine.Helpers.MockContentService
 
         public XDocument GetLatestContentByXPath(string xpath)
         {
-            var xdoc = XDocument.Parse("<content></content>");
-            if (xdoc.Root != null)
-            {
-                xdoc.Root.Add(this._xDoc.FirstNode);
-            }
-
-            return xdoc;
+            return  GetPublishedContentByXPath(xpath);
         }
 
         public XDocument GetPublishedContentByXPath(string xpath)
         {
+
             var xdoc = XDocument.Parse("<content></content>");
-            if (xdoc.Root != null)
+            foreach (var node in this.nodes)
             {
-                xdoc.Root.Add(this._xDoc.FirstNode);
+                xdoc.Root.Add(new XElement(node.NodeTypeAlias, new XAttribute("id", node.Id)));
             }
 
             return xdoc;

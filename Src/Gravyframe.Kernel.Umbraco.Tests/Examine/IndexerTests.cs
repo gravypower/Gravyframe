@@ -7,20 +7,26 @@ using Gravyframe.Kernel.Umbraco.Facades;
 using NSubstitute;
 using Gravyframe.Kernel.Umbraco.Tests.Examine.Helpers.MockIndex;
 using UmbracoExamine;
+using System.Collections.Generic;
+using Lucene.Net.Documents;
+using Lucene.Net.Index;
+using UmbracoExamine.DataServices;
 
 namespace Gravyframe.Kernel.Umbraco.Tests.Examine
 {
-    using System.Collections;
-    using System.Collections.Generic;
-
-    using Lucene.Net.Documents;
-    using Lucene.Net.Index;
-
-    using UmbracoExamine.DataServices;
-
     [TestFixture]    
     public class IndexerTests
     {
+        protected INodeFactoryFacade NodeFactoryFacade;
+
+        protected IDataService DataService;
+
+        protected MockedContentService MockedContentService;
+
+        protected Indexer Sut;
+
+        protected MockedIndex MockedIndex;
+
         [SetUp]
         public void SetUp()
         {
@@ -32,54 +38,63 @@ namespace Gravyframe.Kernel.Umbraco.Tests.Examine
             }
 
             disableInitializationCheckField.SetValue(null, true);
+
+            this.MockedIndex = MockIndexFactory.GetSimpleDataServiceMock(
+                new MockIndexFieldList().AddIndexField("id", "Number", true),
+                new MockIndexFieldList(),
+                new[] { "test" },
+                new string[] { },
+                new string[] { });
+
+            this.NodeFactoryFacade = Substitute.For<INodeFactoryFacade>();
+            this.DataService = Substitute.For<IDataService>();
+            this.MockedContentService = new MockedContentService();
+
+            this.Sut = new Indexer(
+                this.MockedIndex.IndexCriteria,
+                this.MockedIndex.LuceneDir,
+                this.DataService,
+                this.MockedIndex.Analyzer,
+                false,
+                this.NodeFactoryFacade);
         }
 
         [Test]
-        public void sometest()
+        public void DoesIncludeSiteFeild()
         {
-            var mockedIndex = MockIndexFactory.GetSimpleDataServiceMock(
-                new MockIndexFieldList().AddIndexField("id", "Number", true),
-                new MockIndexFieldList(),
-                new[] {"test"},
-                new string[] {},
-                new string[] {});
-
-
-            var dataService = Substitute.For<IDataService>();
-            dataService.ContentService.Returns(new MockedContentService());
-
-            var nodeFactoryFacade = Substitute.For<INodeFactoryFacade>();
-
+           // Assign
             var mockedParent = new MockNode().AddNodeTypeAlias("Site").AddUrlName("SiteName").Mock(10);
-
             var mockedNode = new MockNode().AddNodeTypeAlias("test").AddParent(mockedParent).Mock(90);
 
-            nodeFactoryFacade.GetNode(90).Returns(mockedNode);
+            this.NodeFactoryFacade.GetNode(mockedNode.Id).Returns(mockedNode);
 
-            var sut = new Indexer(
-                mockedIndex.IndexCriteria,
-                mockedIndex.LuceneDir,
-                dataService,
-                mockedIndex.Analyzer,
-                false,
-                nodeFactoryFacade);
+            this.MockedContentService.AddNode(mockedNode);
+            this.DataService.ContentService.Returns(this.MockedContentService);
 
-            sut.IndexAll("test");
+            // Act
+            this.Sut.IndexAll("test");
 
-
-            var feilds = new Dictionary<string, string>();
-            var reader = IndexReader.Open(mockedIndex.LuceneDir, true);
-            for (var i = 0; i < reader.MaxDoc(); i++)
-            {
-                if (reader.IsDeleted(i)) continue;
-
-                var doc = reader.Document(i);
-                foreach (var field in doc.GetFields().Cast<Field>())
-                    feilds.Add(field.Name(), doc.Get(field.Name()));
-            }
+            // Assert
+            var feilds = this.GetFeildsFromDocumnet();
 
             Assert.Contains("site", feilds.Keys);
             Assert.AreEqual("SiteName", feilds["site"]);
+        }
+
+        private Dictionary<string, string> GetFeildsFromDocumnet()
+        {
+            var feilds = new Dictionary<string, string>();
+            var reader = IndexReader.Open(this.MockedIndex.LuceneDir, true);
+
+            for (var i = 0; i < reader.MaxDoc(); i++)
+            {
+                var doc = reader.Document(i);
+                foreach (var field in doc.GetFields().Cast<Field>())
+                {
+                    feilds.Add(field.Name(), doc.Get(field.Name()));
+                }
+            }
+            return feilds;
         }
     }
 }

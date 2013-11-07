@@ -42,7 +42,7 @@ namespace Gravyframe.Kernel.Umbraco.Tests
             return this;
         }
 
-        public INode Mock(int nodeId)
+        public INode Mock(int nodeId = 1)
         {
             var node = Substitute.For<INode>();
             node.Id.ReturnsForAnyArgs(nodeId);
