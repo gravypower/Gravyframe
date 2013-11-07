@@ -18,13 +18,17 @@ namespace Gravyframe.Kernel.Umbraco.Tests.Examine
     public class IndexerTests
     {
         protected INodeFactoryFacade NodeFactoryFacade;
+
         protected IDataService DataService;
+
         protected MockedContentService MockedContentService;
+
         protected Indexer Sut;
+
         protected MockedIndex MockedIndex;
 
         [SetUp]
-        public void IndexerTestsSetUp()
+        public void SetUp()
         {
             var fields = typeof(BaseUmbracoIndexer).GetFields(BindingFlags.NonPublic | BindingFlags.Static);
             var disableInitializationCheckField = fields.SingleOrDefault(x => x.Name == "DisableInitializationCheck");
@@ -55,106 +59,31 @@ namespace Gravyframe.Kernel.Umbraco.Tests.Examine
                 this.NodeFactoryFacade);
         }
 
-        [TestFixture]
-        public class WhenOneNodeAndOneSite : IndexerTests
+        [Test]
+        public void DoesIncludeSiteFeild()
         {
-            [SetUp]
-            public void WhenOneNodeAndOneSiteSetUp()
-            {
-                var mockedParent = new MockNode().AddNodeTypeAlias("Site").AddUrlName("SiteName").Mock(10);
-                var mockedNode = new MockNode().AddNodeTypeAlias("test").AddParent(mockedParent).Mock(90);
+           // Assign
+            var mockedParent = new MockNode().AddNodeTypeAlias("Site").AddUrlName("SiteName").Mock(10);
+            var mockedNode = new MockNode().AddNodeTypeAlias("test").AddParent(mockedParent).Mock(90);
 
-                this.NodeFactoryFacade.GetNode(mockedNode.Id).Returns(mockedNode);
+            this.NodeFactoryFacade.GetNode(mockedNode.Id).Returns(mockedNode);
 
-                this.MockedContentService.AddNode(mockedNode);
-                this.DataService.ContentService.Returns(this.MockedContentService);
-            }
+            this.MockedContentService.AddNode(mockedNode);
+            this.DataService.ContentService.Returns(this.MockedContentService);
 
-            [Test]
-            public void DoesIncludeSiteFeild()
-            {
-                // Act
-                this.Sut.IndexAll("test");
+            // Act
+            this.Sut.IndexAll("test");
 
-                // Assert
-                var feilds = this.GetFeildsFromDocumnet();
+            // Assert
+            var feilds = this.GetFeildsFromDocumnet();
 
-                Assert.Contains("site", feilds.Keys);
-                Assert.Contains("SiteName", feilds["site"]);
-            }
+            Assert.Contains("site", feilds.Keys);
+            Assert.AreEqual("SiteName", feilds["site"]);
         }
 
-        [TestFixture]
-        public class WhenTwoNodeAndOneSite : IndexerTests
+        private Dictionary<string, string> GetFeildsFromDocumnet()
         {
-            [SetUp]
-            public void WhenOneNodeAndOneSiteSetUp()
-            {
-                var mockedParent = new MockNode().AddNodeTypeAlias("Site").AddUrlName("SiteName").Mock(10);
-                var mockedNodeOne = new MockNode().AddNodeTypeAlias("test").AddParent(mockedParent).Mock(90);
-                var mockedNodeTwo = new MockNode().AddNodeTypeAlias("test").AddParent(mockedParent).Mock(91);
-
-                this.NodeFactoryFacade.GetNode(mockedNodeOne.Id).Returns(mockedNodeOne);
-                this.NodeFactoryFacade.GetNode(mockedNodeTwo.Id).Returns(mockedNodeTwo);
-
-                this.MockedContentService.AddNode(mockedNodeOne);
-                this.MockedContentService.AddNode(mockedNodeTwo);
-
-                this.DataService.ContentService.Returns(this.MockedContentService);
-            }
-
-            [Test]
-            public void DoesIncludeSiteFeild()
-            {
-                // Act
-                this.Sut.IndexAll("test");
-
-                // Assert
-                var feilds = this.GetFeildsFromDocumnet();
-
-                Assert.Contains("site", feilds.Keys);
-                Assert.Contains("SiteName", feilds["site"]);
-            }
-        }
-
-        [TestFixture]
-        public class WhenTwoNodeAndTwoSite : IndexerTests
-        {
-            [SetUp]
-            public void WhenOneNodeAndOneSiteSetUp()
-            {
-                var mockedParentOne = new MockNode().AddNodeTypeAlias("Site").AddUrlName("SiteNameOne").Mock(10);
-                var mockedParentTwo = new MockNode().AddNodeTypeAlias("Site").AddUrlName("SiteNameTwo").Mock(11);
-                var mockedNodeOne = new MockNode().AddNodeTypeAlias("test").AddParent(mockedParentOne).Mock(90);
-                var mockedNodeTwo = new MockNode().AddNodeTypeAlias("test").AddParent(mockedParentTwo).Mock(91);
-
-                this.NodeFactoryFacade.GetNode(mockedNodeOne.Id).Returns(mockedNodeOne);
-                this.NodeFactoryFacade.GetNode(mockedNodeTwo.Id).Returns(mockedNodeTwo);
-
-                this.MockedContentService.AddNode(mockedNodeOne);
-                this.MockedContentService.AddNode(mockedNodeTwo);
-
-                this.DataService.ContentService.Returns(this.MockedContentService);
-            }
-
-            [Test]
-            public void DoesIncludeSiteFeild()
-            {
-                // Act
-                this.Sut.IndexAll("test");
-
-                // Assert
-                var feilds = this.GetFeildsFromDocumnet();
-
-                Assert.Contains("site", feilds.Keys);
-                Assert.Contains("SiteNameOne", feilds["site"]);
-                Assert.Contains("SiteNameTwo", feilds["site"]);
-            }
-        }
-
-        protected Dictionary<string, List<string>> GetFeildsFromDocumnet()
-        {
-            var feilds = new Dictionary<string, List<string>>();
+            var feilds = new Dictionary<string, string>();
             var reader = IndexReader.Open(this.MockedIndex.LuceneDir, true);
 
             for (var i = 0; i < reader.MaxDoc(); i++)
@@ -162,19 +91,10 @@ namespace Gravyframe.Kernel.Umbraco.Tests.Examine
                 var doc = reader.Document(i);
                 foreach (var field in doc.GetFields().Cast<Field>())
                 {
-                    var feildName = field.Name();
-                    if (!feilds.ContainsKey(feildName))
-                    {
-                        feilds.Add(feildName, new List<string> { doc.Get(feildName) });
-                    }
-                    else
-                    {
-                        feilds[feildName].Add(doc.Get(feildName));
-                    }
+                    feilds.Add(field.Name(), doc.Get(field.Name()));
                 }
             }
-            return 
-                feilds;
+            return feilds;
         }
     }
 }
