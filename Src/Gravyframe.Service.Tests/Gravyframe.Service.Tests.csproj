@@ -54,10 +54,25 @@
     <Compile Include="ContentService\GivenContentRequestWithContentId.cs" />
     <Compile Include="ContentService\GivenContentRequestWithNoContentId.cs" />
     <Compile Include="ContentService\Tests.cs" />
-    <Compile Include="NewsService\GetNewsByCategoryIdGivenNewsRequestWith.cs" />
-    <Compile Include="NewsService\GetNewsByIdGivenNewsRequestWith.cs" />
-    <Compile Include="NewsService\GivenNewsRequestWithNoNewsId.cs" />
-    <Compile Include="NewsService\Tests.cs" />
+    <Compile Include="NewsService\AndSiteId_WithNewsId.cs">
+      <DependentUpon>WithCategoryId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewsService\GivenNewsRequest.cs">
+      <DependentUpon>TestFixture.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewsService\WithCategoryId.cs">
+      <DependentUpon>GivenNewsRequest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewsService\WithNewsId.cs">
+      <DependentUpon>GivenNewsRequest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewsService\AndSiteId.cs">
+      <DependentUpon>WithNewsId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewsService\WithNoNewsId.cs">
+      <DependentUpon>GivenNewsRequest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewsService\TestFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceTests.cs" />
   </ItemGroup>
