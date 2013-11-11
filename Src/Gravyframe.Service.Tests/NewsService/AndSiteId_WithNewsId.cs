@@ -28,7 +28,7 @@
 
             this.Dao.GetNewsByCategoryId(this.Request.SiteId, this.Request.CategoryId).Returns(newsList);
 
-            this.WhenNewsRequestCategoryIdNewsResponseHasListOfNews(newsList);
+            this.AssertNewsResponseHasListOfNews(newsList);
         }
     }
     #endregion

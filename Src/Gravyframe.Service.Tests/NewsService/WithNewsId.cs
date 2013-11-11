@@ -40,6 +40,7 @@
         public void NewsInResponseFailure()
         {
             this.AssignNewsInResponseFailure();
+
             // Act
             var response = this.Sut.Get(this.Request);
 

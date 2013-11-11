@@ -28,7 +28,7 @@
             Assert.IsFalse(response.Errors.Any());
         }
 
-        public void WhenNewsRequestCategoryIdNewsResponseHasListOfNews(IEnumerable<Models.News> newsList)
+        public void AssertNewsResponseHasListOfNews(IEnumerable<Models.News> newsList)
         {
             // Assign
             var newsArray = newsList.ToArray();
@@ -43,7 +43,7 @@
         }
 
         [Test]
-        public void WhenNewsRequestCategoryIdNewsResponseHasListOfNews()
+        public void AssertNewsResponseHasListOfNews()
         {
             // Assign
             var newsList = new List<Models.News>
@@ -54,7 +54,7 @@
 
             this.Dao.GetNewsByCategoryId(this.Request.CategoryId).Returns(newsList);
 
-            this.WhenNewsRequestCategoryIdNewsResponseHasListOfNews(newsList);
+            this.AssertNewsResponseHasListOfNews(newsList);
         }
     }
 }
