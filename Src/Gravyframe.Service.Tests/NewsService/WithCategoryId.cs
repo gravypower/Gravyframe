@@ -3,23 +3,21 @@
     using System.Collections.Generic;
     using System.Linq;
 
-    using Gravyframe.Service.News;
-
     using NSubstitute;
 
     using NUnit.Framework;
 
     [TestFixture]
-    public abstract class WithCategoryId : GivenNewsRequest
+    public class WithCategoryId : GivenNewsRequest
     {
         [SetUp]
-        public void WithCategoryIdSetUp()
+        public void WithCategoryId_SetUp()
         {
-            this.Request = new NewsRequest { CategoryId = "SomeCategoryID" };
+            this.Request.CategoryId = "SomeCategoryID";
         }
 
         [Test]
-        public void WhenNewsRequestCategoryIdAndNoNewsIdNoErrors()
+        public void NoNewsIdNoErrors()
         {
             // Act
             var response = this.Sut.Get(this.Request);
@@ -28,10 +26,11 @@
             Assert.IsFalse(response.Errors.Any());
         }
 
-        public void AssertNewsResponseHasListOfNews(IEnumerable<Models.News> newsList)
+        [Test]
+        public void NewsResponseHasListOfNews()
         {
             // Assign
-            var newsArray = newsList.ToArray();
+            var newsArray = this.AssignNewsResponseHasListOfNews().ToArray();
 
             // Act
             var response = this.Sut.Get(this.Request);
@@ -42,8 +41,7 @@
             Assert.IsTrue(response.NewsList.Any(news => news == newsArray[1]));
         }
 
-        [Test]
-        public void AssertNewsResponseHasListOfNews()
+        public virtual IEnumerable<Models.News> AssignNewsResponseHasListOfNews()
         {
             // Assign
             var newsList = new List<Models.News>
@@ -54,7 +52,7 @@
 
             this.Dao.GetNewsByCategoryId(this.Request.CategoryId).Returns(newsList);
 
-            this.AssertNewsResponseHasListOfNews(newsList);
+            return newsList;
         }
     }
 }

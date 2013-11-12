@@ -15,10 +15,10 @@ namespace Gravyframe.Service.Tests
         [SetUp]
         protected void SetUp()
         {
-            ServiceSetUp();
+            this.ServiceTestsSetUp();
         }
 
-        protected abstract void ServiceSetUp();
+        protected abstract void ServiceTestsSetUp();
 
         [Test]
         public void CanCreateTService()

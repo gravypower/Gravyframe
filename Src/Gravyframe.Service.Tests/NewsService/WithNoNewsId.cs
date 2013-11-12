@@ -3,7 +3,6 @@
     using System.Linq;
 
     using Gravyframe.Service.Messages;
-    using Gravyframe.Service.News;
 
     using NUnit.Framework;
 
@@ -13,9 +12,8 @@
     public class WithNoNewsId : GivenNewsRequest
     {
         [SetUp]
-        public void WithNoNewsIdSetUp()
+        public void WithNoNewsId_SetUp()
         {
-            this.Request = new NewsRequest();
         }
 
         [Test]

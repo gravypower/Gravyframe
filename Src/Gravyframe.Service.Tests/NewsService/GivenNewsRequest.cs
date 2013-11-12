@@ -8,9 +8,13 @@
     public abstract class GivenNewsRequest : TestFixture
     {
         #region Given News Request
-
         public NewsRequest Request;
-        public Models.News News;
+
+        [SetUp]
+        public void GivenNewsRequest_SetUp()
+        {
+            Request = new NewsRequest();
+        }
 
         #endregion
     }

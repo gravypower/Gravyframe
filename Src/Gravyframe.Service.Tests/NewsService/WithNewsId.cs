@@ -12,9 +12,9 @@
     {
         #region With News Id
         [SetUp]
-        public void WithNewsIdSetUp()
+        public void WithNewsId_SetUp()
         {
-            this.Request = new NewsRequest { NewsId = "SomeID" };
+            this.Request.NewsId = "SomeID";
         }
 
         [Test]
@@ -30,10 +30,12 @@
             Assert.AreEqual(ResponceCodes.Success, response.Code);
         }
         
-        public virtual void AssignNewsResponseSuccess()
+        public virtual News AssignNewsResponseSuccess()
         {
-            this.News = new News();
-            this.Dao.GetNews(this.Request.NewsId).Returns(this.News);
+            var news = new News();
+            this.Dao.GetNews(this.Request.NewsId).Returns(news);
+
+            return news;
         }
 
         [Test]
@@ -58,36 +60,39 @@
         public void NewsResponseHasTitle()
         {
             // Assign
-            this.AssignForNewsResponseHasTitle();
+            var news = this.AssignForNewsResponseHasTitle();
             // Act
             var result = this.Sut.Get(this.Request);
 
             // Assert
-            Assert.AreEqual(this.News.Title, result.News.Title);
+            Assert.AreEqual(news.Title, result.News.Title);
         }
-        public virtual void AssignForNewsResponseHasTitle()
+
+        public virtual News AssignForNewsResponseHasTitle()
         {
-            this.News = new News { Title = "TestTitle" };
-            this.Dao.GetNews(this.Request.NewsId).Returns(this.News);
+            var news = new News { Title = "TestTitle" };
+            this.Dao.GetNews(this.Request.NewsId).Returns(news);
+            return news;
         }
 
         [Test]
         public void NewsResponseHasBody()
         {
             // Assign
-            this.AssignForNewsResponseHasBody();
+            var news = this.AssignForNewsResponseHasBody();
 
             // Act
             var result = this.Sut.Get(this.Request);
 
             // Assert
-            Assert.AreEqual(this.News.Body, result.News.Body);
+            Assert.AreEqual(news.Body, result.News.Body);
         }
 
-        public virtual void AssignForNewsResponseHasBody()
+        public virtual News AssignForNewsResponseHasBody()
         {
-            this.News = new News { Body = "TestBody" };
-            this.Dao.GetNews(this.Request.NewsId).Returns(this.News);
+            var news = new News { Body = "TestBody" };
+            this.Dao.GetNews(this.Request.NewsId).Returns(news);
+            return news;
         }
         #endregion
     }

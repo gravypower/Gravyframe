@@ -14,7 +14,7 @@
         public ContentDao<Models.Content> Dao;
         public IContentConfiguration ContentConfiguration;
         public IResponseHydrogenationTaskList<ContentRequest, ContentResponse> ResponseHydrogenationTasks;
-        protected override void ServiceSetUp()
+        protected override void ServiceTestsSetUp()
         {
             this.Dao = Substitute.For<ContentDao<Models.Content>>();
             this.ContentConfiguration = new ContentConfiguration();
@@ -28,7 +28,7 @@
                     new PopulateContentByIdResponseHydrator(this.Dao, this.ContentConfiguration)
                 }.GetEnumerator());
 
-            this.Sut = new Gravyframe.Service.Content.ContentService(this.ResponseHydrogenationTasks);
+            this.Sut = new ContentService(this.ResponseHydrogenationTasks);
         }
     }
 }

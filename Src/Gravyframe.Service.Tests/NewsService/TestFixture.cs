@@ -12,14 +12,13 @@
     using NUnit.Framework;
 
     [TestFixture]
-    public class TestFixture : ServiceTests<NewsRequest, NewsResponse<Models.News>, NewsService<Models.News>, NewsService<Models.News>.NullNewsRequestException>
+    public abstract class TestFixture : ServiceTests<NewsRequest, NewsResponse<Models.News>, NewsService<Models.News>, NewsService<Models.News>.NullNewsRequestException>
     {
         public NewsDao<Models.News> Dao;
         public INewsConfiguration NewsConfiguration;
         public IResponseHydrogenationTaskList<NewsRequest, NewsResponse<Models.News>> ResponseHydrogenationTasks;
 
-        [SetUp]
-        protected override void ServiceSetUp()
+        protected override void ServiceTestsSetUp()
         {
             this.Dao = Substitute.For<NewsDao<Models.News>>();
             this.NewsConfiguration = Substitute.For<NewsConfiguration>();
