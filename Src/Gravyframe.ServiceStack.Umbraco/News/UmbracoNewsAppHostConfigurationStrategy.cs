@@ -15,7 +15,7 @@ namespace Gravyframe.ServiceStack.Umbraco.News
     {
         public override void ConfigureContainer(Funq.Container container)
         {
-            container.Register<ISearcher>(ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"]);
+            container.Register<ISearcher>(ExamineManager.Instance.SearchProviderCollection["GravyframeNewsSearcher"]);
             container.Register<INodeFactoryFacade>(new NodeFactoryFacade());
             container.Register<INewsConfiguration>(new UmbracoNewsConfiguration(container.Resolve<INodeFactoryFacade>(), 1069));
             container.Register<NewsDao<UmbracoNews>>(new UmbracoNewsDao(container.Resolve<INewsConfiguration>(),

@@ -1,9 +1,9 @@
 ﻿namespace Gravyframe.Data.Umbraco.Tests.UmbracoNewsDao
 {
     using System.Linq;
-    using Gravyframe.Configuration.Umbraco;
-    using Gravyframe.Kernel.Umbraco.Tests.TestHelpers;
-    using Gravyframe.Kernel.Umbraco.Tests.TestHelpers.Examine;
+    using Configuration.Umbraco;
+    using Kernel.Umbraco.Tests.TestHelpers;
+    using Kernel.Umbraco.Tests.TestHelpers.Examine;
 
     using NSubstitute;
 
@@ -15,7 +15,7 @@
         public override void GetNewByCategoryWithCustomListSizeWithSiteId()
         {
             // Assign
-            this.MockNewsItemsInIndex(10);
+            MockNewsItemsInIndex(10);
 
             base.GetNewByCategoryWithCustomListSizeWithSiteId();
         }
@@ -24,7 +24,7 @@
         public override void GetNewsByCategoryIdCustomListSizeFirstPageWithSiteId()
         {
             // Assign
-            this.MockNewsItemsInIndex(10);
+            MockNewsItemsInIndex(10);
 
             base.GetNewsByCategoryIdCustomListSizeFirstPageWithSiteId();
         }
@@ -33,7 +33,7 @@
         public override void GetNewsByCategoryIdCustomListSizeForthPageWithSiteId()
         {
             // Assign
-            this.MockNewsItemsInIndex(20);
+            MockNewsItemsInIndex(20);
 
             base.GetNewsByCategoryIdCustomListSizeForthPageWithSiteId();
         }
@@ -42,7 +42,7 @@
         public override void GetNewsByCategoryIdCustomListSizeSecondPageWithSiteId()
         {
             // Assign
-            this.MockNewsItemsInIndex(20);
+            MockNewsItemsInIndex(20);
 
             base.GetNewsByCategoryIdCustomListSizeSecondPage();
         }
@@ -51,7 +51,7 @@
         public override void GetNewsByCategoryIdCustomListSizeThirdPageWithSiteId()
         {
             // Assign
-            this.MockNewsItemsInIndex(20);
+            MockNewsItemsInIndex(20);
 
             base.GetNewsByCategoryIdCustomListSizeThirdPage();
         }
@@ -66,12 +66,12 @@
                     .Mock(2);
 
 
-            this._nodeFactoryFacade.GetNode(NewsConfigurationNodeId).Returns(mockNode);
+            _nodeFactoryFacade.GetNode(NewsConfigurationNodeId).Returns(mockNode);
 
-            this.MockNewsItemsInIndex(20, site: this.GetExampleSiteId());
+            MockNewsItemsInIndex(20, GetExampleSiteId());
 
             base.GetNewsByCategoryListIsDefaultSizeWithSiteId();
-            Assert.AreEqual(defaultListSize, this.Sut.NewsConfiguration.DefaultListSize);
+            Assert.AreEqual(defaultListSize, Sut.NewsConfiguration.DefaultListSize);
         }
 
         [Test]
@@ -84,27 +84,27 @@
             var bodyText = "Test Body Text";
 
             var mockNode = new MockNode()
-                .AddProperty(Umbraco.News.UmbracoNewsDao.BodyAlias, bodyText);
+                .AddProperty(News.UmbracoNewsDao.BodyAlias, bodyText);
 
             var mockDataSet = new MockSimpleDataSet(IndexType);
             var mnOne = mockNode.Mock(1);
-            this._nodeFactoryFacade.GetNode(1).Returns(mnOne);
-            mockDataSet.AddData(1, Umbraco.News.UmbracoNewsDao.CategoriesAlias, TestCategoryId);
-            mockDataSet.AddData(1, Umbraco.News.UmbracoNewsDao.Site, siteOneName);
+            _nodeFactoryFacade.GetNode(1).Returns(mnOne);
+            mockDataSet.AddData(1, News.UmbracoNewsDao.CategoriesAlias, TestCategoryId);
+            mockDataSet.AddData(1, News.UmbracoNewsDao.Site, siteOneName);
 
             var mnTwo = mockNode.Mock(2);
-            this._nodeFactoryFacade.GetNode(2).Returns(mnTwo);
-            mockDataSet.AddData(2, Umbraco.News.UmbracoNewsDao.CategoriesAlias, TestCategoryId);
-            mockDataSet.AddData(2, Umbraco.News.UmbracoNewsDao.Site, siteTwoName);
+            _nodeFactoryFacade.GetNode(2).Returns(mnTwo);
+            mockDataSet.AddData(2, News.UmbracoNewsDao.CategoriesAlias, TestCategoryId);
+            mockDataSet.AddData(2, News.UmbracoNewsDao.Site, siteTwoName);
             
-            this._mockedIndex.SimpleDataService.GetAllData(IndexType).Returns(mockDataSet);
+            _mockedIndex.SimpleDataService.GetAllData(IndexType).Returns(mockDataSet);
 
-            this._mockedIndex.Indexer.RebuildIndex();
+            _mockedIndex.Indexer.RebuildIndex();
 
-            var categoryId = this.GetExampleCategoryId();
+            var categoryId = GetExampleCategoryId();
 
             // Act
-            var result = this.Sut.GetNewsByCategoryId(siteOneName, categoryId);
+            var result = Sut.GetNewsByCategoryId(siteOneName, categoryId);
 
             // Assert
             Assert.AreEqual(1, result.Count());

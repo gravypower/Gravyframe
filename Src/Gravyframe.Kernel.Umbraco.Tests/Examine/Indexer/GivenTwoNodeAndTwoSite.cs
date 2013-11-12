@@ -1,6 +1,6 @@
 ﻿namespace Gravyframe.Kernel.Umbraco.Tests.Examine.Indexer
 {
-    using Gravyframe.Kernel.Umbraco.Tests.TestHelpers;
+    using TestHelpers;
 
     using NSubstitute;
 
@@ -14,30 +14,37 @@
         {
             var mockedParentOne = new MockNode().AddNodeTypeAlias("Site").AddUrlName("SiteNameOne").Mock(10);
             var mockedParentTwo = new MockNode().AddNodeTypeAlias("Site").AddUrlName("SiteNameTwo").Mock(11);
-            var mockedNodeOne = new MockNode().AddNodeTypeAlias("test").AddParent(mockedParentOne).Mock(90);
-            var mockedNodeTwo = new MockNode().AddNodeTypeAlias("test").AddParent(mockedParentTwo).Mock(91);
+            var mockedNodeOne = new MockNode()
+                .AddNodeTypeAlias("test")
+                .AddParent(mockedParentOne)
+                .Mock(90);
 
-            this.NodeFactoryFacade.GetNode(mockedNodeOne.Id).Returns(mockedNodeOne);
-            this.NodeFactoryFacade.GetNode(mockedNodeTwo.Id).Returns(mockedNodeTwo);
+            var mockedNodeTwo = new MockNode()
+                .AddNodeTypeAlias("test")
+                .AddParent(mockedParentTwo)
+                .Mock(91);
 
-            this.MockedContentService.AddNode(mockedNodeOne);
-            this.MockedContentService.AddNode(mockedNodeTwo);
+            NodeFactoryFacade.GetNode(mockedNodeOne.Id).Returns(mockedNodeOne);
+            NodeFactoryFacade.GetNode(mockedNodeTwo.Id).Returns(mockedNodeTwo);
 
-            this.DataService.ContentService.Returns(this.MockedContentService);
+            MockedContentService.AddNode(mockedNodeOne);
+            MockedContentService.AddNode(mockedNodeTwo);
+
+            DataService.ContentService.Returns(MockedContentService);
         }
 
         [Test]
-        public void WhenIndexedDoesIncludeTwoSiteFeild()
+        public void WhenIndexedDoesIncludeTwoSiteField()
         {
             // Act
-            this.Sut.IndexAll("test");
+            Sut.IndexAll("test");
 
             // Assert
-            var feilds = this.GetFeildsFromDocumnet();
+            var fields = GetFieldsFromDocument();
 
-            Assert.Contains("site", feilds.Keys);
-            Assert.Contains("SiteNameOne", feilds["site"]);
-            Assert.Contains("SiteNameTwo", feilds["site"]);
+            Assert.Contains("site", fields.Keys);
+            Assert.Contains("SiteNameOne", fields["site"]);
+            Assert.Contains("SiteNameTwo", fields["site"]);
         }
     }
 

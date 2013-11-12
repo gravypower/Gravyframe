@@ -26,8 +26,6 @@ namespace Gravyframe.Data.Umbraco.News
             NodeFactoryFacade = nodeFactoryFacade;
         }
 
-        
-
         public override UmbracoNews GetNews(string siteId, string newsId)
         {
             return GetNews(newsId);
@@ -79,6 +77,9 @@ namespace Gravyframe.Data.Umbraco.News
         {
             var searchCriteria = Searcher.CreateSearchCriteria();
             var query = searchCriteria.Field(CategoriesAlias, categoryId);
+            //var query = searchCriteria.RawQuery(CategoriesAlias + ":" + categoryId);
+            //var query = searchCriteria.RawQuery(.);
+            
 
             if (!string.IsNullOrEmpty(siteId))
             {
@@ -88,7 +89,9 @@ namespace Gravyframe.Data.Umbraco.News
             var newsList = new List<UmbracoNews>();
 
             var sequence = 1;
-            foreach (var result in Searcher.Search(query.Compile()))
+            
+            var searchResults = Searcher.Search(query.Compile());
+            foreach (var result in searchResults)
             {
                 var news = GetNews(result.Id.ToString(CultureInfo.InvariantCulture));
                 news.Sequence = sequence++;

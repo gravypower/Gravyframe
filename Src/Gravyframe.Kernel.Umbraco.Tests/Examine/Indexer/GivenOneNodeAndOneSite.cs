@@ -1,10 +1,9 @@
-﻿namespace Gravyframe.Kernel.Umbraco.Tests.Examine.Indexer
+﻿using Gravyframe.Kernel.Umbraco.Tests.TestHelpers;
+using NSubstitute;
+using NUnit.Framework;
+
+namespace Gravyframe.Kernel.Umbraco.Tests.Examine.Indexer
 {
-    using Gravyframe.Kernel.Umbraco.Tests.TestHelpers;
-
-    using NSubstitute;
-    using NUnit.Framework;
-
     [TestFixture]
     public class GivenOneNodeAndOneSite : Tests
     {
@@ -14,23 +13,23 @@
             var mockedParent = new MockNode().AddNodeTypeAlias("Site").AddUrlName("SiteName").Mock(10);
             var mockedNode = new MockNode().AddNodeTypeAlias("test").AddParent(mockedParent).Mock(90);
 
-            this.NodeFactoryFacade.GetNode(mockedNode.Id).Returns(mockedNode);
+            NodeFactoryFacade.GetNode(mockedNode.Id).Returns(mockedNode);
 
-            this.MockedContentService.AddNode(mockedNode);
-            this.DataService.ContentService.Returns(this.MockedContentService);
+            MockedContentService.AddNode(mockedNode);
+            DataService.ContentService.Returns(MockedContentService);
         }
 
         [Test]
-        public void WhenIndexedDoesIncludeSiteFeild()
+        public void WhenIndexedDoesIncludeSiteField()
         {
             // Act
-            this.Sut.IndexAll("test");
+            Sut.IndexAll("test");
 
             // Assert
-            var feilds = this.GetFeildsFromDocumnet();
+            var fields = GetFieldsFromDocument();
 
-            Assert.Contains("site", feilds.Keys);
-            Assert.Contains("SiteName", feilds["site"]);
+            Assert.Contains("site", fields.Keys);
+            Assert.Contains("SiteName", fields["site"]);
         }
     }
 }

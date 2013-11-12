@@ -1,37 +1,31 @@
-﻿namespace Gravyframe.Kernel.Umbraco.Tests.Examine.Indexer
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using Gravyframe.Kernel.Umbraco.Facades;
+using Gravyframe.Kernel.Umbraco.Tests.TestHelpers.Examine.MockContentService;
+using Gravyframe.Kernel.Umbraco.Tests.TestHelpers.Examine.MockIndex;
+using Lucene.Net.Documents;
+using Lucene.Net.Index;
+using NSubstitute;
+using NUnit.Framework;
+using UmbracoExamine;
+using UmbracoExamine.DataServices;
+
+namespace Gravyframe.Kernel.Umbraco.Tests.Examine.Indexer
 {
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Reflection;
-
-    using Gravyframe.Kernel.Umbraco.Examine;
-    using Gravyframe.Kernel.Umbraco.Facades;
-    using Gravyframe.Kernel.Umbraco.Tests.TestHelpers.Examine.MockContentService;
-    using Gravyframe.Kernel.Umbraco.Tests.TestHelpers.Examine.MockIndex;
-
-    using Lucene.Net.Documents;
-    using Lucene.Net.Index;
-
-    using NSubstitute;
-
-    using NUnit.Framework;
-
-    using UmbracoExamine;
-    using UmbracoExamine.DataServices;
-
-    [TestFixture]    
+    [TestFixture]
     public class Tests
     {
         protected INodeFactoryFacade NodeFactoryFacade;
         protected IDataService DataService;
         protected MockedContentService MockedContentService;
-        protected Indexer Sut;
+        protected Umbraco.Examine.Indexer Sut;
         protected MockedIndex MockedIndex;
 
         [SetUp]
         public void TestsSetUp()
         {
-            var fields = typeof(BaseUmbracoIndexer).GetFields(BindingFlags.NonPublic | BindingFlags.Static);
+            var fields = typeof (BaseUmbracoIndexer).GetFields(BindingFlags.NonPublic | BindingFlags.Static);
             var disableInitializationCheckField = fields.SingleOrDefault(x => x.Name == "DisableInitializationCheck");
             if (disableInitializationCheckField == null)
             {
@@ -40,50 +34,49 @@
 
             disableInitializationCheckField.SetValue(null, true);
 
-            this.MockedIndex = MockIndexFactory.GetSimpleDataServiceMock(
+            MockedIndex = MockIndexFactory.GetSimpleDataServiceMock(
                 new MockIndexFieldList().AddIndexField("id", "Number", true),
                 new MockIndexFieldList(),
-                new[] { "test" },
-                new string[] { },
-                new string[] { });
+                new[] {"test"},
+                new string[] {},
+                new string[] {});
 
-            this.NodeFactoryFacade = Substitute.For<INodeFactoryFacade>();
-            this.DataService = Substitute.For<IDataService>();
-            this.MockedContentService = new MockedContentService();
+            NodeFactoryFacade = Substitute.For<INodeFactoryFacade>();
+            DataService = Substitute.For<IDataService>();
+            MockedContentService = new MockedContentService();
 
-            this.Sut = new Indexer(
-                this.MockedIndex.IndexCriteria,
-                this.MockedIndex.LuceneDir,
-                this.DataService,
-                this.MockedIndex.Analyzer,
+            Sut = new Umbraco.Examine.Indexer(
+                MockedIndex.IndexCriteria,
+                MockedIndex.LuceneDir,
+                DataService,
+                MockedIndex.Analyzer,
                 false,
-                this.NodeFactoryFacade);
+                NodeFactoryFacade);
         }
 
-        
-        protected Dictionary<string, List<string>> GetFeildsFromDocumnet()
+
+        protected Dictionary<string, List<string>> GetFieldsFromDocument()
         {
-            var feilds = new Dictionary<string, List<string>>();
-            var reader = IndexReader.Open(this.MockedIndex.LuceneDir, true);
+            var fields = new Dictionary<string, List<string>>();
+            var reader = IndexReader.Open(MockedIndex.LuceneDir, true);
 
             for (var i = 0; i < reader.MaxDoc(); i++)
             {
                 var doc = reader.Document(i);
                 foreach (var field in doc.GetFields().Cast<Field>())
                 {
-                    var feildName = field.Name();
-                    if (!feilds.ContainsKey(feildName))
+                    var fieldName = field.Name();
+                    if (!fields.ContainsKey(fieldName))
                     {
-                        feilds.Add(feildName, new List<string> { doc.Get(feildName) });
+                        fields.Add(fieldName, new List<string> {doc.Get(fieldName)});
                     }
                     else
                     {
-                        feilds[feildName].Add(doc.Get(feildName));
+                        fields[fieldName].Add(doc.Get(fieldName));
                     }
                 }
             }
-            return
-                feilds;
+            return fields;
         }
     }
 }
