@@ -58,21 +58,30 @@ namespace Gravyframe.Kernel.Umbraco.Examine
             {
                 e.Fields.Add("site", siteNode.UrlName);
             }
+
+            var categories = e.Node.Descendants("XPathCheckBoxList").Descendants("nodeId");
+
+            e.Fields.Add("categories", string.Join("|", categories.Select(x=>x.Value)));
         }
 
-        protected override void OnDocumentWriting(DocumentWritingEventArgs docArgs)
-        {
-            var currentNode = _nodeFactoryFacade.GetNode(docArgs.NodeId);
 
-            var categories = currentNode.GetProperty("categories").Value;
-            if (!string.IsNullOrEmpty(categories))
-            {
-                var categoryNodeIdsXml = XElement.Parse(categories);
-                var categoryNodeIds = categoryNodeIdsXml.Descendants("nodeId");
-                docArgs.Document.Add(new Field("categories", string.Join("|", categoryNodeIds.Select(x=>x.Value)) , Field.Store.YES, Field.Index.ANALYZED));
-            }
+        //protected override void OnDocumentWriting(DocumentWritingEventArgs docArgs)
+        //{
+        //    var currentNode = _nodeFactoryFacade.GetNode(docArgs.NodeId);
 
-            base.OnDocumentWriting(docArgs);
-        }
+        //    var categories = currentNode.GetProperty("categories").Value;
+        //    if (!string.IsNullOrEmpty(categories))
+        //    {
+        //        var categoryNodeIdsXml = XElement.Parse(categories);
+        //        var categoryNodeIds = categoryNodeIdsXml.Descendants("nodeId");
+        //        foreach (var categoryNodeId in categoryNodeIds)
+        //        {
+        //            docArgs.Document.Add(new Field("categories", categoryNodeId.Value, Field.Store.YES, Field.Index.ANALYZED));
+        //        }
+        //    }
+
+
+        //    base.OnDocumentWriting(docArgs);
+        //}
     }
 }
