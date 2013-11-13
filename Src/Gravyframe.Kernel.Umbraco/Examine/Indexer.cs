@@ -58,8 +58,6 @@ namespace Gravyframe.Kernel.Umbraco.Examine
             {
                 e.Fields.Add("site", siteNode.UrlName);
             }
-
-           
         }
 
         protected override void OnDocumentWriting(DocumentWritingEventArgs docArgs)
@@ -70,12 +68,8 @@ namespace Gravyframe.Kernel.Umbraco.Examine
             if (!string.IsNullOrEmpty(categories))
             {
                 var categoryNodeIdsXml = XElement.Parse(categories);
-                //<XPathCheckBoxList><nodeId>1063</nodeId><nodeId>1064</nodeId></XPathCheckBoxList>
                 var categoryNodeIds = categoryNodeIdsXml.Descendants("nodeId");
-                foreach (var categoryNodeId in categoryNodeIds)
-                {
-                    docArgs.Document.Add(new Field("categories", categoryNodeId.Value, Field.Store.YES, Field.Index.ANALYZED));
-                }
+                docArgs.Document.Add(new Field("categories", string.Join("|", categoryNodeIds.Select(x=>x.Value)) , Field.Store.YES, Field.Index.ANALYZED));
             }
 
 

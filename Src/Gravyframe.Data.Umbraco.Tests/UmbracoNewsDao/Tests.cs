@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Gravyframe.Configuration;
 using Gravyframe.Configuration.Umbraco;
 using Gravyframe.Data.Tests.NewsDao;
@@ -45,7 +44,7 @@ namespace Gravyframe.Data.Umbraco.Tests.UmbracoNewsDao
         {
         }
 
-        private void MockNewsItemsInIndex(int numberToMock, string site = "")
+        private void MockNewsItemsInIndex(int numberToMock, string site = "", string categoryId = TestCategoryId)
         {
             numberToMock = AdjustForLoop(numberToMock);
 
@@ -59,7 +58,7 @@ namespace Gravyframe.Data.Umbraco.Tests.UmbracoNewsDao
             {
                 var mn = mockNode.Mock(i);
                 _nodeFactoryFacade.GetNode(i).Returns(mn);
-                mockDataSet.AddData(i, News.UmbracoNewsDao.CategoriesAlias, TestCategoryId);
+                mockDataSet.AddData(i, News.UmbracoNewsDao.CategoriesAlias, categoryId);
                 mockDataSet.AddData(i, News.UmbracoNewsDao.Site, site);
             }
 

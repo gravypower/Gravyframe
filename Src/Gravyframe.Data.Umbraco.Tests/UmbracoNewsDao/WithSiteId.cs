@@ -87,7 +87,7 @@
                 .AddProperty(News.UmbracoNewsDao.BodyAlias, bodyText);
 
             var mockDataSet = new MockSimpleDataSet(IndexType);
-            var mnOne = mockNode.Mock(1);
+            var mnOne = mockNode.Mock();
             _nodeFactoryFacade.GetNode(1).Returns(mnOne);
             mockDataSet.AddData(1, News.UmbracoNewsDao.CategoriesAlias, TestCategoryId);
             mockDataSet.AddData(1, News.UmbracoNewsDao.Site, siteOneName);
