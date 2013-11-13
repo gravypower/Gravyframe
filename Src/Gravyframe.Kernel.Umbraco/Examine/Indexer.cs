@@ -72,7 +72,6 @@ namespace Gravyframe.Kernel.Umbraco.Examine
                 docArgs.Document.Add(new Field("categories", string.Join("|", categoryNodeIds.Select(x=>x.Value)) , Field.Store.YES, Field.Index.ANALYZED));
             }
 
-
             base.OnDocumentWriting(docArgs);
         }
     }
