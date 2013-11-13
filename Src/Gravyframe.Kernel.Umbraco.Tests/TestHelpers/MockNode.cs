@@ -20,6 +20,20 @@
             this.properties = new Dictionary<string, object>();
         }
 
+        public MockNode(INode mockedNode)
+        {
+            this.properties = new Dictionary<string, object>();
+
+            foreach (var property in mockedNode.PropertiesAsList)
+            {
+                properties.Add(property.Alias, property.Value);
+            }
+
+            this.NodeTypeAlias = mockedNode.NodeTypeAlias;
+            this.UrlName = mockedNode.UrlName;
+            this.parent = mockedNode.Parent;
+        }
+
         public MockNode AddNodeTypeAlias(string nodeTypeAlias)
         {
             this.NodeTypeAlias = nodeTypeAlias;
@@ -48,13 +62,17 @@
         {
             var node = Substitute.For<INode>();
             node.Id.ReturnsForAnyArgs(nodeId);
+            var propertiesAsList = new List<IProperty>();
             foreach (var pair in this.properties)
             {
                 var property = Substitute.For<IProperty>();
                 property.Alias.Returns(pair.Key);
                 property.Value.Returns(pair.Value);
                 node.GetProperty(pair.Key).Returns(property);
+                propertiesAsList.Add(property);
             }
+
+            node.PropertiesAsList.Returns(propertiesAsList);
 
             if(!string.IsNullOrEmpty(this.NodeTypeAlias))
             {
