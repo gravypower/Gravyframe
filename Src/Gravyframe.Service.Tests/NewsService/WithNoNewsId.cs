@@ -23,8 +23,8 @@
             var response = this.Sut.Get(this.Request);
 
             // Assert
-            Assert.AreEqual(ResponceCodes.Failure, response.Code);
-            Assert.AreEqual(ResponceCodes.Failure, response.Code);
+            Assert.AreEqual(ResponseCodes.Failure, response.Code);
+            Assert.AreEqual(ResponseCodes.Failure, response.Code);
         }
 
         [Test]

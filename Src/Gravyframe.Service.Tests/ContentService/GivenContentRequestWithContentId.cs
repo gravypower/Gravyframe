@@ -29,7 +29,7 @@
             var responce = this.Sut.Get(this.Request);
 
             // Assert
-            Assert.AreEqual(ResponceCodes.Success, responce.Code);
+            Assert.AreEqual(ResponseCodes.Success, responce.Code);
             Assert.IsFalse(responce.Errors.Any(error => error == this.ContentConfiguration.ContentCategoryIdError));
         }
 

@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Request.cs" company="Gravypowered">
+// <copyright file="ResponseCodes.cs" company="Gravypowered">
 //   Copyright 2013 Aaron Job
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,20 +15,30 @@
 //   limitations under the License.
 // </copyright>
 // <summary>
-//   Defines the Request type.
+//   The response codes.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace Gravyframe.Service.Messages
 {
     /// <summary>
-    /// The request.
+    /// The response codes.
     /// </summary>
-    public abstract class Request
+    public enum ResponseCodes
     {
         /// <summary>
-        /// Gets or sets the site id.
+        /// The unknown.
         /// </summary>
-        public string SiteId { get; set; }
+        Unknown,
+
+        /// <summary>
+        /// The success.
+        /// </summary>
+        Success,
+
+        /// <summary>
+        /// The failure.
+        /// </summary>
+        Failure
     }
 }

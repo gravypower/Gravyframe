@@ -1,42 +1,125 @@
-﻿using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using Examine;
-using Gravyframe.Configuration;
-using Gravyframe.Data.News;
-using Gravyframe.Models.Umbraco;
-using Gravyframe.Kernel.Umbraco.Facades;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="UmbracoNewsDao.cs" company="Gravypowered">
+//   Copyright 2013 Aaron Job
+//   
+//   Licensed under the Apache License, Version 2.0 (the "License");
+//   you may not use this file except in compliance with the License.
+//   You may obtain a copy of the License at
+//   
+//       http://www.apache.org/licenses/LICENSE-2.0
+//   
+//   Unless required by applicable law or agreed to in writing, software
+//   distributed under the License is distributed on an "AS IS" BASIS,
+//   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//   See the License for the specific language governing permissions and
+//   limitations under the License.
+// </copyright>
+// <summary>
+//   The umbraco news dao.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace Gravyframe.Data.Umbraco.News
 {
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.Linq;
+
+    using Examine;
+
+    using Gravyframe.Configuration;
+    using Gravyframe.Data.News;
+    using Gravyframe.Kernel.Umbraco.Facades;
+    using Gravyframe.Models.Umbraco;
+
+    /// <summary>
+    /// The umbraco news dao.
+    /// </summary>
     public class UmbracoNewsDao : NewsDao<UmbracoNews>
     {
+        /// <summary>
+        /// The body alias.
+        /// </summary>
         public const string BodyAlias = "body";
+
+        /// <summary>
+        /// The title alias.
+        /// </summary>
         public const string TitleAlias = "title";
+
+        /// <summary>
+        /// The categories alias.
+        /// </summary>
         public const string CategoriesAlias = "categories";
+
+        /// <summary>
+        /// The site.
+        /// </summary>
         public const string Site = "site";
 
+        /// <summary>
+        /// The searcher.
+        /// </summary>
         protected readonly ISearcher Searcher;
+
+        /// <summary>
+        /// The node factory facade.
+        /// </summary>
         protected readonly INodeFactoryFacade NodeFactoryFacade;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UmbracoNewsDao"/> class.
+        /// </summary>
+        /// <param name="newsConfiguration">
+        /// The news configuration.
+        /// </param>
+        /// <param name="nodeFactoryFacade">
+        /// The node factory facade.
+        /// </param>
+        /// <param name="searcher">
+        /// The searcher.
+        /// </param>
         public UmbracoNewsDao(INewsConfiguration newsConfiguration, INodeFactoryFacade nodeFactoryFacade, ISearcher searcher)
             : base(newsConfiguration)
         {
-            Searcher = searcher;
-            NodeFactoryFacade = nodeFactoryFacade;
+            this.Searcher = searcher;
+            this.NodeFactoryFacade = nodeFactoryFacade;
         }
 
+        /// <summary>
+        /// The get news.
+        /// </summary>
+        /// <param name="siteId">
+        /// The site id.
+        /// </param>
+        /// <param name="newsId">
+        /// The news id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="UmbracoNews"/>.
+        /// </returns>
         public override UmbracoNews GetNews(string siteId, string newsId)
         {
-            return GetNews(newsId);
+            return this.GetNews(newsId);
         }
 
+        /// <summary>
+        /// The get news.
+        /// </summary>
+        /// <param name="newsId">
+        /// The news id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="UmbracoNews"/>.
+        /// </returns>
         public override UmbracoNews GetNews(string newsId)
         {
-            var node = NodeFactoryFacade.GetNode(int.Parse(newsId));
+            var node = this.NodeFactoryFacade.GetNode(int.Parse(newsId));
 
             if (node == null || node.Id == 0)
+            {
                 return null;
+            }
 
             var umbracoNews = new UmbracoNews
             {
@@ -57,29 +140,155 @@ namespace Gravyframe.Data.Umbraco.News
             return umbracoNews;
         }
 
+        /// <summary>
+        /// The get news by category id.
+        /// </summary>
+        /// <param name="categoryId">
+        /// The category id.
+        /// </param>
+        /// <returns>
+        /// The <see>
+        ///     <cref>IEnumerable</cref>
+        /// </see>
+        ///     .
+        /// </returns>
         public override IEnumerable<UmbracoNews> GetNewsByCategoryId(string categoryId)
         {
-            return GetAllNewsByCategoryId(categoryId).Take(NewsConfiguration.DefaultListSize);
+            return this.GetAllNewsByCategoryId(categoryId).Take(NewsConfiguration.DefaultListSize);
         }
 
+        /// <summary>
+        /// The get news by category id.
+        /// </summary>
+        /// <param name="categoryId">
+        /// The category id.
+        /// </param>
+        /// <param name="listSize">
+        /// The list size.
+        /// </param>
+        /// <returns>
+        /// The <see>
+        ///     <cref>IEnumerable</cref>
+        /// </see>
+        ///     .
+        /// </returns>
         public override IEnumerable<UmbracoNews> GetNewsByCategoryId(string categoryId, int listSize)
         {
-            return GetAllNewsByCategoryId(categoryId).Take(listSize);
+            return this.GetAllNewsByCategoryId(categoryId).Take(listSize);
         }
 
+        /// <summary>
+        /// The get news by category id.
+        /// </summary>
+        /// <param name="categoryId">
+        /// The category id.
+        /// </param>
+        /// <param name="listSize">
+        /// The list size.
+        /// </param>
+        /// <param name="page">
+        /// The page.
+        /// </param>
+        /// <returns>
+        /// The <see>
+        ///     <cref>IEnumerable</cref>
+        /// </see>
+        ///     .
+        /// </returns>
         public override IEnumerable<UmbracoNews> GetNewsByCategoryId(string categoryId, int listSize, int page)
         {
             var pagesToSkip = CalculateNumberToSkip(listSize, page);
-            return GetAllNewsByCategoryId(categoryId).Skip(pagesToSkip).Take(listSize);
+            return this.GetAllNewsByCategoryId(categoryId).Skip(pagesToSkip).Take(listSize);
         }
 
+        /// <summary>
+        /// The get news by category id.
+        /// </summary>
+        /// <param name="siteId">
+        /// The site id.
+        /// </param>
+        /// <param name="categoryId">
+        /// The category id.
+        /// </param>
+        /// <returns>
+        /// The <see>
+        ///     <cref>IEnumerable</cref>
+        /// </see>
+        ///     .
+        /// </returns>
+        public override IEnumerable<UmbracoNews> GetNewsByCategoryId(string siteId, string categoryId)
+        {
+            return this.GetAllNewsByCategoryId(categoryId, siteId).Take(NewsConfiguration.DefaultListSize);
+        }
+
+        /// <summary>
+        /// The get news by category id.
+        /// </summary>
+        /// <param name="siteId">
+        /// The site id.
+        /// </param>
+        /// <param name="categoryId">
+        /// The category id.
+        /// </param>
+        /// <param name="listSize">
+        /// The list size.
+        /// </param>
+        /// <returns>
+        /// The <see>
+        ///     <cref>IEnumerable</cref>
+        /// </see>
+        ///     .
+        /// </returns>
+        public override IEnumerable<UmbracoNews> GetNewsByCategoryId(string siteId, string categoryId, int listSize)
+        {
+            return this.GetNewsByCategoryId(categoryId, listSize);
+        }
+        
+        /// <summary>
+        /// The get news by category id.
+        /// </summary>
+        /// <param name="siteId">
+        /// The site id.
+        /// </param>
+        /// <param name="categoryId">
+        /// The category id.
+        /// </param>
+        /// <param name="listSize">
+        /// The list size.
+        /// </param>
+        /// <param name="page">
+        /// The page.
+        /// </param>
+        /// <returns>
+        /// The <see>
+        ///     <cref>IEnumerable</cref>
+        /// </see>
+        ///     .
+        /// </returns>
+        public override IEnumerable<UmbracoNews> GetNewsByCategoryId(string siteId, string categoryId, int listSize, int page)
+        {
+            return this.GetNewsByCategoryId(categoryId, listSize, page);
+        }
+
+        /// <summary>
+        /// The get all news by category id.
+        /// </summary>
+        /// <param name="categoryId">
+        /// The category id.
+        /// </param>
+        /// <param name="siteId">
+        /// The site id.
+        /// </param>
+        /// <returns>
+        /// The <see>
+        ///     <cref>IEnumerable</cref>
+        /// </see>
+        ///     .
+        /// </returns>
         protected virtual IEnumerable<UmbracoNews> GetAllNewsByCategoryId(string categoryId, string siteId = null)
         {
-            var searchCriteria = Searcher.CreateSearchCriteria();
+            var searchCriteria = this.Searcher.CreateSearchCriteria();
             var query = searchCriteria.Field(CategoriesAlias, categoryId);
-            //var query = searchCriteria.RawQuery(CategoriesAlias + ":" + categoryId);
-            //var query = searchCriteria.RawQuery(.);
-            
 
             if (!string.IsNullOrEmpty(siteId))
             {
@@ -90,30 +299,15 @@ namespace Gravyframe.Data.Umbraco.News
 
             var sequence = 1;
             
-            var searchResults = Searcher.Search(query.Compile());
+            var searchResults = this.Searcher.Search(query.Compile());
             foreach (var result in searchResults)
             {
-                var news = GetNews(result.Id.ToString(CultureInfo.InvariantCulture));
+                var news = this.GetNews(result.Id.ToString(CultureInfo.InvariantCulture));
                 news.Sequence = sequence++;
                 newsList.Add(news);
             }
 
             return newsList;
-        }
-
-        public override IEnumerable<UmbracoNews> GetNewsByCategoryId(string siteId, string categoryId)
-        {
-            return GetAllNewsByCategoryId(categoryId, siteId).Take(NewsConfiguration.DefaultListSize);
-        }
-
-        public override IEnumerable<UmbracoNews> GetNewsByCategoryId(string siteId, string categoryId, int listSize)
-        {
-            return GetNewsByCategoryId(categoryId, listSize);
-        }
-
-        public override IEnumerable<UmbracoNews> GetNewsByCategoryId(string siteId, string categoryId, int listSize, int page)
-        {
-            return GetNewsByCategoryId(categoryId, listSize, page);
         }
     }
 }

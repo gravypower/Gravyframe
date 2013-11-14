@@ -1,10 +1,10 @@
-﻿using Gravyframe.Kernel.Umbraco.Tests.TestHelpers;
-using NSubstitute;
+﻿using NSubstitute;
 using NUnit.Framework;
+using umbraco.interfaces;
 
 namespace Gravyframe.Kernel.Umbraco.Tests.Examine.Indexer
 {
-    using umbraco.interfaces;
+    using TestHelpers;
 
     [TestFixture]
     public class GivenOneNodeAndOneSite : Tests

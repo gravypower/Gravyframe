@@ -26,7 +26,7 @@
             var responce = this.Sut.Get(this.Request);
 
             // Assert
-            Assert.AreEqual(ResponceCodes.Failure, responce.Code);
+            Assert.AreEqual(ResponseCodes.Failure, responce.Code);
         }
 
         [Test]

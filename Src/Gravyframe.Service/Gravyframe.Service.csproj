@@ -48,7 +48,7 @@
     <Compile Include="Content\ContentResponseHydrator.cs" />
     <Compile Include="Content\Tasks\PopulateContentByCategoryIdResponseHydrator.cs" />
     <Compile Include="Content\Tasks\PopulateContentByIdResponseHydrator.cs" />
-    <Compile Include="Messages\ResponceCodes.cs" />
+    <Compile Include="Messages\ResponseCodes.cs" />
     <Compile Include="Messages\Request.cs" />
     <Compile Include="News\NewsRequest.cs" />
     <Compile Include="News\NewsResponse.cs" />

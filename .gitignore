@@ -83,3 +83,4 @@ Umbraco_Client/
 !App_Data/Umbraco.sdf*
 backup/
 web.config.backup
+StyleCop.Cache

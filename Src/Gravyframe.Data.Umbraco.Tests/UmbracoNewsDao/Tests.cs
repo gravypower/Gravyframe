@@ -1,18 +1,19 @@
 ﻿using System.Linq;
-using Gravyframe.Configuration;
-using Gravyframe.Configuration.Umbraco;
-using Gravyframe.Data.Tests.NewsDao;
-using Gravyframe.Kernel.Umbraco.Facades;
-using Gravyframe.Kernel.Umbraco.Tests.TestHelpers;
-using Gravyframe.Kernel.Umbraco.Tests.TestHelpers.Examine;
-using Gravyframe.Kernel.Umbraco.Tests.TestHelpers.Examine.MockIndex;
-using Gravyframe.Models.Umbraco;
 using NSubstitute;
 using NUnit.Framework;
 using umbraco.interfaces;
 
 namespace Gravyframe.Data.Umbraco.Tests.UmbracoNewsDao
 {
+    using Configuration;
+    using Configuration.Umbraco;
+    using Data.Tests.NewsDao;
+    using Kernel.Umbraco.Facades;
+    using Kernel.Umbraco.Tests.TestHelpers;
+    using Kernel.Umbraco.Tests.TestHelpers.Examine;
+    using Kernel.Umbraco.Tests.TestHelpers.Examine.MockIndex;
+    using Models.Umbraco;
+
     [TestFixture]
     public partial class Tests : Tests<UmbracoNews>
     {

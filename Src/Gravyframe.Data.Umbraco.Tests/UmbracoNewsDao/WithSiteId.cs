@@ -1,13 +1,12 @@
-﻿namespace Gravyframe.Data.Umbraco.Tests.UmbracoNewsDao
+﻿using System.Linq;
+using NSubstitute;
+using NUnit.Framework;
+
+namespace Gravyframe.Data.Umbraco.Tests.UmbracoNewsDao
 {
-    using System.Linq;
     using Configuration.Umbraco;
     using Kernel.Umbraco.Tests.TestHelpers;
     using Kernel.Umbraco.Tests.TestHelpers.Examine;
-
-    using NSubstitute;
-
-    using NUnit.Framework;
 
     public partial class Tests
     {

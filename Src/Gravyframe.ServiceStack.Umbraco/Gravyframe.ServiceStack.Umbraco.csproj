@@ -8,7 +8,6 @@
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{70F36221-8949-40EB-8996-4F7CA11CC007}</ProjectGuid>
-   
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Gravyframe.ServiceStack.Umbraco</RootNamespace>
@@ -165,7 +164,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GravypowerApplicationEventHandler.cs" />
+    <Compile Include="GravyframeApplicationEventHandler.cs" />
     <Compile Include="News\UmbracoNewsAppHost.cs" />
     <Compile Include="Content\ContentService.cs" />
     <Compile Include="News\NewsResponseHydrogenationTaskList.cs" />

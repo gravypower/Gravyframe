@@ -1,17 +1,12 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using System.Xml.Linq;
+using NUnit.Framework;
+using umbraco.interfaces;
+using UmbracoExamine.DataServices;
 
 namespace Gravyframe.Kernel.Umbraco.Tests.TestHelpers.Examine.MockContentService
 {
-    using System.Collections.Generic;
-    using System.Text.RegularExpressions;
-    using System.Xml.Linq;
-
-    using NUnit.Framework;
-
-    using umbraco.interfaces;
-
-    using UmbracoExamine.DataServices;
-
     public class MockedContentService : IContentService
     {
         private readonly List<INode> _nodes;

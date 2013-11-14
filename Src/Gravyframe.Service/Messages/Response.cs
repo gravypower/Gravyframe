@@ -4,18 +4,18 @@ namespace Gravyframe.Service.Messages
 {
     public abstract class Response
     {
-        public ResponceCodes Code { get; set; }
+        public ResponseCodes Code { get; set; }
         public List<string> Errors { get; set; }
 
         protected Response()
         {
             Errors = new List<string>();
-            Code = ResponceCodes.Unknown;
+            Code = ResponseCodes.Unknown;
         }
 
         public bool IsSuccess()
         {
-            return Code == ResponceCodes.Success;
+            return Code == ResponseCodes.Success;
         }
     }
 }

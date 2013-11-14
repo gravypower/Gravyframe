@@ -27,7 +27,7 @@
             var response = this.Sut.Get(this.Request);
 
             // Assert
-            Assert.AreEqual(ResponceCodes.Success, response.Code);
+            Assert.AreEqual(ResponseCodes.Success, response.Code);
         }
         
         public virtual News AssignNewsResponseSuccess()
@@ -47,7 +47,7 @@
             var response = this.Sut.Get(this.Request);
 
             // Assert
-            Assert.AreEqual(ResponceCodes.Failure, response.Code);
+            Assert.AreEqual(ResponseCodes.Failure, response.Code);
             Assert.Contains(this.NewsConfiguration.NewsIdError, response.Errors);
         }
 

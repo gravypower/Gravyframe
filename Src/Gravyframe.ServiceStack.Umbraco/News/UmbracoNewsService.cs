@@ -1,10 +1,11 @@
-﻿using Gravyframe.Models.Umbraco;
-using Gravyframe.Service;
-using Gravyframe.Service.News;
-using ServiceStack.ServiceHost;
+﻿using ServiceStack.ServiceHost;
 
 namespace Gravyframe.ServiceStack.Umbraco.News
 {
+    using Models.Umbraco;
+    using Service;
+    using Service.News;
+
     public class UmbracoNewsService : NewsService<UmbracoNews>, IService
     {
         public UmbracoNewsService(IResponseHydrogenationTaskList<NewsRequest, NewsResponse<UmbracoNews>> responseHydrogenationTasks)
