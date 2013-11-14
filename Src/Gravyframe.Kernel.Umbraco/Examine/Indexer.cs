@@ -63,25 +63,5 @@ namespace Gravyframe.Kernel.Umbraco.Examine
 
             e.Fields.Add("categories", string.Join("|", categories.Select(x=>x.Value)));
         }
-
-
-        //protected override void OnDocumentWriting(DocumentWritingEventArgs docArgs)
-        //{
-        //    var currentNode = _nodeFactoryFacade.GetNode(docArgs.NodeId);
-
-        //    var categories = currentNode.GetProperty("categories").Value;
-        //    if (!string.IsNullOrEmpty(categories))
-        //    {
-        //        var categoryNodeIdsXml = XElement.Parse(categories);
-        //        var categoryNodeIds = categoryNodeIdsXml.Descendants("nodeId");
-        //        foreach (var categoryNodeId in categoryNodeIds)
-        //        {
-        //            docArgs.Document.Add(new Field("categories", categoryNodeId.Value, Field.Store.YES, Field.Index.ANALYZED));
-        //        }
-        //    }
-
-
-        //    base.OnDocumentWriting(docArgs);
-        //}
     }
 }
