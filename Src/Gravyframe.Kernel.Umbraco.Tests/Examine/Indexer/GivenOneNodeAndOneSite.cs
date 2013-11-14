@@ -53,7 +53,7 @@ namespace Gravyframe.Kernel.Umbraco.Tests.Examine.Indexer
             }
 
             [Test]
-            public void CategoriesAddedToDocumnet()
+            public void CategoriesAddedToDocument()
             {
                 // Act
                 Sut.IndexAll("test");

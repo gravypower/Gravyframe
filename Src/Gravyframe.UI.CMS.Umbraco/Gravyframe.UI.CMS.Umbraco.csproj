@@ -314,7 +314,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="config\ExamineIndex.config" />
+    <Content Include="config\ExamineIndex.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="config\EmbeddedMedia.config" />

@@ -1,4 +1,6 @@
-﻿namespace Gravyframe.Kernel.Umbraco.Tests.TestHelpers.Examine.MockContentService
+﻿using System.Runtime.InteropServices;
+
+namespace Gravyframe.Kernel.Umbraco.Tests.TestHelpers.Examine.MockContentService
 {
     using System.Collections.Generic;
     using System.Text.RegularExpressions;
@@ -12,18 +14,18 @@
 
     public class MockedContentService : IContentService
     {
-        private readonly List<INode> nodes;
+        private readonly List<INode> _nodes;
 
         public MockedContentService()
         {
-            this.nodes = new List<INode>();
+            _nodes = new List<INode>();
         }
 
         public MockedContentService AddNode(INode node)
         {
             Assert.IsNotNullOrEmpty(node.NodeTypeAlias, "Node Type Alias can not be null or empty when mocking IContentService");
 
-            this.nodes.Add(node);
+            _nodes.Add(node);
 
             return this;
         }
@@ -40,16 +42,24 @@
 
         public XDocument GetLatestContentByXPath(string xpath)
         {
-            return  this.GetPublishedContentByXPath(xpath);
+            return  GetPublishedContentByXPath(xpath);
         }
 
         public XDocument GetPublishedContentByXPath(string xpath)
         {
 
             var xdoc = XDocument.Parse("<content></content>");
-            foreach (var node in this.nodes)
+            foreach (var node in _nodes)
             {
-                xdoc.Root.Add(new XElement(node.NodeTypeAlias, new XAttribute("id", node.Id)));
+                var n = new XElement(node.NodeTypeAlias, new XAttribute("id", node.Id));
+
+                foreach (var property in node.PropertiesAsList)
+                {
+                    var p = new XElement(property.Alias, XElement.Parse(property.Value));
+                    n.Add(p);
+                }
+
+                xdoc.Root.Add(n);
             }
 
             return xdoc;
