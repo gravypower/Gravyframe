@@ -13,12 +13,13 @@ using Gravyframe.ServiceStack.Umbraco.News;
 using NSubstitute;
 using NUnit.Framework;
 using ServiceStack.ServiceClient.Web;
+using Gravyframe.Kernel.Umbraco.Tests.TestHelpers;
+using Gravyframe.Kernel.Umbraco.Tests.TestHelpers.Examine;
+using Gravyframe.Kernel.Umbraco.Tests.TestHelpers.Examine.MockIndex;
 
 namespace Gravyframe.ServiceStack.Umbraco.Tests
 {
-    using Gravyframe.Kernel.Umbraco.Tests.TestHelpers;
-    using Gravyframe.Kernel.Umbraco.Tests.TestHelpers.Examine;
-    using Gravyframe.Kernel.Umbraco.Tests.TestHelpers.Examine.MockIndex;
+    
 
     [TestFixture]
     public class UmbracoNewsAppHostTests : NewsAppHostTests<UmbracoNews>

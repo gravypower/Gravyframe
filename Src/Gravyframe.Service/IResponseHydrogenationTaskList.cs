@@ -6,7 +6,7 @@
 //   you may not use this file except in compliance with the License.
 //   You may obtain a copy of the License at
 //   
-//   http://www.apache.org/licenses/LICENSE-2.0
+//       http://www.apache.org/licenses/LICENSE-2.0
 //   
 //   Unless required by applicable law or agreed to in writing, software
 //   distributed under the License is distributed on an "AS IS" BASIS,
@@ -29,10 +29,10 @@ namespace Gravyframe.Service
     /// The ResponseHydrogenationTaskList interface.
     /// </summary>
     /// <typeparam name="TRequest">
-    ///     object of type Request
+    ///     The type of Request, must be of type Gravyframe.Service.Messages.Request
     /// </typeparam>
     /// <typeparam name="TResponse">
-    ///     object of type Response
+    ///     The type of Response, must be of type Gravyframe.Service.Messages.Response
     /// </typeparam>
     public interface IResponseHydrogenationTaskList<TRequest, TResponse> : IEnumerable<ResponseHydrator<TRequest, TResponse>>
         where TRequest : Request

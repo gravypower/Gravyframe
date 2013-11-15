@@ -9,9 +9,7 @@
 
 namespace Gravyframe.UI.CMS.Umbraco
 {
-
-
-    public partial class _Default
+    public partial class Default
     {
 
         /// <summary>

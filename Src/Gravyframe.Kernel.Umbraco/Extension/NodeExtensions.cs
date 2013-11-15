@@ -100,7 +100,7 @@ namespace Gravyframe.Kernel.Umbraco.Extension
         /// </returns>
         public static INode FindNodeUpTree(this INode node, string type)
         {
-            while (node.Id != -1 && node.Id != 0 )
+            while (node.Id != -1 && node.Id != 0)
             {
                 if (node.Parent.NodeTypeAlias == type)
                 {
@@ -112,6 +112,5 @@ namespace Gravyframe.Kernel.Umbraco.Extension
 
             return null;
         }
-    }
-    
+    } 
 }

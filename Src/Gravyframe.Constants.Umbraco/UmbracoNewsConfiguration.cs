@@ -31,16 +31,16 @@ namespace Gravyframe.Configuration.Umbraco
     /// </summary>
     public class UmbracoNewsConfiguration : NewsConfiguration
     {
+        private readonly int configurationNodeId;
+
+        private readonly INodeFactoryFacade nodeFactoryFacade;
+
         /// <summary>
         /// The default list size property alias.
         /// </summary>
         public const string DefaultListSizePropertyAlias = "defaultListSize";
 
         private int? defaultListSize;
-
-        private readonly INodeFactoryFacade nodeFactoryFacade;
-
-        private readonly int configurationNodeId;
 
         private INode configurationNode;
 

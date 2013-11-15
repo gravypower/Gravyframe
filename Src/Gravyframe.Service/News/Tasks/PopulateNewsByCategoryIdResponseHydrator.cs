@@ -6,7 +6,7 @@
 //   you may not use this file except in compliance with the License.
 //   You may obtain a copy of the License at
 //   
-//   http://www.apache.org/licenses/LICENSE-2.0
+//       http://www.apache.org/licenses/LICENSE-2.0
 //   
 //   Unless required by applicable law or agreed to in writing, software
 //   distributed under the License is distributed on an "AS IS" BASIS,
@@ -30,7 +30,7 @@ namespace Gravyframe.Service.News.Tasks
     /// The populate news by category id response hydrator.
     /// </summary>
     /// <typeparam name="TNews">
-    ///     object of type News
+    /// The type of News, must be of type Gravyframe.Models.News
     /// </typeparam>
     public class PopulateNewsByCategoryIdResponseHydrator<TNews> : NewsResponseHydrator<TNews>
         where TNews : Models.News
