@@ -1,10 +1,9 @@
-﻿using System.Linq;
-using NSubstitute;
-using NUnit.Framework;
-using umbraco.interfaces;
-
-namespace Gravyframe.Data.Umbraco.Tests.UmbracoNewsDao
+﻿namespace Gravyframe.Data.Umbraco.Tests.UmbracoNewsDao
 {
+    using System.Linq;
+    using NSubstitute;
+    using NUnit.Framework;
+    using umbraco.interfaces;
     using Configuration;
     using Configuration.Umbraco;
     using Data.Tests.NewsDao;
