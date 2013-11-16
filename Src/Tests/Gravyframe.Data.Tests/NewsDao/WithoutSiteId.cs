@@ -2,86 +2,79 @@
 
 namespace Gravyframe.Data.Tests.NewsDao
 {
-    public abstract partial class Tests<TNews> where TNews : Models.News
+    public abstract class WithoutSiteID<TNews> : Tests<TNews>
+        where TNews : Models.News
     {
         [Test]
-        public virtual void GetNewsByCategoryListIsDefaultSize()
+        public void GetNewsByCategoryListIsDefaultSize()
         {
-            // Assign
-            var categoryId = GetExampleCategoryId();
-
             // Act
-            var result = Sut.GetNewsByCategoryId(categoryId);
+            var result = Context.Sut.GetNewsByCategoryId(Context.ExampleCategoryId);
 
             // Assert
             GetNewsByCategoryListIsDefaultSizeAssert(result);
         }
 
         [Test]
-        public virtual void GetNewByCategoryWithCustomListSize()
+        public void GetNewByCategoryWithCustomListSize()
         {
             // Assign
-            var categoryId = GetExampleCategoryId();
             var listSize = 5;
 
             // Act
-            var result = Sut.GetNewsByCategoryId(categoryId, listSize);
+            var result = Context.Sut.GetNewsByCategoryId(Context.ExampleCategoryId, listSize);
 
             // Assert
             GetNewByCategoryWithCustomListSizeAssert(listSize, result);
         }
 
         [Test]
-        public virtual void GetNewsByCategoryIdCustomListSizeFirstPage()
+        public void GetNewsByCategoryIdCustomListSizeFirstPage()
         {
             // Assign
-            var categoryId = GetExampleCategoryId();
             var listSize = 5;
 
             // Act
-            var result = Sut.GetNewsByCategoryId(categoryId, listSize, 1);
+            var result = Context.Sut.GetNewsByCategoryId(Context.ExampleCategoryId, listSize, 1);
 
             // Assert
             GetNewsByCategoryIdCustomListSizeFirstPageAssert(result);
         }
 
         [Test]
-        public virtual void GetNewsByCategoryIdCustomListSizeSecondPage()
+        public void GetNewsByCategoryIdCustomListSizeSecondPage()
         {
             // Assign
-            var categoryId = GetExampleCategoryId();
             var listSize = 5;
 
             // Act
-            var result = Sut.GetNewsByCategoryId(categoryId, listSize, 2);
+            var result = Context.Sut.GetNewsByCategoryId(Context.ExampleCategoryId, listSize, 2);
 
             // Assert
             GetNewsByCategoryIdCustomListSizeSecondPageAssert(result);
         }
 
         [Test]
-        public virtual void GetNewsByCategoryIdCustomListSizeThirdPage()
+        public void GetNewsByCategoryIdCustomListSizeThirdPage()
         {
             // Assign
-            var categoryId = GetExampleCategoryId();
             var listSize = 5;
 
             // Act
-            var result = Sut.GetNewsByCategoryId(categoryId, listSize, 3);
+            var result = Context.Sut.GetNewsByCategoryId(Context.ExampleCategoryId, listSize, 3);
 
             // Assert
             GetNewsByCategoryIdCustomListSizeThirdPageAssert(result);
         }
 
         [Test]
-        public virtual void GetNewsByCategoryIdCustomListSizeForthPage()
+        public void GetNewsByCategoryIdCustomListSizeForthPage()
         {
             // Assign
-            var categoryId = GetExampleCategoryId();
             var listSize = 5;
 
             // Act
-            var result = Sut.GetNewsByCategoryId(categoryId, listSize, 4);
+            var result = Context.Sut.GetNewsByCategoryId(Context.ExampleCategoryId, listSize, 4);
 
             // Assert
             GetNewsByCategoryIdCustomListSizeForthPageAssert(result);
@@ -90,12 +83,8 @@ namespace Gravyframe.Data.Tests.NewsDao
         [Test]
         public void CanGetNewByNewsId()
         {
-            // Assign
-            MockExampleNode();
-            var newsId = GetExampleId();
-
             // Act
-            var result = Sut.GetNews(newsId);
+            var result = Context.Sut.GetNews(Context.ExampleId);
 
             // Assert
             CanGetNewByNewsIdAssert(result);

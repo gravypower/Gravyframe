@@ -225,6 +225,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UmbracoContentDao\Tests.cs" />
+    <Compile Include="UmbracoNewsDao\TestContext.cs" />
     <Compile Include="UmbracoNewsDao\Tests.cs" />
     <Compile Include="UmbracoNewsDao\WithoutSiteId.cs" />
     <Compile Include="UmbracoNewsDao\WithSiteId.cs" />

@@ -1,19 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Gravyframe.Data.News;
+
 using NUnit.Framework;
 
 namespace Gravyframe.Data.Tests.NewsDao
 {
     [TestFixture]
-    public abstract partial class Tests<TNews> where TNews : Models.News
+    public abstract class Tests<TNews> where TNews : Models.News
     {
-        public NewsDao<TNews> Sut;
+        public INewsDaoTestContext<TNews> Context;
 
         public void GetNewsByCategoryListIsDefaultSizeAssert(IEnumerable<TNews> result)
         {
             // Assert
-            Assert.AreEqual(Sut.NewsConfiguration.DefaultListSize, result.Count());
+            Assert.AreEqual(Context.Sut.NewsConfiguration.DefaultListSize, result.Count());
         }
 
         public void GetNewByCategoryWithCustomListSizeAssert(int listSize, IEnumerable<TNews> result)
@@ -22,25 +22,25 @@ namespace Gravyframe.Data.Tests.NewsDao
             Assert.AreEqual(listSize, result.Count());
         }
 
-        public virtual void GetNewsByCategoryIdCustomListSizeFirstPageAssert(IEnumerable<TNews> result)
+        public void GetNewsByCategoryIdCustomListSizeFirstPageAssert(IEnumerable<TNews> result)
         {
            // Assert
            AssertNewsListSequence(result, new[] { 1, 2, 3, 4, 5 });
         }
 
-        public virtual void GetNewsByCategoryIdCustomListSizeSecondPageAssert(IEnumerable<TNews> result)
+        public void GetNewsByCategoryIdCustomListSizeSecondPageAssert(IEnumerable<TNews> result)
         {
             // Assert
             AssertNewsListSequence(result, new[] { 6, 7, 8, 9, 10 });
         }
 
-        public virtual void GetNewsByCategoryIdCustomListSizeThirdPageAssert(IEnumerable<TNews> result)
+        public void GetNewsByCategoryIdCustomListSizeThirdPageAssert(IEnumerable<TNews> result)
         {
             // Assert
             AssertNewsListSequence(result, new[] { 11, 12, 13, 14, 15 });
         }
         
-        public virtual void GetNewsByCategoryIdCustomListSizeForthPageAssert(IEnumerable<TNews> result)
+        public void GetNewsByCategoryIdCustomListSizeForthPageAssert(IEnumerable<TNews> result)
         {
             // Assert
             AssertNewsListSequence(result, new[] { 16, 17, 18, 19, 20 });
@@ -61,15 +61,5 @@ namespace Gravyframe.Data.Tests.NewsDao
             // Assert
             Assert.NotNull(result);
         }
-
-
-
-        protected abstract string GetExampleSiteId();
-
-        protected abstract string GetExampleCategoryId();
-
-        protected abstract string GetExampleId();
-
-        protected abstract void MockExampleNode();
     }
 }

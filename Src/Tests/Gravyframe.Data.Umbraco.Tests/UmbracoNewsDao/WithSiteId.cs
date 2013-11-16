@@ -1,77 +1,43 @@
-﻿using System.Linq;
-using NSubstitute;
-using NUnit.Framework;
-
-namespace Gravyframe.Data.Umbraco.Tests.UmbracoNewsDao
+﻿namespace Gravyframe.Data.Umbraco.Tests.UmbracoNewsDao
 {
+    using System.Linq;
+
+    using NUnit.Framework;
+
     using Configuration.Umbraco;
+
+    using Gravyframe.Models.Umbraco;
+
     using Kernel.Umbraco.Tests.TestHelpers;
     using Kernel.Umbraco.Tests.TestHelpers.Examine;
 
-    public partial class Tests
+    using NSubstitute;
+
+    public class WithSiteIdTestContext : TestContext
     {
-        [Test]
-        public override void GetNewByCategoryWithCustomListSizeWithSiteId()
+        public WithSiteIdTestContext()
         {
-            // Assign
-            MockNewsItemsInIndex(10);
+            var exampleId = int.Parse(this.ExampleId);
+            var mockNode = new MockNode().Mock(exampleId);
+            this.NodeFactoryFacade.GetNode(exampleId).Returns(mockNode);
+        }
+    }
 
-            base.GetNewByCategoryWithCustomListSizeWithSiteId();
+    [TestFixture]
+    public class And20NewsItems_WithSiteId : Data.Tests.NewsDao.WithSiteID<UmbracoNews>
+    {
+        private WithSiteIdTestContext testContext;
+
+        [SetUp]
+        public void SetUp_And20NewsItems()
+        {
+            testContext = new WithSiteIdTestContext();
+
+            testContext.MockNewsItemsInIndex(site: testContext.ExampleSiteId);
+
+            this.Context = testContext;
         }
 
-        [Test]
-        public override void GetNewsByCategoryIdCustomListSizeFirstPageWithSiteId()
-        {
-            // Assign
-            MockNewsItemsInIndex(10);
-
-            base.GetNewsByCategoryIdCustomListSizeFirstPageWithSiteId();
-        }
-
-        [Test]
-        public override void GetNewsByCategoryIdCustomListSizeForthPageWithSiteId()
-        {
-            // Assign
-            MockNewsItemsInIndex(20);
-
-            base.GetNewsByCategoryIdCustomListSizeForthPageWithSiteId();
-        }
-
-        [Test]
-        public override void GetNewsByCategoryIdCustomListSizeSecondPageWithSiteId()
-        {
-            // Assign
-            MockNewsItemsInIndex(20);
-
-            base.GetNewsByCategoryIdCustomListSizeSecondPage();
-        }
-
-        [Test]
-        public override void GetNewsByCategoryIdCustomListSizeThirdPageWithSiteId()
-        {
-            // Assign
-            MockNewsItemsInIndex(20);
-
-            base.GetNewsByCategoryIdCustomListSizeThirdPage();
-        }
-
-        [Test]
-        public override void GetNewsByCategoryListIsDefaultSizeWithSiteId()
-        {
-            // Assign
-            var defaultListSize = 20;
-            var mockNode = new MockNode()
-                    .AddProperty(UmbracoNewsConfiguration.DefaultListSizePropertyAlias, defaultListSize.ToString())
-                    .Mock(2);
-
-
-            _nodeFactoryFacade.GetNode(NewsConfigurationNodeId).Returns(mockNode);
-
-            MockNewsItemsInIndex(20, GetExampleSiteId());
-
-            base.GetNewsByCategoryListIsDefaultSizeWithSiteId();
-            Assert.AreEqual(defaultListSize, Sut.NewsConfiguration.DefaultListSize);
-        }
 
         [Test]
         public void GetNewsByCategoryListForSiteDoesNotContainNewsForAnotherSite()
@@ -82,32 +48,30 @@ namespace Gravyframe.Data.Umbraco.Tests.UmbracoNewsDao
 
             var bodyText = "Test Body Text";
 
-            var mockNode = new MockNode()
-                .AddProperty(News.UmbracoNewsDao.BodyAlias, bodyText);
+            var mockNode = new MockNode().AddProperty(News.UmbracoNewsDao.BodyAlias, bodyText);
 
-            var mockDataSet = new MockSimpleDataSet(IndexType);
+            var mockDataSet = new MockSimpleDataSet(TestContext.IndexType);
             var mnOne = mockNode.Mock();
-            _nodeFactoryFacade.GetNode(1).Returns(mnOne);
-            mockDataSet.AddData(1, News.UmbracoNewsDao.CategoriesAlias, TestCategoryId);
+            testContext.NodeFactoryFacade.GetNode(1).Returns(mnOne);
+            mockDataSet.AddData(1, News.UmbracoNewsDao.CategoriesAlias, TestContext.TestCategoryId);
             mockDataSet.AddData(1, News.UmbracoNewsDao.Site, siteOneName);
 
             var mnTwo = mockNode.Mock(2);
-            _nodeFactoryFacade.GetNode(2).Returns(mnTwo);
-            mockDataSet.AddData(2, News.UmbracoNewsDao.CategoriesAlias, TestCategoryId);
+            testContext.NodeFactoryFacade.GetNode(2).Returns(mnTwo);
+            mockDataSet.AddData(2, News.UmbracoNewsDao.CategoriesAlias, TestContext.TestCategoryId);
             mockDataSet.AddData(2, News.UmbracoNewsDao.Site, siteTwoName);
-            
-            _mockedIndex.SimpleDataService.GetAllData(IndexType).Returns(mockDataSet);
 
-            _mockedIndex.Indexer.RebuildIndex();
+            testContext.MockedIndex.SimpleDataService.GetAllData(TestContext.IndexType).Returns(mockDataSet);
 
-            var categoryId = GetExampleCategoryId();
+            testContext.MockedIndex.Indexer.RebuildIndex();
 
             // Act
-            var result = Sut.GetNewsByCategoryId(siteOneName, categoryId);
+            var result = testContext.Sut.GetNewsByCategoryId(siteOneName, testContext.ExampleCategoryId);
 
             // Assert
             Assert.AreEqual(1, result.Count());
 
         }
+
     }
 }

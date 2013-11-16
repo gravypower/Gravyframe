@@ -13,30 +13,35 @@
     {
         private INewsConfiguration _newsConfiguration;
 
-        [SetUp]
-        public void Setp()
+        private class TestContext : INewsDaoTestContext<Models.News>
+        {
+            public Data.News.NewsDao<Models.News> Sut { get; private set; }
+
+            public string ExampleCategoryId
+            {
+                get { throw new System.NotImplementedException(); }
+            }
+
+            public string ExampleId
+            {
+                get { throw new System.NotImplementedException(); }
+            }
+
+            public string ExampleSiteId
+            {
+                get { throw new System.NotImplementedException(); }
+            }
+
+            public TestContext(INewsConfiguration newsConfiguration)
+            {
+                Sut = new InMemoryNewsDao(newsConfiguration);
+            }
+        }
+            [SetUp]
+        public void SetUp()
         {
             this._newsConfiguration = Substitute.For<NewsConfiguration>();
-            this.Sut = new InMemoryNewsDao(this._newsConfiguration);
-        }
-
-        protected override string GetExampleId()
-        {
-            return "ExampleId";
-        }
-
-        protected override string GetExampleCategoryId()
-        {
-            return "categoryId";
-        }
-
-        protected override void MockExampleNode()
-        {
-        }
-
-        protected override string GetExampleSiteId()
-        {
-            return "InMemorySite";
+            this.Context = new TestContext(this._newsConfiguration);
         }
     }
 }
