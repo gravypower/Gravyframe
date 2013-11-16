@@ -59,4 +59,3 @@ namespace Gravyframe.Configuration
         }
     }
 }
-

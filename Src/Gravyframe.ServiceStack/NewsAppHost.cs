@@ -61,7 +61,7 @@ namespace Gravyframe.ServiceStack
         public override void Configure(Container container)
         {
             this.configurationStrategy.ConfigureContainer(container);
-            this.configurationStrategy.ConfigureRoutes(base.Routes);
+            this.configurationStrategy.ConfigureRoutes(this.Routes);
         }
     }
 }

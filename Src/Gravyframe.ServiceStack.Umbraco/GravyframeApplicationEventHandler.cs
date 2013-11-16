@@ -41,18 +41,18 @@ namespace Gravyframe.ServiceStack.Umbraco
         /// </param>
         protected override void ApplicationStarted(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext)
         {
-            //var sites = GetChildNodesByType(-1, "Site").Select(node => node.Name).ToList();
+            // var sites = GetChildNodesByType(-1, "Site").Select(node => node.Name).ToList();
             new UmbracoNewsAppHost(new UmbracoNewsAppHostConfigurationStrategy()).Init();
         }
 
-        //private static IEnumerable<Node> GetChildNodesByType(int nodeId, string typeName)
-        //{
+        // private static IEnumerable<Node> GetChildNodesByType(int nodeId, string typeName)
+        // {
         //    return GetChildNodesByType(new Node(nodeId), typeName);
-        //}
+        // }
 
-        //private static IEnumerable<Node> GetChildNodesByType(Node node, string typeName)
-        //{
+        // private static IEnumerable<Node> GetChildNodesByType(Node node, string typeName)
+        // {
         //    return node.Children.Cast<Node>().Where(child => child.NodeTypeAlias == typeName).ToList();
-        //}
+        // }
     }
 }

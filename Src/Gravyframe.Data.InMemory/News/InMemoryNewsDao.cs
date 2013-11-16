@@ -46,7 +46,7 @@ namespace Gravyframe.Data.InMemory.News
 
             for (var i = 1; i < 100; i++)
             {
-                this.newsList.Add(new Models.News {Sequence = i, Title = "Test" + i, Body = "Test" + i});
+                this.newsList.Add(new Models.News { Sequence = i, Title = "Test" + i, Body = "Test" + i });
             }
         }
 

@@ -19,7 +19,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Gravyframe.UI.CMS.Umbraco.masterpages
+namespace Gravyframe.UI.CMS.Umbraco.Masterpages
 {
     /// <summary>
     /// The gravyframe.

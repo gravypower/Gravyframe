@@ -3,6 +3,7 @@
     <CollectionProperty Name="RecognizedWords">
       <Value>Gravyframe</Value>
       <Value>Umbraco</Value>
+      <Value>async</Value>
     </CollectionProperty>
   </GlobalSettings>
   <Analyzers>

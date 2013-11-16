@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2010
+# Visual Studio 2012
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{B0CF9D5F-3830-440E-B516-78B2CF9113EF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gravyframe.Service", "Gravyframe.Service\Gravyframe.Service.csproj", "{732189F6-7A48-4FF2-8705-B1CD80897B67}"
@@ -72,6 +72,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Git", ".Git", "{1F8D193C-3
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gravyframe.UI.CMS.Umbraco", "Gravyframe.UI.CMS.Umbraco\Gravyframe.UI.CMS.Umbraco.csproj", "{A9493E5F-301A-47DB-972C-F2F59E0C43BC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".StyleCop", ".StyleCop", "{78BA59E6-45BF-4B0E-A86D-01D1259E1F02}"
+	ProjectSection(SolutionItems) = preProject
+		Settings.StyleCop = Settings.StyleCop
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

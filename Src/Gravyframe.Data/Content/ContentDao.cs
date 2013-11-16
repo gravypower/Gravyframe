@@ -19,8 +19,6 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-
-
 namespace Gravyframe.Data.Content
 {
     using System.Collections.Generic;
