@@ -42,10 +42,10 @@ namespace Gravyframe.Data.Tests.NewsDao
             var siteId = GetExampleSiteId();
 
             // Act
-            var result = Sut.GetNewsByCategoryId(categoryId, listSize, 1);
+            var result = Sut.GetNewsByCategoryId(siteId, categoryId, listSize, 1);
 
             // Assert
-            AssertNewsListSequence(result, new[] { 1, 2, 3, 4, 5 });
+            GetNewsByCategoryIdCustomListSizeFirstPageAssert(result);
         }
 
         [Test]
@@ -72,7 +72,7 @@ namespace Gravyframe.Data.Tests.NewsDao
             var siteId = GetExampleSiteId();
 
             // Act
-            var result = Sut.GetNewsByCategoryId(categoryId, listSize, 3);
+            var result = Sut.GetNewsByCategoryId(siteId, categoryId, listSize, 3);
 
             // Assert
             GetNewsByCategoryIdCustomListSizeThirdPageAssert(result);

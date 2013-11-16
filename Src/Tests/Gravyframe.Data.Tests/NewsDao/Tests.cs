@@ -22,28 +22,24 @@ namespace Gravyframe.Data.Tests.NewsDao
             Assert.AreEqual(listSize, result.Count());
         }
 
-        [Test]
         public virtual void GetNewsByCategoryIdCustomListSizeFirstPageAssert(IEnumerable<TNews> result)
         {
            // Assert
            AssertNewsListSequence(result, new[] { 1, 2, 3, 4, 5 });
         }
 
-        [Test]
         public virtual void GetNewsByCategoryIdCustomListSizeSecondPageAssert(IEnumerable<TNews> result)
         {
             // Assert
             AssertNewsListSequence(result, new[] { 6, 7, 8, 9, 10 });
         }
 
-        [Test]
         public virtual void GetNewsByCategoryIdCustomListSizeThirdPageAssert(IEnumerable<TNews> result)
         {
             // Assert
             AssertNewsListSequence(result, new[] { 11, 12, 13, 14, 15 });
         }
-
-        [Test]
+        
         public virtual void GetNewsByCategoryIdCustomListSizeForthPageAssert(IEnumerable<TNews> result)
         {
             // Assert

@@ -42,7 +42,7 @@ namespace Gravyframe.Data.Tests.NewsDao
             var result = Sut.GetNewsByCategoryId(categoryId, listSize, 1);
 
             // Assert
-            AssertNewsListSequence(result, new[] { 1, 2, 3, 4, 5 });
+            GetNewsByCategoryIdCustomListSizeFirstPageAssert(result);
         }
 
         [Test]
