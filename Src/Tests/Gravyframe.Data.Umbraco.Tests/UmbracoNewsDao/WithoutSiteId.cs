@@ -2,7 +2,6 @@
 {
     using System.Linq;
 
-    using Gravyframe.Configuration.Umbraco;
     using Gravyframe.Kernel.Umbraco.Tests.TestHelpers;
     using Gravyframe.Kernel.Umbraco.Tests.TestHelpers.Examine;
     using Gravyframe.Models.Umbraco;

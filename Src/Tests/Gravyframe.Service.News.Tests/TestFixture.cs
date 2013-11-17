@@ -1,11 +1,11 @@
-﻿namespace Gravyframe.Service.Tests.NewsService
+﻿namespace Gravyframe.Service.News.Tests
 {
     using System.Collections.Generic;
 
     using Gravyframe.Configuration;
     using Gravyframe.Data.News;
-    using Gravyframe.Service.News;
     using Gravyframe.Service.News.Tasks;
+    using Gravyframe.Service.Tests;
 
     using NSubstitute;
 

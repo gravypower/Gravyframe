@@ -3,6 +3,7 @@
     using Gravyframe.Models;
     using Gravyframe.Service.Messages;
     using Gravyframe.Service.News;
+    using Gravyframe.Service.News.Tests;
 
     using NSubstitute;
 

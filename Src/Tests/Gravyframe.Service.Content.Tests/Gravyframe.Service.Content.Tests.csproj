@@ -4,14 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{732189F6-7A48-4FF2-8705-B1CD80897B67}</ProjectGuid>
+    <ProjectGuid>{73481B73-4311-4A81-8827-CCAB7E2FD66A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Gravyframe.Service</RootNamespace>
-    <AssemblyName>Gravyframe.Service</AssemblyName>
+    <RootNamespace>Gravyframe.Service.Content.Tests</RootNamespace>
+    <AssemblyName>Gravyframe.Service.Content.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,7 +22,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,9 +30,14 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NSubstitute">
+      <HintPath>..\packages\NSubstitute.1.6.1.0\lib\NET40\NSubstitute.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,31 +47,42 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Messages\ResponseCodes.cs" />
-    <Compile Include="Messages\Request.cs" />
+    <Compile Include="GivenContentRequestWithContentId.cs" />
+    <Compile Include="GivenContentRequestWithNoContentId.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Messages\Response.cs" />
-    <Compile Include="IResponseHydrogenationTaskList.cs" />
-    <Compile Include="Service.cs" />
-    <Compile Include="ResponseHydrator.cs" />
-    <Compile Include="ResponseHydrogenationRunner.cs" />
+    <Compile Include="Tests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Gravyframe.Constants\Gravyframe.Configuration.csproj">
+    <ProjectReference Include="..\..\Gravyframe.Constants\Gravyframe.Configuration.csproj">
       <Project>{9F685246-E7D2-43D8-A76F-027787420687}</Project>
       <Name>Gravyframe.Configuration</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Gravyframe.Data\Gravyframe.Data.csproj">
+    <ProjectReference Include="..\..\Gravyframe.Data\Gravyframe.Data.csproj">
       <Project>{DA80ABB5-0A99-4DC1-B56F-DAF7018D3BC5}</Project>
       <Name>Gravyframe.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Gravyframe.Model\Gravyframe.Models.csproj">
+    <ProjectReference Include="..\..\Gravyframe.Model\Gravyframe.Models.csproj">
       <Project>{5d5eb908-b67b-4e7e-af9e-25bdd03f543e}</Project>
       <Name>Gravyframe.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Gravyframe.Service.Content\Gravyframe.Service.Content.csproj">
+      <Project>{76be15ee-931e-4ba9-9288-0825c3d37966}</Project>
+      <Name>Gravyframe.Service.Content</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Gravyframe.Service\Gravyframe.Service.csproj">
+      <Project>{732189f6-7a48-4ff2-8705-b1cd80897b67}</Project>
+      <Name>Gravyframe.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gravyframe.Service.Tests\Gravyframe.Service.Tests.csproj">
+      <Project>{f1d4b6df-3042-4e81-a296-6d16f3b51a6b}</Project>
+      <Name>Gravyframe.Service.Tests</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

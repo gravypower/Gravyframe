@@ -3,6 +3,7 @@
     using System.Linq;
 
     using Gravyframe.Service.Content;
+    using Gravyframe.Service.Content.Tests;
     using Gravyframe.Service.Messages;
 
     using NSubstitute;

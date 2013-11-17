@@ -1,4 +1,4 @@
-﻿namespace Gravyframe.Service.Tests.NewsService
+﻿namespace Gravyframe.Service.News.Tests
 {
     using System.Linq;
 

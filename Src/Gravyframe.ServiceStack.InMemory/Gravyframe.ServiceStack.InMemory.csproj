@@ -122,6 +122,14 @@
       <Project>{5d5eb908-b67b-4e7e-af9e-25bdd03f543e}</Project>
       <Name>Gravyframe.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Gravyframe.Service.Content\Gravyframe.Service.Content.csproj">
+      <Project>{76be15ee-931e-4ba9-9288-0825c3d37966}</Project>
+      <Name>Gravyframe.Service.Content</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gravyframe.Service.News\Gravyframe.Service.News.csproj">
+      <Project>{8392392f-97d1-4d87-a1fe-9b3bfee2efe4}</Project>
+      <Name>Gravyframe.Service.News</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Gravyframe.Service\Gravyframe.Service.csproj">
       <Project>{732189F6-7A48-4FF2-8705-B1CD80897B67}</Project>
       <Name>Gravyframe.Service</Name>

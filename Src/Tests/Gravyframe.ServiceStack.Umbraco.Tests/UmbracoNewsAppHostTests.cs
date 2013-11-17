@@ -19,8 +19,6 @@ using Gravyframe.Kernel.Umbraco.Tests.TestHelpers.Examine.MockIndex;
 
 namespace Gravyframe.ServiceStack.Umbraco.Tests
 {
-    
-
     [TestFixture]
     public class UmbracoNewsAppHostTests : NewsAppHostTests<UmbracoNews>
     {

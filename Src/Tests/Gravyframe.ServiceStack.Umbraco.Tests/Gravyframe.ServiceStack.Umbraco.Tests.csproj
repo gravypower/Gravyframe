@@ -282,6 +282,14 @@
       <Project>{DA80ABB5-0A99-4DC1-B56F-DAF7018D3BC5}</Project>
       <Name>Gravyframe.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Gravyframe.Service.Content\Gravyframe.Service.Content.csproj">
+      <Project>{76be15ee-931e-4ba9-9288-0825c3d37966}</Project>
+      <Name>Gravyframe.Service.Content</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Gravyframe.Service.News\Gravyframe.Service.News.csproj">
+      <Project>{8392392f-97d1-4d87-a1fe-9b3bfee2efe4}</Project>
+      <Name>Gravyframe.Service.News</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Gravyframe.Kernel.Umbraco.Tests\Gravyframe.Kernel.Umbraco.Tests.csproj">
       <Project>{B5105E60-0C2B-494E-A7D0-8336572AB469}</Project>
       <Name>Gravyframe.Kernel.Umbraco.Tests</Name>

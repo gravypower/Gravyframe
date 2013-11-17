@@ -1,7 +1,5 @@
-﻿namespace Gravyframe.Service.Tests.NewsService
+﻿namespace Gravyframe.Service.News.Tests
 {
-    using Gravyframe.Service.News;
-
     using NUnit.Framework;
 
     [TestFixture]
@@ -13,7 +11,7 @@
         [SetUp]
         public void GivenNewsRequest_SetUp()
         {
-            Request = new NewsRequest();
+            this.Request = new NewsRequest();
         }
 
         #endregion

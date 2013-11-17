@@ -3,6 +3,8 @@
     using System.Collections.Generic;
     using System.Linq;
 
+    using Gravyframe.Service.News.Tests;
+
     using NSubstitute;
 
     using NUnit.Framework;

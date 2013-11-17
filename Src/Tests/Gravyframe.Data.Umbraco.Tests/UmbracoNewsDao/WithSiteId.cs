@@ -4,8 +4,6 @@
 
     using NUnit.Framework;
 
-    using Configuration.Umbraco;
-
     using Gravyframe.Models.Umbraco;
 
     using Kernel.Umbraco.Tests.TestHelpers;

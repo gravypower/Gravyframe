@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F1D4B6DF-3042-4E81-A296-6D16F3B51A6B}</ProjectGuid>
+    <ProjectGuid>{8179D686-0600-4728-BA2A-6674571B9F88}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Gravyframe.Service.Tests</RootNamespace>
-    <AssemblyName>Gravyframe.Service.Tests</AssemblyName>
+    <RootNamespace>Gravyframe.Service.News.Tests</RootNamespace>
+    <AssemblyName>Gravyframe.Service.News.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -23,7 +22,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -32,15 +30,13 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="NSubstitute">
       <HintPath>..\packages\NSubstitute.1.6.1.0\lib\NET40\NSubstitute.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.framework, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -51,32 +47,58 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AndSiteId_WithCategoryId.cs">
+      <DependentUpon>WithCategoryId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AndSiteId_WithNewsId.cs">
+      <DependentUpon>WithNewsId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GivenNewsRequest.cs">
+      <DependentUpon>TestFixture.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServiceTests.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <Compile Include="TestFixture.cs" />
+    <Compile Include="WithCategoryId.cs">
+      <DependentUpon>GivenNewsRequest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WithNewsId.cs">
+      <DependentUpon>GivenNewsRequest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WithNoNewsId.cs">
+      <DependentUpon>GivenNewsRequest.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Gravyframe.Constants\Gravyframe.Configuration.csproj">
-      <Project>{9F685246-E7D2-43D8-A76F-027787420687}</Project>
+      <Project>{9f685246-e7d2-43d8-a76f-027787420687}</Project>
       <Name>Gravyframe.Configuration</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Gravyframe.Data\Gravyframe.Data.csproj">
-      <Project>{da80abb5-0a99-4dc1-b56f-daf7018d3bc5}</Project>
+      <Project>{DA80ABB5-0A99-4DC1-B56F-DAF7018D3BC5}</Project>
       <Name>Gravyframe.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Gravyframe.Model\Gravyframe.Models.csproj">
       <Project>{5d5eb908-b67b-4e7e-af9e-25bdd03f543e}</Project>
       <Name>Gravyframe.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Gravyframe.Service.News\Gravyframe.Service.News.csproj">
+      <Project>{8392392f-97d1-4d87-a1fe-9b3bfee2efe4}</Project>
+      <Name>Gravyframe.Service.News</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Gravyframe.Service\Gravyframe.Service.csproj">
       <Project>{732189f6-7a48-4ff2-8705-b1cd80897b67}</Project>
       <Name>Gravyframe.Service</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Gravyframe.Service.Tests\Gravyframe.Service.Tests.csproj">
+      <Project>{f1d4b6df-3042-4e81-a296-6d16f3b51a6b}</Project>
+      <Name>Gravyframe.Service.Tests</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ContentService\" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

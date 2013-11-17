@@ -1,11 +1,15 @@
-﻿namespace Gravyframe.Service.Tests.ContentService
+﻿namespace Gravyframe.Service.Content.Tests
 {
     using System.Collections.Generic;
+
     using Gravyframe.Configuration;
     using Gravyframe.Data.Content;
     using Gravyframe.Service.Content;
     using Gravyframe.Service.Content.Tasks;
+    using Gravyframe.Service.Tests;
+
     using NSubstitute;
+
     using NUnit.Framework;
 
     [TestFixture]
