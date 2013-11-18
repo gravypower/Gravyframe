@@ -37,7 +37,7 @@ namespace Gravyframe.Service
     /// <typeparam name="TArgumentNullException">
     ///  Exception of type NullRequestException
     /// </typeparam>
-    public abstract class Service<TRequest, TResponse, TArgumentNullException>
+    public abstract class Service<TRequest, TResponse, TArgumentNullException> : IService
         where TRequest : Request
         where TResponse : Response, new()
         where TArgumentNullException : Service<TRequest, TResponse, TArgumentNullException>.NullRequestException, new()
@@ -80,7 +80,7 @@ namespace Gravyframe.Service
         ///     This exception is thrown is the request is null
         ///     <cref>TArgumentNullException</cref>
         /// </exception>
-        protected virtual void GuardRequest(TRequest request)
+        public virtual void GuardRequest(TRequest request)
         {
             if (request == null)
             {
@@ -97,7 +97,7 @@ namespace Gravyframe.Service
         /// <returns>
         /// The <see cref="TResponse"/>.
         /// </returns>
-        protected TResponse CreateResponse(TRequest request)
+        public TResponse CreateResponse(TRequest request)
         {
             return new ResponseHydrogenationRunner<TRequest, TResponse>(this.responseHydrogenationTasks, request).RunTasks();
         }

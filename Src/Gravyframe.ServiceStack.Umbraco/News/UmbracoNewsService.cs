@@ -25,7 +25,7 @@ namespace Gravyframe.ServiceStack.Umbraco.News
     using Gravyframe.Service;
     using Gravyframe.Service.News;
 
-    using global::ServiceStack.ServiceHost;
+    using IService = global::ServiceStack.ServiceHost.IService;
 
     /// <summary>
     /// The umbraco news service.

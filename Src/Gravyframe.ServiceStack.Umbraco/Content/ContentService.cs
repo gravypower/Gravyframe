@@ -26,6 +26,8 @@ namespace Gravyframe.ServiceStack.Umbraco.Content
 
     using global::ServiceStack.ServiceHost;
 
+    using IService = global::ServiceStack.ServiceHost.IService;
+
     /// <summary>
     /// The content service.
     /// </summary>

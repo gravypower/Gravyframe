@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IService.cs" />
     <Compile Include="Messages\ResponseCodes.cs" />
     <Compile Include="Messages\Request.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

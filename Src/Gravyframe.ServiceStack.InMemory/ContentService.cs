@@ -26,6 +26,8 @@ namespace Gravyframe.ServiceStack.InMemory
 
     using global::ServiceStack.ServiceHost;
 
+    using IService = global::ServiceStack.ServiceHost.IService;
+
     /// <summary>
     /// The content service.
     /// </summary>

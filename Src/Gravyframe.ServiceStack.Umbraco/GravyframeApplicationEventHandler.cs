@@ -21,6 +21,9 @@
 
 namespace Gravyframe.ServiceStack.Umbraco
 {
+    using System;
+    using System.Linq;
+
     using Gravyframe.ServiceStack.Umbraco.News;
 
     using global::Umbraco.Core;
@@ -43,6 +46,11 @@ namespace Gravyframe.ServiceStack.Umbraco
         {
             // var sites = GetChildNodesByType(-1, "Site").Select(node => node.Name).ToList();
             new UmbracoNewsAppHost(new UmbracoNewsAppHostConfigurationStrategy()).Init();
+
+            var type = typeof(Service.IService);
+            var types = AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(s => s.GetTypes())
+                .Where(p => type.IsAssignableFrom(p));
         }
 
         // private static IEnumerable<Node> GetChildNodesByType(int nodeId, string typeName)
