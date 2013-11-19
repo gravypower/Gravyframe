@@ -37,7 +37,7 @@ namespace Gravyframe.Service
     /// <typeparam name="TArgumentNullException">
     ///  Exception of type NullRequestException
     /// </typeparam>
-    public abstract class Service<TRequest, TResponse, TArgumentNullException> : IService
+    public abstract class Service<TRequest, TResponse, TArgumentNullException>
         where TRequest : Request
         where TResponse : Response, new()
         where TArgumentNullException : Service<TRequest, TResponse, TArgumentNullException>.NullRequestException, new()

@@ -19,7 +19,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Gravyframe.ServiceStack
+namespace Gravyframe.ServiceStack.News
 {
     using System.Reflection;
 
@@ -32,7 +32,7 @@ namespace Gravyframe.ServiceStack
     /// </summary>
     public class NewsAppHostHttpListener : AppHostHttpListenerBase
     {
-        private readonly NewsAppHostConfigurationStrategy configurationStrategy;
+        private readonly NewsConfigurationStrategy configurationStrategy;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="NewsAppHostHttpListener"/> class.
@@ -46,7 +46,7 @@ namespace Gravyframe.ServiceStack
         /// <param name="assembliesWithServices">
         /// The assemblies with services.
         /// </param>
-        protected NewsAppHostHttpListener(NewsAppHostConfigurationStrategy configurationStrategy, string serviceName, params Assembly[] assembliesWithServices)
+        protected NewsAppHostHttpListener(News.NewsConfigurationStrategy configurationStrategy, string serviceName, params Assembly[] assembliesWithServices)
             : base(serviceName, assembliesWithServices)
         {
             this.configurationStrategy = configurationStrategy;

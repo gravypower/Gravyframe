@@ -171,12 +171,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GravyframeApplicationEventHandler.cs" />
-    <Compile Include="News\UmbracoNewsAppHost.cs" />
-    <Compile Include="Content\ContentService.cs" />
-    <Compile Include="News\NewsResponseHydrogenationTaskList.cs" />
-    <Compile Include="News\UmbracoNewsAppHostConfigurationStrategy.cs" />
-    <Compile Include="News\UmbracoNewsAppHostHttpListener.cs" />
-    <Compile Include="News\UmbracoNewsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

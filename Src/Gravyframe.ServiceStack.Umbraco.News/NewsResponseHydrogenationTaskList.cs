@@ -19,7 +19,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Gravyframe.ServiceStack.Umbraco.News
+namespace Gravyframe.ServiceStack.News.Umbraco
 {
     using System.Collections;
     using System.Collections.Generic;

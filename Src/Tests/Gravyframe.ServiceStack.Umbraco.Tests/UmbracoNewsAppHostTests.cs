@@ -9,7 +9,7 @@ using Gravyframe.Models.Umbraco;
 using Gravyframe.Service;
 using Gravyframe.Service.News;
 using Gravyframe.ServiceStack.Tests;
-using Gravyframe.ServiceStack.Umbraco.News;
+//using Gravyframe.ServiceStack.Umbraco.News;
 using NSubstitute;
 using NUnit.Framework;
 using ServiceStack.ServiceClient.Web;
@@ -22,32 +22,32 @@ namespace Gravyframe.ServiceStack.Umbraco.Tests
     [TestFixture]
     public class UmbracoNewsAppHostTests : NewsAppHostTests<UmbracoNews>
     {
-        private class TestNewsAppHostConfigurationStrategy : NewsAppHostConfigurationStrategy
-        {
-            private readonly MockedIndex _mockedIndex;
-            private readonly INodeFactoryFacade _nodeFactoryFacade;
+        //private class TestNewsAppHostConfigurationStrategy : NewsAppHostConfigurationStrategy
+        //{
+        //    private readonly MockedIndex _mockedIndex;
+        //    private readonly INodeFactoryFacade _nodeFactoryFacade;
 
-            public TestNewsAppHostConfigurationStrategy(MockedIndex mockedIndex, INodeFactoryFacade nodeFactoryFacade)
-            {
-                _mockedIndex = mockedIndex;
-                _nodeFactoryFacade = nodeFactoryFacade;
-            }
+        //    public TestNewsAppHostConfigurationStrategy(MockedIndex mockedIndex, INodeFactoryFacade nodeFactoryFacade)
+        //    {
+        //        _mockedIndex = mockedIndex;
+        //        _nodeFactoryFacade = nodeFactoryFacade;
+        //    }
 
-            public override void ConfigureContainer(Container container)
-            {
-                container.Register(_mockedIndex.Searcher);
-                container.Register(_nodeFactoryFacade);
-                container.Register<INewsConfiguration>(
-                    new UmbracoNewsConfiguration(container.Resolve<INodeFactoryFacade>(), 1));
+        //    public override void ConfigureContainer(Container container)
+        //    {
+        //        container.Register(_mockedIndex.Searcher);
+        //        container.Register(_nodeFactoryFacade);
+        //        container.Register<INewsConfiguration>(
+        //            new UmbracoNewsConfiguration(container.Resolve<INodeFactoryFacade>(), 1));
 
-                container.Register<NewsDao<UmbracoNews>>(new UmbracoNewsDao(container.Resolve<INewsConfiguration>(),
-                    container.Resolve<INodeFactoryFacade>(), container.Resolve<ISearcher>()));
+        //        container.Register<NewsDao<UmbracoNews>>(new UmbracoNewsDao(container.Resolve<INewsConfiguration>(),
+        //            container.Resolve<INodeFactoryFacade>(), container.Resolve<ISearcher>()));
 
-                container.Register<IResponseHydrogenationTaskList<NewsRequest, NewsResponse<UmbracoNews>>>(
-                    new NewsResponseHydrogenationTaskList(container)
-                    );
-            }
-        }
+        //        //container.Register<IResponseHydrogenationTaskList<NewsRequest, NewsResponse<UmbracoNews>>>(
+        //        //    new NewsResponseHydrogenationTaskList(container)
+        //        //    );
+        //    }
+        //}
 
         [SetUp]
         public void SetUp()
@@ -73,9 +73,9 @@ namespace Gravyframe.ServiceStack.Umbraco.Tests
 
             mockedIndex.Indexer.RebuildIndex();
 
-            ConfigurationStrategy = new TestNewsAppHostConfigurationStrategy(mockedIndex, nodeFactoryFacade);
+            //ConfigurationStrategy = new TestNewsAppHostConfigurationStrategy(mockedIndex, nodeFactoryFacade);
 
-            Sut = new UmbracoNewsAppHostHttpListener(ConfigurationStrategy);
+            //Sut = new UmbracoNewsAppHostHttpListener(ConfigurationStrategy);
             Sut.Init();
             Sut.Start(ListeningOn);
 

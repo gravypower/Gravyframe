@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="NewsAppHostConfigurationStrategy.cs" company="Gravypowered">
+// <copyright file="NewsConfigurationStrategy.cs" company="Gravypowered">
 //   Copyright 2013 Aaron Job
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,18 +19,18 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Gravyframe.ServiceStack
+namespace Gravyframe.ServiceStack.News
 {
     using Funq;
 
-    using Gravyframe.Service.News;
-
     using global::ServiceStack.ServiceHost;
+
+    using Gravyframe.Service.News;
 
     /// <summary>
     /// The news app host configuration strategy.
     /// </summary>
-    public abstract class NewsAppHostConfigurationStrategy
+    public abstract class NewsConfigurationStrategy : IConfigurationStrategy
     {
         /// <summary>
         /// The site id token.
@@ -125,5 +125,7 @@ namespace Gravyframe.ServiceStack
         {
             return categoryId != null ? NewsByCategoryIdServiceRestPath.Replace(CategoryIdToken, categoryId) : NewsByCategoryIdServiceRestPath;
         }
+
+        public abstract System.Type GetServiceType();
     }
 }

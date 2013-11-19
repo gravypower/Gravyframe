@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="UmbracoNewsService.cs" company="Gravypowered">
+// <copyright file="UmbracoNewsAppHostHttpListener.cs" company="Gravypowered">
 //   Copyright 2013 Aaron Job
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,32 +15,26 @@
 //   limitations under the License.
 // </copyright>
 // <summary>
-//   Defines the UmbracoNewsService type.
+//   Defines the UmbracoNewsAppHostHttpListener type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace Gravyframe.ServiceStack.Umbraco.News
 {
-    using Gravyframe.Models.Umbraco;
-    using Gravyframe.Service;
-    using Gravyframe.Service.News;
-
-    using IService = global::ServiceStack.ServiceHost.IService;
-
-    /// <summary>
-    /// The umbraco news service.
-    /// </summary>
-    public class UmbracoNewsService : NewsService<UmbracoNews>, IService
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="UmbracoNewsService"/> class.
-        /// </summary>
-        /// <param name="responseHydrogenationTasks">
-        /// The response hydrogenation tasks.
-        /// </param>
-        public UmbracoNewsService(IResponseHydrogenationTaskList<NewsRequest, NewsResponse<UmbracoNews>> responseHydrogenationTasks)
-            : base(responseHydrogenationTasks)
-        {
-        }
-    }
+    ///// <summary>
+    ///// The umbraco news app host http listener.
+    ///// </summary>
+    //public class UmbracoNewsAppHostHttpListener : NewsAppHostHttpListener
+    //{
+    //    /// <summary>
+    //    /// Initializes a new instance of the <see cref="UmbracoNewsAppHostHttpListener"/> class.
+    //    /// </summary>
+    //    /// <param name="configurationStrategy">
+    //    /// The configuration strategy.
+    //    /// </param>
+    //    public UmbracoNewsAppHostHttpListener(NewsConfigurationStrategy configurationStrategy)
+    //        : base(configurationStrategy, "Gravyframe News Web Services", typeof(UmbracoNewsService).Assembly)
+    //    {
+    //    }
+    //}
 }

@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="UmbracoNewsAppHostHttpListener.cs" company="Gravypowered">
+// <copyright file="UmbracoNewsAppHost.cs" company="Gravypowered">
 //   Copyright 2013 Aaron Job
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,26 +15,26 @@
 //   limitations under the License.
 // </copyright>
 // <summary>
-//   Defines the UmbracoNewsAppHostHttpListener type.
+//   Defines the UmbracoNewsAppHost type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Gravyframe.ServiceStack.Umbraco.News
+namespace Gravyframe.ServiceStack.News.Umbraco
 {
-    /// <summary>
-    /// The umbraco news app host http listener.
-    /// </summary>
-    public class UmbracoNewsAppHostHttpListener : NewsAppHostHttpListener
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="UmbracoNewsAppHostHttpListener"/> class.
-        /// </summary>
-        /// <param name="configurationStrategy">
-        /// The configuration strategy.
-        /// </param>
-        public UmbracoNewsAppHostHttpListener(NewsAppHostConfigurationStrategy configurationStrategy)
-            : base(configurationStrategy, "Gravyframe News Web Services", typeof(UmbracoNewsService).Assembly)
-        {
-        }
-    }
+    ///// <summary>
+    ///// The umbraco news app host.
+    ///// </summary>
+    //public class UmbracoNewsAppHost : NewsAppHost
+    //{
+    //    /// <summary>
+    //    /// Initializes a new instance of the <see cref="UmbracoNewsAppHost"/> class.
+    //    /// </summary>
+    //    /// <param name="configurationStrategy">
+    //    /// The configuration strategy.
+    //    /// </param>
+    //    public UmbracoNewsAppHost(NewsConfigurationStrategy configurationStrategy)
+    //        : base(configurationStrategy, "Gravyframe News Web Services", typeof(UmbracoNewsService).Assembly)
+    //    {
+    //    }
+    //}
 }

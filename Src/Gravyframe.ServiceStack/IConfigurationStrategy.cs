@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ContentService.cs" company="Gravypowered">
+// <copyright file="IConfigurationStrategy.cs" company="Gravypowered">
 //   Copyright 2013 Aaron Job
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,33 +15,24 @@
 //   limitations under the License.
 // </copyright>
 // <summary>
-//   Defines the ContentService type.
+//   The news app host configuration strategy.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Gravyframe.ServiceStack.Umbraco.Content
+namespace Gravyframe.ServiceStack
 {
-    using Gravyframe.Service;
-    using Gravyframe.Service.Content;
+    using System;
+
+    using Funq;
 
     using global::ServiceStack.ServiceHost;
 
-    using IService = global::ServiceStack.ServiceHost.IService;
-
-    /// <summary>
-    /// The content service.
-    /// </summary>
-    public class ContentService : Service.Content.ContentService, IService
+    public interface IConfigurationStrategy
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ContentService"/> class.
-        /// </summary>
-        /// <param name="responseHydrogenationTasks">
-        /// The response hydrogenation tasks.
-        /// </param>
-        public ContentService(IResponseHydrogenationTaskList<ContentRequest, ContentResponse> responseHydrogenationTasks)
-            : base(responseHydrogenationTasks)
-        {
-        }
+        void ConfigureContainer(Container container);
+
+        void ConfigureRoutes(IServiceRoutes routes);
+
+        Type GetServiceType();
     }
 }

@@ -23,8 +23,12 @@ namespace Gravyframe.ServiceStack.Umbraco
 {
     using System;
     using System.Linq;
+    using System.Reflection;
+    using System.Reflection.Emit;
+    using System.Runtime.InteropServices;
+    using System.Threading;
 
-    using Gravyframe.ServiceStack.Umbraco.News;
+    using global::ServiceStack.ServiceHost;
 
     using global::Umbraco.Core;
 
@@ -45,13 +49,56 @@ namespace Gravyframe.ServiceStack.Umbraco
         protected override void ApplicationStarted(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext)
         {
             // var sites = GetChildNodesByType(-1, "Site").Select(node => node.Name).ToList();
-            new UmbracoNewsAppHost(new UmbracoNewsAppHostConfigurationStrategy()).Init();
+            //new UmbracoNewsAppHost(new UmbracoNewsAppHostConfigurationStrategy()).Init();
 
-            var type = typeof(Service.IService);
             var types = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(s => s.GetTypes())
-                .Where(p => type.IsAssignableFrom(p));
+                .Where(t => typeof(IConfigurationStrategy).IsAssignableFrom(t) && t.IsClass && !t.IsAbstract && !t.IsInterface);
+
+            var assemblyName = new AssemblyName { Name = "Gravyframe.ServiceStack.Umbraco.Service" };
+            var thisDomain = Thread.GetDomain();
+            var asmBuilder = thisDomain.DefineDynamicAssembly(assemblyName, AssemblyBuilderAccess.Run);
+
+            var modBuilder = asmBuilder.DefineDynamicModule(asmBuilder.GetName().Name, false);
+
+            foreach (var type in types)
+            {
+                var configurationStrategy = (IConfigurationStrategy)Activator.CreateInstance(type);
+                var serviceType = configurationStrategy.GetServiceType();
+
+                var typeBuilder = modBuilder.DefineType("ServiceStack" + type.Name,
+                TypeAttributes.Public |
+                TypeAttributes.Class |
+                TypeAttributes.AutoClass |
+                TypeAttributes.AnsiClass |
+                TypeAttributes.BeforeFieldInit |
+                TypeAttributes.AutoLayout,
+                serviceType,
+                new[] { typeof(IService) });
+
+                var constructor = typeBuilder.DefineConstructor(
+                        MethodAttributes.Public |
+                        MethodAttributes.SpecialName |
+                        MethodAttributes.RTSpecialName,
+                        CallingConventions.Standard,
+                        new Type[0]);
+
+                //Define the reflection ConstructorInfor for System.Object
+                var conObj = typeof(object).GetConstructor(new Type[0]);
+
+                //call constructor of base object
+                var il = constructor.GetILGenerator();
+                il.Emit(OpCodes.Ldarg_0);
+                il.Emit(OpCodes.Call, conObj);
+                il.Emit(OpCodes.Ret);
+
+                var service = typeBuilder.CreateType();
+
+                new AppHost(configurationStrategy, typeBuilder.Name, service.Assembly).Init();
+            }
         }
+
+        //
 
         // private static IEnumerable<Node> GetChildNodesByType(int nodeId, string typeName)
         // {

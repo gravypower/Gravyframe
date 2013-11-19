@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="UmbracoNewsAppHostConfigurationStrategy.cs" company="Gravypowered">
+// <copyright file="UmbracoNewsConfigurationStrategy.cs" company="Gravypowered">
 //   Copyright 2013 Aaron Job
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,11 +15,11 @@
 //   limitations under the License.
 // </copyright>
 // <summary>
-//   Defines the UmbracoNewsAppHostConfigurationStrategy type.
+//   Defines the UmbracoNewsConfigurationStrategy type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Gravyframe.ServiceStack.Umbraco.News
+namespace Gravyframe.ServiceStack.News.Umbraco
 {
     using Examine;
 
@@ -35,7 +35,7 @@ namespace Gravyframe.ServiceStack.Umbraco.News
     /// <summary>
     /// The umbraco news app host configuration strategy.
     /// </summary>
-    public class UmbracoNewsAppHostConfigurationStrategy : NewsAppHostConfigurationStrategy
+    public class UmbracoNewsConfigurationStrategy : NewsConfigurationStrategy
     {
         /// <summary>
         /// The configure container.
@@ -58,6 +58,11 @@ namespace Gravyframe.ServiceStack.Umbraco.News
 
             container.Register<IResponseHydrogenationTaskList<NewsRequest, NewsResponse<UmbracoNews>>>(
                 new NewsResponseHydrogenationTaskList(container));
+        }
+
+        public override System.Type GetServiceType()
+        {
+            return typeof(NewsService<UmbracoNews>);
         }
     }
 }
