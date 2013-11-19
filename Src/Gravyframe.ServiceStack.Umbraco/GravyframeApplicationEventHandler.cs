@@ -66,7 +66,7 @@ namespace Gravyframe.ServiceStack.Umbraco
                 var configurationStrategy = (IConfigurationStrategy)Activator.CreateInstance(type);
                 var serviceType = configurationStrategy.GetServiceType();
 
-                var typeBuilder = modBuilder.DefineType("ServiceStack" + type.Name,
+                var typeBuilder = modBuilder.DefineType("ServiceStack" + serviceType.Name,
                 TypeAttributes.Public |
                 TypeAttributes.Class |
                 TypeAttributes.AutoClass |
@@ -76,21 +76,23 @@ namespace Gravyframe.ServiceStack.Umbraco
                 serviceType,
                 new[] { typeof(IService) });
 
-                var constructor = typeBuilder.DefineConstructor(
-                        MethodAttributes.Public |
-                        MethodAttributes.SpecialName |
-                        MethodAttributes.RTSpecialName,
-                        CallingConventions.Standard,
-                        new Type[0]);
-
                 //Define the reflection ConstructorInfor for System.Object
-                var conObj = typeof(object).GetConstructor(new Type[0]);
+                var conObj = serviceType.GetConstructors();
 
-                //call constructor of base object
-                var il = constructor.GetILGenerator();
-                il.Emit(OpCodes.Ldarg_0);
-                il.Emit(OpCodes.Call, conObj);
-                il.Emit(OpCodes.Ret);
+                foreach (var constructorInfo in conObj)
+                {
+                    var constructor =
+                        typeBuilder.DefineConstructor(
+                            MethodAttributes.Public | MethodAttributes.SpecialName | MethodAttributes.RTSpecialName,
+                            CallingConventions.Standard,
+                            new Type[0]);
+
+                    //call constructor of base object
+                    var il = constructor.GetILGenerator();
+                    il.Emit(OpCodes.Ldarg_0);
+                    il.Emit(OpCodes.Call, constructorInfo);
+                    il.Emit(OpCodes.Ret);
+                }
 
                 var service = typeBuilder.CreateType();
 
