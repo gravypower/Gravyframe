@@ -23,9 +23,9 @@ namespace Gravyframe.ServiceStack.News
 {
     using Funq;
 
-    using global::ServiceStack.ServiceHost;
-
     using Gravyframe.Service.News;
+
+    using global::ServiceStack.ServiceHost;
 
     /// <summary>
     /// The news app host configuration strategy.

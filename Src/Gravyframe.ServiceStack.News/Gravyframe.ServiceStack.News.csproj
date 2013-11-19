@@ -66,9 +66,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NewsAppHost.cs" />
     <Compile Include="NewsConfigurationStrategy.cs" />
-    <Compile Include="NewsAppHostHttpListener.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

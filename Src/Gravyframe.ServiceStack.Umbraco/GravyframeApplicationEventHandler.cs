@@ -22,10 +22,10 @@
 namespace Gravyframe.ServiceStack.Umbraco
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
     using System.Reflection.Emit;
-    using System.Runtime.InteropServices;
     using System.Threading;
 
     using global::ServiceStack.ServiceHost;
@@ -48,9 +48,6 @@ namespace Gravyframe.ServiceStack.Umbraco
         /// </param>
         protected override void ApplicationStarted(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext)
         {
-            // var sites = GetChildNodesByType(-1, "Site").Select(node => node.Name).ToList();
-            //new UmbracoNewsAppHost(new UmbracoNewsAppHostConfigurationStrategy()).Init();
-
             var types = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(s => s.GetTypes())
                 .Where(t => typeof(IConfigurationStrategy).IsAssignableFrom(t) && t.IsClass && !t.IsAbstract && !t.IsInterface);
@@ -61,55 +58,32 @@ namespace Gravyframe.ServiceStack.Umbraco
 
             var modBuilder = asmBuilder.DefineDynamicModule(asmBuilder.GetName().Name, false);
 
+            var serviceTypes = new List<Assembly>();
+            var configurationStrategies = new List<IConfigurationStrategy>();
             foreach (var type in types)
             {
                 var configurationStrategy = (IConfigurationStrategy)Activator.CreateInstance(type);
                 var serviceType = configurationStrategy.GetServiceType();
 
-                var typeBuilder = modBuilder.DefineType("ServiceStack" + serviceType.Name,
-                TypeAttributes.Public |
-                TypeAttributes.Class |
-                TypeAttributes.AutoClass |
-                TypeAttributes.AnsiClass |
-                TypeAttributes.BeforeFieldInit |
-                TypeAttributes.AutoLayout,
-                serviceType,
+                var typeBuilder = modBuilder.DefineType(
+                    "ServiceStack" + serviceType.Name,
+                    GetTypeAttributes(),
+                    serviceType,
                 new[] { typeof(IService) });
 
-                //Define the reflection ConstructorInfor for System.Object
-                var conObj = serviceType.GetConstructors();
+                TypeBuilderHelper.CreatePassThroughConstructors(typeBuilder, serviceType);
 
-                foreach (var constructorInfo in conObj)
-                {
-                    var constructor =
-                        typeBuilder.DefineConstructor(
-                            MethodAttributes.Public | MethodAttributes.SpecialName | MethodAttributes.RTSpecialName,
-                            CallingConventions.Standard,
-                            new Type[0]);
-
-                    //call constructor of base object
-                    var il = constructor.GetILGenerator();
-                    il.Emit(OpCodes.Ldarg_0);
-                    il.Emit(OpCodes.Call, constructorInfo);
-                    il.Emit(OpCodes.Ret);
-                }
-
-                var service = typeBuilder.CreateType();
-
-                new AppHost(configurationStrategy, typeBuilder.Name, service.Assembly).Init();
+                serviceTypes.Add(typeBuilder.CreateType().Assembly);
+                configurationStrategies.Add(configurationStrategy);
             }
+
+            new AppHost(configurationStrategies, "Gravyframe Services", serviceTypes.ToArray()).Init();
         }
 
-        //
-
-        // private static IEnumerable<Node> GetChildNodesByType(int nodeId, string typeName)
-        // {
-        //    return GetChildNodesByType(new Node(nodeId), typeName);
-        // }
-
-        // private static IEnumerable<Node> GetChildNodesByType(Node node, string typeName)
-        // {
-        //    return node.Children.Cast<Node>().Where(child => child.NodeTypeAlias == typeName).ToList();
-        // }
+        private static TypeAttributes GetTypeAttributes()
+        {
+            return TypeAttributes.Public | TypeAttributes.Class | TypeAttributes.AutoClass | TypeAttributes.AnsiClass
+                   | TypeAttributes.BeforeFieldInit | TypeAttributes.AutoLayout;
+        }
     }
 }

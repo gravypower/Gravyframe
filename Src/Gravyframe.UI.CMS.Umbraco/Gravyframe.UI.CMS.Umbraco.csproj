@@ -27,7 +27,7 @@
     <RootNamespace>Gravyframe.UI.CMS.Umbraco</RootNamespace>
     <AssemblyName>Gravyframe.UI.CMS.Umbraco</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
     <TargetFrameworkProfile />
@@ -337,9 +337,41 @@
     <Content Include="config\404handlers.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Gravyframe.Constants.Umbraco\Gravyframe.Configuration.Umbraco.csproj">
+      <Project>{66d63608-084c-4169-a041-c08725a5aba1}</Project>
+      <Name>Gravyframe.Configuration.Umbraco</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gravyframe.Constants\Gravyframe.Configuration.csproj">
+      <Project>{9f685246-e7d2-43d8-a76f-027787420687}</Project>
+      <Name>Gravyframe.Configuration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gravyframe.Data.Umbraco\Gravyframe.Data.Umbraco.csproj">
+      <Project>{a4c5abe0-66a7-401c-a05e-0d03e8805838}</Project>
+      <Name>Gravyframe.Data.Umbraco</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gravyframe.Data\Gravyframe.Data.csproj">
+      <Project>{da80abb5-0a99-4dc1-b56f-daf7018d3bc5}</Project>
+      <Name>Gravyframe.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Gravyframe.Kernel.Umbraco\Gravyframe.Kernel.Umbraco.csproj">
       <Project>{35D78ACD-3AA6-4593-AD64-5ABF3C3BB7B6}</Project>
       <Name>Gravyframe.Kernel.Umbraco</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gravyframe.Kernel\Gravyframe.Kernel.csproj">
+      <Project>{656d1a93-a92a-402e-9af7-4af4be963958}</Project>
+      <Name>Gravyframe.Kernel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gravyframe.Models.Umbraco\Gravyframe.Models.Umbraco.csproj">
+      <Project>{cc84f5c7-7cca-4638-bd8b-4bbcc75ab9b1}</Project>
+      <Name>Gravyframe.Models.Umbraco</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gravyframe.Model\Gravyframe.Models.csproj">
+      <Project>{5d5eb908-b67b-4e7e-af9e-25bdd03f543e}</Project>
+      <Name>Gravyframe.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gravyframe.Service.News\Gravyframe.Service.News.csproj">
+      <Project>{8392392f-97d1-4d87-a1fe-9b3bfee2efe4}</Project>
+      <Name>Gravyframe.Service.News</Name>
     </ProjectReference>
     <ProjectReference Include="..\Gravyframe.ServiceStack.Umbraco.News\Gravyframe.ServiceStack.News.Umbraco.csproj">
       <Project>{B8CC1EFF-50CB-441A-8027-3852EDA7DF8C}</Project>
@@ -348,6 +380,14 @@
     <ProjectReference Include="..\Gravyframe.ServiceStack.Umbraco\Gravyframe.ServiceStack.Umbraco.csproj">
       <Project>{70F36221-8949-40EB-8996-4F7CA11CC007}</Project>
       <Name>Gravyframe.ServiceStack.Umbraco</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gravyframe.ServiceStack\Gravyframe.ServiceStack.csproj">
+      <Project>{ac4d7cbb-0d87-4cd7-b642-65d2710e9e6f}</Project>
+      <Name>Gravyframe.ServiceStack</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gravyframe.Service\Gravyframe.Service.csproj">
+      <Project>{732189f6-7a48-4ff2-8705-b1cd80897b67}</Project>
+      <Name>Gravyframe.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -364,12 +404,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
           <DevelopmentServerPort>62113</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>
-          </IISUrl>
+          <IISUrl>http://localhost:62113/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>http://Umbraco</CustomServerUrl>

@@ -222,7 +222,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContentService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

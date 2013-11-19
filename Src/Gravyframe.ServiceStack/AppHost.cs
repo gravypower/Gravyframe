@@ -1,28 +1,20 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="AppHost.cs" company="">
-// TODO: Update copyright text.
-// </copyright>
-// -----------------------------------------------------------------------
-
-namespace Gravyframe.ServiceStack
+﻿namespace Gravyframe.ServiceStack
 {
+    using System.Collections.Generic;
     using System.Reflection;
 
     using Funq;
 
     using global::ServiceStack.WebHost.Endpoints;
 
-    /// <summary>
-    /// TODO: Update summary.
-    /// </summary>
     public class AppHost : AppHostBase
     {
-        private readonly IConfigurationStrategy configurationStrategy;
+        private readonly IEnumerable<IConfigurationStrategy> configurationStrategies;
 
-        public AppHost(IConfigurationStrategy configurationStrategy, string serviceName, params Assembly[] assembliesWithServices)
+        public AppHost(IEnumerable<IConfigurationStrategy> configurationStrategies, string serviceName, params Assembly[] assembliesWithServices)
             : base(serviceName, assembliesWithServices)
         {
-            this.configurationStrategy = configurationStrategy;
+            this.configurationStrategies = configurationStrategies;
         }
 
         /// <summary>
@@ -33,8 +25,11 @@ namespace Gravyframe.ServiceStack
         /// </param>
         public override void Configure(Container container)
         {
-            this.configurationStrategy.ConfigureContainer(container);
-            this.configurationStrategy.ConfigureRoutes(this.Routes);
+            foreach (var configurationStrategy in this.configurationStrategies)
+            {
+                configurationStrategy.ConfigureContainer(container);
+                configurationStrategy.ConfigureRoutes(this.Routes);
+            }
         }
     }
 }

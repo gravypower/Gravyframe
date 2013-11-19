@@ -172,6 +172,7 @@
   <ItemGroup>
     <Compile Include="GravyframeApplicationEventHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TypeBuilderHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -216,6 +217,14 @@
     <ProjectReference Include="..\Gravyframe.Service.News\Gravyframe.Service.News.csproj">
       <Project>{8392392f-97d1-4d87-a1fe-9b3bfee2efe4}</Project>
       <Name>Gravyframe.Service.News</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gravyframe.ServiceStack.News\Gravyframe.ServiceStack.News.csproj">
+      <Project>{C5F9520D-8672-4213-969C-9502522DD191}</Project>
+      <Name>Gravyframe.ServiceStack.News</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gravyframe.ServiceStack.Umbraco.News\Gravyframe.ServiceStack.News.Umbraco.csproj">
+      <Project>{B8CC1EFF-50CB-441A-8027-3852EDA7DF8C}</Project>
+      <Name>Gravyframe.ServiceStack.News.Umbraco</Name>
     </ProjectReference>
     <ProjectReference Include="..\Gravyframe.ServiceStack\Gravyframe.ServiceStack.csproj">
       <Project>{AC4D7CBB-0D87-4CD7-B642-65D2710E9E6F}</Project>

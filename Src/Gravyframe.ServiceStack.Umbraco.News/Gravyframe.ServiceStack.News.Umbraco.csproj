@@ -225,10 +225,7 @@
   <ItemGroup>
     <Compile Include="NewsResponseHydrogenationTaskList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UmbracoNewsAppHost.cs" />
     <Compile Include="UmbracoNewsConfigurationStrategy.cs" />
-    <Compile Include="UmbracoNewsAppHostHttpListener.cs" />
-    <Compile Include="UmbracoNewsService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Gravyframe.Constants.Umbraco\Gravyframe.Configuration.Umbraco.csproj">
