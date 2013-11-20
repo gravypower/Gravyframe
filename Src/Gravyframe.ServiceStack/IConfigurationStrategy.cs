@@ -21,8 +21,6 @@
 
 namespace Gravyframe.ServiceStack
 {
-    using System;
-
     using Funq;
 
     using global::ServiceStack.ServiceHost;
@@ -32,7 +30,5 @@ namespace Gravyframe.ServiceStack
         void ConfigureContainer(Container container);
 
         void ConfigureRoutes(IServiceRoutes routes);
-
-        Type GetServiceType();
     }
 }

@@ -34,7 +34,7 @@
 
             foreach (var type in types)
             {
-                var configurationStrategy = (IConfigurationStrategy)Activator.CreateInstance(type);
+                var configurationStrategy = (IAutomaticServiceWiringConfigurationStrategy)Activator.CreateInstance(type);
                 var serviceType = configurationStrategy.GetServiceType();
 
                 var typeBuilder = modBuilder.DefineType(

@@ -74,6 +74,7 @@
   <ItemGroup>
     <Compile Include="AppHost.cs" />
     <Compile Include="EndPoints.cs" />
+    <Compile Include="IAutomaticServiceWiringConfigurationStrategy.cs" />
     <Compile Include="IConfigurationStrategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

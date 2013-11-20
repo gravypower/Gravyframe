@@ -16,7 +16,7 @@
             
         }
 
-        public class Test : IConfigurationStrategy
+        public class Test : IAutomaticServiceWiringConfigurationStrategy
         {
             public void ConfigureContainer(Container container)
             {
