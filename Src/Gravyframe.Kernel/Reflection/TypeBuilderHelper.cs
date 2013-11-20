@@ -1,4 +1,4 @@
-﻿namespace Gravyframe.ServiceStack.Umbraco
+﻿namespace Gravyframe.Kernel.Reflection
 {
     using System;
     using System.Collections.Generic;
@@ -12,7 +12,7 @@
         /// forwards its arguments to the base constructor, and matches the base constructor's signature.
         /// Supports optional values, and custom attributes on constructors and parameters.
         /// Does not support n-ary (variadic) constructors</summary>
-        public static void CreatePassThroughConstructors(TypeBuilder builder, Type baseType)
+        public static void CreatePassThroughConstructors(this TypeBuilder builder, Type baseType)
         {
             foreach (var constructor in baseType.GetConstructors())
             {
@@ -72,6 +72,7 @@
                 var namedPropertyValues = attribute.NamedArguments.Where(a => a.MemberInfo is PropertyInfo).Select(a => a.TypedValue.Value).ToArray();
                 var namedFieldInfo = attribute.NamedArguments.Select(a => a.MemberInfo).OfType<FieldInfo>().ToArray();
                 var namedFieldValues = attribute.NamedArguments.Where(a => a.MemberInfo is FieldInfo).Select(a => a.TypedValue.Value).ToArray();
+
                 return new CustomAttributeBuilder(attribute.Constructor, attributeArgs, namedPropertyInfo, namedPropertyValues, namedFieldInfo, namedFieldValues);
             }).ToArray();
         }

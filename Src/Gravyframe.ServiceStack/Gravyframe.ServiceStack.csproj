@@ -73,10 +73,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppHost.cs" />
+    <Compile Include="EndPoints.cs" />
     <Compile Include="IConfigurationStrategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Gravyframe.Kernel\Gravyframe.Kernel.csproj">
+      <Project>{656D1A93-A92A-402E-9AF7-4AF4BE963958}</Project>
+      <Name>Gravyframe.Kernel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Gravyframe.Service\Gravyframe.Service.csproj">
       <Project>{732189f6-7a48-4ff2-8705-b1cd80897b67}</Project>
       <Name>Gravyframe.Service</Name>
