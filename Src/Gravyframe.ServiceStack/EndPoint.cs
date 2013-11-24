@@ -7,34 +7,12 @@
     using System.Reflection.Emit;
     using System.Threading;
 
-    using global::ServiceStack.ServiceHost;
-
     using Gravyframe.Kernel.Reflection;
+
+    using global::ServiceStack.ServiceHost;
 
     public class EndPoint
     {
-        public AppHost AppHost { get; private set; }
-
-        private readonly List<Assembly> serviceTypes;
-
-        public IEnumerable<Assembly> ServiceTypes
-        {
-            get
-            {
-                return serviceTypes;
-            }
-        }
-
-        private readonly List<IConfigurationStrategy> configurationStrategies;
-
-        public IEnumerable<IConfigurationStrategy> ConfigurationStrategies
-        {
-            get
-            {
-                return configurationStrategies;
-            }
-        }
-
         public EndPoint()
             : this(new EndPointConfiguration())
         {
@@ -42,8 +20,8 @@
 
         public EndPoint(EndPointConfiguration endPointConfiguration)
         {
-            serviceTypes = new List<Assembly>();
-            configurationStrategies = new List<IConfigurationStrategy>();
+            this.serviceTypes = new List<Assembly>();
+            this.configurationStrategies = new List<IConfigurationStrategy>();
 
             this.configurationStrategies = new List<IConfigurationStrategy>();
 
@@ -53,23 +31,45 @@
             }
         }
 
-        private void AutoWiring()
+        public IEnumerable<Assembly> ServiceTypes
         {
-            var types = FindConfigurationStrategyForAutoWireing();
-            var modBuilder = CreateDefineDynamicModule(CreateAssemblyBuilder());
-            this.CreateAutoWireInstances(types, modBuilder);
+            get
+            {
+                return this.serviceTypes;
+            }
         }
 
-        private void CreateAutoWireInstances(IEnumerable<Type> types, ModuleBuilder modBuilder)
+        public IEnumerable<IConfigurationStrategy> ConfigurationStrategies
         {
+            get
+            {
+                return this.configurationStrategies;
+            }
+        }
+
+        public GravyframeHost GravyframeHost { get; private set; }
+
+        private void AutoWiring()
+        {
+            var types = AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(s => s.GetTypes())
+                .Where(
+                    t =>
+                    typeof(IAutomaticServiceHostingConfigurationStrategy).IsAssignableFrom(t) && t.IsClass && !t.IsAbstract
+                    && !t.IsInterface);
+            var assemblyName = new AssemblyName { Name = "Gravyframe.ServiceStack.Umbraco.Service" };
+            var asmBuilder = Thread.GetDomain().DefineDynamicAssembly(assemblyName, AssemblyBuilderAccess.Run);
+
+            var modBuilder = asmBuilder.DefineDynamicModule(asmBuilder.GetName().Name, false);
             foreach (var type in types)
             {
-                var configurationStrategy = CretaeIAutomaticServiceWiringConfigurationStrategyInstance(type);
+                var configurationStrategy = (IAutomaticServiceHostingConfigurationStrategy)Activator.CreateInstance(type);
                 var serviceType = configurationStrategy.GetServiceType();
 
                 var typeBuilder = modBuilder.DefineType(
                     "ServiceStack" + serviceType.Name,
-                    GetTypeAttributes(),
+                    TypeAttributes.Public | TypeAttributes.Class | TypeAttributes.AutoClass | TypeAttributes.AnsiClass
+                    | TypeAttributes.BeforeFieldInit | TypeAttributes.AutoLayout,
                     serviceType,
                     new[] { typeof(IService) });
 
@@ -80,33 +80,9 @@
             }
         }
 
-        private static IAutomaticServiceWiringConfigurationStrategy CretaeIAutomaticServiceWiringConfigurationStrategyInstance(Type type)
-        {
-            return (IAutomaticServiceWiringConfigurationStrategy)Activator.CreateInstance(type);
-        }
+        private readonly List<Assembly> serviceTypes;
 
-        private static ModuleBuilder CreateDefineDynamicModule(AssemblyBuilder asmBuilder)
-        {
-            return asmBuilder.DefineDynamicModule(asmBuilder.GetName().Name, false);
-        }
-
-        private static AssemblyBuilder CreateAssemblyBuilder()
-        {
-            var assemblyName = new AssemblyName { Name = "Gravyframe.ServiceStack.Umbraco.Service" };
-            var thisDomain = Thread.GetDomain();
-            var asmBuilder = thisDomain.DefineDynamicAssembly(assemblyName, AssemblyBuilderAccess.Run);
-            return asmBuilder;
-        }
-
-        private static IEnumerable<Type> FindConfigurationStrategyForAutoWireing()
-        {
-            return AppDomain.CurrentDomain.GetAssemblies()
-                .SelectMany(s => s.GetTypes())
-                .Where(
-                    t =>
-                    typeof(IAutomaticServiceWiringConfigurationStrategy).IsAssignableFrom(t) && t.IsClass && !t.IsAbstract
-                    && !t.IsInterface);
-        }
+        private readonly List<IConfigurationStrategy> configurationStrategies;
 
         public EndPoint AddEndPoint(Assembly assembly, IConfigurationStrategy configurationStrategy)
         {
@@ -117,14 +93,8 @@
 
         public EndPoint Create()
         {
-            AppHost = new AppHost(ConfigurationStrategies, "Gravyframe Services", ServiceTypes.ToArray());
+            this.GravyframeHost = new GravyframeHost(ConfigurationStrategies, "Gravyframe Services", ServiceTypes.ToArray());
             return this;
-        }
-
-        private static TypeAttributes GetTypeAttributes()
-        {
-            return TypeAttributes.Public | TypeAttributes.Class | TypeAttributes.AutoClass | TypeAttributes.AnsiClass
-                   | TypeAttributes.BeforeFieldInit | TypeAttributes.AutoLayout;
         }
     }
 }

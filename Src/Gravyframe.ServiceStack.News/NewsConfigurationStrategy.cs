@@ -30,7 +30,7 @@ namespace Gravyframe.ServiceStack.News
     /// <summary>
     /// The news app host configuration strategy.
     /// </summary>
-    public abstract class NewsConfigurationStrategy : IAutomaticServiceWiringConfigurationStrategy
+    public abstract class NewsConfigurationStrategy : IAutomaticServiceHostingConfigurationStrategy
     {
         /// <summary>
         /// The site id token.

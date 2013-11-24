@@ -72,10 +72,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppHost.cs" />
+    <Compile Include="GravyframeHost.cs" />
     <Compile Include="EndPoint.cs" />
     <Compile Include="EndPointConfiguration.cs" />
-    <Compile Include="IAutomaticServiceWiringConfigurationStrategy.cs" />
+    <Compile Include="Hosting\AutomaticServiceHosting.cs" />
+    <Compile Include="IAutomaticServiceHostingConfigurationStrategy.cs" />
     <Compile Include="IConfigurationStrategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

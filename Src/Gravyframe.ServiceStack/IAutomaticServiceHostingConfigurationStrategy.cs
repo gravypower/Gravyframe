@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="GravyframeApplicationEventHandler.cs" company="Gravypowered">
+// <copyright file="IAutomaticServiceHostingConfigurationStrategy.cs" company="Gravypowered">
 //   Copyright 2013 Aaron Job
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,32 +15,25 @@
 //   limitations under the License.
 // </copyright>
 // <summary>
-//   Defines the GravyframeApplicationEventHandler type.
+//   Defines the IAutomaticServiceHostingConfigurationStrategy type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Gravyframe.ServiceStack.Umbraco
+namespace Gravyframe.ServiceStack
 {
-    using global::Umbraco.Core;
+    using System;
 
     /// <summary>
-    /// The gravyframe application event handler.
+    /// The AutomaticServiceHostingConfigurationStrategy interface.
     /// </summary>
-    public class GravyframeApplicationEventHandler : ApplicationEventHandler
+    public interface IAutomaticServiceHostingConfigurationStrategy : IConfigurationStrategy
     {
         /// <summary>
-        /// The application started.
+        /// The get service type.
         /// </summary>
-        /// <param name="umbracoApplication">
-        /// The umbraco application.
-        /// </param>
-        /// <param name="applicationContext">
-        /// The application context.
-        /// </param>
-        protected override void ApplicationStarted(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext)
-        {
-            var endPoint = new EndPoint().Create();
-            endPoint.GravyframeHost.Init();
-        }
+        /// <returns>
+        /// The <see cref="Type"/> of the service.
+        /// </returns>
+        Type GetServiceType();
     }
 }

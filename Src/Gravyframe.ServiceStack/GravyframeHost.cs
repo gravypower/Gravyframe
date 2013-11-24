@@ -7,11 +7,11 @@
 
     using global::ServiceStack.WebHost.Endpoints;
 
-    public class AppHost : AppHostBase
+    public class GravyframeHost : AppHostBase
     {
         private readonly IEnumerable<IConfigurationStrategy> configurationStrategies;
 
-        public AppHost(IEnumerable<IConfigurationStrategy> configurationStrategies, string serviceName, params Assembly[] assembliesWithServices)
+        public GravyframeHost(IEnumerable<IConfigurationStrategy> configurationStrategies, string serviceName, params Assembly[] assembliesWithServices)
             : base(serviceName, assembliesWithServices)
         {
             this.configurationStrategies = configurationStrategies;

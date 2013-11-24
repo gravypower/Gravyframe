@@ -72,7 +72,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Hosting\GivenTwoServicesAutomaticHostingTests.cs" />
+    <Compile Include="Hosting\AutomaticServiceHostingTests.cs" />
     <Compile Include="EndPointsTests.cs" />
+    <Compile Include="Hosting\GivenNullServiceAutomaticServiceHostingTests.cs" />
+    <Compile Include="Hosting\GivenOneServicesAutomaticHostingTests.cs" />
+    <Compile Include="Hosting\GivenServicesAutomaticHostingTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
