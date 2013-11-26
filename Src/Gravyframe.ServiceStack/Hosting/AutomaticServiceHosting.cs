@@ -30,6 +30,8 @@ namespace Gravyframe.ServiceStack.Hosting
 
     using global::ServiceStack.ServiceHost;
 
+    using Gravyframe.Kernel.Reflection;
+
     /// <summary>
     /// The automatic service hosting.
     /// </summary>
@@ -84,13 +86,23 @@ namespace Gravyframe.ServiceStack.Hosting
         /// </summary>
         public void Initialise()
         {
-            var assemblyName = new AssemblyName { Name = DefaultAssemblyName };
-            var assemblyBuilder = Thread.GetDomain().DefineDynamicAssembly(assemblyName, AssemblyBuilderAccess.Run);
-            var moduleBuilder = assemblyBuilder.DefineDynamicModule(assemblyBuilder.GetName().Name, false);
+            var typeBuilder = new FluentTypeBuilder().SetAssemblyName(DefaultAssemblyName).Implementes<IService>();
 
-            this.CreateTypes(moduleBuilder, assemblyName);
+            foreach (var configurationStrategy in this.ConfigurationStrategies)
+            {
+                var serviceType = configurationStrategy.GetServiceType();
+                if (serviceType == null)
+                {
+                    throw new NullServiceTypeException();
+                }
 
-            this.ServiceAssembly = moduleBuilder.Assembly;
+                typeBuilder
+                    .SetTypeName(DefaultAssemblyName + "." + serviceType.Name)
+                    .BaseTypeOf(serviceType)
+                    .CreateType();
+            }
+
+            this.ServiceAssembly = typeBuilder.ModuleBuilder.Assembly;
         }
 
         private static IEnumerable<Type> GetServiceHostingConfigurationStrategies()
@@ -106,38 +118,6 @@ namespace Gravyframe.ServiceStack.Hosting
         private static bool CheckTypeIsAssignableToTConfigurationStrategy(Type t)
         {
             return typeof(TConfigurationStrategy).IsAssignableFrom(t) && t.IsClass && !t.IsAbstract && !t.IsInterface;
-        }
-
-        private static void GuardType(Type serviceType)
-        {
-            if (serviceType == null)
-            {
-                throw new NullServiceTypeException();
-            }
-        }
-
-        private static void CreateType(ModuleBuilder moduleBuilder, AssemblyName assemblyName, Type serviceType)
-        {
-            moduleBuilder.DefineType(
-                assemblyName + "." + serviceType.Name,
-                GetTypeAttributes(),
-                serviceType,
-                new[] { typeof(IService) }).CreateType();
-        }
-
-        private static TypeAttributes GetTypeAttributes()
-        {
-            return TypeAttributes.Public | TypeAttributes.Class | TypeAttributes.AutoClass | TypeAttributes.AnsiClass | TypeAttributes.BeforeFieldInit | TypeAttributes.AutoLayout;
-        }
-
-        private void CreateTypes(ModuleBuilder moduleBuilder, AssemblyName assemblyName)
-        {
-            foreach (var configurationStrategy in this.ConfigurationStrategies)
-            {
-                var serviceType = configurationStrategy.GetServiceType();
-                GuardType(serviceType);
-                CreateType(moduleBuilder, assemblyName, serviceType);
-            }
         }
 
         /// <summary>

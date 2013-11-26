@@ -16,12 +16,14 @@
         [Test]
         public void CanCreateTypeThatImpelementesBothITestInterfaceAndITestInterfaceTwo()
         {
-            var result = this.Sut.CreateType();
+            var result = this.Sut
+                .CreateType()
+                .CreateInstance();
 
             Assert.That(this.Sut.Interfaces, Has.Member(typeof(ITestInterfaceTwo)));
-            Assert.That(result, Is.AssignableFrom<ITestInterfaceTwo>());
+            Assert.That(result, Is.AssignableTo<ITestInterfaceTwo>());
             Assert.That(this.Sut.Interfaces, Has.Member(typeof(ITestInterfaceTwo)));
-            Assert.That(result, Is.AssignableFrom<ITestInterfaceTwo>());
+            Assert.That(result, Is.AssignableTo<ITestInterfaceTwo>());
         }
     }
 }

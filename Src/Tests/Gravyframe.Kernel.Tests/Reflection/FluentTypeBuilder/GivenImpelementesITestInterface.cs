@@ -16,9 +16,11 @@
         [Test]
         public void CanCreateTypeThatImpelementesITestInterface()
         {
-            var result = Sut.CreateType();
+            var result = Sut
+                .CreateType()
+                .CreateInstance();
             Assert.That(this.Sut.Interfaces, Has.Member(typeof(ITestInterface)));
-            Assert.That(result, Is.AssignableFrom<ITestInterface>());
+            Assert.That(result, Is.AssignableTo<ITestInterface>());
         }
     }
 }

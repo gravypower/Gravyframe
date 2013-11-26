@@ -10,6 +10,10 @@
     {
         public Type BaseType { get; private set; }
 
+        public Type Type { get; private set; }
+
+        public string TypeName { get; private set; }
+
         public List<Type> Interfaces { get; private set; }
 
         public AssemblyName AssemblyName { get; private set; }
@@ -24,35 +28,68 @@
         {
             Interfaces = new List<Type>();
             BaseType = typeof(object);
+            this.TypeName = "FluentTypeBuilder";
             AssemblyName = new AssemblyName { Name = "FluentTypeBuilder" };
-            AssemblyBuilder = Thread.GetDomain().DefineDynamicAssembly(AssemblyName, AssemblyBuilderAccess.Run);
-            ModuleBuilder = AssemblyBuilder.DefineDynamicModule(AssemblyBuilder.GetName().Name, false);
-
+            this.MakeBuilders();
             TypeAttributes = TypeAttributes.Public | TypeAttributes.Class | TypeAttributes.AutoClass
                              | TypeAttributes.AnsiClass | TypeAttributes.BeforeFieldInit | TypeAttributes.AutoLayout;
         }
 
-        public object CreateType()
+        private void MakeBuilders()
         {
+            this.AssemblyBuilder = Thread.GetDomain().DefineDynamicAssembly(this.AssemblyName, AssemblyBuilderAccess.Run);
+            this.ModuleBuilder = this.AssemblyBuilder.DefineDynamicModule(this.AssemblyBuilder.GetName().Name, false);
+        }
 
-            ModuleBuilder.DefineType(
-               "FluentTypeBuilder",
-               TypeAttributes,
-               BaseType,
-               Interfaces.ToArray()).CreateType();
-            return new object();
+        public FluentTypeBuilder CreateType()
+        {
+            this.Type = ModuleBuilder.DefineType(
+               this.TypeName,
+               this.TypeAttributes,
+               this.BaseType,
+               this.Interfaces.ToArray()).CreateType();
+
+            return this;
+        }
+
+        public object CreateInstance()
+        {
+            if (this.Type != null)
+            {
+                return Activator.CreateInstance(this.Type);    
+            }
+
+            return this.CreateType().CreateInstance();
         }
 
         public FluentTypeBuilder Implementes<T>()
         {
-            Interfaces.Add(typeof(T));
+            this.Interfaces.Add(typeof(T));
             return this;
         }
 
         public FluentTypeBuilder BaseTypeOf<T>()
         {
-            BaseType = typeof(T);
+            return BaseTypeOf(typeof(T));
+        }
+
+        public FluentTypeBuilder BaseTypeOf(Type type)
+        {
+            this.BaseType = type;
             return this;
         }
+
+        public FluentTypeBuilder SetAssemblyName(string assemblyName)
+        {
+            this.AssemblyName.Name = assemblyName;
+            this.MakeBuilders();
+            return this;
+        }
+
+        public FluentTypeBuilder SetTypeName(string name)
+        {
+            this.TypeName = name;
+            return this;
+        }   
     }
 }
