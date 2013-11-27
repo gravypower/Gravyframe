@@ -86,7 +86,9 @@ namespace Gravyframe.ServiceStack.Hosting
         /// </summary>
         public void Initialise()
         {
-            var typeBuilder = new FluentTypeBuilder().SetAssemblyName(DefaultAssemblyName).Implementes<IService>();
+            var typeBuilder = new FluentTypeBuilder(AppDomain.CurrentDomain)
+                .SetAssemblyName(DefaultAssemblyName)
+                .Implementes<IService>();
 
             foreach (var configurationStrategy in this.ConfigurationStrategies)
             {

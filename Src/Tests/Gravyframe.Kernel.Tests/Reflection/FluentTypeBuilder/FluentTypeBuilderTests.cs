@@ -1,6 +1,6 @@
 ﻿namespace Gravyframe.Kernel.Tests.Reflection.FluentTypeBuilder
 {
-    using System.Reflection;
+    using System.Threading;
 
     using Gravyframe.Kernel.Reflection;
 
@@ -14,7 +14,7 @@
         [SetUp]
         public void SetUp()
         {
-            this.Sut = new FluentTypeBuilder();
+            this.Sut = new FluentTypeBuilder(Thread.GetDomain());
         }
 
         [Test]
@@ -42,12 +42,6 @@
             var result = this.Sut.CreateType();
 
             // Assert
-            Assert.That(
-                this.Sut.TypeAttributes,
-                Is.EqualTo(
-                    TypeAttributes.Public | TypeAttributes.Class | TypeAttributes.AutoClass | TypeAttributes.AnsiClass
-                    | TypeAttributes.BeforeFieldInit | TypeAttributes.AutoLayout));
-
             Assert.That(result.Type.IsPublic, Is.True );
             Assert.That(result.Type.IsClass, Is.True);
             Assert.That(result.Type.IsAutoClass, Is.True);
@@ -76,5 +70,21 @@
             Assert.That(result.Type.Name, Is.EqualTo(name));
         }
 
+        [Test]
+        public void CanCreateAnInterface()
+        {
+            var result = this.Sut.CreateInterface();
+
+            Assert.That(result.Type.IsInterface, Is.True);
+        }
+
+
+        [Test]
+        public void CanCreateAnInterfaceInstance()
+        {
+            var result = this.Sut.CreateInterface().CreateInstance();
+
+            Assert.That(result.GetType().IsClass, Is.True);
+        }
     }
 }

@@ -1,5 +1,7 @@
 ﻿namespace Gravyframe.ServiceStack.Tests.Hosting
 {
+    using System;
+
     using Funq;
 
     using global::ServiceStack.ServiceHost;
@@ -34,7 +36,7 @@
 
     public class NullServiceIAutomaticServiceHostingConfigurationStrategy : IAutomaticServiceHostingConfigurationStrategy
     {
-        public System.Type GetServiceType()
+        public Type GetServiceType()
         {
             return null;
         }

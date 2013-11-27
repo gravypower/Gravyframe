@@ -29,5 +29,14 @@ namespace Gravyframe.Kernel.Tests.Reflection.FluentTypeBuilder
             Assert.That(this.Sut.Interfaces, Has.Member(typeof(ITestInterfaceTwo)));
             Assert.That(result, Is.AssignableTo<ITestInterfaceTwo>());
         }
+
+        [Test]
+        public void CanCreateInterfaceTypeThatImpelementesITestInterface()
+        {
+            var result = this.Sut.CreateInterface();
+
+            Assert.That(result.Type.IsInterface, Is.True);
+            Assert.That(result.Type.GetInterfaces(), Has.Some.EqualTo(typeof(ITestInterfaceTwo)));
+        }
     }
 }

@@ -26,7 +26,7 @@
         }
 
         [Test]
-        public void CanCreateWithBaseTypeNotGenerice()
+        public void CanCreateWithBaseTypeNotGeneric()
         {
             var result = this.Sut
                 .BaseTypeOf(typeof(TestType))

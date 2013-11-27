@@ -22,5 +22,25 @@
             Assert.That(this.Sut.Interfaces, Has.Member(typeof(ITestInterface)));
             Assert.That(result, Is.AssignableTo<ITestInterface>());
         }
+
+        [Test]
+        public void CanCreateWithInterfaceTypeNotGeneric()
+        {
+            var result = this.Sut
+                .Implementes(typeof(ITestInterface))
+                .CreateInterface();
+
+            Assert.That(result.Type.IsInterface, Is.True);
+            Assert.That(result.Type.GetInterfaces(), Has.Some.EqualTo(typeof(ITestInterface)));
+        }
+
+        [Test]
+        public void CanCreateInterfaceTypeThatImpelementesITestInterface()
+        {
+            var result = this.Sut.CreateInterface();
+
+            Assert.That(result.Type.IsInterface, Is.True);
+            Assert.That(result.Type.GetInterfaces(), Has.Some.EqualTo(typeof(ITestInterface)));
+        }
     }
 }
