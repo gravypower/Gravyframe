@@ -82,9 +82,11 @@
         [Test]
         public void CanCreateAnInterfaceInstance()
         {
-            var result = this.Sut.CreateInterface().CreateInstance();
+            var typeBuilder = this.Sut.CreateInterface();
+            var result = typeBuilder.CreateInstance();
 
             Assert.That(result.GetType().IsClass, Is.True);
+            Assert.That(result, Is.AssignableTo(typeBuilder.Type));
         }
     }
 }

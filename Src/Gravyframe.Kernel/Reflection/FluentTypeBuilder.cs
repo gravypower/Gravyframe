@@ -104,8 +104,13 @@
 
         public FluentTypeBuilder CreateInterface()
         {
+            //if (!this.TypeName.StartsWith("I"))
+            //{
+            //    this.TypeName = "I" + this.TypeName;
+            //}
+
             this.Type =
-                ModuleBuilder.DefineType("I" + this.TypeName, InterfaceTypeAttributes, null, this.Interfaces.ToArray())
+                ModuleBuilder.DefineType(this.TypeName, InterfaceTypeAttributes, null, this.Interfaces.ToArray())
                     .CreateType();
 
             return this;
