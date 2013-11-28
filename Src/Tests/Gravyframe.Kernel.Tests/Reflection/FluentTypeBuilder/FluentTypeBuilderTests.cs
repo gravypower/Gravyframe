@@ -71,6 +71,22 @@
         }
 
         [Test]
+        public void CanChangeName()
+        {
+            // Assign
+            var name1 = "Test1";
+            var name2 = "Test2";
+
+            //Act
+            var result1 = this.Sut.SetTypeName(name1).CreateType().Type;
+            var result2 = this.Sut.SetTypeName(name2).CreateType().Type;
+
+            // Assert
+            Assert.That(result1.Name, Is.EqualTo(name1));
+            Assert.That(result2.Name, Is.EqualTo(name2));
+        }
+
+        [Test]
         public void CanCreateAnInterface()
         {
             var result = this.Sut.CreateInterface();
