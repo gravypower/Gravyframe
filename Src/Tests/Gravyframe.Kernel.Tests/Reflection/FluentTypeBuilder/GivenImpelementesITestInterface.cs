@@ -10,7 +10,7 @@
         [SetUp]
         public void GivenImpelementesITestInterfaceSetUp()
         {
-            this.Sut.Implementes<ITestInterface>();
+            this.Sut.Implements<ITestInterface>();
         }
 
         [Test]
@@ -27,7 +27,7 @@
         public void CanCreateWithInterfaceTypeNotGeneric()
         {
             var result = this.Sut
-                .Implementes(typeof(ITestInterface))
+                .Implements(typeof(ITestInterface))
                 .CreateInterface();
 
             Assert.That(result.Type.IsInterface, Is.True);

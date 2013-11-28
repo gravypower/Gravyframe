@@ -62,6 +62,9 @@ namespace Gravyframe.Configuration.Umbraco
         /// <summary>
         /// Gets the configuration node.
         /// </summary>
+        /// <value>
+        /// The configuration node.
+        /// </value>
         public INode ConfigurationNode
         {
             get
@@ -78,6 +81,9 @@ namespace Gravyframe.Configuration.Umbraco
         /// <summary>
         /// Gets the default list size.
         /// </summary>
+        /// <value>
+        /// The default list size.
+        /// </value>
         public override int DefaultListSize
         {
             get

@@ -16,7 +16,7 @@ namespace Gravyframe.Kernel.Tests.Reflection.FluentTypeBuilder
         [SetUp]
         public void GivenImpelementesITestInterfaceTwoSetUp()
         {
-            this.Sut.Implementes<ITestInterfaceTwo>();
+            this.Sut.Implements<ITestInterfaceTwo>();
         }
 
         [Test]

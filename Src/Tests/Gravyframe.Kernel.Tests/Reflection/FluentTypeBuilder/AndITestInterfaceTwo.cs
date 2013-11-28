@@ -10,7 +10,7 @@
         [SetUp]
         public void AndITestInterfaceTwoSetUp()
         {
-            this.Sut.Implementes<ITestInterfaceTwo>();
+            this.Sut.Implements<ITestInterfaceTwo>();
         }
 
         [Test]

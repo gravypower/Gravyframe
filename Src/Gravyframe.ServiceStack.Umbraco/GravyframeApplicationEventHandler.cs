@@ -21,9 +21,9 @@
 
 namespace Gravyframe.ServiceStack.Umbraco
 {
-    using global::Umbraco.Core;
-
     using Gravyframe.ServiceStack.Hosting;
+
+    using global::Umbraco.Core;
 
     /// <summary>
     /// The gravyframe application event handler.

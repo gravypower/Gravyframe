@@ -25,10 +25,25 @@ namespace Gravyframe.ServiceStack
 
     using global::ServiceStack.ServiceHost;
 
+    /// <summary>
+    /// The ConfigurationStrategy interface.
+    /// </summary>
     public interface IConfigurationStrategy
     {
+        /// <summary>
+        /// The configure container.
+        /// </summary>
+        /// <param name="container">
+        /// The container.
+        /// </param>
         void ConfigureContainer(Container container);
 
+        /// <summary>
+        /// The configure routes.
+        /// </summary>
+        /// <param name="routes">
+        /// The routes.
+        /// </param>
         void ConfigureRoutes(IServiceRoutes routes);
     }
 }

@@ -73,8 +73,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GravyframeHost.cs" />
-    <Compile Include="EndPoint.cs" />
-    <Compile Include="EndPointConfiguration.cs" />
     <Compile Include="Hosting\AutomaticServiceHosting.cs" />
     <Compile Include="IAutomaticServiceHostingConfigurationStrategy.cs" />
     <Compile Include="IConfigurationStrategy.cs" />

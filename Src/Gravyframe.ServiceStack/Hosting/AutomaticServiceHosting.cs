@@ -26,9 +26,9 @@ namespace Gravyframe.ServiceStack.Hosting
     using System.Linq;
     using System.Reflection;
 
-    using global::ServiceStack.ServiceHost;
-
     using Gravyframe.Kernel.Reflection;
+
+    using global::ServiceStack.ServiceHost;
 
     /// <summary>
     /// The automatic service hosting.
@@ -86,7 +86,7 @@ namespace Gravyframe.ServiceStack.Hosting
         {
             var typeBuilder = new FluentTypeBuilder(AppDomain.CurrentDomain)
                 .SetAssemblyName(DefaultAssemblyName)
-                .Implementes<IService>();
+                .Implements<IService>();
 
             foreach (var configurationStrategy in this.ConfigurationStrategies)
             {

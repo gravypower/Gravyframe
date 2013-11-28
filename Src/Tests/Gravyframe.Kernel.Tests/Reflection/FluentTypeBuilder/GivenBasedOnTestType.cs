@@ -5,10 +5,10 @@
     using NUnit.Framework;
 
     [TestFixture]
-    public class GivenBacedOnTestType : FluentTypeBuilderTests
+    public class GivenBasedOnTestType : FluentTypeBuilderTests
     {
         [SetUp]
-        public void GivenBacedOnTestTypeSetUp()
+        public void GivenBasedOnTestTypeSetUp()
         {
             this.Sut.BaseTypeOf<TestType>();
         }
@@ -41,7 +41,7 @@
         public void CanCreateWithBaseTypeAndITestInterface()
         {
             var result = this.Sut
-                .Implementes<ITestInterface>()
+                .Implements<ITestInterface>()
                 .CreateType()
                 .CreateInstance();
 

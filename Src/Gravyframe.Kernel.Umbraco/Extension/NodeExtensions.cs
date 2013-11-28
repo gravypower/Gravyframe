@@ -38,10 +38,10 @@ namespace Gravyframe.Kernel.Umbraco.Extension
         /// The result.
         /// </param>
         /// <typeparam name="T">
-        /// the type we want to parse the <see cref="value"/> to.
+        /// The type we want to parse the <see cref="value"/> to.
         /// </typeparam>
         /// <returns>
-        /// True if the pars was successful
+        /// True if the pars was successful.
         /// </returns>
         public delegate bool TryParseHandler<T>(string value, out T result);
 
@@ -61,7 +61,7 @@ namespace Gravyframe.Kernel.Umbraco.Extension
         /// The handler.
         /// </param>
         /// <typeparam name="T">
-        /// the type we want to parse the <see cref="propertyAlias"/> to.
+        /// The type we want to parse the <see cref="propertyAlias"/> to.
         /// </typeparam>
         /// <returns>
         /// The string parse to type <see cref="T"/>.
