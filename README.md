@@ -6,3 +6,5 @@ Digital agencies invest a lot of time and money on building solutions for client
 There is also the ramp up time getting something in front of a client.  When you provide solutions in an agile manner it is important to get things to them quickly and frequently.
 
 What I want to do is build an abstraction and boiler plate for any .NET CMS systems that provides common functionality, in a maintainable, extendable, and testable way.  
+
+[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/6126d96d65952af70078e5ee4a069f53 "githalytics.com")](http://githalytics.com/gravypower/Gravyframe)
