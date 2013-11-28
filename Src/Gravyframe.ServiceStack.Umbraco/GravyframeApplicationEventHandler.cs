@@ -23,6 +23,8 @@ namespace Gravyframe.ServiceStack.Umbraco
 {
     using global::Umbraco.Core;
 
+    using Gravyframe.ServiceStack.Hosting;
+
     /// <summary>
     /// The gravyframe application event handler.
     /// </summary>
@@ -39,8 +41,11 @@ namespace Gravyframe.ServiceStack.Umbraco
         /// </param>
         protected override void ApplicationStarted(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext)
         {
-            var endPoint = new EndPoint().Create();
-            endPoint.GravyframeHost.Init();
+            var automaticServiceHosting = new AutomaticServiceHosting<IAutomaticServiceHostingConfigurationStrategy>();
+            automaticServiceHosting.Initialise();
+
+            var gravyframeHost = new GravyframeHost(automaticServiceHosting.ConfigurationStrategies, "Gravyframe Services", automaticServiceHosting.ServiceAssembly);
+            gravyframeHost.Init();
         }
     }
 }

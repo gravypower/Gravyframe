@@ -25,8 +25,6 @@ namespace Gravyframe.ServiceStack.Hosting
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
-    using System.Reflection.Emit;
-    using System.Threading;
 
     using global::ServiceStack.ServiceHost;
 
@@ -38,7 +36,7 @@ namespace Gravyframe.ServiceStack.Hosting
     /// <typeparam name="TConfigurationStrategy">
     /// The type to look for when automatically hosting, must be of type IConfigurationStrategy.
     /// </typeparam>
-    public abstract class AutomaticServiceHosting<TConfigurationStrategy>
+    public class AutomaticServiceHosting<TConfigurationStrategy>
         where TConfigurationStrategy : IAutomaticServiceHostingConfigurationStrategy
     {
         /// <summary>
@@ -51,7 +49,7 @@ namespace Gravyframe.ServiceStack.Hosting
         /// <summary>
         /// Initializes a new instance of the <see cref="AutomaticServiceHosting{TConfigurationStrategy}"/> class. 
         /// </summary>
-        protected AutomaticServiceHosting()
+        public AutomaticServiceHosting()
         {
             foreach (var serviceHostingConfigurationStrategy in GetServiceHostingConfigurationStrategies())
             {
