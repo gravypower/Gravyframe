@@ -1,26 +1,20 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="GivenImpelementesITestInterfaceTwo.cs" company="">
-// TODO: Update copyright text.
-// </copyright>
-// -----------------------------------------------------------------------
-
-namespace Gravyframe.Kernel.Tests.Reflection.FluentTypeBuilder
+﻿namespace Gravyframe.Kernel.Tests.Reflection.FluentTypeBuilder
 {
     using Gravyframe.Kernel.Tests.Reflection.FluentTypeBuilder.Artifacts;
 
     using NUnit.Framework;
 
     [TestFixture]
-    public class GivenImpelementesITestInterfaceTwo : FluentTypeBuilderTests
+    public class GivenImplementsITestInterfaceTwo : FluentTypeBuilderTests
     {
         [SetUp]
-        public void GivenImpelementesITestInterfaceTwoSetUp()
+        public void GivenImplementsITestInterfaceTwoSetUp()
         {
             this.Sut.Implements<ITestInterfaceTwo>();
         }
 
         [Test]
-        public void CanCreateTypeThatImpelementesITestInterfaceTwo()
+        public void CanCreateTypeThatImplementsITestInterfaceTwo()
         {
             var result = this.Sut
                 .CreateType()
@@ -31,7 +25,7 @@ namespace Gravyframe.Kernel.Tests.Reflection.FluentTypeBuilder
         }
 
         [Test]
-        public void CanCreateInterfaceTypeThatImpelementesITestInterface()
+        public void CanCreateInterfaceTypeThatImplementsITestInterface()
         {
             var result = this.Sut.CreateInterface();
 

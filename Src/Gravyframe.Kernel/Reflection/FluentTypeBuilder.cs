@@ -110,6 +110,14 @@ namespace Gravyframe.Kernel.Reflection
         public ModuleBuilder ModuleBuilder { get; private set; }
 
         /// <summary>
+        /// Gets the type builder.
+        /// </summary>
+        /// <value>
+        /// The type builder.
+        /// </value>
+        public TypeBuilder TypeBuilder { get; private set; }
+
+        /// <summary>
         /// Gets the assembly builder.
         /// </summary>
         /// <value>
@@ -127,9 +135,15 @@ namespace Gravyframe.Kernel.Reflection
         /// </returns>
         public FluentTypeBuilder CreateType()
         {
-            this.Type =
-                ModuleBuilder.DefineType(this.TypeName, ClassTypeAttributes, this.BaseType, this.Interfaces.ToArray())
-                    .CreateType();
+            this.TypeBuilder = ModuleBuilder.DefineType(
+                this.TypeName,
+                ClassTypeAttributes,
+                this.BaseType,
+                this.Interfaces.ToArray());
+
+            this.TypeBuilder.CreatePassThroughConstructors(this.BaseType);
+
+            this.Type = TypeBuilder.CreateType();
 
             return this;
         }
@@ -140,7 +154,7 @@ namespace Gravyframe.Kernel.Reflection
         /// <returns>
         /// The <see cref="object"/>.
         /// </returns>
-        public object CreateInstance()
+        public object CreateInstance(string[] args = null)
         {
             if (this.Type == null)
             {
@@ -152,7 +166,7 @@ namespace Gravyframe.Kernel.Reflection
                 return new FluentTypeBuilder(this.AppDomain).Implements(this.Type).CreateInstance();
             }
 
-            return Activator.CreateInstance(this.Type);
+            return Activator.CreateInstance(this.Type, args);
         }
 
         /// <summary>

@@ -51,7 +51,7 @@
     <Compile Include="Reflection\FluentTypeBuilder\AndITestInterfaceTwo.cs" />
     <Compile Include="Reflection\FluentTypeBuilder\Artifacts\Classes.cs" />
     <Compile Include="Reflection\FluentTypeBuilder\FluentTypeBuilderTests.cs" />
-    <Compile Include="Reflection\FluentTypeBuilder\GivenBacedOnTestType.cs" />
+    <Compile Include="Reflection\FluentTypeBuilder\GivenBasedOnTestType.cs" />
     <Compile Include="Reflection\FluentTypeBuilder\GivenImpelementesITestInterface.cs" />
     <Compile Include="Reflection\FluentTypeBuilder\GivenImpelementesITestInterfaceTwo.cs" />
     <Compile Include="Reflection\FluentTypeBuilder\Artifacts\Interfaces.cs" />

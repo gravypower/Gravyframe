@@ -13,7 +13,6 @@
             this.Sut.BaseTypeOf<TestType>();
         }
 
-
         [Test]
         public void CanCreateWithBaseType()
         {
@@ -49,6 +48,26 @@
             Assert.That(result, Is.AssignableTo<ITestInterface>());
             Assert.That(this.Sut.BaseType, Is.EqualTo(typeof(TestType)));
             Assert.That(result, Is.AssignableTo<TestType>());
+        }
+
+        [Test]
+        public void ConstructorPassThroughCreated()
+        {
+            var type = typeof(TestType);
+
+            var result = this.Sut.CreateType().Type.GetConstructors();
+
+            Assert.That(result.Length, Is.EqualTo(type.GetConstructors().Length));
+        }
+
+        [Test]
+        public void CanPassThroughToConstructor()
+        {
+            var type = typeof(TestType);
+            var passThroughString = "hello";
+            var result = (TestType)this.Sut.CreateType().CreateInstance(new []{passThroughString});
+
+            Assert.That(result.PassThroughString, Is.EqualTo(passThroughString));
         }
     }
 }
