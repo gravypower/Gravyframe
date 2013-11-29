@@ -8,7 +8,12 @@
 
     public static class TypeBuilderHelper
     {
-        /// <summary>Creates one constructor for each public constructor in the base class. Each constructor simply
+        /// <summary>
+        /// 
+        /// Code orginaly from http://stackoverflow.com/questions/6879279/using-typebuilder-to-create-a-pass-through-constructor-for-the-base-class
+        /// http://stackoverflow.com/users/21475/cameron
+        /// 
+        /// Creates one constructor for each public constructor in the base class. Each constructor simply
         /// forwards its arguments to the base constructor, and matches the base constructor's signature.
         /// Supports optional values, and custom attributes on constructors and parameters.
         /// Does not support n-ary (variadic) constructors</summary>
