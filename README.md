@@ -7,4 +7,6 @@ There is also the ramp up time getting something in front of a client.  When you
 
 What I want to do is build an abstraction and boiler plate for any .NET CMS systems that provides common functionality, in a maintainable, extendable, and testable way.  
 
+Have a look at my blog [http://blog.gravypower.net/](http://blog.gravypower.net/) or the wiki for more details.
+
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/6126d96d65952af70078e5ee4a069f53 "githalytics.com")](http://githalytics.com/gravypower/Gravyframe)
