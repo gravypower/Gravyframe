@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="IConfigurationStrategy.cs" company="Gravypowered">
+// <copyright file="IAutomaticServiceHostingConfigurationStrategy.cs" company="Gravypowered">
 //   Copyright 2013 Aaron Job
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,35 +15,25 @@
 //   limitations under the License.
 // </copyright>
 // <summary>
-//   The news app host configuration strategy.
+//   Defines the IAutomaticServiceHostingConfigurationStrategy type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Gravyframe.ServiceStack
+namespace Gravyframe.ServiceStack.Hosting
 {
-    using Funq;
-
-    using global::ServiceStack.ServiceHost;
+    using System;
 
     /// <summary>
-    /// The ConfigurationStrategy interface.
+    /// The AutomaticServiceHostingConfigurationStrategy interface.
     /// </summary>
-    public interface IConfigurationStrategy
+    public interface IAutomaticServiceHostingConfigurationStrategy : IConfigurationStrategy
     {
         /// <summary>
-        /// The configure container.
+        /// The get service type.
         /// </summary>
-        /// <param name="container">
-        /// The container.
-        /// </param>
-        void ConfigureContainer(Container container);
-
-        /// <summary>
-        /// The configure routes.
-        /// </summary>
-        /// <param name="routes">
-        /// The routes.
-        /// </param>
-        void ConfigureRoutes(IServiceRoutes routes);
+        /// <returns>
+        /// The <see cref="Type"/> of the service.
+        /// </returns>
+        Type GetServiceType();
     }
 }

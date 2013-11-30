@@ -19,7 +19,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Gravyframe.ServiceStack
+namespace Gravyframe.ServiceStack.Hosting
 {
     using System.Collections.Generic;
     using System.Reflection;

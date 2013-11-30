@@ -151,10 +151,13 @@ namespace Gravyframe.Kernel.Reflection
         /// <summary>
         /// The create instance.
         /// </summary>
+        /// <param name="constructorArguments">
+        /// The arguments for the constructor.
+        /// </param>
         /// <returns>
         /// The <see cref="object"/>.
         /// </returns>
-        public object CreateInstance(string[] args = null)
+        public object CreateInstance(object[] constructorArguments = null)
         {
             if (this.Type == null)
             {
@@ -166,7 +169,7 @@ namespace Gravyframe.Kernel.Reflection
                 return new FluentTypeBuilder(this.AppDomain).Implements(this.Type).CreateInstance();
             }
 
-            return Activator.CreateInstance(this.Type, args);
+            return Activator.CreateInstance(this.Type, constructorArguments);
         }
 
         /// <summary>

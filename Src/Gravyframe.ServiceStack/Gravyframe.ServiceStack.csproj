@@ -74,10 +74,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GravyframeHost.cs" />
+    <Compile Include="Hosting\GravyframeHost.cs" />
     <Compile Include="Hosting\AutomaticServiceHosting.cs" />
-    <Compile Include="IAutomaticServiceHostingConfigurationStrategy.cs" />
-    <Compile Include="IConfigurationStrategy.cs" />
+    <Compile Include="Hosting\IAutomaticServiceHostingConfigurationStrategy.cs" />
+    <Compile Include="Hosting\IConfigurationStrategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
