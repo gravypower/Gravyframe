@@ -123,8 +123,7 @@ namespace Gravyframe.Data.Umbraco.News
 
             var umbracoNews = new UmbracoNews
             {
-                Id = node.Id,
-                Sequence = 0
+                Id = node.Id
             };
 
             if (node.GetProperty(BodyAlias) != null)

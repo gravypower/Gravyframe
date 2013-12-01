@@ -29,11 +29,17 @@ namespace Gravyframe.Models
         /// <summary>
         /// Gets or sets the title.
         /// </summary>
+        /// <value>
+        /// The title of the content.
+        /// </value>
         public string Title { get; set; }
 
         /// <summary>
         /// Gets or sets the body.
         /// </summary>
+        /// <value>
+        /// The body of the content.
+        /// </value>
         public string Body { get; set; }
     }
 }

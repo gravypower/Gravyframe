@@ -24,10 +24,9 @@ namespace Gravyframe.ServiceStack.News
     using Funq;
 
     using Gravyframe.Service.News;
+    using Gravyframe.ServiceStack.Hosting;
 
     using global::ServiceStack.ServiceHost;
-
-    using Gravyframe.ServiceStack.Hosting;
 
     /// <summary>
     /// The news app host configuration strategy.
@@ -128,6 +127,12 @@ namespace Gravyframe.ServiceStack.News
             return categoryId != null ? NewsByCategoryIdServiceRestPath.Replace(CategoryIdToken, categoryId) : NewsByCategoryIdServiceRestPath;
         }
 
+        /// <summary>
+        /// The get service type.
+        /// </summary>
+        /// <returns>
+        /// The type of the service that will be automatically loaded.
+        /// </returns>
         public abstract System.Type GetServiceType();
     }
 }

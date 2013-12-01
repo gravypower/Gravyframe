@@ -29,6 +29,9 @@ namespace Gravyframe.Service.Messages
         /// <summary>
         /// Gets or sets the site id.
         /// </summary>
+        /// <value>
+        /// The site id.
+        /// </value>
         public string SiteId { get; set; }
     }
 }

@@ -21,6 +21,8 @@
 
 namespace Gravyframe.ServiceStack.News.Umbraco
 {
+    using System;
+
     using Examine;
 
     using Gravyframe.Configuration;
@@ -60,7 +62,13 @@ namespace Gravyframe.ServiceStack.News.Umbraco
                 new NewsResponseHydrogenationTaskList(container));
         }
 
-        public override System.Type GetServiceType()
+        /// <summary>
+        /// The get service type.
+        /// </summary>
+        /// <returns>
+        /// The type of the service that will be automatically loaded.
+        /// </returns>
+        public override Type GetServiceType()
         {
             return typeof(NewsService<UmbracoNews>);
         }

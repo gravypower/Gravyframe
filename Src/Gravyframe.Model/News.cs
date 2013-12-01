@@ -22,23 +22,32 @@
 namespace Gravyframe.Models
 {
     /// <summary>
-    /// The news.
+    /// The base model that represents news.  Any new implementation will need to inherit from this class.
     /// </summary>
     public class News
     {
         /// <summary>
         /// Gets or sets the sequence.
         /// </summary>
+        /// <value>
+        /// The sequence that this item was added to a collection.  Will be 0 if is not part of a collection.
+        /// </value>
         public int Sequence { get; set; }
 
         /// <summary>
         /// Gets or sets the title.
         /// </summary>
+        /// <value>
+        /// The title of the news.
+        /// </value>
         public string Title { get; set; }
 
         /// <summary>
         /// Gets or sets the body.
         /// </summary>
+        /// <value>
+        /// The body of the news.
+        /// </value>
         public string Body { get; set; }
     }
 }

@@ -40,18 +40,24 @@ namespace Gravyframe.Service.Messages
         /// <summary>
         /// Gets or sets the code.
         /// </summary>
+        /// <value>
+        /// A response code letting you know how the request went.
+        /// </value>
         public ResponseCodes Code { get; set; }
 
         /// <summary>
         /// Gets or sets the errors.
         /// </summary>
+        /// <value>
+        /// Any errors the may have been encountered. 
+        /// </value>
         public List<string> Errors { get; set; }
 
         /// <summary>
         /// The is success.
         /// </summary>
         /// <returns>
-        /// The <see cref="bool"/>.
+        /// If the request was a success.
         /// </returns>
         public bool IsSuccess()
         {
