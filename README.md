@@ -10,3 +10,7 @@ What I want to do is build an abstraction and boiler plate for any .NET CMS syst
 Have a look at my blog [http://blog.gravypower.net/](http://blog.gravypower.net/) or the wiki for more details.
 
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/6126d96d65952af70078e5ee4a069f53 "githalytics.com")](http://githalytics.com/gravypower/Gravyframe)
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/gravypower/gravyframe/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
