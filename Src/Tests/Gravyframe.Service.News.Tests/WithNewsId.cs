@@ -2,7 +2,6 @@
 {
     using Gravyframe.Models;
     using Gravyframe.Service.Messages;
-    using Gravyframe.Service.News;
     using Gravyframe.Service.News.Tests;
 
     using NSubstitute;
@@ -54,7 +53,7 @@
 
         public virtual void AssignNewsInResponseFailure()
         {
-            this.Dao.GetNews(this.Request.NewsId).Returns(default(News));
+            this.Dao.GetNews(this.Request.NewsId).Returns(default(INews));
         }
 
         [Test]

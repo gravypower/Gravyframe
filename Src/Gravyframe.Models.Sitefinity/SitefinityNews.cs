@@ -40,7 +40,7 @@ namespace Gravyframe.Models.Sitefinity
         /// Gets or sets the body.
         /// </summary>
         /// <value>
-        /// The body.
+        /// The body of the news.
         /// </value>
         public string Body { get; set; }
 

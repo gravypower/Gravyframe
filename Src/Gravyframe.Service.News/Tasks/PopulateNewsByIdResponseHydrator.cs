@@ -66,13 +66,13 @@ namespace Gravyframe.Service.News.Tasks
                 ? NewsDao.GetNews(request.NewsId)
                 : NewsDao.GetNews(request.SiteId, request.NewsId);
 
-            if (news != null && news != default(TNews))
+            if (news == null && news.Equals(default(TNews)))
             {
-                response.News = news;
+                response.Code = ResponseCodes.Failure;
             }
             else
             {
-                response.Code = ResponseCodes.Failure;
+                response.News = news;
             }
         }
 
