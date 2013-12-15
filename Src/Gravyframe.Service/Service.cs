@@ -29,13 +29,13 @@ namespace Gravyframe.Service
     /// The service.
     /// </summary>
     /// <typeparam name="TRequest">
-    /// The type of the request, must be of type of Gravyframe.Service.Messages.Request
+    /// The type of the request, must be of type of Gravyframe.Service.Messages.Request.
     /// </typeparam>
     /// <typeparam name="TResponse">
-    /// The type of the response, must be of type of Gravyframe.Service.Messages.Response
+    /// The type of the response, must be of type of Gravyframe.Service.Messages.Response.
     /// </typeparam>
     /// <typeparam name="TArgumentNullException">
-    ///  Exception of type NullRequestException
+    ///  Exception of type NullRequestException.
     /// </typeparam>
     public abstract class Service<TRequest, TResponse, TArgumentNullException>
         where TRequest : Request
@@ -56,13 +56,13 @@ namespace Gravyframe.Service
         }
 
         /// <summary>
-        /// The get.
+        /// The get method for this service.
         /// </summary>
         /// <param name="request">
         /// The request.
         /// </param>
         /// <returns>
-        /// The <see cref="TResponse"/>.
+        /// The <see cref="TResponse"/> object.
         /// </returns>
         public TResponse Get(TRequest request)
         {

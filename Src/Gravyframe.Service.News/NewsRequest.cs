@@ -31,11 +31,17 @@ namespace Gravyframe.Service.News
         /// <summary>
         /// Gets or sets the news id.
         /// </summary>
+        /// <value>
+        /// The news id.
+        /// </value>
         public string NewsId { get; set; }
 
         /// <summary>
         /// Gets or sets the category id.
         /// </summary>
+        /// <value>
+        /// The category id.
+        /// </value>
         public string CategoryId { get; set; }
     }
 }

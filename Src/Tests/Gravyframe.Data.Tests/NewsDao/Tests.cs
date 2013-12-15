@@ -5,8 +5,10 @@ using NUnit.Framework;
 
 namespace Gravyframe.Data.Tests.NewsDao
 {
+    using Gravyframe.Models;
+
     [TestFixture]
-    public abstract class Tests<TNews> where TNews : Models.News
+    public abstract class Tests<TNews> where TNews : INews
     {
         public INewsDaoTestContext<TNews> Context;
 

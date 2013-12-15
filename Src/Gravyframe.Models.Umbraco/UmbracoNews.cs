@@ -29,6 +29,9 @@ namespace Gravyframe.Models.Umbraco
         /// <summary>
         /// Gets or sets the id.
         /// </summary>
+        /// <value>
+        /// The id of the news.
+        /// </value>
         public int Id { get; set; }
     }
 }

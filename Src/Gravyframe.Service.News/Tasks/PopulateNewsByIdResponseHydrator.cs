@@ -25,16 +25,17 @@ namespace Gravyframe.Service.News.Tasks
 
     using Gravyframe.Configuration;
     using Gravyframe.Data.News;
+    using Gravyframe.Models;
     using Gravyframe.Service.Messages;
 
     /// <summary>
     /// The populate news by id response hydrator.
     /// </summary>
     /// <typeparam name="TNews">
-    /// The type of News, must be of type Gravyframe.Models.News
+    /// The type of News, must be of type Gravyframe.Models.News.
     /// </typeparam>
     public class PopulateNewsByIdResponseHydrator<TNews> : NewsResponseHydrator<TNews>
-        where TNews : Models.News
+        where TNews : INews
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="PopulateNewsByIdResponseHydrator{TNews}"/> class.
@@ -65,7 +66,7 @@ namespace Gravyframe.Service.News.Tasks
                 ? NewsDao.GetNews(request.NewsId)
                 : NewsDao.GetNews(request.SiteId, request.NewsId);
 
-            if (news != null)
+            if (news != null && news != default(TNews))
             {
                 response.News = news;
             }

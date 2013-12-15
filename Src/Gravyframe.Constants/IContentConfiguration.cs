@@ -29,11 +29,17 @@ namespace Gravyframe.Configuration
         /// <summary>
         /// Gets the content id error.
         /// </summary>
+        /// <value>
+        /// The content id error.
+        /// </value>
         string ContentIdError { get; }
 
         /// <summary>
         /// Gets the content category id error.
         /// </summary>
+        /// <value>
+        /// The content category id error.
+        /// </value>
         string ContentCategoryIdError { get; }
     }
 }

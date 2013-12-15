@@ -31,11 +31,17 @@ namespace Gravyframe.Service.Content
         /// <summary>
         /// Gets or sets the content id.
         /// </summary>
+        /// <value>
+        /// The content id.
+        /// </value>
         public string ContentId { get; set; }
 
         /// <summary>
         /// Gets or sets the category id.
         /// </summary>
+        /// <value>
+        /// The category id.
+        /// </value>
         public string CategoryId { get; set; }
     }
 }

@@ -28,7 +28,7 @@
                 new MockIndexFieldList().AddIndexField("id", "Number", true),
                 new MockIndexFieldList()
                     .AddIndexField(News.UmbracoNewsDao.CategoriesAlias)
-                    .AddIndexField(News.UmbracoNewsDao.Site),
+                    .AddIndexField(News.UmbracoNewsDao.SiteIndexFieldName),
                 new[] { IndexType },
                 new string[] { },
                 new string[] { });
@@ -66,7 +66,7 @@
                 var mn = mockNode.Mock(i);
                 this.NodeFactoryFacade.GetNode(i).Returns(mn);
                 mockDataSet.AddData(i, News.UmbracoNewsDao.CategoriesAlias, categoryId);
-                mockDataSet.AddData(i, News.UmbracoNewsDao.Site, site);
+                mockDataSet.AddData(i, News.UmbracoNewsDao.SiteIndexFieldName, site);
             }
 
             this.MockedIndex.SimpleDataService.GetAllData(IndexType).Returns(mockDataSet);

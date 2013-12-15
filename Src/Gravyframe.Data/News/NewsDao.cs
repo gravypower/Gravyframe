@@ -24,14 +24,15 @@ namespace Gravyframe.Data.News
     using System.Collections.Generic;
 
     using Gravyframe.Configuration;
+    using Gravyframe.Models;
 
     /// <summary>
     /// The news dao.
     /// </summary>
     /// <typeparam name="TNews">
-    /// The type of News, must be of type Gravyframe.Models.News
+    /// The type of News, must be of type Gravyframe.Models.News.
     /// </typeparam>
-    public abstract class NewsDao<TNews> where TNews : Models.News
+    public abstract class NewsDao<TNews> where TNews : INews
     {
         /// <summary>
         /// The news configuration.
@@ -121,8 +122,8 @@ namespace Gravyframe.Data.News
         /// <param name="listSize">
         /// The list size.
         /// </param>
-        /// <param name="page">
-        /// The page.
+        /// <param name="pageNumber">
+        /// The pageNumber number.
         /// </param>
         /// <returns>
         /// The <see>
@@ -130,7 +131,7 @@ namespace Gravyframe.Data.News
         /// </see>
         ///     .
         /// </returns>
-        public abstract IEnumerable<TNews> GetNewsByCategoryId(string categoryId, int listSize, int page);
+        public abstract IEnumerable<TNews> GetNewsByCategoryId(string categoryId, int listSize, int pageNumber);
 
         /// <summary>
         /// The get news by category id.
@@ -181,8 +182,8 @@ namespace Gravyframe.Data.News
         /// <param name="listSize">
         /// The list size.
         /// </param>
-        /// <param name="page">
-        /// The page.
+        /// <param name="pageNumber">
+        /// The pageNumber number.
         /// </param>
         /// <returns>
         /// The <see>
@@ -190,7 +191,7 @@ namespace Gravyframe.Data.News
         /// </see>
         ///     .
         /// </returns>
-        public abstract IEnumerable<TNews> GetNewsByCategoryId(string siteId, string categoryId, int listSize, int page);
+        public abstract IEnumerable<TNews> GetNewsByCategoryId(string siteId, string categoryId, int listSize, int pageNumber);
 
         /// <summary>
         /// The calculate number to skip.
@@ -198,15 +199,15 @@ namespace Gravyframe.Data.News
         /// <param name="listSize">
         /// The list size.
         /// </param>
-        /// <param name="page">
-        /// The page.
+        /// <param name="pageNumber">
+        /// The pageNumber number.
         /// </param>
         /// <returns>
-        /// The <see cref="int"/>.
+        /// The number to skip.
         /// </returns>
-        protected static int CalculateNumberToSkip(int listSize, int page)
+        protected static int CalculateNumberToSkip(int listSize, int pageNumber)
         {
-            return (page - 1) * listSize;
+            return (pageNumber - 1) * listSize;
         }
     }
 }

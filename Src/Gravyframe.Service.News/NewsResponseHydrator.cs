@@ -23,15 +23,16 @@ namespace Gravyframe.Service.News
 {
     using Gravyframe.Configuration;
     using Gravyframe.Data.News;
+    using Gravyframe.Models;
 
     /// <summary>
     /// The news response hydrator.
     /// </summary>
     /// <typeparam name="TNews">
-    /// the t
+    /// The type of the news.
     /// </typeparam>
     public abstract class NewsResponseHydrator<TNews> : ResponseHydrator<NewsRequest, NewsResponse<TNews>>
-        where TNews : Models.News
+        where TNews : INews
     {
         /// <summary>
         /// The news configuration.

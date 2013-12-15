@@ -53,9 +53,9 @@ namespace Gravyframe.Data.Umbraco.News
         public const string CategoriesAlias = "categories";
 
         /// <summary>
-        /// The site.
+        /// The name of the index Field for the site.
         /// </summary>
-        public const string Site = "site";
+        public const string SiteIndexFieldName = "site";
 
         /// <summary>
         /// The searcher.
@@ -185,8 +185,8 @@ namespace Gravyframe.Data.Umbraco.News
         /// <param name="listSize">
         /// The list size.
         /// </param>
-        /// <param name="page">
-        /// The page.
+        /// <param name="pageNumber">
+        /// The pageNumber.
         /// </param>
         /// <returns>
         /// The <see>
@@ -194,9 +194,9 @@ namespace Gravyframe.Data.Umbraco.News
         /// </see>
         ///     .
         /// </returns>
-        public override IEnumerable<UmbracoNews> GetNewsByCategoryId(string categoryId, int listSize, int page)
+        public override IEnumerable<UmbracoNews> GetNewsByCategoryId(string categoryId, int listSize, int pageNumber)
         {
-            var pagesToSkip = CalculateNumberToSkip(listSize, page);
+            var pagesToSkip = CalculateNumberToSkip(listSize, pageNumber);
             return this.GetAllNewsByCategoryId(categoryId).Skip(pagesToSkip).Take(listSize);
         }
 
@@ -255,8 +255,8 @@ namespace Gravyframe.Data.Umbraco.News
         /// <param name="listSize">
         /// The list size.
         /// </param>
-        /// <param name="page">
-        /// The page.
+        /// <param name="pageNumber">
+        /// The pageNumber.
         /// </param>
         /// <returns>
         /// The <see>
@@ -264,9 +264,9 @@ namespace Gravyframe.Data.Umbraco.News
         /// </see>
         ///     .
         /// </returns>
-        public override IEnumerable<UmbracoNews> GetNewsByCategoryId(string siteId, string categoryId, int listSize, int page)
+        public override IEnumerable<UmbracoNews> GetNewsByCategoryId(string siteId, string categoryId, int listSize, int pageNumber)
         {
-            return this.GetNewsByCategoryId(categoryId, listSize, page);
+            return this.GetNewsByCategoryId(categoryId, listSize, pageNumber);
         }
 
         /// <summary>
@@ -291,7 +291,7 @@ namespace Gravyframe.Data.Umbraco.News
 
             if (!string.IsNullOrEmpty(siteId))
             {
-                query.And().Field(Site, siteId);
+                query.And().Field(SiteIndexFieldName, siteId);
             }
 
             var newsList = new List<UmbracoNews>();

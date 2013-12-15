@@ -26,13 +26,14 @@ namespace Gravyframe.Data.InMemory.News
 
     using Gravyframe.Configuration;
     using Gravyframe.Data.News;
+    using Gravyframe.Models;
 
     /// <summary>
     /// The in memory news dao.
     /// </summary>
-    public class InMemoryNewsDao : NewsDao<Models.News>
+    public class InMemoryNewsDao : NewsDao<INews>
     {
-        private readonly List<Models.News> newsList;
+        private readonly List<INews> newsList;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="InMemoryNewsDao"/> class.
@@ -42,7 +43,7 @@ namespace Gravyframe.Data.InMemory.News
         /// </param>
         public InMemoryNewsDao(INewsConfiguration newsConfiguration) : base(newsConfiguration)
         {
-            this.newsList = new List<Models.News>();
+            this.newsList = new List<INews>();
 
             for (var i = 1; i < 100; i++)
             {
@@ -60,9 +61,9 @@ namespace Gravyframe.Data.InMemory.News
         /// The news id.
         /// </param>
         /// <returns>
-        /// The <see cref="News"/>.
+        /// The <see cref="Gravyframe.Data.InMemory.News"/> object.
         /// </returns>
-        public override Models.News GetNews(string siteId, string newsId)
+        public override INews GetNews(string siteId, string newsId)
         {
             return this.GetNews(newsId);
         }
@@ -74,9 +75,9 @@ namespace Gravyframe.Data.InMemory.News
         /// The news id.
         /// </param>
         /// <returns>
-        /// The <see cref="News"/>.
+        /// The <see cref="Gravyframe.Data.InMemory.News"/> object.
         /// </returns>
-        public override Models.News GetNews(string newsId)
+        public override INews GetNews(string newsId)
         {
             return new Models.News();
         }
@@ -93,7 +94,7 @@ namespace Gravyframe.Data.InMemory.News
         /// </see>
         ///     .
         /// </returns>
-        public override IEnumerable<Models.News> GetNewsByCategoryId(string categoryId)
+        public override IEnumerable<INews> GetNewsByCategoryId(string categoryId)
         {
             return this.newsList.Take(NewsConfiguration.DefaultListSize);
         }
@@ -113,7 +114,7 @@ namespace Gravyframe.Data.InMemory.News
         /// </see>
         ///     .
         /// </returns>
-        public override IEnumerable<Models.News> GetNewsByCategoryId(string categoryId, int listSize)
+        public override IEnumerable<INews> GetNewsByCategoryId(string categoryId, int listSize)
         {
             return this.newsList.Take(listSize);
         }
@@ -127,8 +128,8 @@ namespace Gravyframe.Data.InMemory.News
         /// <param name="listSize">
         /// The list size.
         /// </param>
-        /// <param name="page">
-        /// The page.
+        /// <param name="pageNumber">
+        /// The pageNumber number.
         /// </param>
         /// <returns>
         /// The <see>
@@ -136,9 +137,9 @@ namespace Gravyframe.Data.InMemory.News
         /// </see>
         ///     .
         /// </returns>
-        public override IEnumerable<Models.News> GetNewsByCategoryId(string categoryId, int listSize, int page)
+        public override IEnumerable<INews> GetNewsByCategoryId(string categoryId, int listSize, int pageNumber)
         {
-            var pagesToSkip = CalculateNumberToSkip(listSize, page);
+            var pagesToSkip = CalculateNumberToSkip(listSize, pageNumber);
             return this.newsList.Skip(pagesToSkip).Take(listSize);
         }
 
@@ -157,7 +158,7 @@ namespace Gravyframe.Data.InMemory.News
         /// </see>
         ///     .
         /// </returns>
-        public override IEnumerable<Models.News> GetNewsByCategoryId(string siteId, string categoryId)
+        public override IEnumerable<INews> GetNewsByCategoryId(string siteId, string categoryId)
         {
             return this.GetNewsByCategoryId(categoryId);
         }
@@ -180,7 +181,7 @@ namespace Gravyframe.Data.InMemory.News
         /// </see>
         ///     .
         /// </returns>
-        public override IEnumerable<Models.News> GetNewsByCategoryId(string siteId, string categoryId, int listSize)
+        public override IEnumerable<INews> GetNewsByCategoryId(string siteId, string categoryId, int listSize)
         {
             return this.GetNewsByCategoryId(categoryId, listSize);
         }
@@ -197,8 +198,8 @@ namespace Gravyframe.Data.InMemory.News
         /// <param name="listSize">
         /// The list size.
         /// </param>
-        /// <param name="page">
-        /// The page.
+        /// <param name="pageNumber">
+        /// The pageNumber number.
         /// </param>
         /// <returns>
         /// The <see>
@@ -206,9 +207,9 @@ namespace Gravyframe.Data.InMemory.News
         /// </see>
         ///     .
         /// </returns>
-        public override IEnumerable<Models.News> GetNewsByCategoryId(string siteId, string categoryId, int listSize, int page)
+        public override IEnumerable<INews> GetNewsByCategoryId(string siteId, string categoryId, int listSize, int pageNumber)
         {
-            return this.GetNewsByCategoryId(categoryId, listSize, page);
+            return this.GetNewsByCategoryId(categoryId, listSize, pageNumber);
         }
     }
 }

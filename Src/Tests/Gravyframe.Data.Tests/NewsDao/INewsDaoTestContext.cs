@@ -1,8 +1,10 @@
 ﻿using Gravyframe.Data.News;
 namespace Gravyframe.Data.Tests.NewsDao
 {
-    public interface INewsDaoTestContext<TNews> 
-        where TNews : Models.News
+    using Gravyframe.Models;
+
+    public interface INewsDaoTestContext<TNews>
+        where TNews : INews
     {
         NewsDao<TNews> Sut { get; }
 

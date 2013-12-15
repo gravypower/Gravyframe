@@ -2,6 +2,7 @@
 {
     using System.Linq;
 
+    using Gravyframe.Data.Tests.NewsDao;
     using Gravyframe.Kernel.Umbraco.Tests.TestHelpers;
     using Gravyframe.Kernel.Umbraco.Tests.TestHelpers.Examine;
     using Gravyframe.Models.Umbraco;
@@ -21,7 +22,7 @@
     }
 
     [TestFixture]
-    public class And20NewsItems_WithoutSiteID : Data.Tests.NewsDao.WithoutSiteID<UmbracoNews>
+    public class And20NewsItems_WithoutSiteID : WithoutSiteID<UmbracoNews>
     {
         private WithoutSiteIdTestContext testContext;
 

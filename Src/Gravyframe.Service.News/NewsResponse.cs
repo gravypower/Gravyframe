@@ -23,25 +23,32 @@ namespace Gravyframe.Service.News
 {
     using System.Collections.Generic;
 
+    using Gravyframe.Models;
     using Gravyframe.Service.Messages;
 
     /// <summary>
     /// The news response.
     /// </summary>
     /// <typeparam name="TNews">
-    /// The type of the news, must be of type Gravyframe.Models.News
+    /// The type of the news, must be of type Gravyframe.Models.News.
     /// </typeparam>
     public class NewsResponse<TNews> : Response
-        where TNews : Models.News
+        where TNews : INews
     {
         /// <summary>
         /// Gets or sets the news.
         /// </summary>
+        /// <value>
+        /// The news object.
+        /// </value>
         public TNews News { get; set; }
 
         /// <summary>
         /// Gets or sets the news list.
         /// </summary>
+        /// <value>
+        /// The news list.
+        /// </value>
         public IEnumerable<TNews> NewsList { get; set; }
     }
 }

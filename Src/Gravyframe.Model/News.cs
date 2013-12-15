@@ -24,7 +24,7 @@ namespace Gravyframe.Models
     /// <summary>
     /// The base model that represents news.  Any new implementation will need to inherit from this class.
     /// </summary>
-    public class News
+    public class News : INews
     {
         /// <summary>
         /// Gets or sets the sequence.

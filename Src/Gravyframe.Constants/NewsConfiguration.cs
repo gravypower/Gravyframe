@@ -29,6 +29,9 @@ namespace Gravyframe.Configuration
         /// <summary>
         /// Gets the news id error.
         /// </summary>
+        /// <value>
+        /// The news id error.
+        /// </value>
         public virtual string NewsIdError
         {
             get { return "News Id error"; }
@@ -37,6 +40,9 @@ namespace Gravyframe.Configuration
         /// <summary>
         /// Gets the news category id error.
         /// </summary>
+        /// <value>
+        /// The news category id error.
+        /// </value>
         public virtual string NewsCategoryIdError
         {
             get { return "News Category Id error"; }
@@ -45,6 +51,9 @@ namespace Gravyframe.Configuration
         /// <summary>
         /// Gets the default list size.
         /// </summary>
+        /// <value>
+        /// The default list size.
+        /// </value>
         public virtual int DefaultListSize
         {
             get { return 10; }
@@ -53,6 +62,9 @@ namespace Gravyframe.Configuration
         /// <summary>
         /// Gets the null news error.
         /// </summary>
+        /// <value>
+        /// The null news error.
+        /// </value>
         public virtual string NullNewsError
         {
             get { return "Null News error"; }

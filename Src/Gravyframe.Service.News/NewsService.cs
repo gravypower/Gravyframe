@@ -23,14 +23,16 @@ namespace Gravyframe.Service.News
 {
     using System;
 
+    using Gravyframe.Models;
+
     /// <summary>
     /// The news service.
     /// </summary>
     /// <typeparam name="TNews">
-    /// The type of News, must be of type Gravyframe.Models.News
+    /// The type of News, must be of type Gravyframe.Models.News.
     /// </typeparam>
     public class NewsService<TNews> : Service<NewsRequest, NewsResponse<TNews>, NewsService<TNews>.NullNewsRequestException>
-        where TNews : Models.News
+        where TNews : INews
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="NewsService{TNews}"/> class.

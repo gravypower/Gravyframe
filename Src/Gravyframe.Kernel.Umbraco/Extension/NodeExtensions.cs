@@ -90,10 +90,10 @@ namespace Gravyframe.Kernel.Umbraco.Extension
         /// The find node up tree.
         /// </summary>
         /// <param name="node">
-        /// The node.
+        /// The Umbraco node.
         /// </param>
         /// <param name="type">
-        /// The type.
+        /// The NodeTypeAlias.
         /// </param>
         /// <returns>
         /// The <see cref="INode"/>.

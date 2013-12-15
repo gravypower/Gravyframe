@@ -25,6 +25,7 @@ namespace Gravyframe.Service.News.Tasks
 
     using Gravyframe.Configuration;
     using Gravyframe.Data.News;
+    using Gravyframe.Models;
 
     /// <summary>
     /// The populate news by category id response hydrator.
@@ -33,7 +34,7 @@ namespace Gravyframe.Service.News.Tasks
     /// The type of News, must be of type Gravyframe.Models.News
     /// </typeparam>
     public class PopulateNewsByCategoryIdResponseHydrator<TNews> : NewsResponseHydrator<TNews>
-        where TNews : Models.News
+        where TNews : INews
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="PopulateNewsByCategoryIdResponseHydrator{TNews}"/> class.

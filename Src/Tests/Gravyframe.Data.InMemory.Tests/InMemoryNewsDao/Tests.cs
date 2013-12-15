@@ -3,19 +3,20 @@
     using Gravyframe.Configuration;
     using Gravyframe.Data.InMemory.News;
     using Gravyframe.Data.Tests.NewsDao;
+    using Gravyframe.Models;
 
     using NSubstitute;
 
     using NUnit.Framework;
 
     [TestFixture]
-    public class Tests : Tests<Models.News>
+    public class Tests : Tests<INews>
     {
         private INewsConfiguration _newsConfiguration;
 
-        private class TestContext : INewsDaoTestContext<Models.News>
+        private class TestContext : INewsDaoTestContext<INews>
         {
-            public Data.News.NewsDao<Models.News> Sut { get; private set; }
+            public Data.News.NewsDao<INews> Sut { get; private set; }
 
             public string ExampleCategoryId
             {

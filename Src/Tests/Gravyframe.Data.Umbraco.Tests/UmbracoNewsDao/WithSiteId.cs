@@ -52,12 +52,12 @@
             var mnOne = mockNode.Mock();
             testContext.NodeFactoryFacade.GetNode(1).Returns(mnOne);
             mockDataSet.AddData(1, News.UmbracoNewsDao.CategoriesAlias, TestContext.TestCategoryId);
-            mockDataSet.AddData(1, News.UmbracoNewsDao.Site, siteOneName);
+            mockDataSet.AddData(1, News.UmbracoNewsDao.SiteIndexFieldName, siteOneName);
 
             var mnTwo = mockNode.Mock(2);
             testContext.NodeFactoryFacade.GetNode(2).Returns(mnTwo);
             mockDataSet.AddData(2, News.UmbracoNewsDao.CategoriesAlias, TestContext.TestCategoryId);
-            mockDataSet.AddData(2, News.UmbracoNewsDao.Site, siteTwoName);
+            mockDataSet.AddData(2, News.UmbracoNewsDao.SiteIndexFieldName, siteTwoName);
 
             testContext.MockedIndex.SimpleDataService.GetAllData(TestContext.IndexType).Returns(mockDataSet);
 

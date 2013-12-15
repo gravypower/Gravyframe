@@ -2,8 +2,10 @@
 
 namespace Gravyframe.Data.Tests.NewsDao
 {
+    using Gravyframe.Models;
+
     public abstract class WithoutSiteID<TNews> : Tests<TNews>
-        where TNews : Models.News
+        where TNews : INews
     {
         [Test]
         public void GetNewsByCategoryListIsDefaultSize()
