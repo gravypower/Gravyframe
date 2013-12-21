@@ -23,7 +23,7 @@ namespace Gravyframe.UI.CMS.Sitefinity
 {
     using System;
 
-    using Gravyframe.ServiceStack.Hosting;
+    //using Gravyframe.ServiceStack.Hosting;
 
     /// <summary>
     /// The global.
@@ -41,11 +41,11 @@ namespace Gravyframe.UI.CMS.Sitefinity
         /// </param>
         protected void Application_Start(object sender, EventArgs e)
         {
-            var automaticServiceHosting = new AutomaticServiceHosting<IAutomaticServiceHostingConfigurationStrategy>();
-            automaticServiceHosting.Initialise();
+            //var automaticServiceHosting = new AutomaticServiceHosting<IAutomaticServiceHostingConfigurationStrategy>();
+           // automaticServiceHosting.Initialise();
 
-            var gravyframeHost = new GravyframeHost(automaticServiceHosting.ConfigurationStrategies, "Gravyframe Services", automaticServiceHosting.ServiceAssembly);
-            gravyframeHost.Init();
+            //var gravyframeHost = new GravyframeHost(automaticServiceHosting.ConfigurationStrategies, "Gravyframe Services", automaticServiceHosting.ServiceAssembly);
+            //gravyframeHost.Init();
         }
     }
 }
