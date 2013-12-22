@@ -4,8 +4,7 @@
     using Gravyframe.Data.Tests.NewsDao;
     using Gravyframe.Models.Sitefinity;
 
-    using NSubstitute;
-
+    
     using Telerik.Sitefinity.Modules.News;
 
     public class TestContext : INewsDaoTestContext<SitefinityNews>

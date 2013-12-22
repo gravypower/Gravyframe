@@ -709,12 +709,28 @@
     <Content Include="App_Data\RadSpell\en-US.tdf" />
     <Content Include="App_Data\RadSpell\fr-FR.tdf" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\Sitefinity\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App_Data\GeoLocation\GeoLiteCity.dat" />
     <Content Include="packages.config" />
+    <Content Include="App_Data\Sitefinity\Configuration\CatalogConfig.config" />
+    <Content Include="App_Data\Sitefinity\Configuration\CatalogConfig.contentViewControls.ProductsBackendDefinitionName.views.ProductsBackendMaster.config" />
+    <Content Include="App_Data\Sitefinity\Configuration\CatalogConfig.contentViewControls.ProductTypesBackendDefinitionName.views.ProductTypesBackendMaster.config" />
+    <Content Include="App_Data\Sitefinity\Configuration\ContentViewConfig.config" />
+    <Content Include="App_Data\Sitefinity\Configuration\DataConfig.config" />
+    <Content Include="App_Data\Sitefinity\Configuration\DynamicModulesConfig.config" />
+    <Content Include="App_Data\Sitefinity\Configuration\EcommerceConfig.config" />
+    <Content Include="App_Data\Sitefinity\Configuration\FormsConfig.config" />
+    <Content Include="App_Data\Sitefinity\Configuration\ForumsConfig.config" />
+    <Content Include="App_Data\Sitefinity\Configuration\MigrationModuleConfig.config" />
+    <Content Include="App_Data\Sitefinity\Configuration\PagesConfig.config" />
+    <Content Include="App_Data\Sitefinity\Configuration\ProjectConfig.config" />
+    <Content Include="App_Data\Sitefinity\Configuration\SecurityConfig.config" />
+    <Content Include="App_Data\Sitefinity\Configuration\StartupConfig.config" />
+    <Content Include="App_Data\Sitefinity\Configuration\SystemConfig.config" />
+    <Content Include="App_Data\Sitefinity\Configuration\ToolboxesConfig.config" />
+    <Content Include="App_Data\Sitefinity\Configuration\VirtualPathSettingsConfig.config" />
+    <Content Include="App_Data\Sitefinity\Configuration\WorkflowConfig.config" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
