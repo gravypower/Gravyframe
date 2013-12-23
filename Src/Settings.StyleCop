@@ -3,6 +3,7 @@
     <CollectionProperty Name="RecognizedWords">
       <Value>async</Value>
       <Value>CMS</Value>
+      <Value>EpiServer</Value>
       <Value>Gravyframe</Value>
       <Value>Initialise</Value>
       <Value>Sitefinity</Value>

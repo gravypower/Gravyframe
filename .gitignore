@@ -76,8 +76,9 @@ _ReSharper.*
 *.vsp
 
 packages/
-
+modulesbin/
 App_Data/
+AppData/
 Umbraco/
 Umbraco_Client/
 !App_Data/Umbraco.sdf*
