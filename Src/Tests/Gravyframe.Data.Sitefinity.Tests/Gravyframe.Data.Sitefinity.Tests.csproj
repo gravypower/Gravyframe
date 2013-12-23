@@ -73,25 +73,6 @@
     <Compile Include="SitefinityNewsDao\WithoutSiteId.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App_Data\Sitefinity\Configuration\CatalogConfig.config" />
-    <None Include="App_Data\Sitefinity\Configuration\CatalogConfig.contentViewControls.ProductsBackendDefinitionName.views.ProductsBackendMaster.config" />
-    <None Include="App_Data\Sitefinity\Configuration\CatalogConfig.contentViewControls.ProductTypesBackendDefinitionName.views.ProductTypesBackendMaster.config" />
-    <None Include="App_Data\Sitefinity\Configuration\ContentViewConfig.config" />
-    <None Include="App_Data\Sitefinity\Configuration\DataConfig.config" />
-    <None Include="App_Data\Sitefinity\Configuration\DynamicModulesConfig.config" />
-    <None Include="App_Data\Sitefinity\Configuration\EcommerceConfig.config" />
-    <None Include="App_Data\Sitefinity\Configuration\FormsConfig.config" />
-    <None Include="App_Data\Sitefinity\Configuration\ForumsConfig.config" />
-    <None Include="App_Data\Sitefinity\Configuration\MigrationModuleConfig.config" />
-    <None Include="App_Data\Sitefinity\Configuration\PagesConfig.config" />
-    <None Include="App_Data\Sitefinity\Configuration\ProjectConfig.config" />
-    <None Include="App_Data\Sitefinity\Configuration\SecurityConfig.config" />
-    <None Include="App_Data\Sitefinity\Configuration\StartupConfig.config" />
-    <None Include="App_Data\Sitefinity\Configuration\SystemConfig.config" />
-    <None Include="App_Data\Sitefinity\Configuration\ToolboxesConfig.config" />
-    <None Include="App_Data\Sitefinity\Configuration\VirtualPathSettingsConfig.config" />
-    <None Include="App_Data\Sitefinity\Configuration\WorkflowConfig.config" />
-    <None Include="App_Data\Sitefinity\Sitefinity.lic" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
