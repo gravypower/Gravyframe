@@ -78,6 +78,10 @@
       <Project>{EC67B062-8ABC-4B40-94D1-097421B04CE4}</Project>
       <Name>Gravyframe.Data.Tests</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Gravyframe.Kernel.EPiServer.Tests\Gravyframe.Kernel.EPiServer.Tests.csproj">
+      <Project>{5A5ECB99-90D6-4EB9-AF77-FC23A09B662F}</Project>
+      <Name>Gravyframe.Kernel.EPiServer.Tests</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

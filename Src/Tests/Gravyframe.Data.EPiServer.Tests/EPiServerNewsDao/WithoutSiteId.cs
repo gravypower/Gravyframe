@@ -5,6 +5,7 @@
     using global::EPiServer.Core;
 
     using Gravyframe.Data.Tests.NewsDao;
+    using Gravyframe.Kernel.EPiServer.Tests.TestHelpers;
     using Gravyframe.Models.EPiServer;
 
     using NSubstitute;
@@ -16,8 +17,7 @@
         public WithoutSiteIdTestContext()
         {
             var exampleId = Guid.Parse(this.ExampleId);
-            var content = Substitute.For<IContent>();
-            content.ContentGuid.Returns(exampleId);
+            var content = new MockContent().Mock(exampleId);
             this.ContentRepository.Get<IContent>(exampleId).Returns(content);
         }
     }

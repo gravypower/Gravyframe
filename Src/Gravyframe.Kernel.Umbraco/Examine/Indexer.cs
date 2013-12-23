@@ -118,6 +118,9 @@ namespace Gravyframe.Kernel.Umbraco.Examine
         /// <summary>
         /// Gets the supported types.
         /// </summary>
+        /// <value>
+        /// The supported types.
+        /// </value>
         protected override IEnumerable<string> SupportedTypes
         {
             get
@@ -130,7 +133,7 @@ namespace Gravyframe.Kernel.Umbraco.Examine
         /// The on gathering node data.
         /// </summary>
         /// <param name="e">
-        /// The e.
+        /// The IndexingNodeDataEventArgs.
         /// </param>
         protected override void OnGatheringNodeData(IndexingNodeDataEventArgs e)
         {

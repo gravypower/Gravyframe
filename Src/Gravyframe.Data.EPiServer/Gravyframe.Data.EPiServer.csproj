@@ -57,13 +57,23 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EPiServer.Framework.7.5.409.0\lib\net40\EPiServer.Licensing.dll</HintPath>
     </Reference>
+    <Reference Include="EPiServer.Search.IndexingService">
+      <HintPath>..\packages\EPiServer.Search.7.5.409.0\lib\net40\EPiServer.Search.IndexingService.dll</HintPath>
+    </Reference>
     <Reference Include="EPiServer.Shell, Version=7.5.409.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EPiServer.Framework.7.5.409.0\lib\net40\EPiServer.Shell.dll</HintPath>
     </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net">
+      <HintPath>..\packages\Lucene.Net.3.0.3\lib\NET40\Lucene.Net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>

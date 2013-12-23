@@ -28,6 +28,7 @@ namespace Gravyframe.Data.EPiServer.News
 
     using global::EPiServer;
     using global::EPiServer.Core;
+    using global::EPiServer.Search;
 
     using Gravyframe.Data.News;
     using Gravyframe.Models.EPiServer;
@@ -120,7 +121,7 @@ namespace Gravyframe.Data.EPiServer.News
         /// </returns>
         public override EPiServerNews GetNews(string siteId, string newsId)
         {
-            throw new System.NotImplementedException();
+            return this.GetNews(newsId);
         }
 
         /// <summary>

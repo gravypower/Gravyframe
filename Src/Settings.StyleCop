@@ -6,6 +6,7 @@
       <Value>EpiServer</Value>
       <Value>Gravyframe</Value>
       <Value>Initialise</Value>
+      <Value>lucene</Value>
       <Value>Sitefinity</Value>
       <Value>Umbraco</Value>
     </CollectionProperty>
