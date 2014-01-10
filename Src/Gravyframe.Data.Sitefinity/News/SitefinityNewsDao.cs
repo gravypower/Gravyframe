@@ -26,9 +26,8 @@ namespace Gravyframe.Data.Sitefinity.News
     using System.Collections.Generic;
 
     using Gravyframe.Data.News;
+    using Gravyframe.Kernel.Sitefinity.Facades;
     using Gravyframe.Models.Sitefinity;
-
-    using Telerik.Sitefinity.Modules.News;
 
     /// <summary>
     /// The sitefinity news dao.
@@ -38,17 +37,17 @@ namespace Gravyframe.Data.Sitefinity.News
         /// <summary>
         /// The news data provider.
         /// </summary>
-        protected readonly NewsDataProvider NewsDataProvider;
+        protected readonly INewsDataProviderFacade NewsDataProviderFacade;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SitefinityNewsDao"/> class.
         /// </summary>
-        /// <param name="newsDataProvider">
-        /// The news data provider.
+        /// <param name="newsDataProviderFacade">
+        /// The news data provider facade.
         /// </param>
-        public SitefinityNewsDao(NewsDataProvider newsDataProvider)
+        public SitefinityNewsDao(INewsDataProviderFacade newsDataProviderFacade)
         {
-            this.NewsDataProvider = newsDataProvider;
+            this.NewsDataProviderFacade = newsDataProviderFacade;
         }
 
         /// <summary>
@@ -62,7 +61,7 @@ namespace Gravyframe.Data.Sitefinity.News
         /// </returns>
         public override SitefinityNews GetNews(string newsId)
         {
-            var news = (SitefinityNews)this.NewsDataProvider.GetNewsItem(Guid.Parse(newsId));
+            var news = (SitefinityNews)this.NewsDataProviderFacade.GetNewsItem(Guid.Parse(newsId));
             return news;
         }
 

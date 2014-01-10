@@ -84,6 +84,10 @@
       <Project>{DA80ABB5-0A99-4DC1-B56F-DAF7018D3BC5}</Project>
       <Name>Gravyframe.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Gravyframe.Kernel.Sitefinity\Gravyframe.Kernel.Sitefinity.csproj">
+      <Project>{25614B20-4964-40CE-9B8E-E6151D4826E1}</Project>
+      <Name>Gravyframe.Kernel.Sitefinity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Gravyframe.Models.Sitefinity\Gravyframe.Models.Sitefinity.csproj">
       <Project>{4CB7478F-4ADF-4423-AA7A-C0AFCDEE774F}</Project>
       <Name>Gravyframe.Models.Sitefinity</Name>

@@ -2,24 +2,23 @@
 {
     using Gravyframe.Data.News;
     using Gravyframe.Data.Tests.NewsDao;
+    using Gravyframe.Kernel.Sitefinity.Facades;
     using Gravyframe.Models.Sitefinity;
 
-    
-    using Telerik.Sitefinity.Modules.News;
+    using NSubstitute;
 
     public class TestContext : INewsDaoTestContext<SitefinityNews>
     {
         public const int NewsConfigurationNodeId = 1000;
         public const string IndexType = "News";
         public const string TestCategoryId = "TestCategoryId";
-        
-        public NewsDataProvider NewsDataProvider;
+
+        public INewsDataProviderFacade NewsDataProviderFacade;
 
         public TestContext()
         {
-            var t = new test();
-            //this.NewsDataProvider = Substitute.For<NewsDataProvider>();
-            Sut = new News.SitefinityNewsDao(NewsDataProvider);
+            this.NewsDataProviderFacade = Substitute.For<INewsDataProviderFacade>();
+            Sut = new News.SitefinityNewsDao(NewsDataProviderFacade);
         }
 
         public NewsDao<SitefinityNews> Sut { get; private set; }
@@ -46,55 +45,6 @@
             {
                 return TestCategoryId;
             }
-        }
-    }
-
-    public class test : NewsDataProvider
-    {
-
-        public override Telerik.Sitefinity.Lifecycle.LanguageData CreateLanguageData(System.Guid id)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override Telerik.Sitefinity.Lifecycle.LanguageData CreateLanguageData()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override Telerik.Sitefinity.News.Model.NewsItem CreateNewsItem(System.Guid id)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override Telerik.Sitefinity.News.Model.NewsItem CreateNewsItem()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override void Delete(Telerik.Sitefinity.News.Model.NewsItem newsItemToDelete)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override System.Linq.IQueryable<Telerik.Sitefinity.Lifecycle.LanguageData> GetLanguageData()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override Telerik.Sitefinity.Lifecycle.LanguageData GetLanguageData(System.Guid id)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override Telerik.Sitefinity.News.Model.NewsItem GetNewsItem(System.Guid id)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override System.Linq.IQueryable<Telerik.Sitefinity.News.Model.NewsItem> GetNewsItems()
-        {
-            throw new System.NotImplementedException();
         }
     }
 }
