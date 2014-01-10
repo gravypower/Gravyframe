@@ -1,4 +1,4 @@
-﻿namespace Gravyframe.Data.Umbraco.Tests.UmbracoContentDao
+﻿namespace Gravyframe.Data.Umbraco.Tests.ContentDao
 {
     using NUnit.Framework;
 

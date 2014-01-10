@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UmbracoContent.cs" />
     <Compile Include="UmbracoNews.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

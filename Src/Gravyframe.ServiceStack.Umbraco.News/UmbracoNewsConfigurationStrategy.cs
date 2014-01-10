@@ -53,7 +53,7 @@ namespace Gravyframe.ServiceStack.News.Umbraco
                 new UmbracoNewsConfiguration(container.Resolve<INodeFactoryFacade>(), 1069));
 
             container.Register<NewsDao<UmbracoNews>>(
-                new UmbracoNewsDao(
+                new NewsDao(
                     container.Resolve<INewsConfiguration>(),
                     container.Resolve<INodeFactoryFacade>(),
                     container.Resolve<ISearcher>()));

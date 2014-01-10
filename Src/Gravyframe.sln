@@ -68,6 +68,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".git", ".git", "{1F8D193C-3
 	ProjectSection(SolutionItems) = preProject
 		..\.gitignore = ..\.gitignore
 		..\LICENSE = ..\LICENSE
+		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gravyframe.UI.CMS.Umbraco", "Gravyframe.UI.CMS.Umbraco\Gravyframe.UI.CMS.Umbraco.csproj", "{A9493E5F-301A-47DB-972C-F2F59E0C43BC}"

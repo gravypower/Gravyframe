@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ContentDao.cs" company="Gravypowered">
+// <copyright file="IContent.cs" company="Gravypowered">
 //   Copyright 2013 Aaron Job
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,45 +15,31 @@
 //   limitations under the License.
 // </copyright>
 // <summary>
-//   Defines the ContentDao type.
+//   Defines the IContent type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Gravyframe.Data.Content
+namespace Gravyframe.Models
 {
-    using System.Collections.Generic;
-
     /// <summary>
-    /// The content dao.
+    /// The Content interface.
     /// </summary>
-    /// <typeparam name="TContent">
-    /// The type of Content, must be of type Gravyframe.Models.Content.
-    /// </typeparam>
-    public abstract class ContentDao<TContent> where TContent : Models.Content
+    public interface IContent
     {
         /// <summary>
-        /// The get content.
+        /// Gets or sets the title.
         /// </summary>
-        /// <param name="contentId">
-        /// The content id.
-        /// </param>
-        /// <returns>
-        /// The <see cref="TContent"/>.
-        /// </returns>
-        public abstract TContent GetContent(string contentId);
+        /// <value>
+        /// The title of the content.
+        /// </value>
+        string Title { get; set; }
 
         /// <summary>
-        /// The get content by category.
+        /// Gets or sets the body.
         /// </summary>
-        /// <param name="categoryId">
-        /// The category id.
-        /// </param>
-        /// <returns>
-        /// The <see>
-        ///     <cref>IEnumerable</cref>
-        /// </see>
-        ///     .
-        /// </returns>
-        public abstract IEnumerable<TContent> GetContentByCategory(string categoryId);
+        /// <value>
+        /// The body of the content.
+        /// </value>
+        string Body { get; set; }
     }
 }

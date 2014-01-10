@@ -1,9 +1,8 @@
-﻿namespace Gravyframe.Service.Tests.ContentService
+﻿namespace Gravyframe.Service.Content.Tests
 {
     using System.Linq;
 
     using Gravyframe.Service.Content;
-    using Gravyframe.Service.Content.Tests;
     using Gravyframe.Service.Messages;
 
     using NSubstitute;
@@ -24,18 +23,18 @@
         }
 
         [Test]
-        public void WhenContentRequestContentIdContentResponceSuccess()
+        public void WhenContentRequestContentIdContentResponseSuccess()
         {
             // Act
-            var responce = this.Sut.Get(this.Request);
+            var response = this.Sut.Get(this.Request);
 
             // Assert
-            Assert.AreEqual(ResponseCodes.Success, responce.Code);
-            Assert.IsFalse(responce.Errors.Any(error => error == this.ContentConfiguration.ContentCategoryIdError));
+            Assert.AreEqual(ResponseCodes.Success, response.Code);
+            Assert.IsFalse(response.Errors.Any(error => error == this.ContentConfiguration.ContentCategoryIdError));
         }
 
         [Test]
-        public void WhenContentRequestedContentIdContentResponceHasContentTitle()
+        public void WhenContentRequestedContentIdContentResponseHasContentTitle()
         {
             // Assign
             var content = new Models.Content { Title = "TestTitle" };
@@ -49,7 +48,7 @@
         }
 
         [Test]
-        public void WhenContentRequestedContentIdContentResponceHasContentBody()
+        public void WhenContentRequestedContentIdContentResponseHasContentBody()
         {
             // Assign
             var content = new Models.Content { Body = "TestBody" };

@@ -1,4 +1,4 @@
-﻿namespace Gravyframe.Data.Umbraco.Tests.UmbracoNewsDao
+﻿namespace Gravyframe.Data.Umbraco.Tests.NewsDao
 {
     using System.Linq;
 
@@ -31,7 +31,7 @@
         {
             this.testContext = new WithoutSiteIdTestContext();
             this.testContext.MockNewsItemsInIndex();
-            Context = this.testContext;
+            this.Context = this.testContext;
         }
 
         [Test]
@@ -43,20 +43,20 @@
             var testCategoryIdOne = TestContext.TestCategoryId + "One";
             var testCategoryIdTwo = TestContext.TestCategoryId + "Two";
 
-            var mockNode = new MockNode().AddProperty(News.UmbracoNewsDao.BodyAlias, bodyText);
+            var mockNode = new MockNode().AddProperty(News.NewsDao.BodyAlias, bodyText);
 
             var mockDataSet = new MockSimpleDataSet(TestContext.IndexType);
             var mnOne = mockNode.Mock();
-            testContext.NodeFactoryFacade.GetNode(1).Returns(mnOne);
-            mockDataSet.AddData(1, News.UmbracoNewsDao.CategoriesAlias, testCategoryIdOne + "|" + testCategoryIdTwo);
+            this.testContext.NodeFactoryFacade.GetNode(1).Returns(mnOne);
+            mockDataSet.AddData(1, News.NewsDao.CategoriesAlias, testCategoryIdOne + "|" + testCategoryIdTwo);
 
-            testContext.MockedIndex.SimpleDataService.GetAllData(TestContext.IndexType).Returns(mockDataSet);
+            this.testContext.MockedIndex.SimpleDataService.GetAllData(TestContext.IndexType).Returns(mockDataSet);
 
-            testContext.MockedIndex.Indexer.RebuildIndex();
+            this.testContext.MockedIndex.Indexer.RebuildIndex();
 
             // Act
-            var resultOne = Context.Sut.GetNewsByCategoryId(testCategoryIdOne);
-            var resultTwo = Context.Sut.GetNewsByCategoryId(testCategoryIdTwo);
+            var resultOne = this.Context.Sut.GetNewsByCategoryId(testCategoryIdOne);
+            var resultTwo = this.Context.Sut.GetNewsByCategoryId(testCategoryIdTwo);
 
             // Assert
             Assert.AreEqual(1, resultOne.Count());

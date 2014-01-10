@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="UmbracoNewsDao.cs" company="Gravypowered">
+// <copyright file="NewsDao.cs" company="Gravypowered">
 //   Copyright 2013 Aaron Job
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -35,7 +35,7 @@ namespace Gravyframe.Data.Umbraco.News
     /// <summary>
     /// The umbraco news dao.
     /// </summary>
-    public class UmbracoNewsDao : NewsDao<UmbracoNews>
+    public class NewsDao : NewsDao<UmbracoNews>
     {
         /// <summary>
         /// The body alias.
@@ -68,7 +68,7 @@ namespace Gravyframe.Data.Umbraco.News
         protected readonly INodeFactoryFacade NodeFactoryFacade;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UmbracoNewsDao"/> class.
+        /// Initializes a new instance of the <see cref="NewsDao"/> class.
         /// </summary>
         /// <param name="newsConfiguration">
         /// The news configuration.
@@ -79,7 +79,7 @@ namespace Gravyframe.Data.Umbraco.News
         /// <param name="searcher">
         /// The searcher.
         /// </param>
-        public UmbracoNewsDao(INewsConfiguration newsConfiguration, INodeFactoryFacade nodeFactoryFacade, ISearcher searcher)
+        public NewsDao(INewsConfiguration newsConfiguration, INodeFactoryFacade nodeFactoryFacade, ISearcher searcher)
             : base(newsConfiguration)
         {
             this.Searcher = searcher;

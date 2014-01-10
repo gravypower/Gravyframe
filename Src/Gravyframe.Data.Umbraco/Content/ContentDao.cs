@@ -19,17 +19,17 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Gravyframe.Data.Content
+namespace Gravyframe.Data.Umbraco.Content
 {
     using System.Collections.Generic;
+
+    using Gravyframe.Data.Content;
+    using Gravyframe.Models.Umbraco;
 
     /// <summary>
     /// The content dao.
     /// </summary>
-    /// <typeparam name="TContent">
-    /// The type of Content, must be of type Gravyframe.Models.Content.
-    /// </typeparam>
-    public abstract class ContentDao<TContent> where TContent : Models.Content
+    public class ContentDao : ContentDao<UmbracoContent>
     {
         /// <summary>
         /// The get content.
@@ -38,9 +38,12 @@ namespace Gravyframe.Data.Content
         /// The content id.
         /// </param>
         /// <returns>
-        /// The <see cref="TContent"/>.
+        /// The <see cref="UmbracoContent"/>.
         /// </returns>
-        public abstract TContent GetContent(string contentId);
+        public override UmbracoContent GetContent(string contentId)
+        {
+            throw new System.NotImplementedException();
+        }
 
         /// <summary>
         /// The get content by category.
@@ -49,11 +52,11 @@ namespace Gravyframe.Data.Content
         /// The category id.
         /// </param>
         /// <returns>
-        /// The <see>
-        ///     <cref>IEnumerable</cref>
-        /// </see>
-        ///     .
+        /// The <see cref="IEnumerable"/>.
         /// </returns>
-        public abstract IEnumerable<TContent> GetContentByCategory(string categoryId);
+        public override IEnumerable<UmbracoContent> GetContentByCategory(string categoryId)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

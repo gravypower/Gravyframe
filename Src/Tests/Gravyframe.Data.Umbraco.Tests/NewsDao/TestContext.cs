@@ -1,4 +1,4 @@
-﻿namespace Gravyframe.Data.Umbraco.Tests.UmbracoNewsDao
+﻿namespace Gravyframe.Data.Umbraco.Tests.NewsDao
 {
     using Gravyframe.Configuration;
     using Gravyframe.Configuration.Umbraco;
@@ -27,8 +27,8 @@
             this.MockedIndex = MockIndexFactory.GetSimpleDataServiceMock(
                 new MockIndexFieldList().AddIndexField("id", "Number", true),
                 new MockIndexFieldList()
-                    .AddIndexField(News.UmbracoNewsDao.CategoriesAlias)
-                    .AddIndexField(News.UmbracoNewsDao.SiteIndexFieldName),
+                    .AddIndexField(News.NewsDao.CategoriesAlias)
+                    .AddIndexField(News.NewsDao.SiteIndexFieldName),
                 new[] { IndexType },
                 new string[] { },
                 new string[] { });
@@ -44,7 +44,7 @@
 
             this.NodeFactoryFacade.GetNode(NewsConfigurationNodeId).Returns(mockConfigurationNode);
 
-            Sut = new News.UmbracoNewsDao(newsConfiguration, this.NodeFactoryFacade, this.MockedIndex.Searcher);
+            this.Sut = new News.NewsDao(newsConfiguration, this.NodeFactoryFacade, this.MockedIndex.Searcher);
         }
 
         public class TestNewsConfiguration : NewsConfiguration
@@ -58,15 +58,15 @@
             var bodyText = "Test Body Text";
 
             var mockNode = new MockNode()
-                .AddProperty(News.UmbracoNewsDao.BodyAlias, bodyText);
+                .AddProperty(News.NewsDao.BodyAlias, bodyText);
 
             var mockDataSet = new MockSimpleDataSet(IndexType);
-            for (int i = 1; i < numberToMock; i++)
+            for (var i = 1; i < numberToMock; i++)
             {
                 var mn = mockNode.Mock(i);
                 this.NodeFactoryFacade.GetNode(i).Returns(mn);
-                mockDataSet.AddData(i, News.UmbracoNewsDao.CategoriesAlias, categoryId);
-                mockDataSet.AddData(i, News.UmbracoNewsDao.SiteIndexFieldName, site);
+                mockDataSet.AddData(i, News.NewsDao.CategoriesAlias, categoryId);
+                mockDataSet.AddData(i, News.NewsDao.SiteIndexFieldName, site);
             }
 
             this.MockedIndex.SimpleDataService.GetAllData(IndexType).Returns(mockDataSet);
