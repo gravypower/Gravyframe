@@ -24,7 +24,7 @@ namespace Gravyframe.UI.CMS.Umbraco.Masterpages
     /// <summary>
     /// The gravyframe.
     /// </summary>
-    public partial class Gravyframe : global::Umbraco.Web.UI.Umbraco.Masterpages.Default
-    {
-    }
+    //public partial class Gravyframe : global::Umbraco.Web.UI.Umbraco.Masterpages.Default
+    //{
+    //}
 }

@@ -24,6 +24,7 @@ namespace Gravyframe.Data.Umbraco.Content
     using System.Collections.Generic;
 
     using Gravyframe.Data.Content;
+    using Gravyframe.Kernel.Umbraco.Facades;
     using Gravyframe.Models.Umbraco;
 
     /// <summary>
@@ -31,6 +32,19 @@ namespace Gravyframe.Data.Umbraco.Content
     /// </summary>
     public class ContentDao : ContentDao<UmbracoContent>
     {
+        private readonly INodeFactoryFacade nodeFactoryFacade;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ContentDao"/> class.
+        /// </summary>
+        /// <param name="nodeFactoryFacade">
+        /// The node factory facade.
+        /// </param>
+        public ContentDao(INodeFactoryFacade nodeFactoryFacade)
+        {
+            this.nodeFactoryFacade = nodeFactoryFacade;
+        }
+
         /// <summary>
         /// The get content.
         /// </summary>

@@ -144,6 +144,9 @@ namespace Gravyframe.Kernel.Umbraco.Examine
                 e.Fields.Add("site", siteNode.UrlName);
             }
 
+
+            var t = currentNode.GetProperty("categories");
+
             var categories = e.Node.Descendants("XPathCheckBoxList").Descendants("nodeId");
 
             e.Fields.Add("categories", string.Join("|", categories.Select(x => x.Value)));
