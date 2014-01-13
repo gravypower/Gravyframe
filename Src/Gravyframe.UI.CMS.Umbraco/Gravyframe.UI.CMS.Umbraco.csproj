@@ -235,10 +235,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="css\dummy.txt" />
     <Content Include="default.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="masterpages\dummy.txt" />
     <Content Include="media\dummy.txt" />
     <Content Include="Scripts\dummy.txt" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
@@ -265,6 +263,7 @@
   <ItemGroup>
     <Folder Include="App_Code\" />
     <Folder Include="App_Plugins\" />
+    <Folder Include="css\" />
     <Folder Include="Views\MacroPartials\" />
     <Folder Include="Views\Partials\" />
   </ItemGroup>
@@ -311,7 +310,7 @@
       <Name>Gravyframe.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Gravyframe.Kernel.Umbraco\Gravyframe.Kernel.Umbraco.csproj">
-      <Project>{35D78ACD-3AA6-4593-AD64-5ABF3C3BB7B6}</Project>
+      <Project>{35d78acd-3aa6-4593-ad64-5abf3c3bb7b6}</Project>
       <Name>Gravyframe.Kernel.Umbraco</Name>
     </ProjectReference>
     <ProjectReference Include="..\Gravyframe.Kernel\Gravyframe.Kernel.csproj">

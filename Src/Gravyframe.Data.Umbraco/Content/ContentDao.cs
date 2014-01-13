@@ -66,7 +66,10 @@ namespace Gravyframe.Data.Umbraco.Content
         /// The category id.
         /// </param>
         /// <returns>
-        /// The <see cref="IEnumerable"/>.
+        /// The <see>
+        ///     <cref>IEnumerable</cref>
+        /// </see>
+        ///     .
         /// </returns>
         public override IEnumerable<UmbracoContent> GetContentByCategory(string categoryId)
         {

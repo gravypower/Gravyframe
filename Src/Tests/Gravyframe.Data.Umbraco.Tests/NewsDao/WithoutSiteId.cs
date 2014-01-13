@@ -48,7 +48,7 @@
             var mockDataSet = new MockSimpleDataSet(TestContext.IndexType);
             var mnOne = mockNode.Mock();
             this.testContext.NodeFactoryFacade.GetNode(1).Returns(mnOne);
-            mockDataSet.AddData(1, News.NewsDao.CategoriesAlias, testCategoryIdOne + "|" + testCategoryIdTwo);
+            mockDataSet.AddData(1, News.NewsDao.CategoriesAlias, testCategoryIdOne + "," + testCategoryIdTwo);
 
             this.testContext.MockedIndex.SimpleDataService.GetAllData(TestContext.IndexType).Returns(mockDataSet);
 

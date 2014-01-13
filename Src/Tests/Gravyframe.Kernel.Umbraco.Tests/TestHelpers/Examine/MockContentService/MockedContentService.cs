@@ -44,14 +44,13 @@ namespace Gravyframe.Kernel.Umbraco.Tests.TestHelpers.Examine.MockContentService
         {
 
             var xdoc = XDocument.Parse("<content></content>");
-            foreach (var node in _nodes)
+            foreach (var node in this._nodes)
             {
                 var n = new XElement(node.NodeTypeAlias, new XAttribute("id", node.Id));
 
                 foreach (var property in node.PropertiesAsList)
                 {
-                    var p = new XElement(property.Alias, XElement.Parse(property.Value));
-                    n.Add(p);
+                    n.Add(new XElement(property.Alias, new XCData(property.Value)));
                 }
 
                 xdoc.Root.Add(n);

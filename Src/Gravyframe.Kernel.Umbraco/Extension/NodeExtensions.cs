@@ -38,7 +38,10 @@ namespace Gravyframe.Kernel.Umbraco.Extension
         /// The result.
         /// </param>
         /// <typeparam name="T">
-        /// The type we want to parse the <see cref="value"/> to.
+        /// The type we want to parse the <see>
+        ///     <cref>value</cref>
+        /// </see>
+        ///     to.
         /// </typeparam>
         /// <returns>
         /// True if the pars was successful.
@@ -49,7 +52,7 @@ namespace Gravyframe.Kernel.Umbraco.Extension
         /// The get property.
         /// </summary>
         /// <param name="node">
-        /// The node.
+        /// The node that contains the property we want.
         /// </param>
         /// <param name="propertyAlias">
         /// The property alias.

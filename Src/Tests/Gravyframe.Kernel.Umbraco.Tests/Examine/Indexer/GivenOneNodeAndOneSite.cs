@@ -39,11 +39,14 @@ namespace Gravyframe.Kernel.Umbraco.Tests.Examine.Indexer
         [TestFixture]
         public class AndCategories : GivenOneNodeAndOneSite
         {
+            /// <summary>
+            /// And the categories set up.
+            /// </summary>
             [SetUp]
             public void AndCategories_SetUp()
             {
                 MockedNode = new MockNode(MockedNode)
-                    .AddProperty("categories", "<XPathCheckBoxList><nodeId>1063</nodeId><nodeId>1064</nodeId></XPathCheckBoxList>")
+                    .AddProperty("categories", "1063,1064")
                     .Mock(90);
 
                 NodeFactoryFacade.GetNode(MockedNode.Id).Returns(MockedNode);

@@ -144,12 +144,16 @@ namespace Gravyframe.Kernel.Umbraco.Examine
                 e.Fields.Add("site", siteNode.UrlName);
             }
 
+            var categoriesNode = e.Node.Descendants("categories").SingleOrDefault();
+            if (categoriesNode != null)
+            {
+                e.Fields.Add("categories", ReplaceCommasWithPipes(categoriesNode));
+            }
+        }
 
-            var t = currentNode.GetProperty("categories");
-
-            var categories = e.Node.Descendants("XPathCheckBoxList").Descendants("nodeId");
-
-            e.Fields.Add("categories", string.Join("|", categories.Select(x => x.Value)));
+        private static string ReplaceCommasWithPipes(XElement categoriesNode)
+        {
+            return categoriesNode.Value.Replace(',', '|');
         }
     }
 }
