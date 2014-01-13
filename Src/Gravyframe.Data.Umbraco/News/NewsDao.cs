@@ -29,6 +29,7 @@ namespace Gravyframe.Data.Umbraco.News
 
     using Gravyframe.Configuration;
     using Gravyframe.Data.News;
+    using Gravyframe.Kernel.Umbraco.Extension;
     using Gravyframe.Kernel.Umbraco.Facades;
     using Gravyframe.Models.Umbraco;
 
@@ -121,22 +122,12 @@ namespace Gravyframe.Data.Umbraco.News
                 return null;
             }
 
-            var umbracoNews = new UmbracoNews
-            {
-                Id = node.Id
-            };
-
-            if (node.GetProperty(BodyAlias) != null)
-            {
-                umbracoNews.Body = node.GetProperty(BodyAlias).Value;
-            }
-
-            if (node.GetProperty(TitleAlias) != null)
-            {
-                umbracoNews.Title = node.GetProperty(TitleAlias).Value;
-            }
-
-            return umbracoNews;
+            return new UmbracoNews
+                       {
+                           Id = node.Id,
+                           Body = node.GetProperty(BodyAlias, string.Empty),
+                           Title = node.GetProperty(TitleAlias, string.Empty)
+                       };
         }
 
         /// <summary>

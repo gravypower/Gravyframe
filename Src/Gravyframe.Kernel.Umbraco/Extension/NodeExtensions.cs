@@ -70,7 +70,6 @@ namespace Gravyframe.Kernel.Umbraco.Extension
         /// The string parse to type <see cref="T"/>.
         /// </returns>
         public static T GetProperty<T>(this INode node, string propertyAlias, T defaultValue, TryParseHandler<T> handler)
-            where T : struct
         {
             if (node == null)
             {
@@ -87,6 +86,27 @@ namespace Gravyframe.Kernel.Umbraco.Extension
             T result;
             
             return handler(value, out result) ? result : defaultValue;
+        }
+
+        /// <summary>
+        /// The get property.
+        /// </summary>
+        /// <param name="node">
+        /// The node the contains the property we want.
+        /// </param>
+        /// <param name="propertyAlias">
+        /// The property alias.
+        /// </param>
+        /// <param name="defaultValue">
+        /// The default value.
+        /// </param>
+        /// <returns>
+        /// The <see cref="string"/> valve of the property.
+        /// </returns>
+        public static string GetProperty(this INode node, string propertyAlias, string defaultValue)
+        {
+            var property = node.GetProperty(propertyAlias);
+            return property == null ? defaultValue : property.Value;
         }
 
         /// <summary>

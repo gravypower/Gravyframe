@@ -24,6 +24,7 @@ namespace Gravyframe.Data.Umbraco.Content
     using System.Collections.Generic;
 
     using Gravyframe.Data.Content;
+    using Gravyframe.Kernel.Umbraco.Extension;
     using Gravyframe.Kernel.Umbraco.Facades;
     using Gravyframe.Models.Umbraco;
 
@@ -32,6 +33,17 @@ namespace Gravyframe.Data.Umbraco.Content
     /// </summary>
     public class ContentDao : ContentDao<UmbracoContent>
     {
+        /// <summary>
+        /// The title alias.
+        /// </summary>
+        public const string TitleAlias = "title";
+
+        /// <summary>
+        /// The body alias.
+        /// </summary>
+        public const string BodyAlias = "body";
+
+
         private readonly INodeFactoryFacade nodeFactoryFacade;
 
         /// <summary>
@@ -56,7 +68,19 @@ namespace Gravyframe.Data.Umbraco.Content
         /// </returns>
         public override UmbracoContent GetContent(string contentId)
         {
-            throw new System.NotImplementedException();
+            var node = this.nodeFactoryFacade.GetNode(int.Parse(contentId));
+
+            if (node == null || node.Id == 0)
+            {
+                return null;
+            }
+
+            return new UmbracoContent
+            {
+                Id = node.Id,
+                Body = node.GetProperty(BodyAlias, string.Empty),
+                Title = node.GetProperty(TitleAlias, string.Empty)
+            };
         }
 
         /// <summary>
