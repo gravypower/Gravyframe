@@ -41,5 +41,10 @@ namespace Gravyframe.Configuration
         /// The content category id error.
         /// </value>
         string ContentCategoryIdError { get; }
+
+        /// <summary>
+        /// Gets the default list size.
+        /// </summary>
+        int DefaultListSize { get; }
     }
 }

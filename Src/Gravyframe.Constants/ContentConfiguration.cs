@@ -29,6 +29,9 @@ namespace Gravyframe.Configuration
         /// <summary>
         /// Gets the content id error.
         /// </summary>
+        /// <value>
+        /// The content id error.
+        /// </value>
         public string ContentIdError
         {
             get { return "Content Id error"; }
@@ -37,9 +40,23 @@ namespace Gravyframe.Configuration
         /// <summary>
         /// Gets the content category id error.
         /// </summary>
+        /// <value>
+        /// The content category id error.
+        /// </value>
         public string ContentCategoryIdError
         {
             get { return "Content Category Id error"; }
+        }
+
+        /// <summary>
+        /// Gets the default list size.
+        /// </summary>
+        /// <value>
+        /// The default list size.
+        /// </value>
+        public virtual int DefaultListSize
+        {
+            get { return 10; }
         }
     }
 }

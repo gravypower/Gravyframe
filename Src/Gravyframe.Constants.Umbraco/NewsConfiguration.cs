@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="UmbracoNewsConfiguration.cs" company="Gravypowered">
+// <copyright file="NewsConfiguration.cs" company="Gravypowered">
 //   Copyright 2013 Aaron Job
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,7 @@
 //   limitations under the License.
 // </copyright>
 // <summary>
-//   Defines the UmbracoNewsConfiguration type.
+//   Defines the NewsConfiguration type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -29,7 +29,7 @@ namespace Gravyframe.Configuration.Umbraco
     /// <summary>
     /// The umbraco news configuration.
     /// </summary>
-    public class UmbracoNewsConfiguration : NewsConfiguration
+    public class NewsConfiguration : Configuration.NewsConfiguration
     {
         /// <summary>
         /// The default list size property alias.
@@ -45,7 +45,7 @@ namespace Gravyframe.Configuration.Umbraco
         private INode configurationNode;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UmbracoNewsConfiguration"/> class.
+        /// Initializes a new instance of the <see cref="NewsConfiguration"/> class.
         /// </summary>
         /// <param name="nodeFactoryFacade">
         /// The node factory facade.
@@ -53,7 +53,7 @@ namespace Gravyframe.Configuration.Umbraco
         /// <param name="configurationNodeId">
         /// The configuration node id.
         /// </param>
-        public UmbracoNewsConfiguration(INodeFactoryFacade nodeFactoryFacade, int configurationNodeId)
+        public NewsConfiguration(INodeFactoryFacade nodeFactoryFacade, int configurationNodeId)
         {
             this.nodeFactoryFacade = nodeFactoryFacade;
             this.configurationNodeId = configurationNodeId;

@@ -23,13 +23,15 @@ namespace Gravyframe.Data.Content
 {
     using System.Collections.Generic;
 
+    using Gravyframe.Models;
+
     /// <summary>
     /// The content dao.
     /// </summary>
     /// <typeparam name="TContent">
     /// The type of Content, must be of type Gravyframe.Models.Content.
     /// </typeparam>
-    public abstract class ContentDao<TContent> where TContent : Models.Content
+    public abstract class ContentDao<TContent> where TContent : IContent
     {
         /// <summary>
         /// The get content.

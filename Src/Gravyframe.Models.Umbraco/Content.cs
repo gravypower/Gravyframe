@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="UmbracoContent.cs" company="Gravypowered">
+// <copyright file="Content.cs" company="Gravypowered">
 //   Copyright 2013 Aaron Job
 //   
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@ namespace Gravyframe.Models.Umbraco
     /// <summary>
     /// The umbraco content.
     /// </summary>
-    public class UmbracoContent : Content
+    public class Content : Models.Content
     {
         /// <summary>
         /// Gets or sets the id.

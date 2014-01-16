@@ -1,9 +1,8 @@
-﻿namespace Gravyframe.Data.Umbraco.Tests.NewsDao
+﻿namespace Gravyframe.Data.Umbraco.Tests.ContentDao
 {
-    using Gravyframe.Configuration;
     using Gravyframe.Configuration.Umbraco;
-    using Gravyframe.Data.News;
-    using Gravyframe.Data.Tests.NewsDao;
+    using Gravyframe.Data.Tests.ContentDao;
+    using Gravyframe.Data.Umbraco.Content;
     using Gravyframe.Kernel.Umbraco.Facades;
     using Gravyframe.Kernel.Umbraco.Tests.TestHelpers;
     using Gravyframe.Kernel.Umbraco.Tests.TestHelpers.Examine;
@@ -12,46 +11,43 @@
 
     using NSubstitute;
 
-    using NewsConfiguration = Gravyframe.Configuration.Umbraco.NewsConfiguration;
-
-    public class TestContext : INewsDaoTestContext<UmbracoNews>
+    public class TestContext : IContentDaoTestContext<Content>
     {
+        public Data.Content.ContentDao<Content> Sut { get; private set; }
+
+        public const int ContentConfigurationNodeId = 1000;
+        public const string IndexType = "Content";
+        public const string TestCategoryId = "TestCategoryId";
         public INodeFactoryFacade NodeFactoryFacade;
         public MockedIndex MockedIndex;
-
-        public const int NewsConfigurationNodeId = 1000;
-        public const string IndexType = "News";
-        public const string TestCategoryId = "TestCategoryId";
 
         public TestContext()
         {
             this.NodeFactoryFacade = Substitute.For<INodeFactoryFacade>();
-            this.MockedIndex = MockIndexFactory.GetSimpleDataServiceMock(
-                new MockIndexFieldList().AddIndexField("id", "Number", true),
-                new MockIndexFieldList()
-                    .AddIndexField(News.NewsDao.CategoriesAlias)
-                    .AddIndexField(News.NewsDao.SiteIndexFieldName),
-                new[] { IndexType },
-                new string[] { },
-                new string[] { });
 
-            var newsConfiguration = new NewsConfiguration(this.NodeFactoryFacade, NewsConfigurationNodeId);
+            this.MockedIndex = MockIndexFactory.GetSimpleDataServiceMock(
+               new MockIndexFieldList().AddIndexField("id", "Number", true),
+               new MockIndexFieldList()
+                   .AddIndexField(ContentDao.CategoriesAlias)
+                   .AddIndexField(ContentDao.SiteIndexFieldName),
+               new[] { IndexType },
+               new string[] { },
+               new string[] { });
+
+            var contentConfiguration = new ContentConfiguration(this.NodeFactoryFacade, ContentConfigurationNodeId);
 
             var defaultListSize = 20;
 
             var mockConfigurationNode =
-                new MockNode().AddProperty(
-                    NewsConfiguration.DefaultListSizePropertyAlias,
-                    defaultListSize.ToString()).Mock();
+               new MockNode().AddProperty(
+                   ContentConfiguration.DefaultListSizePropertyAlias,
+                   defaultListSize.ToString()).Mock();
 
-            this.NodeFactoryFacade.GetNode(NewsConfigurationNodeId).Returns(mockConfigurationNode);
+            this.NodeFactoryFacade.GetNode(ContentConfigurationNodeId).Returns(mockConfigurationNode);
 
-            this.Sut = new News.NewsDao(newsConfiguration, this.NodeFactoryFacade, this.MockedIndex.Searcher);
+            this.Sut = new ContentDao(this.NodeFactoryFacade, contentConfiguration, this.MockedIndex.Searcher);
         }
 
-        public class TestNewsConfiguration : Configuration.NewsConfiguration
-        {
-        }
 
         public void MockNewsItemsInIndex(int numberToMock = 20, string site = "", string categoryId = TestCategoryId)
         {
@@ -67,8 +63,8 @@
             {
                 var mn = mockNode.Mock(i);
                 this.NodeFactoryFacade.GetNode(i).Returns(mn);
-                mockDataSet.AddData(i, News.NewsDao.CategoriesAlias, categoryId);
-                mockDataSet.AddData(i, News.NewsDao.SiteIndexFieldName, site);
+                mockDataSet.AddData(i, ContentDao.CategoriesAlias, categoryId);
+                mockDataSet.AddData(i, ContentDao.SiteIndexFieldName, site);
             }
 
             this.MockedIndex.SimpleDataService.GetAllData(IndexType).Returns(mockDataSet);
@@ -80,8 +76,6 @@
         {
             return numberToMock + 1;
         }
-
-        public NewsDao<UmbracoNews> Sut { get; private set; }
 
         public string ExampleCategoryId
         {

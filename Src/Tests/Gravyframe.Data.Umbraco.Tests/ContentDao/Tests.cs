@@ -1,9 +1,7 @@
 ﻿namespace Gravyframe.Data.Umbraco.Tests.ContentDao
 {
-    using Gravyframe.Configuration.Umbraco;
     using Gravyframe.Data.Tests.ContentDao;
     using Gravyframe.Data.Umbraco.Content;
-    using Gravyframe.Kernel.Umbraco.Facades;
     using Gravyframe.Kernel.Umbraco.Tests.TestHelpers;
     using Gravyframe.Models.Umbraco;
 
@@ -14,20 +12,21 @@
     using umbraco.interfaces;
 
     [TestFixture]
-    public class Tests: Tests<UmbracoContent>
+    public class Tests: Tests<Content>
     {
-        public INodeFactoryFacade NodeFactoryFacade;
-
         private const int ExampleID = 2;
+        protected TestContext TestContext;
 
         [SetUp]
         public void SetUp()
         {
-            this.NodeFactoryFacade = Substitute.For<INodeFactoryFacade>();
-            Sut = new ContentDao(NodeFactoryFacade);
+            this.TestContext = new TestContext();
+            this.Context = this.TestContext;
+
+            this.TestContext.MockNewsItemsInIndex();
             var mockNode = new MockNode().Mock(ExampleID);
 
-            NodeFactoryFacade.GetNode(ExampleID).Returns(mockNode);
+            TestContext.NodeFactoryFacade.GetNode(ExampleID).Returns(mockNode);
         }
 
         [Test]
@@ -41,10 +40,10 @@
             .AddProperty(ContentDao.BodyAlias, body)
                 .Mock(ExampleID);
 
-            NodeFactoryFacade.GetNode(ExampleID).Returns(mockNode);
+            this.TestContext.NodeFactoryFacade.GetNode(ExampleID).Returns(mockNode);
 
             // Act
-            var result = Sut.GetContent(this.GetExampleId());
+            var result = this.Context.Sut.GetContent(this.TestContext.ExampleId);
 
             // Assert
             Assert.That(result.Id, Is.EqualTo(ExampleID));
@@ -55,23 +54,13 @@
         [Test]
         public void GetNullNewsFromUmbraco()
         {
-            this.NodeFactoryFacade.GetNode(1).Returns(default(INode));
+            this.TestContext.NodeFactoryFacade.GetNode(1).Returns(default(INode));
 
             // Act
-            var result = Sut.GetContent("1");
+            var result = this.Context.Sut.GetContent("1");
 
             // Assert
             Assert.AreEqual(null, result);
-        }
-
-        protected override string GetExampleCategoryId()
-        {
-            return "ExampleCategoryId";
-        }
-
-        protected override string GetExampleId()
-        {
-            return ExampleID.ToString();
         }
     }
 }

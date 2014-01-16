@@ -34,6 +34,8 @@ namespace Gravyframe.ServiceStack.News.Umbraco
     using Gravyframe.Service;
     using Gravyframe.Service.News;
 
+    using NewsConfiguration = Gravyframe.Configuration.Umbraco.NewsConfiguration;
+
     /// <summary>
     /// The umbraco news app host configuration strategy.
     /// </summary>
@@ -50,7 +52,7 @@ namespace Gravyframe.ServiceStack.News.Umbraco
             container.Register<ISearcher>(ExamineManager.Instance.SearchProviderCollection["GravyframeNewsSearcher"]);
             container.Register<INodeFactoryFacade>(new NodeFactoryFacade());
             container.Register<INewsConfiguration>(
-                new UmbracoNewsConfiguration(container.Resolve<INodeFactoryFacade>(), 1069));
+                new NewsConfiguration(container.Resolve<INodeFactoryFacade>(), 1069));
 
             container.Register<NewsDao<UmbracoNews>>(
                 new NewsDao(
